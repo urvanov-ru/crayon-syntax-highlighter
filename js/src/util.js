@@ -108,8 +108,8 @@ var jQueryCrayon = jQuery;
         };
 
         base.decode_html = function (str) {
-            return String(str).replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(
-                /&gt;/g, '>');
+            return String(str).replace(/&lt;/g, '<').replace(
+                /&gt;/g, '>').replace(/&amp;/g, '&');
         };
 
         base.encode_html = function (str) {

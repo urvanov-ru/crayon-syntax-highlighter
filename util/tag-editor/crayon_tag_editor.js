@@ -1,4 +1,170 @@
-(function ($) {
+(function ($, wp) {
+
+
+/**
+ * @param {String} HTML representing any number of sibling elements
+ * @return {NodeList} 
+ */
+function htmlToElements(html) {
+    return $.parseHTML(html, document, true);
+}
+
+
+
+    var CrayonButton = function( props ) {
+        return wp.element.createElement(
+            wp.editor.RichTextToolbarButton, {
+                icon: 'editor-code',
+                title: 'Crayon',
+                onClick: function(onClickArg) {
+var activeFormat = wp.richText.getActiveFormat(props.value, 'crayon-syntax-highlighter/btn');
+var startIndex = props.value.start;
+var endIndex = props.value.end;
+
+if (activeFormat) {
+    var format = 'crayon-syntax-highlighter/btn';
+    while ( props.value.formats[startIndex] && props.value.formats[ startIndex ].find(function(el) {return el.type == format;} )) {
+	    startIndex--;
+	}
+        startIndex++;
+
+	endIndex++;
+
+	while (props.value.formats[endIndex] &&  props.value.formats[ endIndex ].find(function(el) {return el.type == format;} ) ) {
+	    endIndex++;
+    }
+    var inputRichTextValue = wp.richText.slice(props.value, startIndex, endIndex);
+    var inputValue = wp.richText.toHTMLString({
+        value: inputRichTextValue});
+    var inputNode = htmlToElements(inputValue)[0];
+}
+
+
+
+
+
+
+
+
+
+ window.CrayonTagEditor.showDialog({
+     update: function(shortcode) {
+    },
+    node:  inputNode,
+    input: 'decode',
+    output: 'encode',
+     insert: function(shortcode) {
+                     props.onChange(
+                       
+
+                         wp.richText.insert(
+                        props.value,
+                        wp.richText.create({
+                            html:shortcode
+                        }),
+                        startIndex,
+                        endIndex
+                     )
+                 );
+
+     }
+});
+                },
+                isActive: props.isActive
+            }
+        );
+    }
+    wp.richText.registerFormatType(
+        'crayon-syntax-highlighter/btn', {
+            title: 'Crayon',
+            tagName: 'span',
+            className: null,
+            edit: CrayonButton
+        }
+    );
+
+
+
+
+
+
+var el = wp.element.createElement,
+    registerBlockType = wp.blocks.registerBlockType,
+blockStyle = {  };
+
+
+registerBlockType( 'crayon-syntax-highlighter/crayon-block', {
+    title: 'Crayon',
+
+    icon: 'universal-access-alt',
+
+    category: 'layout',
+    attributes: {
+        content: {
+            type: 'string',
+            source: 'html',
+            selector: 'p',
+        }
+    },
+    edit: function( props ) {
+        var content = props.attributes.content;
+
+        function onChangeContent( newContent ) {
+            props.setAttributes( { content: newContent } );
+        }
+
+        return el(
+                wp.element.Fragment,
+                null,
+                el(
+                    wp.editor.BlockControls,
+                    null,
+//                    el(
+//                        wp.components.Panel,
+//                        null,
+                        el(
+                            wp.components.Toolbar,
+                            null,
+                            el(
+                                wp.components.IconButton,
+                                {
+                                    icon: 'editor-code',
+                                    title: 'Crayon',
+                                    onClick: function() {
+ window.CrayonTagEditor.showDialog({
+     update: function(shortcode) {
+    },
+    input: 'decode',
+    output: 'encode',
+    node:  content ? htmlToElements(content)[0] : null,
+     insert: function(shortcode) {
+                     onChangeContent(
+                         shortcode
+                     )
+                 
+
+     }
+});
+
+}
+                                },
+                                "Crayon"
+                            )
+                        )
+//                    )
+                ),
+                el( 'p', { style: blockStyle, dangerouslySetInnerHTML: {__html: props.attributes.content} })//, props.attributes.content )
+                );
+    },
+
+    save: function( props ) {
+        var content = props.attributes.content;
+        return el('p', { dangerouslySetInnerHTML : {__html : content} });
+    },
+} );
+
+
+
 
     window.CrayonTagEditor = new function () {
         var base = this;
@@ -185,11 +351,11 @@
         base.showDialog = function (args) {
             var wasLoaded = loaded;
             base.loadDialog(function () {
-                if (!wasLoaded) {
+                //if (!wasLoaded) {
                     // Forcefully load the colorbox. Otherwise it populates the content after opening the window and
                     // never renders.
                     $.colorbox(colorboxSettings);
-                }
+                //}
                 base._showDialog(args);
             });
         };
@@ -628,4 +794,4 @@
         };
 
     };
-})(jQueryCrayon);
+})(jQueryCrayon, wp);
