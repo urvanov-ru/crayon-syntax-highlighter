@@ -324,7 +324,7 @@ class CrayonFormatter {
 
             /*	The table is rendered invisible by CSS and enabled with JS when asked to. If JS
              is not enabled or fails, the toolbar won't work so there is no point to display it. */
-            $print_plus = $hl->is_mixed() && $hl->setting_val(CrayonSettings::SHOW_MIXED) ? '<span class="crayon-mixed-highlight" title="' . crayon__('Contains Mixed Languages') . '"></span>' : '';
+            $print_plus = $hl->is_mixed() && $hl->setting_val(CrayonSettings::SHOW_ALTERNATE) ? '<span class="crayon-mixed-highlight" title="' . crayon__('Contains Mixed Languages') . '"></span>' : '';
             $buttons = $print_plus . $buttons_str . $print_lang;
             $toolbar = '
 			<div class="crayon-toolbar" data-settings="' . $toolbar_settings . '" style="' . $toolbar_style . '">' . $print_title . '

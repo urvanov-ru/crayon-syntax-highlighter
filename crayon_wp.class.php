@@ -1330,6 +1330,10 @@ if (defined('ABSPATH')) {
         add_action('edit_comment', 'CrayonWP::save_comment', 10, 2);
     }
     add_filter('init', 'CrayonWP::init_ajax');
+    
+    register_block_type( 'urvanov-syntax-highlighter/code-block', array(
+        'editor_script' => 'crayon_te_js',
+    ) );
 }
 
 ?>
