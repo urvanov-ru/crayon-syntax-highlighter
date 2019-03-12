@@ -1,6 +1,73 @@
 (function ($, wp) {
 
+    var el = wp.element.createElement,
+    registerBlockType = wp.blocks.registerBlockType,
+    blockStyle = {  };
+    
+    registerBlockType( 'urvanov-syntax-highlighter/code-block', {
+        title: 'Crayon',
 
+        icon: 'universal-access-alt',
+
+        category: 'layout',
+        attributes: {
+            content: {
+                type: 'string',
+                source: 'html',
+                selector: 'div',
+            }
+        },
+        edit: function( props ) {
+            var content = props.attributes.content;
+            function onChangeContent( newContent ) {
+                props.setAttributes( { content: newContent } );
+            }
+
+            return el(
+                wp.element.Fragment,
+                null,
+                el(
+                    wp.editor.BlockControls,
+                    null,
+                    el(
+                        wp.components.Toolbar,
+                        null,
+                        el(
+                            wp.components.IconButton,
+                            {
+                                icon: 'editor-code',
+                                title: 'Crayon',
+                                onClick: function() {
+                                     window.CrayonTagEditor.showDialog({
+                                         update: function(shortcode) {
+                                        },
+                                        input: 'decode',
+                                        output: 'encode',
+                                        node:  content ? CrayonUtil.htmlToElements(content)[0] : null,
+                                         insert: function(shortcode) {
+                                                         onChangeContent(
+                                                             shortcode
+                                                         )
+                                                     
+                                
+                                         }
+                                    });
+
+                                   }
+                            },
+                            "Crayon"
+                        )
+                    )
+                ),
+                el( 'div', { style: blockStyle, dangerouslySetInnerHTML: {__html: props.attributes.content} })//, props.attributes.content )
+            );
+        },
+
+        save: function( props ) {
+            var content = props.attributes.content;
+            return el('div', { dangerouslySetInnerHTML : {__html : content} });
+        },
+    } );
 
     var CrayonButton = function( props ) {
         return wp.element.createElement(
