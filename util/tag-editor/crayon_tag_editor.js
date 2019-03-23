@@ -41,6 +41,7 @@
                                      window.CrayonTagEditor.showDialog({
                                          update: function(shortcode) {
                                         },
+                                        br_html_block_after : '',
                                         input: 'decode',
                                         output: 'encode',
                                         node:  content ? CrayonUtil.htmlToElements(content)[0] : null,
@@ -95,7 +96,13 @@
                         var inputValue = wp.richText.toHTMLString({
                             value: inputRichTextValue});
                         var inputNode = CrayonUtil.htmlToElements(inputValue)[0];
+                    } else {
+                    	var inputRichTextValue = wp.richText.slice(props.value, startIndex, endIndex);
+                        var inputValue = '<span class="' + CrayonTagEditorSettings.inline_css + '">' + wp.richText.toHTMLString({
+                            value: inputRichTextValue}) + '</span>';
+                        var inputNode = CrayonUtil.htmlToElements(inputValue)[0];
                     }
+                    
 
                      window.CrayonTagEditor.showDialog({
                          update: function(shortcode) {
@@ -159,6 +166,8 @@
 
         // CSS
         var dialog, code, clear, submit, cancel;
+        
+        var br_html_block_after;
 
         var colorboxSettings = {
             inline: true,
@@ -339,7 +348,8 @@
                 ed: null,
                 node: null,
                 input: null,
-                output: null
+                output: null,
+                br_html_block_after: '<p>&nbsp;</p>',
             }, args);
 
             // Need to reset all settings back to original, clear yellow highlighting
@@ -353,6 +363,7 @@
             inputHTML = args.input;
             outputHTML = args.output;
             editor_name = args.editor_str;
+            br_html_block_after = args.br_html_block_after;
             var currNode = args.node;
             var currNode = args.node;
             is_inline = false;
@@ -563,7 +574,7 @@
                     if (editor_name == 'html') {
                         br_after = br_before = ' \n';
                     } else {
-                        br_after = '<p>&nbsp;</p>';
+                        br_after = br_html_block_after;
                     }
                 } else {
                     // Add a space after
