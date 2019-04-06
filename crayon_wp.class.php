@@ -5,7 +5,7 @@ Plugin URI: https://github.com/urvanov-ru/crayon-syntax-highlighter
 Description: Supports multiple languages, themes, highlighting from a URL, local file or post text.
 Version: _2.8.5_beta
 Author: Aram Kocharyan, Fedor Urvanov
-Author URI: http://aramk.com/
+Author URI: https://urvanov.ru
 Text Domain: urvanov-syntax-highlighter
 Domain Path: /trans/
 License: GPL2
