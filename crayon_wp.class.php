@@ -1,12 +1,12 @@
 <?php
 /*
-Plugin Name: Crayon Syntax Highlighter
-Plugin URI: https://github.com/aramk/crayon-syntax-highlighter
+Plugin Name: Urvanov Syntax Highlighter
+Plugin URI: https://github.com/urvanov-ru/crayon-syntax-highlighter
 Description: Supports multiple languages, themes, highlighting from a URL, local file or post text.
 Version: _2.8.5_beta
-Author: Aram Kocharyan
+Author: Aram Kocharyan, Fedor Urvanov
 Author URI: http://aramk.com/
-Text Domain: crayon-syntax-highlighter
+Text Domain: urvanov-syntax-highlighter
 Domain Path: /trans/
 License: GPL2
 Copyright 2013	Aram Kocharyan	(email : akarmenia@gmail.com)
@@ -35,9 +35,9 @@ require_once('crayon_settings_wp.class.php');
 
 crayon_set_info(array(
 	'Version' => '_2.7.2_beta',
-	'Date' => '25th April, 2015',
-	'AuthorName' => 'Aram Kocharyan',
-	'PluginURI' => 'https://github.com/aramk/crayon-syntax-highlighter',
+	'Date' => '06th April, 2019',
+	'AuthorName' => 'Aram Kocharyan & Fedor Urvanov',
+	'PluginURI' => 'https://github.com/urvanov-ru/crayon-syntax-highlighter',
 ));
 
 /* The plugin class that manages all other classes and integrates Crayon with WP */
@@ -1330,10 +1330,22 @@ if (defined('ABSPATH')) {
         add_action('edit_comment', 'CrayonWP::save_comment', 10, 2);
     }
     add_filter('init', 'CrayonWP::init_ajax');
+
+    
+}
+
+function register_gutenberg_block() {
+    global $CRAYON_VERSION;
+    wp_register_style('urvanov-syntax-highlighter-editor',
+        plugins_url(URVANOV_SYNTAX_HIGHLIGHTER_EDITOR_CSS, __FILE__),
+        array( 'wp-edit-blocks' ), $CRAYON_VERSION);
     
     register_block_type( 'urvanov-syntax-highlighter/code-block', array(
-        'editor_script' => 'crayon_te_js',
+        'editor_style' => 'urvanov-syntax-highlighter-editor'//,
+        //'editor_script' => 'crayon_te_js',
     ) );
 }
+
+add_action( 'init', 'register_gutenberg_block' );
 
 ?>

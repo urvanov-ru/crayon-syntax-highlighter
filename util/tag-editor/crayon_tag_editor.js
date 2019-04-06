@@ -5,11 +5,11 @@
     blockStyle = {  };
     
     registerBlockType( 'urvanov-syntax-highlighter/code-block', {
-        title: 'Crayon',
+        title: 'Urvanov Syntax Highlighter',
 
-        icon: 'universal-access-alt',
+        icon: 'editor-code',
 
-        category: 'layout',
+        category: 'formatting',
         attributes: {
             content: {
                 type: 'string',
