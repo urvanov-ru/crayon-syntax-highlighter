@@ -4,9 +4,9 @@ require_once ('../global.php');
 require_once (URVANOV_SYNTAX_HIGHLIGHTER_HIGHLIGHTER_PHP);
 
 // These will depend on your framework
-CrayonGlobalSettings::site_url('http://localhost/crayon/wp-content/plugins/crayon-syntax-highlighter/');
-CrayonGlobalSettings::site_path(dirname(__FILE__));
-CrayonGlobalSettings::plugin_path('http://localhost/crayon/wp-content/plugins/crayon-syntax-highlighter/');
+Urvanov_Syntax_Highlighter_Global_Settings::site_url('http://localhost/crayon/wp-content/plugins/crayon-syntax-highlighter/');
+Urvanov_Syntax_Highlighter_Global_Settings::site_path(dirname(__FILE__));
+Urvanov_Syntax_Highlighter_Global_Settings::plugin_path('http://localhost/crayon/wp-content/plugins/crayon-syntax-highlighter/');
 
 // Should be in the header
 crayon_resources();
@@ -21,12 +21,12 @@ $crayon->is_inline(FALSE);
 // Settings
 $settings = array(
 	// Just regular settings
-	CrayonSettings::NUMS => FALSE,
-	CrayonSettings::TOOLBAR => TRUE,
+	Urvanov_Syntax_Highlighter_Settings::NUMS => FALSE,
+	Urvanov_Syntax_Highlighter_Settings::TOOLBAR => TRUE,
 	// Enqueue supported only for WP
-	CrayonSettings::ENQUEUE_THEMES => FALSE,
-	CrayonSettings::ENQUEUE_FONTS => FALSE);
-$settings = CrayonSettings::smart_settings($settings);
+	Urvanov_Syntax_Highlighter_Settings::ENQUEUE_THEMES => FALSE,
+	Urvanov_Syntax_Highlighter_Settings::ENQUEUE_FONTS => FALSE);
+$settings = Urvanov_Syntax_Highlighter_Settings::smart_settings($settings);
 $crayon->settings($settings);
 
 // Print the Crayon
@@ -45,7 +45,7 @@ function crayon_print_script($id, $url, $version) {
 
 function crayon_resources() {
 	global $URVANOV_SYNTAX_HIGHLIGHTER_VERSION;
-	$plugin_url = CrayonGlobalSettings::plugin_path();
+	$plugin_url = Urvanov_Syntax_Highlighter_Global_Settings::plugin_path();
 	// jQuery only needed once! Don't have two jQuerys, so remove if you've already got one in your header :)
 	crayon_print_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js', $URVANOV_SYNTAX_HIGHLIGHTER_VERSION);
 	crayon_print_style('crayon-style', $plugin_url.URVANOV_SYNTAX_HIGHLIGHTER_STYLE, $URVANOV_SYNTAX_HIGHLIGHTER_VERSION);

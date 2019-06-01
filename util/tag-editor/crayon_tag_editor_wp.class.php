@@ -19,7 +19,7 @@ class CrayonTagEditorWP {
                 add_action("admin_print_scripts-post-new.php", 'Urvanov_Syntax_Highlighter_Settings_WP::init_js_settings');
                 add_action("admin_print_scripts-post.php", 'Urvanov_Syntax_Highlighter_Settings_WP::init_js_settings');
                 self::addbuttons();
-            } else if (CrayonGlobalSettings::val(CrayonSettings::TAG_EDITOR_FRONT)) {
+            } else if (Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::TAG_EDITOR_FRONT)) {
                 // XXX This will always need to enqueue, but only runs on front end
                 add_action('wp', 'CrayonTagEditorWP::enqueue_resources');
                 add_filter('tiny_mce_before_init', 'CrayonTagEditorWP::init_tinymce');
@@ -59,12 +59,12 @@ class CrayonTagEditorWP {
                 'dialog_title_css' => '#crayon-te-title',
                 'submit_wrapper_css' => '#crayon-te-submit-wrapper',
                 'data_value' => 'data-value',
-                'attr_sep' => CrayonGlobalSettings::val_str(CrayonSettings::ATTR_SEP),
+                'attr_sep' => Urvanov_Syntax_Highlighter_Global_Settings::val_str(Urvanov_Syntax_Highlighter_Settings::ATTR_SEP),
                 'css_sep' => '_',
-                'fallback_lang' => CrayonGlobalSettings::val(CrayonSettings::FALLBACK_LANG),
-                'add_text' => CrayonGlobalSettings::val(CrayonSettings::TAG_EDITOR_ADD_BUTTON_TEXT),
-                'edit_text' => CrayonGlobalSettings::val(CrayonSettings::TAG_EDITOR_EDIT_BUTTON_TEXT),
-                'quicktag_text' => CrayonGlobalSettings::val(CrayonSettings::TAG_EDITOR_QUICKTAG_BUTTON_TEXT),
+                'fallback_lang' => Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::FALLBACK_LANG),
+                'add_text' => Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::TAG_EDITOR_ADD_BUTTON_TEXT),
+                'edit_text' => Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::TAG_EDITOR_EDIT_BUTTON_TEXT),
+                'quicktag_text' => Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::TAG_EDITOR_QUICKTAG_BUTTON_TEXT),
                 'submit_add' => Urvanov_Syntax_Highlighter_Global::urvanov__('Add'),
                 'submit_edit' => Urvanov_Syntax_Highlighter_Global::urvanov__('Save'),
                 'bar' => '#crayon-te-bar',
@@ -126,10 +126,10 @@ class CrayonTagEditorWP {
     // The remaining functions are for displayed output.
 
     public static function select_resource($id, $resources, $current, $set_class = TRUE) {
-        $id = CrayonSettings::PREFIX . $id;
+        $id = Urvanov_Syntax_Highlighter_Settings::PREFIX . $id;
         if (count($resources) > 0) {
-            $class = $set_class ? 'class="' . CrayonSettings::SETTING . ' ' . CrayonSettings::SETTING_SPECIAL . '"' : '';
-            echo '<select id="' . $id . '" name="' . $id . '" ' . $class . ' ' . CrayonSettings::SETTING_ORIG_VALUE . '="' . $current . '">';
+            $class = $set_class ? 'class="' . Urvanov_Syntax_Highlighter_Settings::SETTING . ' ' . Urvanov_Syntax_Highlighter_Settings::SETTING_SPECIAL . '"' : '';
+            echo '<select id="' . $id . '" name="' . $id . '" ' . $class . ' ' . Urvanov_Syntax_Highlighter_Settings::SETTING_ORIG_VALUE . '="' . $current . '">';
             foreach ($resources as $resource) {
                 $asterisk = $current == $resource->id() ? ' *' : '';
                 echo '<option value="' . $resource->id() . '" ' . selected($current, $resource->id()) . ' >' . $resource->name() . $asterisk . '</option>';
@@ -137,19 +137,19 @@ class CrayonTagEditorWP {
             echo '</select>';
         } else {
             // None found, default to text box
-            echo '<input type="text" id="' . $id . '" name="' . $id . '" class="' . CrayonSettings::SETTING . ' ' . CrayonSettings::SETTING_SPECIAL . '" />';
+            echo '<input type="text" id="' . $id . '" name="' . $id . '" class="' . Urvanov_Syntax_Highlighter_Settings::SETTING . ' ' . Urvanov_Syntax_Highlighter_Settings::SETTING_SPECIAL . '" />';
         }
     }
 
     public static function checkbox($id) {
-        $id = CrayonSettings::PREFIX . $id;
-        echo '<input type="checkbox" id="' . $id . '" name="' . $id . '" class="' . CrayonSettings::SETTING . ' ' . CrayonSettings::SETTING_SPECIAL . '" />';
+        $id = Urvanov_Syntax_Highlighter_Settings::PREFIX . $id;
+        echo '<input type="checkbox" id="' . $id . '" name="' . $id . '" class="' . Urvanov_Syntax_Highlighter_Settings::SETTING . ' ' . Urvanov_Syntax_Highlighter_Settings::SETTING_SPECIAL . '" />';
     }
 
     public static function textbox($id, $atts = array(), $set_class = TRUE) {
-        $id = CrayonSettings::PREFIX . $id;
+        $id = Urvanov_Syntax_Highlighter_Settings::PREFIX . $id;
         $atts_str = '';
-        $class = $set_class ? 'class="' . CrayonSettings::SETTING . ' ' . CrayonSettings::SETTING_SPECIAL . '"' : '';
+        $class = $set_class ? 'class="' . Urvanov_Syntax_Highlighter_Settings::SETTING . ' ' . Urvanov_Syntax_Highlighter_Settings::SETTING_SPECIAL . '"' : '';
         foreach ($atts as $k => $v) {
             $atts_str = $k . '="' . $v . '" ';
         }
@@ -168,11 +168,11 @@ class CrayonTagEditorWP {
     public static function content() {
         Urvanov_Syntax_Highlighter_Settings_WP::load_settings();
         $langs = Urvanov_Syntax_Highlighter_Langs::sort_by_name(Urvanov_Syntax_Highlighter_Parser::parse_all());
-        $curr_lang = CrayonGlobalSettings::val(CrayonSettings::FALLBACK_LANG);
+        $curr_lang = Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::FALLBACK_LANG);
         $themes = Urvanov_Syntax_Highlighter_Resources::themes()->get();
-        $curr_theme = CrayonGlobalSettings::val(CrayonSettings::THEME);
+        $curr_theme = Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::THEME);
         $fonts = Urvanov_Syntax_Highlighter_Resources::fonts()->get();
-        $curr_font = CrayonGlobalSettings::val(CrayonSettings::FONT);
+        $curr_font = Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::FONT);
         CrayonTagEditorWP::init_settings();
 
         ?>
@@ -232,7 +232,7 @@ class CrayonTagEditorWP {
                             <?php
                             Urvanov_Syntax_Highlighter_Global::urvanov_e("If the URL fails to load, the code above will be shown instead. If no code exists, an error is shown.");
                             echo ' ';
-                            printf(Urvanov_Syntax_Highlighter_Global::urvanov__('If a relative local path is given it will be appended to %s - which is defined in %sCrayon &gt; Settings &gt; Files%s.'), '<span class="crayon-te-quote">' . get_home_url() . '/' . CrayonGlobalSettings::val(CrayonSettings::LOCAL_PATH) . '</span>', '<a href="options-general.php?page=crayon_settings" target="_blank">', '</a>');
+                            printf(Urvanov_Syntax_Highlighter_Global::urvanov__('If a relative local path is given it will be appended to %s - which is defined in %sCrayon &gt; Settings &gt; Files%s.'), '<span class="crayon-te-quote">' . get_home_url() . '/' . Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::LOCAL_PATH) . '</span>', '<a href="options-general.php?page=crayon_settings" target="_blank">', '</a>');
                             ?>
                         </div>
                     </td>
@@ -247,7 +247,7 @@ class CrayonTagEditorWP {
                 <tr>
                     <td colspan="2"><?php
                         $admin = isset($_GET['is_admin']) ? intval($_GET['is_admin']) : is_admin();
-                        if (!$admin && !CrayonGlobalSettings::val(CrayonSettings::TAG_EDITOR_SETTINGS)) {
+                        if (!$admin && !Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::TAG_EDITOR_SETTINGS)) {
                             exit();
                         }
                         ?>
@@ -260,7 +260,7 @@ class CrayonTagEditorWP {
                         <div id="crayon-te-settings-info" class="crayon-te-info">
                             <?php
                             Urvanov_Syntax_Highlighter_Global::urvanov_e('Change the following settings to override their global values.');
-                            echo ' <span class="', CrayonSettings::SETTING_CHANGED, '">';
+                            echo ' <span class="', Urvanov_Syntax_Highlighter_Settings::SETTING_CHANGED, '">';
                             Urvanov_Syntax_Highlighter_Global::urvanov_e('Only changes (shown yellow) are applied.');
                             echo '</span><br/>';
                             echo sprintf(Urvanov_Syntax_Highlighter_Global::urvanov__('Future changes to the global settings under %sCrayon &gt; Settings%s won\'t affect overridden settings.'), '<a href="options-general.php?page=crayon_settings" target="_blank">', '</a>');

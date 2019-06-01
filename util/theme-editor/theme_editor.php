@@ -175,7 +175,7 @@ class CrayonThemeEditorWP {
         if (self::$settings === NULL) {
             self::$settings = array(
                 // Only things the theme editor needs
-                'cssThemePrefix' => CrayonThemes::CSS_PREFIX,
+                'cssThemePrefix' => Urvanov_Syntax_Highlighter_Themes::CSS_PREFIX,
                 'cssInputPrefix' => CrayonHTMLElement::CSS_INPUT_PREFIX,
                 'attribute' => self::ATTRIBUTE,
                 'fields' => self::$infoFields,
@@ -696,12 +696,12 @@ class CrayonThemeEditorWP {
             $refresh = FALSE;
             $replaceID = $oldID;
             // Replace ids in the CSS
-            if (!is_file($oldPath) || strpos($css, CrayonThemes::CSS_PREFIX . $oldID) === FALSE) {
+            if (!is_file($oldPath) || strpos($css, Urvanov_Syntax_Highlighter_Themes::CSS_PREFIX . $oldID) === FALSE) {
                 // The old path/id is no longer valid - something has gone wrong - we should refresh afterwards
                 $refresh = TRUE;
             }
             // XXX This is case sensitive to avoid modifying text, but it means that CSS must be in lowercase
-            $css = preg_replace('#(?<=' . CrayonThemes::CSS_PREFIX . ')' . $replaceID . '\b#ms', $newID, $css);
+            $css = preg_replace('#(?<=' . Urvanov_Syntax_Highlighter_Themes::CSS_PREFIX . ')' . $replaceID . '\b#ms', $newID, $css);
 
             // Replace the name with the new one
             $info = self::getCSSInfo($css);
@@ -711,7 +711,7 @@ class CrayonThemeEditorWP {
             $result = @file_put_contents($newPath, $css);
             $success = $result !== FALSE;
             if ($success && $oldPath !== $newPath) {
-                if ($oldID !== CrayonThemes::DEFAULT_THEME && $delete) {
+                if ($oldID !== Urvanov_Syntax_Highlighter_Themes::DEFAULT_THEME && $delete) {
                     // Only delete the old path if it isn't the default theme
                     try {
                         // Delete the old path
@@ -735,7 +735,7 @@ class CrayonThemeEditorWP {
             }
             // Set the new theme in settings
             if ($change_settings) {
-                CrayonGlobalSettings::set(CrayonSettings::THEME, $newID);
+                Urvanov_Syntax_Highlighter_Global_Settings::set(Urvanov_Syntax_Highlighter_Settings::THEME, $newID);
                 Urvanov_Syntax_Highlighter_Settings_WP::save_settings();
             }
         } else {
@@ -763,7 +763,7 @@ class CrayonThemeEditorWP {
         if (is_dir($dir) && Urvanov_Syntax_Highlighter_Resources::themes()->exists($id)) {
             try {
                 CrayonUtil::deleteDir($dir);
-                CrayonGlobalSettings::set(CrayonSettings::THEME, CrayonThemes::DEFAULT_THEME);
+                Urvanov_Syntax_Highlighter_Global_Settings::set(Urvanov_Syntax_Highlighter_Settings::THEME, Urvanov_Syntax_Highlighter_Themes::DEFAULT_THEME);
                 Urvanov_Syntax_Highlighter_Settings_WP::save_settings();
                 echo 1;
             } catch (Exception $e) {

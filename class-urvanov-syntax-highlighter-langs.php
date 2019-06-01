@@ -34,11 +34,11 @@ class Urvanov_Syntax_Highlighter_Langs extends Urvanov_Syntax_Highlighter_User_R
         $this->extension('txt');
 
         CrayonLog::debug("Setting lang directories");
-        $upload = CrayonGlobalSettings::upload_path();
+        $upload = Urvanov_Syntax_Highlighter_Global_Settings::upload_path();
         if ($upload) {
             $this->user_directory($upload . URVANOV_SYNTAX_HIGHLIGHTER_LANG_DIR);
             if (!is_dir($this->user_directory())) {
-                CrayonGlobalSettings::mkdir($this->user_directory());
+                Urvanov_Syntax_Highlighter_Global_Settings::mkdir($this->user_directory());
                 CrayonLog::debug($this->user_directory(), "LANG USER DIR");
             }
         } else {
@@ -88,7 +88,7 @@ class Urvanov_Syntax_Highlighter_Langs extends Urvanov_Syntax_Highlighter_User_R
 		// If fallback id if given
 		if ($fallback_id == NULL) {
 			// Otherwise use global fallback
-			$fallback_id = CrayonGlobalSettings::get(CrayonSettings::FALLBACK_LANG);
+			$fallback_id = Urvanov_Syntax_Highlighter_Global_Settings::get(Urvanov_Syntax_Highlighter_Settings::FALLBACK_LANG);
 		}
 		// Attempt to use fallback
 		$fallback = $this->get($fallback_id);

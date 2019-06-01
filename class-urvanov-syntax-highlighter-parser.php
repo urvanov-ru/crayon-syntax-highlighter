@@ -196,8 +196,8 @@ class Urvanov_Syntax_Highlighter_Parser {
 					} else {
 						CrayonLog::syslog("The language at '{$element->path()}' referred to the Default Language regex for element '{$element->name()}', which did not exist.");
                         if (URVANOV_SYNTAX_HIGHLIGHTER_DEBUG) {
-                            CrayonLog::syslog("Default language URL: " . CrayonResources::langs()->url(Urvanov_Syntax_Highlighter_Langs::DEFAULT_LANG));
-                            CrayonLog::syslog("Default language Path: " . CrayonResources::langs()->path(Urvanov_Syntax_Highlighter_Langs::DEFAULT_LANG));
+                            CrayonLog::syslog("Default language URL: " . Urvanov_Syntax_Highlighter_Resources::langs()->url(Urvanov_Syntax_Highlighter_Langs::DEFAULT_LANG));
+                            CrayonLog::syslog("Default language Path: " . Urvanov_Syntax_Highlighter_Resources::langs()->path(Urvanov_Syntax_Highlighter_Langs::DEFAULT_LANG));
                         }
 						return FALSE;
 					}

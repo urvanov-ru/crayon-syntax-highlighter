@@ -88,31 +88,31 @@ class Urvanov_Syntax_Highlighter_Formatter {
         $uid = 'crayon-' . $hl->id();
         // Print theme id
         // We make the assumption that the id is correct (checked in crayon_wp)
-        $theme_id = $hl->setting_val(CrayonSettings::THEME);
+        $theme_id = $hl->setting_val(Urvanov_Syntax_Highlighter_Settings::THEME);
         $theme_id_dashed = CrayonUtil::space_to_hyphen($theme_id);
-        if (!$hl->setting_val(CrayonSettings::ENQUEUE_THEMES)) {
+        if (!$hl->setting_val(Urvanov_Syntax_Highlighter_Settings::ENQUEUE_THEMES)) {
             $output .= Urvanov_Syntax_Highlighter_Resources::themes()->get_css($theme_id);
         }
 
         // Print font id
         // We make the assumption that the id is correct (checked in crayon_wp)
-        $font_id = $hl->setting_val(CrayonSettings::FONT);
+        $font_id = $hl->setting_val(Urvanov_Syntax_Highlighter_Settings::FONT);
         $font_id_dashed = CrayonUtil::space_to_hyphen($font_id);
-        if (!$hl->setting_val(CrayonSettings::ENQUEUE_FONTS)) {
+        if (!$hl->setting_val(Urvanov_Syntax_Highlighter_Settings::ENQUEUE_FONTS)) {
             $output .= Urvanov_Syntax_Highlighter_Resources::fonts()->get_css($font_id);
         }
 
         // Inline margin
         if ($hl->is_inline()) {
-            $inline_margin = $hl->setting_val(CrayonSettings::INLINE_MARGIN) . 'px !important;';
+            $inline_margin = $hl->setting_val(Urvanov_Syntax_Highlighter_Settings::INLINE_MARGIN) . 'px !important;';
         }
 
         // Determine font size
         // TODO improve logic
-        if ($hl->setting_val(CrayonSettings::FONT_SIZE_ENABLE)) {
-            $_font_size = $hl->setting_val(CrayonSettings::FONT_SIZE);
+        if ($hl->setting_val(Urvanov_Syntax_Highlighter_Settings::FONT_SIZE_ENABLE)) {
+            $_font_size = $hl->setting_val(Urvanov_Syntax_Highlighter_Settings::FONT_SIZE);
             $font_size = $_font_size . 'px !important;';
-            $_line_height = $hl->setting_val(CrayonSettings::LINE_HEIGHT);
+            $_line_height = $hl->setting_val(Urvanov_Syntax_Highlighter_Settings::LINE_HEIGHT);
             // Don't allow line height to be less than font size
             $line_height = ($_line_height > $_font_size ? $_line_height : $_font_size) . 'px !important;';
             $toolbar_height = $font_size * 1.5 . 'px !important;';
@@ -129,18 +129,18 @@ class Urvanov_Syntax_Highlighter_Formatter {
                 $info_style .= "min-height: $info_height line-height: $info_height";
             }
         } else if (!$hl->is_inline()) {
-            if (($font_size = CrayonGlobalSettings::get(CrayonSettings::FONT_SIZE)) !== FALSE) {
+            if (($font_size = Urvanov_Syntax_Highlighter_Global_Settings::get(Urvanov_Syntax_Highlighter_Settings::FONT_SIZE)) !== FALSE) {
                 $font_size = $font_size->def() . 'px !important;';
                 $line_height = ($font_size * 1.4) . 'px !important;';
             }
         }
 
-        $tab = $hl->setting_val(CrayonSettings::TAB_SIZE);
+        $tab = $hl->setting_val(Urvanov_Syntax_Highlighter_Settings::TAB_SIZE);
         $pre_style = "-moz-tab-size:$tab; -o-tab-size:$tab; -webkit-tab-size:$tab; tab-size:$tab;";
 
         // This will return from function with inline print
         if ($hl->is_inline()) {
-            $wrap = !$hl->setting_val(CrayonSettings::INLINE_WRAP) ? 'crayon-syntax-inline-nowrap' : '';
+            $wrap = !$hl->setting_val(Urvanov_Syntax_Highlighter_Settings::INLINE_WRAP) ? 'crayon-syntax-inline-nowrap' : '';
             $output .= '
 			<span id="' . $uid . '" class="crayon-syntax crayon-syntax-inline ' . $wrap . ' crayon-theme-' . $theme_id_dashed . ' crayon-theme-' . $theme_id_dashed . '-inline crayon-font-' . $font_id_dashed . '" style="' . $font_style . '">' .
                 '<span class="crayon-pre crayon-code" style="' . $font_style . ' ' . $pre_style . '">' . $code . '</span>' .
@@ -156,10 +156,10 @@ class Urvanov_Syntax_Highlighter_Formatter {
         $hl->line_count(preg_match_all("#(?:^|(?<=\r\n|\n))[^\r\n]*#", $code, $code_lines));
 
         // The line number to start from
-        $start_line = $hl->setting_val(CrayonSettings::START_LINE);
-        $marking = $hl->setting_val(CrayonSettings::MARKING);
-        $striped = $hl->setting_val(CrayonSettings::STRIPED);
-        $range = $hl->setting_val(CrayonSettings::RANGES) ? $hl->range() : FALSE;
+        $start_line = $hl->setting_val(Urvanov_Syntax_Highlighter_Settings::START_LINE);
+        $marking = $hl->setting_val(Urvanov_Syntax_Highlighter_Settings::MARKING);
+        $striped = $hl->setting_val(Urvanov_Syntax_Highlighter_Settings::STRIPED);
+        $range = $hl->setting_val(Urvanov_Syntax_Highlighter_Settings::RANGES) ? $hl->range() : FALSE;
         for ($i = 1; $i <= $hl->line_count(); $i++) {
             // Check if the current line is in the range of code to display
             if ($range) {
@@ -219,7 +219,7 @@ class Urvanov_Syntax_Highlighter_Formatter {
         // Determine whether to print title, encode characters
         $title = $hl->title();
         // Decode if needed
-        if ($hl->setting_val(CrayonSettings::DECODE_ATTRIBUTES)) {
+        if ($hl->setting_val(Urvanov_Syntax_Highlighter_Settings::DECODE_ATTRIBUTES)) {
             $title = CrayonUtil::html_entity_decode($title);
         }
         $print_title = '<span class="crayon-title">' . $title . '</span>';
@@ -228,7 +228,7 @@ class Urvanov_Syntax_Highlighter_Formatter {
         // XXX Use for printing the regex
         if ($hl->language()) {
             $lang = $hl->language()->name();
-            switch ($hl->setting_index(CrayonSettings::SHOW_LANG)) {
+            switch ($hl->setting_index(Urvanov_Syntax_Highlighter_Settings::SHOW_LANG)) {
                 case 0 :
                     if ($hl->language()->id() == Urvanov_Syntax_Highlighter_Langs::DEFAULT_LANG) {
                         break;
@@ -245,36 +245,36 @@ class Urvanov_Syntax_Highlighter_Formatter {
         $code_settings = '';
         // Disable mouseover for touchscreen devices and mobiles, if we are told to
         $touch = FALSE; // Whether we have detected a touchscreen device
-        if ($hl->setting_val(CrayonSettings::TOUCHSCREEN) && CrayonUtil::is_touch()) {
+        if ($hl->setting_val(Urvanov_Syntax_Highlighter_Settings::TOUCHSCREEN) && CrayonUtil::is_touch()) {
             $touch = TRUE;
             $code_settings .= ' touchscreen';
         }
 
         // Disabling Popup
-        if (!$hl->setting_val(CrayonSettings::POPUP)) {
+        if (!$hl->setting_val(Urvanov_Syntax_Highlighter_Settings::POPUP)) {
             $code_settings .= ' no-popup';
         }
 
         // Minimize
-        if (!$hl->setting_val(CrayonSettings::MINIMIZE)) {
+        if (!$hl->setting_val(Urvanov_Syntax_Highlighter_Settings::MINIMIZE)) {
             $code_settings .= ' minimize';
         }
 
         // Draw the plain code and toolbar
         $toolbar_settings = $print_plain_button = $print_copy_button = '';
-        $toolbar_index = $hl->setting_index(CrayonSettings::TOOLBAR);
-        if (empty($error) && ($toolbar_index != 2 || $hl->setting_val(CrayonSettings::MINIMIZE))) {
+        $toolbar_index = $hl->setting_index(Urvanov_Syntax_Highlighter_Settings::TOOLBAR);
+        if (empty($error) && ($toolbar_index != 2 || $hl->setting_val(Urvanov_Syntax_Highlighter_Settings::MINIMIZE))) {
             // Enable mouseover setting for toolbar
             if ($toolbar_index == 0 && !$touch) {
                 // No touchscreen detected
                 $toolbar_settings .= ' mouseover';
-                if ($hl->setting_val(CrayonSettings::TOOLBAR_OVERLAY)) {
+                if ($hl->setting_val(Urvanov_Syntax_Highlighter_Settings::TOOLBAR_OVERLAY)) {
                     $toolbar_settings .= ' overlay';
                 }
-                if ($hl->setting_val(CrayonSettings::TOOLBAR_HIDE)) {
+                if ($hl->setting_val(Urvanov_Syntax_Highlighter_Settings::TOOLBAR_HIDE)) {
                     $toolbar_settings .= ' hide';
                 }
-                if ($hl->setting_val(CrayonSettings::TOOLBAR_DELAY)) {
+                if ($hl->setting_val(Urvanov_Syntax_Highlighter_Settings::TOOLBAR_DELAY)) {
                     $toolbar_settings .= ' delay';
                 }
             } else if ($toolbar_index == 1) {
@@ -286,27 +286,27 @@ class Urvanov_Syntax_Highlighter_Formatter {
 
             $buttons = array();
 
-            if ($hl->setting_val(CrayonSettings::NUMS_TOGGLE)) {
+            if ($hl->setting_val(Urvanov_Syntax_Highlighter_Settings::NUMS_TOGGLE)) {
                 $buttons['nums'] = Urvanov_Syntax_Highlighter_Global::urvanov__('Toggle Line Numbers');
             }
 
-            if ($hl->setting_val(CrayonSettings::PLAIN) && $hl->setting_val(CrayonSettings::PLAIN_TOGGLE)) {
+            if ($hl->setting_val(Urvanov_Syntax_Highlighter_Settings::PLAIN) && $hl->setting_val(Urvanov_Syntax_Highlighter_Settings::PLAIN_TOGGLE)) {
                 $buttons['plain'] = Urvanov_Syntax_Highlighter_Global::urvanov__('Toggle Plain Code');
             }
 
-            if ($hl->setting_val(CrayonSettings::WRAP_TOGGLE)) {
+            if ($hl->setting_val(Urvanov_Syntax_Highlighter_Settings::WRAP_TOGGLE)) {
                 $buttons['wrap'] = Urvanov_Syntax_Highlighter_Global::urvanov__('Toggle Line Wrap');
             }
 
-            if ($hl->setting_val(CrayonSettings::EXPAND_TOGGLE)) {
+            if ($hl->setting_val(Urvanov_Syntax_Highlighter_Settings::EXPAND_TOGGLE)) {
                 $buttons['expand'] = Urvanov_Syntax_Highlighter_Global::urvanov__('Expand Code');
             }
 
-            if (!$touch && $hl->setting_val(CrayonSettings::PLAIN) && $hl->setting_val(CrayonSettings::COPY)) {
+            if (!$touch && $hl->setting_val(Urvanov_Syntax_Highlighter_Settings::PLAIN) && $hl->setting_val(Urvanov_Syntax_Highlighter_Settings::COPY)) {
                 $buttons['copy'] = Urvanov_Syntax_Highlighter_Global::urvanov__('Copy');
             }
 
-            if ($hl->setting_val(CrayonSettings::POPUP)) {
+            if ($hl->setting_val(Urvanov_Syntax_Highlighter_Settings::POPUP)) {
                 $buttons['popup'] = Urvanov_Syntax_Highlighter_Global::urvanov__('Open Code In New Window');
             }
 
@@ -324,7 +324,7 @@ class Urvanov_Syntax_Highlighter_Formatter {
 
             /*	The table is rendered invisible by CSS and enabled with JS when asked to. If JS
              is not enabled or fails, the toolbar won't work so there is no point to display it. */
-            $print_plus = $hl->is_mixed() && $hl->setting_val(CrayonSettings::SHOW_ALTERNATE) ? '<span class="crayon-mixed-highlight" title="' . Urvanov_Syntax_Highlighter_Global::urvanov__('Contains Mixed Languages') . '"></span>' : '';
+            $print_plus = $hl->is_mixed() && $hl->setting_val(Urvanov_Syntax_Highlighter_Settings::SHOW_ALTERNATE) ? '<span class="crayon-mixed-highlight" title="' . Urvanov_Syntax_Highlighter_Global::urvanov__('Contains Mixed Languages') . '"></span>' : '';
             $buttons = $print_plus . $buttons_str . $print_lang;
             $toolbar = '
 			<div class="crayon-toolbar" data-settings="' . $toolbar_settings . '" style="' . $toolbar_style . '">' . $print_title . '
@@ -335,9 +335,9 @@ class Urvanov_Syntax_Highlighter_Formatter {
             $toolbar = $buttons = $plain_settings = '';
         }
 
-        if (empty($error) && $hl->setting_val(CrayonSettings::PLAIN)) {
+        if (empty($error) && $hl->setting_val(Urvanov_Syntax_Highlighter_Settings::PLAIN)) {
             // Different events to display plain code
-            switch ($hl->setting_index(CrayonSettings::SHOW_PLAIN)) {
+            switch ($hl->setting_index(Urvanov_Syntax_Highlighter_Settings::SHOW_PLAIN)) {
                 case 0 :
                     $plain_settings = 'dblclick';
                     break;
@@ -350,12 +350,12 @@ class Urvanov_Syntax_Highlighter_Formatter {
                 default :
                     $plain_settings = '';
             }
-            if ($hl->setting_val(CrayonSettings::SHOW_PLAIN_DEFAULT)) {
+            if ($hl->setting_val(Urvanov_Syntax_Highlighter_Settings::SHOW_PLAIN_DEFAULT)) {
                 $plain_settings .= ' show-plain-default';
             }
             $readonly = $touch ? '' : 'readonly';
             $print_plain = $print_plain_button = '';
-            $textwrap = !$hl->setting_val(CrayonSettings::WRAP) ? 'wrap="soft"' : '';
+            $textwrap = !$hl->setting_val(Urvanov_Syntax_Highlighter_Settings::WRAP) ? 'wrap="soft"' : '';
             $print_plain = '<textarea ' . $textwrap . ' class="crayon-plain print-no" data-settings="' . $plain_settings . '" ' . $readonly . ' style="' . $pre_style . ' ' . $font_style . '">' . "\n" . self::clean_code($hl->code()) . '</textarea>';
         } else {
             $print_plain = $plain_settings = $plain_settings = '';
@@ -366,60 +366,60 @@ class Urvanov_Syntax_Highlighter_Formatter {
         if ($line_numbers === FALSE) {
             $num_vis = 'crayon-invisible';
         } else {
-            $num_settings = ($hl->setting_val(CrayonSettings::NUMS) ? 'show' : 'hide');
+            $num_settings = ($hl->setting_val(Urvanov_Syntax_Highlighter_Settings::NUMS) ? 'show' : 'hide');
         }
 
         // Determine scrollbar visibility
-        $code_settings .= $hl->setting_val(CrayonSettings::SCROLL) && !$touch ? ' scroll-always' : ' scroll-mouseover';
+        $code_settings .= $hl->setting_val(Urvanov_Syntax_Highlighter_Settings::SCROLL) && !$touch ? ' scroll-always' : ' scroll-mouseover';
 
         // Disable animations
-        if ($hl->setting_val(CrayonSettings::DISABLE_ANIM)) {
+        if ($hl->setting_val(Urvanov_Syntax_Highlighter_Settings::DISABLE_ANIM)) {
             $code_settings .= ' disable-anim';
         }
 
         // Wrap
-        if ($hl->setting_val(CrayonSettings::WRAP)) {
+        if ($hl->setting_val(Urvanov_Syntax_Highlighter_Settings::WRAP)) {
             $code_settings .= ' wrap';
         }
 
         // Expand
-        if ($hl->setting_val(CrayonSettings::EXPAND)) {
+        if ($hl->setting_val(Urvanov_Syntax_Highlighter_Settings::EXPAND)) {
             $code_settings .= ' expand';
         }
 
         // Determine dimensions
-        if ($hl->setting_val(CrayonSettings::HEIGHT_SET)) {
-            $height_style = self::dimension_style($hl, CrayonSettings::HEIGHT);
+        if ($hl->setting_val(Urvanov_Syntax_Highlighter_Settings::HEIGHT_SET)) {
+            $height_style = self::dimension_style($hl, Urvanov_Syntax_Highlighter_Settings::HEIGHT);
             // XXX Only set height for main, not code (if toolbar always visible, code will cover main)
-            if ($hl->setting_index(CrayonSettings::HEIGHT_UNIT) == 0) {
+            if ($hl->setting_index(Urvanov_Syntax_Highlighter_Settings::HEIGHT_UNIT) == 0) {
                 $main_style .= $height_style;
             }
         }
-        if ($hl->setting_val(CrayonSettings::WIDTH_SET)) {
-            $width_style = self::dimension_style($hl, CrayonSettings::WIDTH);
+        if ($hl->setting_val(Urvanov_Syntax_Highlighter_Settings::WIDTH_SET)) {
+            $width_style = self::dimension_style($hl, Urvanov_Syntax_Highlighter_Settings::WIDTH);
             $code_style .= $width_style;
-            if ($hl->setting_index(CrayonSettings::WIDTH_UNIT) == 0) {
+            if ($hl->setting_index(Urvanov_Syntax_Highlighter_Settings::WIDTH_UNIT) == 0) {
                 $main_style .= $width_style;
             }
         }
 
         // Determine margins
-        if ($hl->setting_val(CrayonSettings::TOP_SET)) {
-            $code_style .= ' margin-top: ' . $hl->setting_val(CrayonSettings::TOP_MARGIN) . 'px;';
+        if ($hl->setting_val(Urvanov_Syntax_Highlighter_Settings::TOP_SET)) {
+            $code_style .= ' margin-top: ' . $hl->setting_val(Urvanov_Syntax_Highlighter_Settings::TOP_MARGIN) . 'px;';
         }
-        if ($hl->setting_val(CrayonSettings::BOTTOM_SET)) {
-            $code_style .= ' margin-bottom: ' . $hl->setting_val(CrayonSettings::BOTTOM_MARGIN) . 'px;';
+        if ($hl->setting_val(Urvanov_Syntax_Highlighter_Settings::BOTTOM_SET)) {
+            $code_style .= ' margin-bottom: ' . $hl->setting_val(Urvanov_Syntax_Highlighter_Settings::BOTTOM_MARGIN) . 'px;';
         }
-        if ($hl->setting_val(CrayonSettings::LEFT_SET)) {
-            $code_style .= ' margin-left: ' . $hl->setting_val(CrayonSettings::LEFT_MARGIN) . 'px;';
+        if ($hl->setting_val(Urvanov_Syntax_Highlighter_Settings::LEFT_SET)) {
+            $code_style .= ' margin-left: ' . $hl->setting_val(Urvanov_Syntax_Highlighter_Settings::LEFT_MARGIN) . 'px;';
         }
-        if ($hl->setting_val(CrayonSettings::RIGHT_SET)) {
-            $code_style .= ' margin-right: ' . $hl->setting_val(CrayonSettings::RIGHT_MARGIN) . 'px;';
+        if ($hl->setting_val(Urvanov_Syntax_Highlighter_Settings::RIGHT_SET)) {
+            $code_style .= ' margin-right: ' . $hl->setting_val(Urvanov_Syntax_Highlighter_Settings::RIGHT_MARGIN) . 'px;';
         }
 
         // Determine horizontal alignment
         $align_style = '';
-        switch ($hl->setting_index(CrayonSettings::H_ALIGN)) {
+        switch ($hl->setting_index(Urvanov_Syntax_Highlighter_Settings::H_ALIGN)) {
             case 1 :
                 $align_style = ' float: left;';
                 break;
@@ -433,7 +433,7 @@ class Urvanov_Syntax_Highlighter_Formatter {
         $code_style .= $align_style;
 
         // Determine allowed float elements
-        if ($hl->setting_val(CrayonSettings::FLOAT_ENABLE)) {
+        if ($hl->setting_val(Urvanov_Syntax_Highlighter_Settings::FLOAT_ENABLE)) {
             $clear_style = ' clear: none;';
         } else {
             $clear_style = '';
@@ -467,7 +467,7 @@ class Urvanov_Syntax_Highlighter_Formatter {
 		</div>';
         // Debugging stats
         $runtime = $hl->runtime();
-        if (!$hl->setting_val(CrayonSettings::DISABLE_RUNTIME) && is_array($runtime) && !empty($runtime)) {
+        if (!$hl->setting_val(Urvanov_Syntax_Highlighter_Settings::DISABLE_RUNTIME) && is_array($runtime) && !empty($runtime)) {
             $output = '<!-- Crayon Syntax Highlighter v' . $URVANOV_SYNTAX_HIGHLIGHTER_VERSION . ' -->'
                 . URVANOV_SYNTAX_HIGHLIGHTER_NL . $output . URVANOV_SYNTAX_HIGHLIGHTER_NL . '<!-- ';
             foreach ($hl->runtime() as $type => $time) {
@@ -488,8 +488,8 @@ class Urvanov_Syntax_Highlighter_Formatter {
             return;
         }
         // Either print the error returned by the handler, or a custom error message
-        if ($hl->setting_val(CrayonSettings::ERROR_MSG_SHOW)) {
-            $error = $hl->setting_val(CrayonSettings::ERROR_MSG);
+        if ($hl->setting_val(Urvanov_Syntax_Highlighter_Settings::ERROR_MSG_SHOW)) {
+            $error = $hl->setting_val(Urvanov_Syntax_Highlighter_Settings::ERROR_MSG);
         }
         $error = self::split_lines(trim($error), 'crayon-error');
         return self::print_code($hl, $error, $line_numbers, $print);
@@ -557,9 +557,9 @@ class Urvanov_Syntax_Highlighter_Formatter {
             // Replace 2 spaces with html escaped characters
             $code = preg_replace('#[ ]{2}#msi', '&nbsp;&nbsp;', $code);
         }
-        if ($tabs && CrayonGlobalSettings::val(CrayonSettings::TAB_CONVERT)) {
+        if ($tabs && Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::TAB_CONVERT)) {
             // Replace tabs with 4 spaces
-            $code = preg_replace('#\t#', str_repeat('&nbsp;', CrayonGlobalSettings::val(CrayonSettings::TAB_SIZE)), $code);
+            $code = preg_replace('#\t#', str_repeat('&nbsp;', Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::TAB_SIZE)), $code);
         }
         if ($lines) {
             $code = preg_replace('#(\r\n)|\r|\n#msi', "\r\n", $code);
@@ -576,7 +576,7 @@ class Urvanov_Syntax_Highlighter_Formatter {
         if (!$encoded) {
             $code = CrayonUtil::htmlentities($code);
         }
-        if (CrayonGlobalSettings::val(CrayonSettings::TRIM_WHITESPACE)) {
+        if (Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::TRIM_WHITESPACE)) {
             $code = trim($code);
         }
         return '<pre class="crayon-plain-tag">' . $code . '</pre>';
@@ -592,13 +592,13 @@ class Urvanov_Syntax_Highlighter_Formatter {
     private static function dimension_style($hl, $name) {
         $mode = $unit = '';
         switch ($name) {
-            case CrayonSettings::HEIGHT :
-                $mode = CrayonSettings::HEIGHT_MODE;
-                $unit = CrayonSettings::HEIGHT_UNIT;
+            case Urvanov_Syntax_Highlighter_Settings::HEIGHT :
+                $mode = Urvanov_Syntax_Highlighter_Settings::HEIGHT_MODE;
+                $unit = Urvanov_Syntax_Highlighter_Settings::HEIGHT_UNIT;
                 break;
-            case CrayonSettings::WIDTH :
-                $mode = CrayonSettings::WIDTH_MODE;
-                $unit = CrayonSettings::WIDTH_UNIT;
+            case Urvanov_Syntax_Highlighter_Settings::WIDTH :
+                $mode = Urvanov_Syntax_Highlighter_Settings::WIDTH_MODE;
+                $unit = Urvanov_Syntax_Highlighter_Settings::WIDTH_UNIT;
                 break;
         }
         // XXX Uses actual index value to identify options

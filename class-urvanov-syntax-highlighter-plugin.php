@@ -66,11 +66,11 @@ class Urvanov_Syntax_Highlighter_Plugin {
     private static $tag_regexes = array();
     // Defined constants used in bitwise flags
     private static $tag_types = array(
-        CrayonSettings::CAPTURE_MINI_TAG,
-        CrayonSettings::CAPTURE_PRE,
-        CrayonSettings::INLINE_TAG,
-        CrayonSettings::PLAIN_TAG,
-        CrayonSettings::BACKQUOTE);
+        Urvanov_Syntax_Highlighter_Settings::CAPTURE_MINI_TAG,
+        Urvanov_Syntax_Highlighter_Settings::CAPTURE_PRE,
+        Urvanov_Syntax_Highlighter_Settings::INLINE_TAG,
+        Urvanov_Syntax_Highlighter_Settings::PLAIN_TAG,
+        Urvanov_Syntax_Highlighter_Settings::BACKQUOTE);
     private static $tag_bits = array();
     // Used to find legacy tags
     private static $legacy_flags = NULL;
@@ -146,7 +146,7 @@ class Urvanov_Syntax_Highlighter_Plugin {
         $extra_attr = array();
         if (!empty($atts)) {
             $extra_attr = array_diff_key($atts, self::$allowed_atts);
-            $extra_attr = CrayonSettings::smart_settings($extra_attr);
+            $extra_attr = Urvanov_Syntax_Highlighter_Settings::smart_settings($extra_attr);
         }
         $url = $lang = $title = $mark = $range = $inline = '';
         extract($filtered_atts);
@@ -205,8 +205,8 @@ class Urvanov_Syntax_Highlighter_Plugin {
         foreach ($the_captures as $id => $capture) {
             $atts = $capture['atts'];
             $no_enqueue = array(
-                CrayonSettings::ENQUEUE_THEMES => FALSE,
-                CrayonSettings::ENQUEUE_FONTS => FALSE);
+                Urvanov_Syntax_Highlighter_Settings::ENQUEUE_THEMES => FALSE,
+                Urvanov_Syntax_Highlighter_Settings::ENQUEUE_FONTS => FALSE);
             $atts = array_merge($atts, $no_enqueue);
             $code = $capture['code'];
             $crayon = Urvanov_Syntax_Highlighter_Plugin::shortcode($atts, $code, $id);
@@ -255,7 +255,7 @@ class Urvanov_Syntax_Highlighter_Plugin {
         $capture = array('capture' => array(), 'content' => $wp_content, 'has_captured' => FALSE);
 
         // Do not apply Crayon for posts older than a certain date.
-        $disable_date = trim(CrayonGlobalSettings::val(CrayonSettings::DISABLE_DATE));
+        $disable_date = trim(Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::DISABLE_DATE));
         if ($disable_date && get_post_time('U', true, $wp_id) <= strtotime($disable_date)) {
             return $capture;
         }
@@ -266,26 +266,26 @@ class Urvanov_Syntax_Highlighter_Plugin {
         CrayonLog::debug('capture for id ' . $wp_id . ' len ' . strlen($wp_content));
 
         // Convert <pre> tags to crayon tags, if needed
-        if ((CrayonGlobalSettings::val(CrayonSettings::CAPTURE_PRE) || $skip_setting_check) && $in_flag[CrayonSettings::CAPTURE_PRE]) {
+        if ((Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::CAPTURE_PRE) || $skip_setting_check) && $in_flag[Urvanov_Syntax_Highlighter_Settings::CAPTURE_PRE]) {
             // XXX This will fail if <pre></pre> is used inside another <pre></pre>
             $wp_content = preg_replace_callback('#(?<!\$)<\s*pre(?=(?:([^>]*)\bclass\s*=\s*(["\'])(.*?)\2([^>]*))?)([^>]*)>(.*?)<\s*/\s*pre\s*>#msi', 'Urvanov_Syntax_Highlighter_Plugin::pre_tag', $wp_content);
         }
 
         // Convert mini [php][/php] tags to crayon tags, if needed
-        if ((CrayonGlobalSettings::val(CrayonSettings::CAPTURE_MINI_TAG) || $skip_setting_check) && $in_flag[CrayonSettings::CAPTURE_MINI_TAG]) {
+        if ((Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::CAPTURE_MINI_TAG) || $skip_setting_check) && $in_flag[Urvanov_Syntax_Highlighter_Settings::CAPTURE_MINI_TAG]) {
             $wp_content = preg_replace('#(?<!\$)\[\s*(' . self::$alias_regex . ')\b([^\]]*)\](.*?)\[\s*/\s*(?:\1)\s*\](?!\$)#msi', '[crayon lang="\1" \2]\3[/crayon]', $wp_content);
             $wp_content = preg_replace('#(?<!\$)\[\s*(' . self::$alias_regex . ')\b([^\]]*)/\s*\](?!\$)#msi', '[crayon lang="\1" \2 /]', $wp_content);
         }
 
         // Convert <code> to inline tags
-        if (CrayonGlobalSettings::val(CrayonSettings::CODE_TAG_CAPTURE)) {
-            $inline = CrayonGlobalSettings::val(CrayonSettings::CODE_TAG_CAPTURE_TYPE) === 0;
+        if (Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::CODE_TAG_CAPTURE)) {
+            $inline = Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::CODE_TAG_CAPTURE_TYPE) === 0;
             $inline_setting = $inline ? 'inline="true"' : '';
             $wp_content = preg_replace('#<(\s*code\b)([^>]*)>(.*?)</\1[^>]*>#msi', '[crayon ' . $inline_setting . ' \2]\3[/crayon]', $wp_content);
         }
 
-        if ((CrayonGlobalSettings::val(CrayonSettings::INLINE_TAG) || $skip_setting_check) && $in_flag[CrayonSettings::INLINE_TAG]) {
-            if (CrayonGlobalSettings::val(CrayonSettings::INLINE_TAG_CAPTURE)) {
+        if ((Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::INLINE_TAG) || $skip_setting_check) && $in_flag[Urvanov_Syntax_Highlighter_Settings::INLINE_TAG]) {
+            if (Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::INLINE_TAG_CAPTURE)) {
                 // Convert inline {php}{/php} tags to crayon tags, if needed
                 $wp_content = preg_replace('#(?<!\$)\{\s*(' . self::$alias_regex . ')\b([^\}]*)\}(.*?)\{/(?:\1)\}(?!\$)#msi', '[crayon lang="\1" inline="true" \2]\3[/crayon]', $wp_content);
             }
@@ -294,7 +294,7 @@ class Urvanov_Syntax_Highlighter_Plugin {
         }
 
         // Convert [plain] tags into <pre><code></code></pre>, if needed
-        if ((CrayonGlobalSettings::val(CrayonSettings::PLAIN_TAG) || $skip_setting_check) && $in_flag[CrayonSettings::PLAIN_TAG]) {
+        if ((Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::PLAIN_TAG) || $skip_setting_check) && $in_flag[Urvanov_Syntax_Highlighter_Settings::PLAIN_TAG]) {
             $wp_content = preg_replace_callback('#(?<!\$)\[\s*plain\s*\](.*?)\[\s*/\s*plain\s*\]#msi', 'Urvanov_Syntax_Highlighter_Formatter::plain_code', $wp_content);
         }
 
@@ -355,40 +355,40 @@ class Urvanov_Syntax_Highlighter_Plugin {
                     }
                 }
 
-                if (isset($atts_array[CrayonSettings::IGNORE]) && $atts_array[CrayonSettings::IGNORE]) {
+                if (isset($atts_array[Urvanov_Syntax_Highlighter_Settings::IGNORE]) && $atts_array[Urvanov_Syntax_Highlighter_Settings::IGNORE]) {
                     // TODO(aramk) Revert to the original content.
                     continue;
                 }
 
                 // Capture theme
-                $theme_id = array_key_exists(CrayonSettings::THEME, $atts_array) ? $atts_array[CrayonSettings::THEME] : '';
+                $theme_id = array_key_exists(Urvanov_Syntax_Highlighter_Settings::THEME, $atts_array) ? $atts_array[Urvanov_Syntax_Highlighter_Settings::THEME] : '';
                 $theme = Urvanov_Syntax_Highlighter_Resources::themes()->get($theme_id);
                 // If theme not found, use fallbacks
                 if (!$theme) {
                     // Given theme is invalid, try global setting
-                    $theme_id = CrayonGlobalSettings::val(CrayonSettings::THEME);
+                    $theme_id = Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::THEME);
                     $theme = Urvanov_Syntax_Highlighter_Resources::themes()->get($theme_id);
                     if (!$theme) {
                         // Global setting is invalid, fall back to default
                         $theme = Urvanov_Syntax_Highlighter_Resources::themes()->get_default();
-                        $theme_id = CrayonThemes::DEFAULT_THEME;
+                        $theme_id = Urvanov_Syntax_Highlighter_Themes::DEFAULT_THEME;
                     }
                 }
                 // If theme is now valid, change the array
                 if ($theme) {
-                    if (!$preserve_atts || isset($atts_array[CrayonSettings::THEME])) {
-                        $atts_array[CrayonSettings::THEME] = $theme_id;
+                    if (!$preserve_atts || isset($atts_array[Urvanov_Syntax_Highlighter_Settings::THEME])) {
+                        $atts_array[Urvanov_Syntax_Highlighter_Settings::THEME] = $theme_id;
                     }
                     $theme->used(TRUE);
                 }
 
                 // Capture font
-                $font_id = array_key_exists(CrayonSettings::FONT, $atts_array) ? $atts_array[CrayonSettings::FONT] : '';
+                $font_id = array_key_exists(Urvanov_Syntax_Highlighter_Settings::FONT, $atts_array) ? $atts_array[Urvanov_Syntax_Highlighter_Settings::FONT] : '';
                 $font = Urvanov_Syntax_Highlighter_Resources::fonts()->get($font_id);
                 // If font not found, use fallbacks
                 if (!$font) {
                     // Given font is invalid, try global setting
-                    $font_id = CrayonGlobalSettings::val(CrayonSettings::FONT);
+                    $font_id = Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::FONT);
                     $font = Urvanov_Syntax_Highlighter_Resources::fonts()->get($font_id);
                     if (!$font) {
                         // Global setting is invalid, fall back to default
@@ -399,8 +399,8 @@ class Urvanov_Syntax_Highlighter_Plugin {
 
                 // If font is now valid, change the array
                 if ($font /* != NULL && $font_id != CrayonFonts::DEFAULT_FONT*/) {
-                    if (!$preserve_atts || isset($atts_array[CrayonSettings::FONT])) {
-                        $atts_array[CrayonSettings::FONT] = $font_id;
+                    if (!$preserve_atts || isset($atts_array[Urvanov_Syntax_Highlighter_Settings::FONT])) {
+                        $atts_array[Urvanov_Syntax_Highlighter_Settings::FONT] = $font_id;
                     }
                     $font->used(TRUE);
                 }
@@ -442,7 +442,7 @@ class Urvanov_Syntax_Highlighter_Plugin {
         // XXX Some code may contain `` so must do it after all Crayons are captured
         $result = array();
         $prev_count = strlen($wp_content);
-        if (CrayonGlobalSettings::val(CrayonSettings::BACKQUOTE)) {
+        if (Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::BACKQUOTE)) {
             $wp_content = preg_replace('#(?<!\\\\)`([^`]*)`#msi', '<code>$1</code>', $wp_content);
         }
         $result['changed'] = $prev_count !== strlen($wp_content);
@@ -467,9 +467,9 @@ class Urvanov_Syntax_Highlighter_Plugin {
             if (!in_array($wp_id, $crayon_posts)) {
                 // If we get query for a page, then that page might have a template and load more posts containing Crayons
                 // By this state, we would be unable to enqueue anything (header already written).
-                if (CrayonGlobalSettings::val(CrayonSettings::SAFE_ENQUEUE) && $is_page) {
-                    CrayonGlobalSettings::set(CrayonSettings::ENQUEUE_THEMES, false);
-                    CrayonGlobalSettings::set(CrayonSettings::ENQUEUE_FONTS, false);
+                if (Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::SAFE_ENQUEUE) && $is_page) {
+                    Urvanov_Syntax_Highlighter_Global_Settings::set(Urvanov_Syntax_Highlighter_Settings::ENQUEUE_THEMES, false);
+                    Urvanov_Syntax_Highlighter_Global_Settings::set(Urvanov_Syntax_Highlighter_Settings::ENQUEUE_FONTS, false);
                 }
                 // Only include crayon posts
                 continue;
@@ -505,7 +505,7 @@ class Urvanov_Syntax_Highlighter_Plugin {
             }
 
             // Search for shortcode in comments
-            if (CrayonGlobalSettings::val(CrayonSettings::COMMENTS)) {
+            if (Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::COMMENTS)) {
                 $comments = get_comments(array('post_id' => $post->ID));
                 foreach ($comments as $comment) {
                     $id_str = strval($comment->comment_ID);
@@ -515,7 +515,7 @@ class Urvanov_Syntax_Highlighter_Plugin {
                     }
                     // Capture comment Crayons, decode their contents if decode not specified
                     $content = apply_filters('get_comment_text', $comment->comment_content, $comment);
-                    $captures = self::capture_crayons($comment->comment_ID, $content, array(CrayonSettings::DECODE => TRUE));
+                    $captures = self::capture_crayons($comment->comment_ID, $content, array(Urvanov_Syntax_Highlighter_Settings::DECODE => TRUE));
                     self::$comment_captures[$id_str] = $captures['content'];
                     if ($captures['has_captured'] === TRUE) {
                         self::$comment_queue[$id_str] = array();
@@ -548,7 +548,7 @@ class Urvanov_Syntax_Highlighter_Plugin {
             Urvanov_Syntax_Highlighter_Settings_WP::load_settings(TRUE);
             if (URVANOV_SYNTAX_HIGHLIGHTER_MINIFY) {
                 wp_enqueue_style('crayon', plugins_url(URVANOV_SYNTAX_HIGHLIGHTER_STYLE_MIN, __FILE__), array(), $URVANOV_SYNTAX_HIGHLIGHTER_VERSION);
-                wp_enqueue_script('crayon_js', plugins_url(URVANOV_SYNTAX_HIGHLIGHTER_JS_MIN, __FILE__), array('jquery'), $URVANOV_SYNTAX_HIGHLIGHTER_VERSION, CrayonGlobalSettings::val(CrayonSettings::DELAY_LOAD_JS));
+                wp_enqueue_script('crayon_js', plugins_url(URVANOV_SYNTAX_HIGHLIGHTER_JS_MIN, __FILE__), array('jquery'), $URVANOV_SYNTAX_HIGHLIGHTER_VERSION, Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::DELAY_LOAD_JS));
             } else {
                 wp_enqueue_style('crayon_style', plugins_url(URVANOV_SYNTAX_HIGHLIGHTER_STYLE, __FILE__), array(), $URVANOV_SYNTAX_HIGHLIGHTER_VERSION);
                 wp_enqueue_style('crayon_global_style', plugins_url(URVANOV_SYNTAX_HIGHLIGHTER_STYLE_GLOBAL, __FILE__), array(), $URVANOV_SYNTAX_HIGHLIGHTER_VERSION);
@@ -573,8 +573,8 @@ class Urvanov_Syntax_Highlighter_Plugin {
             // Check which tags are in $flags. If it's NULL, then all flags are true.
             $in_flag = self::in_flag($flags);
 
-            if (($in_flag[CrayonSettings::CAPTURE_MINI_TAG] && (CrayonGlobalSettings::val(CrayonSettings::CAPTURE_MINI_TAG)) || $force) ||
-                ($in_flag[CrayonSettings::INLINE_TAG] && (CrayonGlobalSettings::val(CrayonSettings::INLINE_TAG) && CrayonGlobalSettings::val(CrayonSettings::INLINE_TAG_CAPTURE)) || $force)
+            if (($in_flag[Urvanov_Syntax_Highlighter_Settings::CAPTURE_MINI_TAG] && (Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::CAPTURE_MINI_TAG)) || $force) ||
+                ($in_flag[Urvanov_Syntax_Highlighter_Settings::INLINE_TAG] && (Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::INLINE_TAG) && Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::INLINE_TAG_CAPTURE)) || $force)
             ) {
                 $aliases = Urvanov_Syntax_Highlighter_Resources::langs()->ids_and_aliases();
                 self::$alias_regex = '';
@@ -593,15 +593,15 @@ class Urvanov_Syntax_Highlighter_Plugin {
 
             // TODO this is duplicated in capture_crayons()
             $tag_regexes = array(
-                CrayonSettings::CAPTURE_MINI_TAG => '(\[\s*(' . self::$alias_regex . ')\b)',
-                CrayonSettings::CAPTURE_PRE => '(<\s*pre\b)',
-                CrayonSettings::INLINE_TAG => '(' . self::REGEX_INLINE_CLASS . ')' . '|(\{\s*(' . self::$alias_regex . ')\b([^\}]*)\})',
-                CrayonSettings::PLAIN_TAG => '(\s*\[\s*plain\b)',
-                CrayonSettings::BACKQUOTE => '(`[^`]*`)'
+                Urvanov_Syntax_Highlighter_Settings::CAPTURE_MINI_TAG => '(\[\s*(' . self::$alias_regex . ')\b)',
+                Urvanov_Syntax_Highlighter_Settings::CAPTURE_PRE => '(<\s*pre\b)',
+                Urvanov_Syntax_Highlighter_Settings::INLINE_TAG => '(' . self::REGEX_INLINE_CLASS . ')' . '|(\{\s*(' . self::$alias_regex . ')\b([^\}]*)\})',
+                Urvanov_Syntax_Highlighter_Settings::PLAIN_TAG => '(\s*\[\s*plain\b)',
+                Urvanov_Syntax_Highlighter_Settings::BACKQUOTE => '(`[^`]*`)'
             );
 
             foreach ($tag_regexes as $tag => $regex) {
-                if ($in_flag[$tag] && (CrayonGlobalSettings::val($tag) || $force)) {
+                if ($in_flag[$tag] && (Urvanov_Syntax_Highlighter_Global_Settings::val($tag) || $force)) {
                     $tags_regex .= '|' . $regex;
                 }
             }
@@ -639,9 +639,9 @@ class Urvanov_Syntax_Highlighter_Plugin {
 
     private static function init_legacy_tag_bits() {
         if (self::$legacy_flags === NULL) {
-            self::$legacy_flags = self::tag_bit(CrayonSettings::CAPTURE_MINI_TAG) |
-                self::tag_bit(CrayonSettings::INLINE_TAG) |
-                self::tag_bit(CrayonSettings::PLAIN_TAG);
+            self::$legacy_flags = self::tag_bit(Urvanov_Syntax_Highlighter_Settings::CAPTURE_MINI_TAG) |
+                self::tag_bit(Urvanov_Syntax_Highlighter_Settings::INLINE_TAG) |
+                self::tag_bit(Urvanov_Syntax_Highlighter_Settings::PLAIN_TAG);
         }
         if (self::$tags_regex_legacy === "") {
             self::init_tags_regex(TRUE, self::$legacy_flags, self::$tags_regex_legacy);
@@ -665,7 +665,7 @@ class Urvanov_Syntax_Highlighter_Plugin {
 
         if (self::$is_excerpt) {
             CrayonLog::debug('excerpt');
-            if (CrayonGlobalSettings::val(CrayonSettings::EXCERPT_STRIP)) {
+            if (Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::EXCERPT_STRIP)) {
                 CrayonLog::debug('excerpt strip');
                 // Remove Crayon from content if we are displaying an excerpt
                 $the_content = preg_replace(self::REGEX_WITH_ID, '', $the_content);
@@ -692,7 +692,7 @@ class Urvanov_Syntax_Highlighter_Plugin {
                 $crayon = self::shortcode($atts, $content, $id);
                 if (is_feed() && !$crayon->is_inline()) {
                     // Convert the plain code to entities and put in a <pre></pre> tag
-                    $crayon_formatted = Urvanov_Syntax_Highlighter_Formatter::plain_code($crayon->code(), $crayon->setting_val(CrayonSettings::DECODE));
+                    $crayon_formatted = Urvanov_Syntax_Highlighter_Formatter::plain_code($crayon->code(), $crayon->setting_val(Urvanov_Syntax_Highlighter_Settings::DECODE));
                 } else {
                     // Apply shortcode to the content
                     $crayon_formatted = $crayon->output(TRUE, FALSE);
@@ -848,24 +848,24 @@ class Urvanov_Syntax_Highlighter_Plugin {
         $the_content = preg_replace('#' . $ignore_flag_regex . '(\s*\[\s*crayon)#msi', '$1', $the_content);
         $the_content = preg_replace('#(crayon\s*\])\s*\$#msi', '$1', $the_content);
 
-        if (CrayonGlobalSettings::val(CrayonSettings::CAPTURE_PRE)) {
+        if (Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::CAPTURE_PRE)) {
             $the_content = str_ireplace(array($ignore_flag . '<pre', 'pre>' . $ignore_flag), array('<pre', 'pre>'), $the_content);
             // Remove any <code> tags wrapping around the whole code, since we won't needed them
             // XXX This causes <code> tags to be stripped in the post content! Disabled now.
             // $the_content = preg_replace('#(^\s*<\s*code[^>]*>)|(<\s*/\s*code[^>]*>\s*$)#msi', '', $the_content);
         }
-        if (CrayonGlobalSettings::val(CrayonSettings::PLAIN_TAG)) {
+        if (Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::PLAIN_TAG)) {
             $the_content = str_ireplace(array($ignore_flag . '[plain', 'plain]' . $ignore_flag), array('[plain', 'plain]'), $the_content);
         }
-        if (CrayonGlobalSettings::val(CrayonSettings::CAPTURE_MINI_TAG) ||
-            (CrayonGlobalSettings::val(CrayonSettings::INLINE_TAG && CrayonGlobalSettings::val(CrayonSettings::INLINE_TAG_CAPTURE)))
+        if (Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::CAPTURE_MINI_TAG) ||
+            (Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::INLINE_TAG && Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::INLINE_TAG_CAPTURE)))
         ) {
             self::init_tags_regex();
             // 			$the_content = preg_replace('#'.$ignore_flag_regex.'\s*([\[\{])\s*('. self::$alias_regex .')#', '$1$2', $the_content);
             // 			$the_content = preg_replace('#('. self::$alias_regex .')\s*([\]\}])\s*'.$ignore_flag_regex.'#', '$1$2', $the_content);
             $the_content = preg_replace('#' . $ignore_flag_regex . '(\s*[\[\{]\s*(' . self::$alias_regex . ')[^\]]*[\]\}])#', '$1', $the_content);
         }
-        if (CrayonGlobalSettings::val(CrayonSettings::BACKQUOTE)) {
+        if (Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::BACKQUOTE)) {
             $the_content = str_ireplace('\\`', '`', $the_content);
         }
         return $the_content;
@@ -880,18 +880,18 @@ class Urvanov_Syntax_Highlighter_Plugin {
             // We have missed our chance to check before enqueuing. Use setting to either load always or only in the_post
             Urvanov_Syntax_Highlighter_Settings_WP::load_settings(TRUE); // Ensure settings are loaded
             // If we need the tag editor loaded at all times, we must enqueue at all times
-            if (!CrayonGlobalSettings::val(CrayonSettings::EFFICIENT_ENQUEUE) || CrayonGlobalSettings::val(CrayonSettings::TAG_EDITOR_FRONT)) {
+            if (!Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::EFFICIENT_ENQUEUE) || Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::TAG_EDITOR_FRONT)) {
                 CrayonLog::debug('head: force enqueue');
                 // Efficient enqueuing disabled, always load despite enqueuing or not in the_post
                 self::enqueue_resources();
             }
         }
         // Enqueue Theme CSS
-        if (CrayonGlobalSettings::val(CrayonSettings::ENQUEUE_THEMES)) {
+        if (Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::ENQUEUE_THEMES)) {
             self::crayon_theme_css();
         }
         // Enqueue Font CSS
-        if (CrayonGlobalSettings::val(CrayonSettings::ENQUEUE_FONTS)) {
+        if (Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::ENQUEUE_FONTS)) {
             self::crayon_font_css();
         }
     }
@@ -996,10 +996,10 @@ class Urvanov_Syntax_Highlighter_Plugin {
     }
 
     public static function ajax() {
-        $allowed = array(CrayonSettings::HIDE_HELP);
+        $allowed = array(Urvanov_Syntax_Highlighter_Settings::HIDE_HELP);
         foreach ($allowed as $allow) {
             if (array_key_exists($allow, $_GET)) {
-                CrayonGlobalSettings::set($allow, $_GET[$allow]);
+                Urvanov_Syntax_Highlighter_Global_Settings::set($allow, $_GET[$allow]);
                 Urvanov_Syntax_Highlighter_Settings_WP::save_settings();
             }
         }
@@ -1064,7 +1064,7 @@ class Urvanov_Syntax_Highlighter_Plugin {
             return TRUE;
         } else if ($scan_comments) {
             Urvanov_Syntax_Highlighter_Settings_WP::load_settings(TRUE);
-            if (CrayonGlobalSettings::val(CrayonSettings::COMMENTS)) {
+            if (Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::COMMENTS)) {
                 $comments = get_comments(array('post_id' => $id));
                 foreach ($comments as $comment) {
                     if (self::scan_comment($comment, $flags)) {
@@ -1112,40 +1112,40 @@ class Urvanov_Syntax_Highlighter_Plugin {
         global $URVANOV_SYNTAX_HIGHLIGHTER_VERSION;
         Urvanov_Syntax_Highlighter_Settings_WP::load_settings(TRUE);
         $settings = Urvanov_Syntax_Highlighter_Settings_WP::get_settings();
-        if ($settings === NULL || !isset($settings[CrayonSettings::VERSION])) {
+        if ($settings === NULL || !isset($settings[Urvanov_Syntax_Highlighter_Settings::VERSION])) {
             return;
         }
 
-        $version = $settings[CrayonSettings::VERSION];
+        $version = $settings[Urvanov_Syntax_Highlighter_Settings::VERSION];
 
         // Only upgrade if the version differs
         if ($version != $URVANOV_SYNTAX_HIGHLIGHTER_VERSION) {
-            $defaults = CrayonSettings::get_defaults_array();
+            $defaults = Urvanov_Syntax_Highlighter_Settings::get_defaults_array();
             $touched = FALSE;
 
             // Upgrade database and settings
 
             if (CrayonUtil::version_compare($version, '1.7.21') < 0) {
-                $settings[CrayonSettings::SCROLL] = $defaults[CrayonSettings::SCROLL];
+                $settings[Urvanov_Syntax_Highlighter_Settings::SCROLL] = $defaults[Urvanov_Syntax_Highlighter_Settings::SCROLL];
                 $touched = TRUE;
             }
 
-            if (CrayonUtil::version_compare($version, '1.7.23') < 0 && $settings[CrayonSettings::FONT] == 'theme-font') {
-                $settings[CrayonSettings::FONT] = $defaults[CrayonSettings::FONT];
+            if (CrayonUtil::version_compare($version, '1.7.23') < 0 && $settings[Urvanov_Syntax_Highlighter_Settings::FONT] == 'theme-font') {
+                $settings[Urvanov_Syntax_Highlighter_Settings::FONT] = $defaults[Urvanov_Syntax_Highlighter_Settings::FONT];
                 $touched = TRUE;
             }
 
             if (CrayonUtil::version_compare($version, '1.14') < 0) {
                 CrayonLog::syslog("Updated to v1.14: Font size enabled");
-                $settings[CrayonSettings::FONT_SIZE_ENABLE] = TRUE;
+                $settings[Urvanov_Syntax_Highlighter_Settings::FONT_SIZE_ENABLE] = TRUE;
             }
 
             if (CrayonUtil::version_compare($version, '1.17') < 0) {
-                $settings[CrayonSettings::HIDE_HELP] = FALSE;
+                $settings[Urvanov_Syntax_Highlighter_Settings::HIDE_HELP] = FALSE;
             }
 
             // Save new version
-            $settings[CrayonSettings::VERSION] = $URVANOV_SYNTAX_HIGHLIGHTER_VERSION;
+            $settings[Urvanov_Syntax_Highlighter_Settings::VERSION] = $URVANOV_SYNTAX_HIGHLIGHTER_VERSION;
             Urvanov_Syntax_Highlighter_Settings_WP::save_settings($settings);
             CrayonLog::syslog("Updated from $version to $URVANOV_SYNTAX_HIGHLIGHTER_VERSION");
 
@@ -1213,11 +1213,11 @@ class Urvanov_Syntax_Highlighter_Plugin {
                 CrayonLog::syslog("Converted Crayons in post ID $postID to pre tags", 'CONVERT');
             }
 
-            if (CrayonGlobalSettings::val(CrayonSettings::COMMENTS)) {
+            if (Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::COMMENTS)) {
                 $comments = get_comments(array('post_id' => $postID));
                 foreach ($comments as $comment) {
                     $commentID = $comment->comment_ID;
-                    $comment_captures = self::capture_crayons($commentID, $comment->comment_content, array(CrayonSettings::DECODE => TRUE), $args);
+                    $comment_captures = self::capture_crayons($commentID, $comment->comment_content, array(Urvanov_Syntax_Highlighter_Settings::DECODE => TRUE), $args);
 
                     if ($comment_captures['has_captured'] === TRUE) {
                         $comment_obj = array();
@@ -1239,13 +1239,13 @@ class Urvanov_Syntax_Highlighter_Plugin {
         $oldAtts = $capture['atts'];
         $newAtts = array();
         $encode = isset($args['encode']) ? $args['encode'] : FALSE;
-        if (!isset($oldAtts[CrayonSettings::DECODE]) && $encode) {
+        if (!isset($oldAtts[Urvanov_Syntax_Highlighter_Settings::DECODE]) && $encode) {
             // Encode the content, since no decode information exists.
             $code = CrayonUtil::htmlentities($code);
         }
         // We always set decode=1 irrespectively - so at this point the code is assumed to be encoded
-        $oldAtts[CrayonSettings::DECODE] = TRUE;
-        $newAtts['class'] = CrayonUtil::html_attributes($oldAtts, CrayonGlobalSettings::val_str(CrayonSettings::ATTR_SEP), '');
+        $oldAtts[Urvanov_Syntax_Highlighter_Settings::DECODE] = TRUE;
+        $newAtts['class'] = CrayonUtil::html_attributes($oldAtts, Urvanov_Syntax_Highlighter_Global_Settings::val_str(Urvanov_Syntax_Highlighter_Settings::ATTR_SEP), '');
         return str_replace($original, CrayonUtil::html_element('pre', $code, $newAtts), $wp_content);
     }
 
@@ -1280,7 +1280,7 @@ if (defined('ABSPATH')) {
         add_filter('init', 'Urvanov_Syntax_Highlighter_Plugin::init');
 
         Urvanov_Syntax_Highlighter_Settings_WP::load_settings(TRUE);
-        if (CrayonGlobalSettings::val(CrayonSettings::MAIN_QUERY)) {
+        if (Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::MAIN_QUERY)) {
             add_action('wp', 'Urvanov_Syntax_Highlighter_Plugin::wp', 100);
         } else {
             add_filter('the_posts', 'Urvanov_Syntax_Highlighter_Plugin::the_posts', 100);
@@ -1298,7 +1298,7 @@ if (defined('ABSPATH')) {
         // Allow tags
         add_action('init', 'Urvanov_Syntax_Highlighter_Plugin::allowed_tags', 11);
 
-        if (CrayonGlobalSettings::val(CrayonSettings::COMMENTS)) {
+        if (Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::COMMENTS)) {
             /* XXX This is called first to match Crayons, then higher priority replaces after other filters.
              Prevents Crayon from being formatted by the filters, and also keeps original comment formatting. */
             add_filter('comment_text', 'Urvanov_Syntax_Highlighter_Plugin::pre_comment_text', 1);
@@ -1312,7 +1312,7 @@ if (defined('ABSPATH')) {
 
         add_action('template_redirect', 'Urvanov_Syntax_Highlighter_Plugin::wp_head', 0);
 
-        if (CrayonGlobalSettings::val(CrayonSettings::TAG_EDITOR_FRONT)) {
+        if (Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::TAG_EDITOR_FRONT)) {
             add_filter('comment_form_defaults', 'Urvanov_Syntax_Highlighter_Plugin::tinymce_comment_enable');
         }
     } else {
@@ -1325,7 +1325,7 @@ if (defined('ABSPATH')) {
     }
     register_activation_hook(__FILE__, 'Urvanov_Syntax_Highlighter_Plugin::install');
     register_deactivation_hook(__FILE__, 'Urvanov_Syntax_Highlighter_Plugin::uninstall');
-    if (CrayonGlobalSettings::val(CrayonSettings::COMMENTS)) {
+    if (Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::COMMENTS)) {
         add_action('comment_post', 'Urvanov_Syntax_Highlighter_Plugin::save_comment', 10, 2);
         add_action('edit_comment', 'Urvanov_Syntax_Highlighter_Plugin::save_comment', 10, 2);
     }

@@ -60,16 +60,16 @@ class Urvanov_Syntax_Highlighter {
 		// Try to replace the URL with an absolute path if it is local, used to prevent scripts
 		// from executing when they are loaded.
 		$url = $this->url;
-		if ($this->setting_val(CrayonSettings::DECODE_ATTRIBUTES)) {
+		if ($this->setting_val(Urvanov_Syntax_Highlighter_Settings::DECODE_ATTRIBUTES)) {
 			$url = CrayonUtil::html_entity_decode($url);
 		}
 		$url = CrayonUtil::pathf($url);
-		$site_http = CrayonGlobalSettings::site_url();
+		$site_http = Urvanov_Syntax_Highlighter_Global_Settings::site_url();
 		$scheme = parse_url($url, PHP_URL_SCHEME);
 		// Try to replace the site URL with a path to force local loading
 		if (empty($scheme)) {
 			// No url scheme is given - path may be given as relative
-			$url = CrayonUtil::path_slash($site_http) . CrayonUtil::path_slash($this->setting_val(CrayonSettings::LOCAL_PATH)) . $url;
+			$url = CrayonUtil::path_slash($site_http) . CrayonUtil::path_slash($this->setting_val(Urvanov_Syntax_Highlighter_Settings::LOCAL_PATH)) . $url;
 		}
 		$http_code = 0;
 		// If available, use the built in wp remote http get function.
@@ -84,8 +84,8 @@ class Urvanov_Syntax_Highlighter {
 				$response = @wp_remote_get($url, array('sslverify' => false, 'timeout' => 20));
 				$content = wp_remote_retrieve_body($response);
 				$http_code = wp_remote_retrieve_response_code($response);
-				$cache = $this->setting_val(CrayonSettings::CACHE);
-				$cache_sec = CrayonSettings::get_cache_sec($cache);
+				$cache = $this->setting_val(Urvanov_Syntax_Highlighter_Settings::CACHE);
+				$cache_sec = Urvanov_Syntax_Highlighter_Settings::get_cache_sec($cache);
 				if ($cache_sec > 1 && $http_code >= 200 && $http_code < 400) {
 					set_transient($url_uid, $content, $cache_sec);
 					Urvanov_Syntax_Highlighter_Settings_WP::add_cache($url_uid);
@@ -146,12 +146,12 @@ class Urvanov_Syntax_Highlighter {
 				// If inline, then combine lines into one
 				if ($this->is_inline) {
 					$code = preg_replace('#[\r\n]+#ms', '', $code);
-					if ($this->setting_val(CrayonSettings::TRIM_WHITESPACE)) {
+					if ($this->setting_val(Urvanov_Syntax_Highlighter_Settings::TRIM_WHITESPACE)) {
 						$code = trim($code);
 					}
 				}
 				// Decode html entities (e.g. if using visual editor or manually encoding)
-				if ($this->setting_val(CrayonSettings::DECODE)) {
+				if ($this->setting_val(Urvanov_Syntax_Highlighter_Settings::DECODE)) {
 					$code = CrayonUtil::html_entity_decode($code);
 				}
 				// Save code so output is plain output is the same
@@ -159,7 +159,7 @@ class Urvanov_Syntax_Highlighter {
 				
 				// Allow mixed if langauge supports it and setting is set
 				Urvanov_Syntax_Highlighter_Parser::parse($this->language->id());
-				if (!$this->setting_val(CrayonSettings::ALTERNATE) || !$this->language->mode(Urvanov_Syntax_Highlighter_Parser::ALLOW_MIXED)) {
+				if (!$this->setting_val(Urvanov_Syntax_Highlighter_Settings::ALTERNATE) || !$this->language->mode(Urvanov_Syntax_Highlighter_Parser::ALLOW_MIXED)) {
 					// Format the code with the generated regex and elements
 					$this->formatted_code = Urvanov_Syntax_Highlighter_Formatter::format_code($code, $this->language, $this);
 				} else {
@@ -203,20 +203,20 @@ class Urvanov_Syntax_Highlighter {
 			return $this->code;
 		} else {
 			// Trim whitespace
-			if ($this->setting_val(CrayonSettings::TRIM_WHITESPACE)) {
+			if ($this->setting_val(Urvanov_Syntax_Highlighter_Settings::TRIM_WHITESPACE)) {
 				$code = preg_replace("#(?:^\\s*\\r?\\n)|(?:\\r?\\n\\s*$)#", '', $code);
 			}
 
-            if ($this->setting_val(CrayonSettings::TRIM_CODE_TAG)) {
+            if ($this->setting_val(Urvanov_Syntax_Highlighter_Settings::TRIM_CODE_TAG)) {
                 $code = preg_replace('#^\s*<\s*code[^>]*>#msi', '', $code);
                 $code = preg_replace('#</\s*code[^>]*>\s*$#msi', '', $code);
             }
 
-			$before = $this->setting_val(CrayonSettings::WHITESPACE_BEFORE);
+			$before = $this->setting_val(Urvanov_Syntax_Highlighter_Settings::WHITESPACE_BEFORE);
 			if ($before > 0) {
 				$code = str_repeat("\n", $before) . $code;
 			}
-			$after = $this->setting_val(CrayonSettings::WHITESPACE_AFTER);
+			$after = $this->setting_val(Urvanov_Syntax_Highlighter_Settings::WHITESPACE_AFTER);
 			if ($after > 0) {
 				$code = $code . str_repeat("\n", $after);
 			}
@@ -249,7 +249,7 @@ class Urvanov_Syntax_Highlighter {
 		if (!empty($id)) {
 			$this->log("The language '$id' could not be loaded.");
 		}
-		$this->language = Urvanov_Syntax_Highlighter_Resources::langs()->detect($this->url, $this->setting_val(CrayonSettings::FALLBACK_LANG));
+		$this->language = Urvanov_Syntax_Highlighter_Resources::langs()->detect($this->url, $this->setting_val(Urvanov_Syntax_Highlighter_Settings::FALLBACK_LANG));
 	}
 
 	function url($url = NULL) {
@@ -315,7 +315,7 @@ class Urvanov_Syntax_Highlighter {
 	}
 
 	function log($var) {
-		if ($this->setting_val(CrayonSettings::ERROR_LOG)) {
+		if ($this->setting_val(Urvanov_Syntax_Highlighter_Settings::ERROR_LOG)) {
 			CrayonLog::log($var);
 		}
 	}
@@ -343,7 +343,7 @@ class Urvanov_Syntax_Highlighter {
 	// TODO fix this, it's too limiting
 	function settings($mixed = NULL) {
 		if ($this->settings == NULL) {
-			$this->settings = CrayonGlobalSettings::get_obj();
+			$this->settings = Urvanov_Syntax_Highlighter_Global_Settings::get_obj();
 		}
 		
 		if ($mixed === NULL) {
@@ -384,7 +384,7 @@ class Urvanov_Syntax_Highlighter {
 			return $setting->index();
 		} else {
 			// Returns -1 to avoid accidentally selecting an item in a dropdown
-			return CrayonSettings::INVALID;
+			return Urvanov_Syntax_Highlighter_Settings::INVALID;
 		}
 	}
 

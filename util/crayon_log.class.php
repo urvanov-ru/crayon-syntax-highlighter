@@ -56,7 +56,7 @@ class CrayonLog {
 	// Logs system-wide only if global settings permit
 
 	public static function syslog($var = NULL, $title = '', $trim_url = TRUE) {
-		if (CrayonGlobalSettings::val(CrayonSettings::ERROR_LOG_SYS)) {
+		if (Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::ERROR_LOG_SYS)) {
 			$title = (empty($title)) ? 'SYSTEM LOG' : $title;
 			self::log($var, $title, $trim_url);
 		}

@@ -21,7 +21,7 @@ class Urvanov_Syntax_Highlighter_Resources {
 
 	public static function themes() {
         if (self::$themes == NULL) {
-            self::$themes = new CrayonThemes();
+            self::$themes = new Urvanov_Syntax_Highlighter_Themes();
         }
 		return self::$themes;
 	}
@@ -375,7 +375,7 @@ class Urvanov_Syntax_Highlighter_User_Resource_Collection extends Urvanov_Syntax
     }
 
     public function dirurl($user = NULL) {
-        $path = $user ? CrayonGlobalSettings::upload_url() : CrayonGlobalSettings::plugin_path();
+        $path = $user ? Urvanov_Syntax_Highlighter_Global_Settings::upload_url() : Urvanov_Syntax_Highlighter_Global_Settings::plugin_path();
         return CrayonUtil::path_slash($path . $this->relative_directory());
     }
 
