@@ -1,6 +1,6 @@
 <?php
 require_once ('global.php');
-require_once (CRAYON_RESOURCE_PHP);
+require_once (URVANOV_SYNTAX_HIGHLIGHTER_RESOURCE_PHP);
 
 /* Manages fonts once they are loaded. */
 class CrayonFonts extends CrayonUserResourceCollection {
@@ -13,14 +13,14 @@ class CrayonFonts extends CrayonUserResourceCollection {
 
 	function __construct() {
 		$this->set_default(self::DEFAULT_FONT, self::DEFAULT_FONT_NAME);
-        $this->directory(CRAYON_FONT_PATH);
-        $this->relative_directory(CRAYON_FONT_DIR);
+        $this->directory(URVANOV_SYNTAX_HIGHLIGHTER_FONT_PATH);
+        $this->relative_directory(URVANOV_SYNTAX_HIGHLIGHTER_FONT_DIR);
         $this->extension('css');
 
         CrayonLog::debug("Setting font directories");
         $upload = CrayonGlobalSettings::upload_path();
         if ($upload) {
-            $this->user_directory($upload . CRAYON_FONT_DIR);
+            $this->user_directory($upload . URVANOV_SYNTAX_HIGHLIGHTER_FONT_DIR);
             if (!is_dir($this->user_directory())) {
                 CrayonGlobalSettings::mkdir($this->user_directory());
                 CrayonLog::debug($this->user_directory(), "FONT USER DIR");

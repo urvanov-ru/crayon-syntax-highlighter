@@ -68,7 +68,7 @@ class CrayonUtil {
             // Add line breaks if they were stripped
             $delimiter = '';
             if ($whitespace) {
-                $delimiter = CRAYON_NL;
+                $delimiter = URVANOV_SYNTAX_HIGHLIGHTER_NL;
             }
             $lines = implode($lines, $delimiter);
         }
@@ -333,7 +333,7 @@ EOT;
         if (self::$touchscreen !== NULL) {
             return self::$touchscreen;
         }
-        if (($devices = self::lines(CRAYON_TOUCH_FILE, 'lw')) !== FALSE) {
+        if (($devices = self::lines(URVANOV_SYNTAX_HIGHLIGHTER_TOUCH_FILE, 'lw')) !== FALSE) {
             if (!isset($_SERVER['HTTP_USER_AGENT'])) {
                 return false;
             }
@@ -535,7 +535,7 @@ EOT;
     // Removes crayon plugin path from absolute path
     public static function path_rel($url) {
         if (is_string($url)) {
-            return str_replace(CRAYON_ROOT_PATH, '/', $url);
+            return str_replace(URVANOV_SYNTAX_HIGHLIGHTER_ROOT_PATH, '/', $url);
         }
         return $url;
     }

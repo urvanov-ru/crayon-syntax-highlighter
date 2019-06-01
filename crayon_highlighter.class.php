@@ -1,10 +1,10 @@
 <?php
 // Class includes
 require_once ('global.php');
-require_once (CRAYON_PARSER_PHP);
-require_once (CRAYON_FORMATTER_PHP);
-require_once (CRAYON_SETTINGS_PHP);
-require_once (CRAYON_LANGS_PHP);
+require_once (URVANOV_SYNTAX_HIGHLIGHTER_PARSER_PHP);
+require_once (URVANOV_SYNTAX_HIGHLIGHTER_FORMATTER_PHP);
+require_once (URVANOV_SYNTAX_HIGHLIGHTER_SETTINGS_PHP);
+require_once (URVANOV_SYNTAX_HIGHLIGHTER_LANGS_PHP);
 
 /* The main class for managing the syntax highlighter */
 class CrayonHighlighter {
@@ -127,7 +127,7 @@ class CrayonHighlighter {
 		if ($this->needs_load) {
 			$tmr->start();
 			$this->load();
-			$this->runtime[CRAYON_LOAD_TIME] = $tmr->stop();
+			$this->runtime[URVANOV_SYNTAX_HIGHLIGHTER_LOAD_TIME] = $tmr->stop();
 		}
 		if (!empty($this->error) || empty($this->code)) {
 			// Disable highlighting for errors and empty code
@@ -170,7 +170,7 @@ class CrayonHighlighter {
 				return;
 			}
 			$this->needs_format = FALSE;
-			$this->runtime[CRAYON_FORMAT_TIME] = $tmr->stop();
+			$this->runtime[URVANOV_SYNTAX_HIGHLIGHTER_FORMAT_TIME] = $tmr->stop();
 		}
 	}
 	

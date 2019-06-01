@@ -1,6 +1,6 @@
 <?php
 require_once ('global.php');
-require_once (CRAYON_RESOURCE_PHP);
+require_once (URVANOV_SYNTAX_HIGHLIGHTER_RESOURCE_PHP);
 
 class CrayonLangsResourceType {
 	const EXTENSION = 0;
@@ -15,7 +15,7 @@ class CrayonLangs extends CrayonUserResourceCollection {
 	private static $known_elements = array('COMMENT' => 'c', 'PREPROCESSOR' => 'p', 'STRING' => 's', 'KEYWORD' => 'k',
 			'STATEMENT' => 'st', 'RESERVED' => 'r', 'TYPE' => 't', 'TAG' => 'ta', 'MODIFIER' => 'm', 'IDENTIFIER' => 'i',
 			'ENTITY' => 'e', 'VARIABLE' => 'v', 'CONSTANT' => 'cn', 'OPERATOR' => 'o', 'SYMBOL' => 'sy',
-			'NOTATION' => 'n', 'FADED' => 'f', CrayonParser::HTML_CHAR => 'h', CrayonParser::CRAYON_ELEMENT => 'crayon-internal-element');
+			'NOTATION' => 'n', 'FADED' => 'f', CrayonParser::HTML_CHAR => 'h', CrayonParser::URVANOV_SYNTAX_HIGHLIGHTER_ELEMENT => 'crayon-internal-element');
 	const DEFAULT_LANG = 'default';
 	const DEFAULT_LANG_NAME = 'Default';
 
@@ -27,14 +27,14 @@ class CrayonLangs extends CrayonUserResourceCollection {
 	// Methods ================================================================
 	public function __construct() {
 		$this->set_default(self::DEFAULT_LANG, self::DEFAULT_LANG_NAME);
-		$this->directory(CRAYON_LANG_PATH);
-        $this->relative_directory(CRAYON_LANG_DIR);
+		$this->directory(URVANOV_SYNTAX_HIGHLIGHTER_LANG_PATH);
+        $this->relative_directory(URVANOV_SYNTAX_HIGHLIGHTER_LANG_DIR);
         $this->extension('txt');
 
         CrayonLog::debug("Setting lang directories");
         $upload = CrayonGlobalSettings::upload_path();
         if ($upload) {
-            $this->user_directory($upload . CRAYON_LANG_DIR);
+            $this->user_directory($upload . URVANOV_SYNTAX_HIGHLIGHTER_LANG_DIR);
             if (!is_dir($this->user_directory())) {
                 CrayonGlobalSettings::mkdir($this->user_directory());
                 CrayonLog::debug($this->user_directory(), "LANG USER DIR");
@@ -112,7 +112,7 @@ class CrayonLangs extends CrayonUserResourceCollection {
 		if (!$this->is_state_loading()) {
 			return;
 		}
-		if ( ($lang_exts = self::load_attr_file(CRAYON_LANG_EXT)) !== FALSE ) {
+		if ( ($lang_exts = self::load_attr_file(URVANOV_SYNTAX_HIGHLIGHTER_LANG_EXT)) !== FALSE ) {
 			foreach ($lang_exts as $lang_id=>$exts) {
 				$lang = $this->get($lang_id);
 				$lang->ext($exts);
@@ -126,7 +126,7 @@ class CrayonLangs extends CrayonUserResourceCollection {
 		if (!$this->is_state_loading()) {
 			return;
 		}
-		if ( ($lang_aliases = self::load_attr_file(CRAYON_LANG_ALIAS)) !== FALSE ) {
+		if ( ($lang_aliases = self::load_attr_file(URVANOV_SYNTAX_HIGHLIGHTER_LANG_ALIAS)) !== FALSE ) {
 			foreach ($lang_aliases as $lang_id=>$aliases) {
 				$lang = $this->get($lang_id);
 				$lang->alias($aliases);
@@ -140,7 +140,7 @@ class CrayonLangs extends CrayonUserResourceCollection {
 		if (!$this->is_state_loading()) {
 			return;
 		}
-		if ( ($lang_delims = self::load_attr_file(CRAYON_LANG_DELIM)) !== FALSE ) {
+		if ( ($lang_delims = self::load_attr_file(URVANOV_SYNTAX_HIGHLIGHTER_LANG_DELIM)) !== FALSE ) {
 			foreach ($lang_delims as $lang_id=>$delims) {
 				$lang = $this->get($lang_id);
 				$lang->delimiter($delims);
@@ -411,7 +411,7 @@ class CrayonLang extends CrayonVersionResource {
 			$name = trim(strtoupper($name));
 			if (array_key_exists($name, $this->elements) && $element === NULL) {
 				return $this->elements[$name];
-			} else if (@get_class($element) == CRAYON_ELEMENT_CLASS) {
+			} else if (@get_class($element) == URVANOV_SYNTAX_HIGHLIGHTER_ELEMENT_CLASS) {
 				$this->elements[$name] = $element;
 			}
 		}

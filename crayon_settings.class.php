@@ -1,7 +1,7 @@
 <?php
 require_once('global.php');
-require_once(CRAYON_PARSER_PHP);
-require_once(CRAYON_THEMES_PHP);
+require_once(URVANOV_SYNTAX_HIGHLIGHTER_PARSER_PHP);
+require_once(URVANOV_SYNTAX_HIGHLIGHTER_THEMES_PHP);
 
 /**
  * Stores CrayonSetting objects.
@@ -151,16 +151,16 @@ class CrayonSettings {
     // Methods ================================================================
 
     private function init() {
-        global $CRAYON_VERSION;
+        global $URVANOV_SYNTAX_HIGHLIGHTER_VERSION;
 
-        crayon_load_plugin_textdomain();
+        Urvanov_Syntax_Highlighter_Global::load_plugin_textdomain();
 
-        self::$cache_array = array(crayon__('Hourly') => 3600, crayon__('Daily') => 86400,
-            crayon__('Weekly') => 604800, crayon__('Monthly') => 18144000,
-            crayon__('Immediately') => 1);
+        self::$cache_array = array(Urvanov_Syntax_Highlighter_Global::urvanov__('Hourly') => 3600, Urvanov_Syntax_Highlighter_Global::urvanov__('Daily') => 86400,
+            Urvanov_Syntax_Highlighter_Global::urvanov__('Weekly') => 604800, Urvanov_Syntax_Highlighter_Global::urvanov__('Monthly') => 18144000,
+            Urvanov_Syntax_Highlighter_Global::urvanov__('Immediately') => 1);
 
         $settings = array(
-            new CrayonSetting(self::VERSION, $CRAYON_VERSION, NULL, TRUE),
+            new CrayonSetting(self::VERSION, $URVANOV_SYNTAX_HIGHLIGHTER_VERSION, NULL, TRUE),
             new CrayonSetting(self::THEME, CrayonThemes::DEFAULT_THEME),
             new CrayonSetting(self::FONT, CrayonFonts::DEFAULT_FONT),
             new CrayonSetting(self::FONT_SIZE_ENABLE, TRUE),
@@ -168,13 +168,13 @@ class CrayonSettings {
             new CrayonSetting(self::LINE_HEIGHT, 15),
             new CrayonSetting(self::PREVIEW, TRUE),
             new CrayonSetting(self::HEIGHT_SET, FALSE),
-            new CrayonSetting(self::HEIGHT_MODE, array(crayon__('Max'), crayon__('Min'), crayon__('Static'))),
+            new CrayonSetting(self::HEIGHT_MODE, array(Urvanov_Syntax_Highlighter_Global::urvanov__('Max'), Urvanov_Syntax_Highlighter_Global::urvanov__('Min'), Urvanov_Syntax_Highlighter_Global::urvanov__('Static'))),
             new CrayonSetting(self::HEIGHT, '500'),
-            new CrayonSetting(self::HEIGHT_UNIT, array(crayon__('Pixels'), crayon__('Percent'))),
+            new CrayonSetting(self::HEIGHT_UNIT, array(Urvanov_Syntax_Highlighter_Global::urvanov__('Pixels'), Urvanov_Syntax_Highlighter_Global::urvanov__('Percent'))),
             new CrayonSetting(self::WIDTH_SET, FALSE),
-            new CrayonSetting(self::WIDTH_MODE, array(crayon__('Max'), crayon__('Min'), crayon__('Static'))),
+            new CrayonSetting(self::WIDTH_MODE, array(Urvanov_Syntax_Highlighter_Global::urvanov__('Max'), Urvanov_Syntax_Highlighter_Global::urvanov__('Min'), Urvanov_Syntax_Highlighter_Global::urvanov__('Static'))),
             new CrayonSetting(self::WIDTH, '500'),
-            new CrayonSetting(self::WIDTH_UNIT, array(crayon__('Pixels'), crayon__('Percent'))),
+            new CrayonSetting(self::WIDTH_UNIT, array(Urvanov_Syntax_Highlighter_Global::urvanov__('Pixels'), Urvanov_Syntax_Highlighter_Global::urvanov__('Percent'))),
             new CrayonSetting(self::TOP_SET, TRUE),
             new CrayonSetting(self::TOP_MARGIN, 12),
             new CrayonSetting(self::BOTTOM_SET, TRUE),
@@ -183,15 +183,15 @@ class CrayonSettings {
             new CrayonSetting(self::LEFT_MARGIN, 12),
             new CrayonSetting(self::RIGHT_SET, FALSE),
             new CrayonSetting(self::RIGHT_MARGIN, 12),
-            new CrayonSetting(self::H_ALIGN, array(crayon__('None'), crayon__('Left'), crayon__('Center'), crayon__('Right'))),
+            new CrayonSetting(self::H_ALIGN, array(Urvanov_Syntax_Highlighter_Global::urvanov__('None'), Urvanov_Syntax_Highlighter_Global::urvanov__('Left'), Urvanov_Syntax_Highlighter_Global::urvanov__('Center'), Urvanov_Syntax_Highlighter_Global::urvanov__('Right'))),
             new CrayonSetting(self::FLOAT_ENABLE, FALSE),
-            new CrayonSetting(self::TOOLBAR, array(crayon__('On MouseOver'), crayon__('Always'), crayon__('Never'))),
+            new CrayonSetting(self::TOOLBAR, array(Urvanov_Syntax_Highlighter_Global::urvanov__('On MouseOver'), Urvanov_Syntax_Highlighter_Global::urvanov__('Always'), Urvanov_Syntax_Highlighter_Global::urvanov__('Never'))),
             new CrayonSetting(self::TOOLBAR_OVERLAY, TRUE),
             new CrayonSetting(self::TOOLBAR_HIDE, TRUE),
             new CrayonSetting(self::TOOLBAR_DELAY, TRUE),
             new CrayonSetting(self::COPY, TRUE),
             new CrayonSetting(self::POPUP, TRUE),
-            new CrayonSetting(self::SHOW_LANG, array(crayon__('When Found'), crayon__('Always'), crayon__('Never'))),
+            new CrayonSetting(self::SHOW_LANG, array(Urvanov_Syntax_Highlighter_Global::urvanov__('When Found'), Urvanov_Syntax_Highlighter_Global::urvanov__('Always'), Urvanov_Syntax_Highlighter_Global::urvanov__('Never'))),
             new CrayonSetting(self::SHOW_TITLE, TRUE),
             new CrayonSetting(self::STRIPED, TRUE),
             new CrayonSetting(self::MARKING, TRUE),
@@ -211,7 +211,7 @@ class CrayonSettings {
             new CrayonSetting(self::PLAIN_TOGGLE, TRUE),
             new CrayonSetting(self::SHOW_PLAIN_DEFAULT, FALSE),
             new CrayonSetting(self::SHOW_PLAIN,
-                array(crayon__('On Double Click'), crayon__('On Single Click'), crayon__('On MouseOver'), crayon__('Disable Mouse Events'))),
+                array(Urvanov_Syntax_Highlighter_Global::urvanov__('On Double Click'), Urvanov_Syntax_Highlighter_Global::urvanov__('On Single Click'), Urvanov_Syntax_Highlighter_Global::urvanov__('On MouseOver'), Urvanov_Syntax_Highlighter_Global::urvanov__('Disable Mouse Events'))),
             new CrayonSetting(self::DISABLE_ANIM, FALSE),
             new CrayonSetting(self::TOUCHSCREEN, TRUE),
             new CrayonSetting(self::DISABLE_RUNTIME, FALSE),
@@ -219,7 +219,7 @@ class CrayonSettings {
             new CrayonSetting(self::ERROR_LOG, TRUE),
             new CrayonSetting(self::ERROR_LOG_SYS, TRUE),
             new CrayonSetting(self::ERROR_MSG_SHOW, TRUE),
-            new CrayonSetting(self::ERROR_MSG, crayon__('An error has occurred. Please try again later.')),
+            new CrayonSetting(self::ERROR_MSG, Urvanov_Syntax_Highlighter_Global::urvanov__('An error has occurred. Please try again later.')),
             new CrayonSetting(self::HIDE_HELP, FALSE),
             new CrayonSetting(self::CACHE, array_keys(self::$cache_array), 1),
             new CrayonSetting(self::EFFICIENT_ENQUEUE, FALSE),
@@ -235,7 +235,7 @@ class CrayonSettings {
             new CrayonSetting(self::INLINE_TAG, TRUE),
             new CrayonSetting(self::INLINE_TAG_CAPTURE, FALSE),
             new CrayonSetting(self::CODE_TAG_CAPTURE, FALSE),
-            new CrayonSetting(self::CODE_TAG_CAPTURE_TYPE, array(crayon__('Inline Tag'), crayon__('Block Tag'))),
+            new CrayonSetting(self::CODE_TAG_CAPTURE_TYPE, array(Urvanov_Syntax_Highlighter_Global::urvanov__('Inline Tag'), Urvanov_Syntax_Highlighter_Global::urvanov__('Block Tag'))),
             new CrayonSetting(self::INLINE_MARGIN, 5),
             new CrayonSetting(self::INLINE_WRAP, TRUE),
             new CrayonSetting(self::BACKQUOTE, TRUE),
@@ -248,8 +248,8 @@ class CrayonSettings {
             new CrayonSetting(self::RANGES, TRUE),
             new CrayonSetting(self::TAG_EDITOR_FRONT, FALSE),
             new CrayonSetting(self::TAG_EDITOR_SETTINGS, TRUE),
-            new CrayonSetting(self::TAG_EDITOR_ADD_BUTTON_TEXT, crayon__('Add Code')),
-            new CrayonSetting(self::TAG_EDITOR_EDIT_BUTTON_TEXT, crayon__('Edit Code')),
+            new CrayonSetting(self::TAG_EDITOR_ADD_BUTTON_TEXT, Urvanov_Syntax_Highlighter_Global::urvanov__('Add Code')),
+            new CrayonSetting(self::TAG_EDITOR_EDIT_BUTTON_TEXT, Urvanov_Syntax_Highlighter_Global::urvanov__('Edit Code')),
             new CrayonSetting(self::TAG_EDITOR_QUICKTAG_BUTTON_TEXT, 'crayon'),
             new CrayonSetting(self::WRAP_TOGGLE, TRUE),
             new CrayonSetting(self::WRAP, FALSE),
@@ -293,7 +293,7 @@ class CrayonSettings {
                 // Update
                 $this->settings[$name]->value($value);
             }
-        } else if (is_object($name) && get_class($name) == CRAYON_SETTING_CLASS) {
+        } else if (is_object($name) && get_class($name) == URVANOV_SYNTAX_HIGHLIGHTER_SETTING_CLASS) {
             $setting = $name; // Semantics
             if ($replace || !$this->is_setting($setting->name())) {
                 // Replace/Create

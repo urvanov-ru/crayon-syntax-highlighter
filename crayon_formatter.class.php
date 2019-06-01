@@ -1,9 +1,9 @@
 <?php
 require_once('global.php');
-require_once(CRAYON_HIGHLIGHTER_PHP);
-require_once(CRAYON_SETTINGS_PHP);
-require_once(CRAYON_PARSER_PHP);
-require_once(CRAYON_THEMES_PHP);
+require_once(URVANOV_SYNTAX_HIGHLIGHTER_HIGHLIGHTER_PHP);
+require_once(URVANOV_SYNTAX_HIGHLIGHTER_SETTINGS_PHP);
+require_once(URVANOV_SYNTAX_HIGHLIGHTER_PARSER_PHP);
+require_once(URVANOV_SYNTAX_HIGHLIGHTER_THEMES_PHP);
 
 /*	Manages formatting the html with html and css. */
 
@@ -61,7 +61,7 @@ class CrayonFormatter {
         if (array_key_exists($captured_group_number, self::$elements)) {
             $captured_element = self::$elements[$captured_group_number];
             // Avoid capturing and formatting internal Crayon elements
-            if ($captured_element->name() == CrayonParser::CRAYON_ELEMENT) {
+            if ($captured_element->name() == CrayonParser::URVANOV_SYNTAX_HIGHLIGHTER_ELEMENT) {
                 return $code; // Return as is
             } else {
                 // Separate lines and add css class, keep extended class last to allow overriding
@@ -78,7 +78,7 @@ class CrayonFormatter {
 
     /* Prints the formatted code, option to override the line numbers with a custom string */
     public static function print_code($hl, $code, $line_numbers = TRUE, $print = TRUE) {
-        global $CRAYON_VERSION;
+        global $URVANOV_SYNTAX_HIGHLIGHTER_VERSION;
 
         // We can print either block or inline, inline is treated differently, factor out common stuff here
         $output = '';
@@ -287,27 +287,27 @@ class CrayonFormatter {
             $buttons = array();
 
             if ($hl->setting_val(CrayonSettings::NUMS_TOGGLE)) {
-                $buttons['nums'] = crayon__('Toggle Line Numbers');
+                $buttons['nums'] = Urvanov_Syntax_Highlighter_Global::urvanov__('Toggle Line Numbers');
             }
 
             if ($hl->setting_val(CrayonSettings::PLAIN) && $hl->setting_val(CrayonSettings::PLAIN_TOGGLE)) {
-                $buttons['plain'] = crayon__('Toggle Plain Code');
+                $buttons['plain'] = Urvanov_Syntax_Highlighter_Global::urvanov__('Toggle Plain Code');
             }
 
             if ($hl->setting_val(CrayonSettings::WRAP_TOGGLE)) {
-                $buttons['wrap'] = crayon__('Toggle Line Wrap');
+                $buttons['wrap'] = Urvanov_Syntax_Highlighter_Global::urvanov__('Toggle Line Wrap');
             }
 
             if ($hl->setting_val(CrayonSettings::EXPAND_TOGGLE)) {
-                $buttons['expand'] = crayon__('Expand Code');
+                $buttons['expand'] = Urvanov_Syntax_Highlighter_Global::urvanov__('Expand Code');
             }
 
             if (!$touch && $hl->setting_val(CrayonSettings::PLAIN) && $hl->setting_val(CrayonSettings::COPY)) {
-                $buttons['copy'] = crayon__('Copy');
+                $buttons['copy'] = Urvanov_Syntax_Highlighter_Global::urvanov__('Copy');
             }
 
             if ($hl->setting_val(CrayonSettings::POPUP)) {
-                $buttons['popup'] = crayon__('Open Code In New Window');
+                $buttons['popup'] = Urvanov_Syntax_Highlighter_Global::urvanov__('Open Code In New Window');
             }
 
             $buttons_str = '';
@@ -324,7 +324,7 @@ class CrayonFormatter {
 
             /*	The table is rendered invisible by CSS and enabled with JS when asked to. If JS
              is not enabled or fails, the toolbar won't work so there is no point to display it. */
-            $print_plus = $hl->is_mixed() && $hl->setting_val(CrayonSettings::SHOW_ALTERNATE) ? '<span class="crayon-mixed-highlight" title="' . crayon__('Contains Mixed Languages') . '"></span>' : '';
+            $print_plus = $hl->is_mixed() && $hl->setting_val(CrayonSettings::SHOW_ALTERNATE) ? '<span class="crayon-mixed-highlight" title="' . Urvanov_Syntax_Highlighter_Global::urvanov__('Contains Mixed Languages') . '"></span>' : '';
             $buttons = $print_plus . $buttons_str . $print_lang;
             $toolbar = '
 			<div class="crayon-toolbar" data-settings="' . $toolbar_settings . '" style="' . $toolbar_style . '">' . $print_title . '
@@ -468,12 +468,12 @@ class CrayonFormatter {
         // Debugging stats
         $runtime = $hl->runtime();
         if (!$hl->setting_val(CrayonSettings::DISABLE_RUNTIME) && is_array($runtime) && !empty($runtime)) {
-            $output = '<!-- Crayon Syntax Highlighter v' . $CRAYON_VERSION . ' -->'
-                . CRAYON_NL . $output . CRAYON_NL . '<!-- ';
+            $output = '<!-- Crayon Syntax Highlighter v' . $URVANOV_SYNTAX_HIGHLIGHTER_VERSION . ' -->'
+                . URVANOV_SYNTAX_HIGHLIGHTER_NL . $output . URVANOV_SYNTAX_HIGHLIGHTER_NL . '<!-- ';
             foreach ($hl->runtime() as $type => $time) {
                 $output .= '[' . $type . ': ' . sprintf('%.4f seconds', $time) . '] ';
             }
-            $output .= '-->' . CRAYON_NL;
+            $output .= '-->' . URVANOV_SYNTAX_HIGHLIGHTER_NL;
         }
         // Determine whether to print to screen or save
         if ($print) {
@@ -484,7 +484,7 @@ class CrayonFormatter {
     }
 
     public static function print_error($hl, $error, $line_numbers = 'ERROR', $print = TRUE) {
-        if (get_class($hl) != CRAYON_HIGHLIGHTER) {
+        if (get_class($hl) != URVANOV_SYNTAX_HIGHLIGHTER_HIGHLIGHTER) {
             return;
         }
         // Either print the error returned by the handler, or a custom error message
@@ -501,7 +501,7 @@ class CrayonFormatter {
         self::$curr = $hl;
         self::$delim_pieces = array();
         // Remove crayon internal element from INPUT code
-        $code = preg_replace('#' . CrayonParser::CRAYON_ELEMENT_REGEX_CAPTURE . '#msi', '', $code);
+        $code = preg_replace('#' . CrayonParser::URVANOV_SYNTAX_HIGHLIGHTER_ELEMENT_REGEX_CAPTURE . '#msi', '', $code);
 
         if (self::$delimiters == NULL) {
             self::$delimiters = CrayonResources::langs()->delimiters();

@@ -1,6 +1,6 @@
 <?php
 require_once ('global.php');
-require_once (CRAYON_RESOURCE_PHP);
+require_once (URVANOV_SYNTAX_HIGHLIGHTER_RESOURCE_PHP);
 
 /* Manages themes once they are loaded. */
 class CrayonThemes extends CrayonUserResourceCollection {
@@ -16,14 +16,14 @@ class CrayonThemes extends CrayonUserResourceCollection {
 
     function __construct() {
         $this->set_default(self::DEFAULT_THEME, self::DEFAULT_THEME_NAME);
-        $this->directory(CRAYON_THEME_PATH);
-        $this->relative_directory(CRAYON_THEME_DIR);
+        $this->directory(URVANOV_SYNTAX_HIGHLIGHTER_THEME_PATH);
+        $this->relative_directory(URVANOV_SYNTAX_HIGHLIGHTER_THEME_DIR);
         $this->extension('css');
 
         CrayonLog::debug("Setting theme directories");
         $upload = CrayonGlobalSettings::upload_path();
         if ($upload) {
-            $this->user_directory($upload . CRAYON_THEME_DIR);
+            $this->user_directory($upload . URVANOV_SYNTAX_HIGHLIGHTER_THEME_DIR);
             if (!is_dir($this->user_directory())) {
                 CrayonGlobalSettings::mkdir($this->user_directory());
                 CrayonLog::debug($this->user_directory(), "THEME USER DIR");

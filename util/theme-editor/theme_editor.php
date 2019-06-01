@@ -189,51 +189,51 @@ class CrayonThemeEditorWP {
         if (self::$strings === NULL) {
             self::$strings = array(
                 // These appear only in the UI and can be translated
-                'userTheme' => crayon__("User-Defined Theme"),
-                'stockTheme' => crayon__("Stock Theme"),
-                'success' => crayon__("Success!"),
-                'fail' => crayon__("Failed!"),
-                'delete' => crayon__("Delete"),
-                'deleteThemeConfirm' => crayon__("Are you sure you want to delete the \"%s\" theme?"),
-                'deleteFail' => crayon__("Delete failed!"),
-                'duplicate' => crayon__("Duplicate"),
-                'newName' => crayon__("New Name"),
-                'duplicateFail' => crayon__("Duplicate failed!"),
-                'checkLog' => crayon__("Please check the log for details."),
-                'discardConfirm' => crayon__("Are you sure you want to discard all changes?"),
-                'editingTheme' => crayon__("Editing Theme: %s"),
-                'creatingTheme' => crayon__("Creating Theme: %s"),
-                'submit' => crayon__("Submit Your Theme"),
-                'submitText' => crayon__("Submit your User Theme for inclusion as a Stock Theme in Crayon! This will email me your theme - make sure it's considerably different from the stock themes :)"),
-                'message' => crayon__("Message"),
-                'submitMessage' => crayon__("Please include this theme in Crayon!"),
-                'submitSucceed' => crayon__("Submit was successful."),
-                'submitFail' => crayon__("Submit failed!"),
+                'userTheme' => Urvanov_Syntax_Highlighter_Global::urvanov__("User-Defined Theme"),
+                'stockTheme' => Urvanov_Syntax_Highlighter_Global::urvanov__("Stock Theme"),
+                'success' => Urvanov_Syntax_Highlighter_Global::urvanov__("Success!"),
+                'fail' => Urvanov_Syntax_Highlighter_Global::urvanov__("Failed!"),
+                'delete' => Urvanov_Syntax_Highlighter_Global::urvanov__("Delete"),
+                'deleteThemeConfirm' => Urvanov_Syntax_Highlighter_Global::urvanov__("Are you sure you want to delete the \"%s\" theme?"),
+                'deleteFail' => Urvanov_Syntax_Highlighter_Global::urvanov__("Delete failed!"),
+                'duplicate' => Urvanov_Syntax_Highlighter_Global::urvanov__("Duplicate"),
+                'newName' => Urvanov_Syntax_Highlighter_Global::urvanov__("New Name"),
+                'duplicateFail' => Urvanov_Syntax_Highlighter_Global::urvanov__("Duplicate failed!"),
+                'checkLog' => Urvanov_Syntax_Highlighter_Global::urvanov__("Please check the log for details."),
+                'discardConfirm' => Urvanov_Syntax_Highlighter_Global::urvanov__("Are you sure you want to discard all changes?"),
+                'editingTheme' => Urvanov_Syntax_Highlighter_Global::urvanov__("Editing Theme: %s"),
+                'creatingTheme' => Urvanov_Syntax_Highlighter_Global::urvanov__("Creating Theme: %s"),
+                'submit' => Urvanov_Syntax_Highlighter_Global::urvanov__("Submit Your Theme"),
+                'submitText' => Urvanov_Syntax_Highlighter_Global::urvanov__("Submit your User Theme for inclusion as a Stock Theme in Crayon! This will email me your theme - make sure it's considerably different from the stock themes :)"),
+                'message' => Urvanov_Syntax_Highlighter_Global::urvanov__("Message"),
+                'submitMessage' => Urvanov_Syntax_Highlighter_Global::urvanov__("Please include this theme in Crayon!"),
+                'submitSucceed' => Urvanov_Syntax_Highlighter_Global::urvanov__("Submit was successful."),
+                'submitFail' => Urvanov_Syntax_Highlighter_Global::urvanov__("Submit failed!"),
                 'borderStyles' => CrayonHTMLElement::$borderStyles
             );
         }
     }
 
     public static function admin_resources() {
-        global $CRAYON_VERSION;
+        global $URVANOV_SYNTAX_HIGHLIGHTER_VERSION;
         self::initSettings();
         $path = dirname(dirname(__FILE__));
 
-        wp_enqueue_script('cssjson_js', plugins_url(CRAYON_CSSJSON_JS, $path), $CRAYON_VERSION);
-        wp_enqueue_script('jquery_colorpicker_js', plugins_url(CRAYON_JS_JQUERY_COLORPICKER, $path), array('jquery', 'jquery-ui-core', 'jquery-ui-widget', 'jquery-ui-tabs', 'jquery-ui-draggable', 'jquery-ui-dialog', 'jquery-ui-position', 'jquery-ui-mouse', 'jquery-ui-slider', 'jquery-ui-droppable', 'jquery-ui-selectable', 'jquery-ui-resizable'), $CRAYON_VERSION);
-        wp_enqueue_script('jquery_tinycolor_js', plugins_url(CRAYON_JS_TINYCOLOR, $path), array(), $CRAYON_VERSION);
+        wp_enqueue_script('cssjson_js', plugins_url(URVANOV_SYNTAX_HIGHLIGHTER_CSSJSON_JS, $path), $URVANOV_SYNTAX_HIGHLIGHTER_VERSION);
+        wp_enqueue_script('jquery_colorpicker_js', plugins_url(URVANOV_SYNTAX_HIGHLIGHTER_JS_JQUERY_COLORPICKER, $path), array('jquery', 'jquery-ui-core', 'jquery-ui-widget', 'jquery-ui-tabs', 'jquery-ui-draggable', 'jquery-ui-dialog', 'jquery-ui-position', 'jquery-ui-mouse', 'jquery-ui-slider', 'jquery-ui-droppable', 'jquery-ui-selectable', 'jquery-ui-resizable'), $URVANOV_SYNTAX_HIGHLIGHTER_VERSION);
+        wp_enqueue_script('jquery_tinycolor_js', plugins_url(URVANOV_SYNTAX_HIGHLIGHTER_JS_TINYCOLOR, $path), array(), $URVANOV_SYNTAX_HIGHLIGHTER_VERSION);
 
-        if (CRAYON_MINIFY) {
-            wp_enqueue_script('crayon_theme_editor', plugins_url(CRAYON_THEME_EDITOR_JS, $path), array('jquery', 'crayon_js', 'crayon_admin_js', 'cssjson_js', 'jquery_colorpicker_js', 'jquery_tinycolor_js'), $CRAYON_VERSION);
+        if (URVANOV_SYNTAX_HIGHLIGHTER_MINIFY) {
+            wp_enqueue_script('crayon_theme_editor', plugins_url(URVANOV_SYNTAX_HIGHLIGHTER_THEME_EDITOR_JS, $path), array('jquery', 'crayon_js', 'crayon_admin_js', 'cssjson_js', 'jquery_colorpicker_js', 'jquery_tinycolor_js'), $URVANOV_SYNTAX_HIGHLIGHTER_VERSION);
         } else {
-            wp_enqueue_script('crayon_theme_editor', plugins_url(CRAYON_THEME_EDITOR_JS, $path), array('jquery', 'crayon_util_js', 'crayon_admin_js', 'cssjson_js', 'jquery_colorpicker_js', 'jquery_tinycolor_js'), $CRAYON_VERSION);
+            wp_enqueue_script('crayon_theme_editor', plugins_url(URVANOV_SYNTAX_HIGHLIGHTER_THEME_EDITOR_JS, $path), array('jquery', 'crayon_util_js', 'crayon_admin_js', 'cssjson_js', 'jquery_colorpicker_js', 'jquery_tinycolor_js'), $URVANOV_SYNTAX_HIGHLIGHTER_VERSION);
         }
 
         wp_localize_script('crayon_theme_editor', 'CrayonThemeEditorSettings', self::$settings);
         wp_localize_script('crayon_theme_editor', 'CrayonThemeEditorStrings', self::$strings);
 
-        wp_enqueue_style('crayon_theme_editor', plugins_url(CRAYON_THEME_EDITOR_STYLE, $path), array('wp-jquery-ui-dialog'), $CRAYON_VERSION);
-        wp_enqueue_style('jquery_colorpicker', plugins_url(CRAYON_CSS_JQUERY_COLORPICKER, $path), array(), $CRAYON_VERSION);
+        wp_enqueue_style('crayon_theme_editor', plugins_url(URVANOV_SYNTAX_HIGHLIGHTER_THEME_EDITOR_STYLE, $path), array('wp-jquery-ui-dialog'), $URVANOV_SYNTAX_HIGHLIGHTER_VERSION);
+        wp_enqueue_style('jquery_colorpicker', plugins_url(URVANOV_SYNTAX_HIGHLIGHTER_CSS_JQUERY_COLORPICKER, $path), array(), $URVANOV_SYNTAX_HIGHLIGHTER_VERSION);
     }
 
     public static function form($inputs) {
@@ -288,35 +288,35 @@ class CrayonThemeEditorWP {
             $editing = CrayonUtil::str_to_bool($_GET['editing'], FALSE);
         }
 
-        $tInformation = crayon__("Information");
-        $tHighlighting = crayon__("Highlighting");
-        $tFrame = crayon__("Frame");
-        $tLines = crayon__("Lines");
-        $tNumbers = crayon__("Line Numbers");
-        $tToolbar = crayon__("Toolbar");
+        $tInformation = Urvanov_Syntax_Highlighter_Global::urvanov__("Information");
+        $tHighlighting = Urvanov_Syntax_Highlighter_Global::urvanov__("Highlighting");
+        $tFrame = Urvanov_Syntax_Highlighter_Global::urvanov__("Frame");
+        $tLines = Urvanov_Syntax_Highlighter_Global::urvanov__("Lines");
+        $tNumbers = Urvanov_Syntax_Highlighter_Global::urvanov__("Line Numbers");
+        $tToolbar = Urvanov_Syntax_Highlighter_Global::urvanov__("Toolbar");
 
-        $tBackground = crayon__("Background");
-        $tText = crayon__("Text");
-        $tBorder = crayon__("Border");
-        $tTopBorder = crayon__("Top Border");
-        $tBottomBorder = crayon__("Bottom Border");
-        $tBorderRight = crayon__("Right Border");
+        $tBackground = Urvanov_Syntax_Highlighter_Global::urvanov__("Background");
+        $tText = Urvanov_Syntax_Highlighter_Global::urvanov__("Text");
+        $tBorder = Urvanov_Syntax_Highlighter_Global::urvanov__("Border");
+        $tTopBorder = Urvanov_Syntax_Highlighter_Global::urvanov__("Top Border");
+        $tBottomBorder = Urvanov_Syntax_Highlighter_Global::urvanov__("Bottom Border");
+        $tBorderRight = Urvanov_Syntax_Highlighter_Global::urvanov__("Right Border");
 
-        $tHover = crayon__("Hover");
-        $tActive = crayon__("Active");
-        $tPressed = crayon__("Pressed");
-        $tHoverPressed = crayon__("Pressed & Hover");
-        $tActivePressed = crayon__("Pressed & Active");
+        $tHover = Urvanov_Syntax_Highlighter_Global::urvanov__("Hover");
+        $tActive = Urvanov_Syntax_Highlighter_Global::urvanov__("Active");
+        $tPressed = Urvanov_Syntax_Highlighter_Global::urvanov__("Pressed");
+        $tHoverPressed = Urvanov_Syntax_Highlighter_Global::urvanov__("Pressed & Hover");
+        $tActivePressed = Urvanov_Syntax_Highlighter_Global::urvanov__("Pressed & Active");
 
-        $tTitle = crayon__("Title");
-        $tButtons = crayon__("Buttons");
+        $tTitle = Urvanov_Syntax_Highlighter_Global::urvanov__("Title");
+        $tButtons = Urvanov_Syntax_Highlighter_Global::urvanov__("Buttons");
 
-        $tNormal = crayon__("Normal");
-        $tInline = crayon__("Inline");
-        $tStriped = crayon__("Striped");
-        $tMarked = crayon__("Marked");
-        $tStripedMarked = crayon__("Striped & Marked");
-        $tLanguage = crayon__("Language");
+        $tNormal = Urvanov_Syntax_Highlighter_Global::urvanov__("Normal");
+        $tInline = Urvanov_Syntax_Highlighter_Global::urvanov__("Inline");
+        $tStriped = Urvanov_Syntax_Highlighter_Global::urvanov__("Striped");
+        $tMarked = Urvanov_Syntax_Highlighter_Global::urvanov__("Marked");
+        $tStripedMarked = Urvanov_Syntax_Highlighter_Global::urvanov__("Striped & Marked");
+        $tLanguage = Urvanov_Syntax_Highlighter_Global::urvanov__("Language");
 
         $top = '.crayon-top';
         $bottom = '.crayon-bottom';
@@ -330,27 +330,27 @@ class CrayonThemeEditorWP {
             id="icon-options-general" class="icon32"></div>
     <h2>
         Crayon Syntax Highlighter
-        <?php crayon_e('Theme Editor'); ?>
+        <?php Urvanov_Syntax_Highlighter_Global::urvanov_e('Theme Editor'); ?>
     </h2>
 
     <h3 id="<?php echo self::$settings['prefix'] ?>-name">
         <?php
 //			if ($editing) {
-//				echo sprintf(crayon__('Editing "%s" Theme'), $theme->name());
+//				echo sprintf(Urvanov_Syntax_Highlighter_Global::urvanov__('Editing "%s" Theme'), $theme->name());
 //			} else {
-//				echo sprintf(crayon__('Creating Theme From "%s"'), $theme->name());
+//				echo sprintf(Urvanov_Syntax_Highlighter_Global::urvanov__('Creating Theme From "%s"'), $theme->name());
 //			}
         ?>
     </h3>
     <div id="<?php echo self::$settings['prefix'] ?>-info"></div>
 
     <p>
-        <a id="crayon-editor-back" class="button-primary"><?php crayon_e("Back To Settings"); ?></a>
-        <a id="crayon-editor-save" class="button-primary"><?php crayon_e("Save"); ?></a>
+        <a id="crayon-editor-back" class="button-primary"><?php Urvanov_Syntax_Highlighter_Global::urvanov_e("Back To Settings"); ?></a>
+        <a id="crayon-editor-save" class="button-primary"><?php Urvanov_Syntax_Highlighter_Global::urvanov_e("Save"); ?></a>
         <span id="crayon-editor-status"></span>
     </p>
 
-    <?php //crayon_e('Use the Sidebar on the right to change the Theme of the Preview window.') ?>
+    <?php //Urvanov_Syntax_Highlighter_Global::urvanov_e('Use the Sidebar on the right to change the Theme of the Preview window.') ?>
 
     <div id="crayon-editor-top-controls"></div>
 
@@ -384,25 +384,25 @@ class CrayonThemeEditorWP {
                         <?php
                         $highlight = ' .crayon-pre';
                         $elems = array(
-                            'c' => crayon__("Comment"),
-                            's' => crayon__("String"),
-                            'p' => crayon__("Preprocessor"),
-                            'ta' => crayon__("Tag"),
-                            'k' => crayon__("Keyword"),
-                            'st' => crayon__("Statement"),
-                            'r' => crayon__("Reserved"),
-                            't' => crayon__("Type"),
-                            'm' => crayon__("Modifier"),
-                            'i' => crayon__("Identifier"),
-                            'e' => crayon__("Entity"),
-                            'v' => crayon__("Variable"),
-                            'cn' => crayon__("Constant"),
-                            'o' => crayon__("Operator"),
-                            'sy' => crayon__("Symbol"),
-                            'n' => crayon__("Notation"),
-                            'f' => crayon__("Faded"),
-                            'h' => crayon__("HTML"),
-                            '' => crayon__("Unhighlighted")
+                            'c' => Urvanov_Syntax_Highlighter_Global::urvanov__("Comment"),
+                            's' => Urvanov_Syntax_Highlighter_Global::urvanov__("String"),
+                            'p' => Urvanov_Syntax_Highlighter_Global::urvanov__("Preprocessor"),
+                            'ta' => Urvanov_Syntax_Highlighter_Global::urvanov__("Tag"),
+                            'k' => Urvanov_Syntax_Highlighter_Global::urvanov__("Keyword"),
+                            'st' => Urvanov_Syntax_Highlighter_Global::urvanov__("Statement"),
+                            'r' => Urvanov_Syntax_Highlighter_Global::urvanov__("Reserved"),
+                            't' => Urvanov_Syntax_Highlighter_Global::urvanov__("Type"),
+                            'm' => Urvanov_Syntax_Highlighter_Global::urvanov__("Modifier"),
+                            'i' => Urvanov_Syntax_Highlighter_Global::urvanov__("Identifier"),
+                            'e' => Urvanov_Syntax_Highlighter_Global::urvanov__("Entity"),
+                            'v' => Urvanov_Syntax_Highlighter_Global::urvanov__("Variable"),
+                            'cn' => Urvanov_Syntax_Highlighter_Global::urvanov__("Constant"),
+                            'o' => Urvanov_Syntax_Highlighter_Global::urvanov__("Operator"),
+                            'sy' => Urvanov_Syntax_Highlighter_Global::urvanov__("Symbol"),
+                            'n' => Urvanov_Syntax_Highlighter_Global::urvanov__("Notation"),
+                            'f' => Urvanov_Syntax_Highlighter_Global::urvanov__("Faded"),
+                            'h' => Urvanov_Syntax_Highlighter_Global::urvanov__("HTML"),
+                            '' => Urvanov_Syntax_Highlighter_Global::urvanov__("Unhighlighted")
                         );
                         $atts = array(new CrayonHTMLTitle($tHighlighting));
                         foreach ($elems as $class => $name) {
@@ -536,7 +536,7 @@ class CrayonThemeEditorWP {
                             self::createAttribute($button.$pressed, 'background-color', $tPressed),
                             self::createAttribute($button.$pressed.$hover, 'background-color', $tHoverPressed),
                             self::createAttribute($button.$pressed.$active, 'background-color', $tActivePressed),
-                            new CrayonHTMLSeparator($tInformation . ' ' . crayon__("(Used for Copy/Paste)")),
+                            new CrayonHTMLSeparator($tInformation . ' ' . Urvanov_Syntax_Highlighter_Global::urvanov__("(Used for Copy/Paste)")),
                             self::createAttribute($info, 'background', $tBackground),
                             array(
                                 $tText,
@@ -649,7 +649,7 @@ class CrayonThemeEditorWP {
         $css = stripslashes($_POST['css']);
         $change_settings = CrayonUtil::set_default($_POST['change_settings'], TRUE);
         $allow_edit = CrayonUtil::set_default($_POST['allow_edit'], TRUE);
-        $allow_edit_stock_theme = CrayonUtil::set_default($_POST['allow_edit_stock_theme'], CRAYON_DEBUG);
+        $allow_edit_stock_theme = CrayonUtil::set_default($_POST['allow_edit_stock_theme'], URVANOV_SYNTAX_HIGHLIGHTER_DEBUG);
         $delete = CrayonUtil::set_default($_POST['delete'], TRUE);
         $oldTheme = CrayonResources::themes()->get($oldID);
 
@@ -777,7 +777,7 @@ class CrayonThemeEditorWP {
     }
 
     public static function submit() {
-        global $CRAYON_EMAIL;
+        global $URVANOV_SYNTAX_HIGHLIGHTER_EMAIL;
         CrayonSettingsWP::load_settings();
         $id = $_POST['id'];
         $message = $_POST['message'];
@@ -789,7 +789,7 @@ class CrayonThemeEditorWP {
             try {
                 $zipFile = CrayonUtil::createZip($dir, $dest, TRUE);
                 $result = CrayonUtil::emailFile(array(
-                    'to' => $CRAYON_EMAIL,
+                    'to' => $URVANOV_SYNTAX_HIGHLIGHTER_EMAIL,
                     'from' => get_bloginfo('admin_email'),
                     'subject' => 'Theme Editor Submission',
                     'message' => $message,

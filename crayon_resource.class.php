@@ -1,8 +1,8 @@
 <?php
 require_once ('global.php');
-require_once (CRAYON_LANGS_PHP);
-require_once (CRAYON_THEMES_PHP);
-require_once (CRAYON_FONTS_PHP);
+require_once (URVANOV_SYNTAX_HIGHLIGHTER_LANGS_PHP);
+require_once (URVANOV_SYNTAX_HIGHLIGHTER_THEMES_PHP);
+require_once (URVANOV_SYNTAX_HIGHLIGHTER_FONTS_PHP);
 
 class CrayonResources {
 	private static $langs = NULL;
@@ -230,7 +230,7 @@ class CrayonResourceCollection {
 
 	public function get_css($id, $ver = NULL) {
 		$resource = $this->get($id);
-		return '<link rel="stylesheet" type="text/css" href="' . $this->url($resource->id()) . ($ver ? "?ver=$ver" : '') . '" />' . CRAYON_NL;
+		return '<link rel="stylesheet" type="text/css" href="' . $this->url($resource->id()) . ($ver ? "?ver=$ver" : '') . '" />' . URVANOV_SYNTAX_HIGHLIGHTER_NL;
 	}
 }
 

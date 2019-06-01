@@ -1,6 +1,6 @@
 <?php
 require_once ('global.php');
-require_once (CRAYON_LANGS_PHP);
+require_once (URVANOV_SYNTAX_HIGHLIGHTER_LANGS_PHP);
 
 /*	Manages parsing the syntax for any given language, constructing the regex, and validating the
 	elements. */
@@ -13,9 +13,9 @@ class CrayonParser {
 	//const NO_END_TAG = '(?![^<]*>)'; // No longer used
 	const HTML_CHAR = 'HTML_CHAR';
 	const HTML_CHAR_REGEX = '<|>|(&([\w-]+);?)|[ \t]+';
-	const CRAYON_ELEMENT = 'CRAYON_ELEMENT';
-	const CRAYON_ELEMENT_REGEX = '\{\{crayon-internal:[^\}]*\}\}';
-	const CRAYON_ELEMENT_REGEX_CAPTURE = '\{\{crayon-internal:([^\}]*)\}\}';
+	const URVANOV_SYNTAX_HIGHLIGHTER_ELEMENT = 'URVANOV_SYNTAX_HIGHLIGHTER_ELEMENT';
+	const URVANOV_SYNTAX_HIGHLIGHTER_ELEMENT_REGEX = '\{\{crayon-internal:[^\}]*\}\}';
+	const URVANOV_SYNTAX_HIGHLIGHTER_ELEMENT_REGEX_CAPTURE = '\{\{crayon-internal:([^\}]*)\}\}';
 
 	private static $modes = array(self::CASE_INSENSITIVE => TRUE, self::MULTI_LINE => TRUE, self::SINGLE_LINE => TRUE, self::ALLOW_MIXED => TRUE);
 
@@ -88,8 +88,8 @@ class CrayonParser {
 		}
 
 		/* Add reserved Crayon element. This is used by Crayon internally. */
-		$crayon_element = new CrayonElement(self::CRAYON_ELEMENT, $path, self::CRAYON_ELEMENT_REGEX);
-		$lang->element(self::CRAYON_ELEMENT, $crayon_element);
+		$crayon_element = new CrayonElement(self::URVANOV_SYNTAX_HIGHLIGHTER_ELEMENT, $path, self::URVANOV_SYNTAX_HIGHLIGHTER_ELEMENT_REGEX);
+		$lang->element(self::URVANOV_SYNTAX_HIGHLIGHTER_ELEMENT, $crayon_element);
 
 		// Extract elements, classes and regex
 		$pattern = '#^[ \t]*([\w:]+)[ \t]+(?:\[([\w\t ]*)\][ \t]+)?([^\r\n]+)[ \t]*#m';
@@ -157,13 +157,13 @@ class CrayonParser {
 
 	// Validates regex and accesses data stored in a CrayonElement
 	public static function validate_regex($regex, $element) {
-		if (is_string($regex) && @get_class($element) == CRAYON_ELEMENT_CLASS) {
+		if (is_string($regex) && @get_class($element) == URVANOV_SYNTAX_HIGHLIGHTER_ELEMENT_CLASS) {
 			// If the (?alt) tag has been used, insert the file into the regex
 			$file = self::regex_match('#\(\?alt:(.+?)\)#', $regex);
 			if ( count($file) == 2 ) {
 				// Element 0 has full match, 1 has captured groups
 				for ($i = 0; $i < count($file[1]); $i++) {
-					$file_lines = CrayonUtil::lines(dirname($element->path()) . crayon_s() . $file[1][$i], 'rcwh');
+					$file_lines = CrayonUtil::lines(dirname($element->path()) . Urvanov_Syntax_Highlighter_Global::fix_s() . $file[1][$i], 'rcwh');
 					if ($file_lines !== FALSE) {
 						$file_lines = implode('|', $file_lines);
 						// If any spaces exist, treat them as whitespace
@@ -194,7 +194,7 @@ class CrayonParser {
 						$regex = str_replace($def[0][$i], '(?:' . $default_element->regex() .')', $regex);
 					} else {
 						CrayonLog::syslog("The language at '{$element->path()}' referred to the Default Language regex for element '{$element->name()}', which did not exist.");
-                        if (CRAYON_DEBUG) {
+                        if (URVANOV_SYNTAX_HIGHLIGHTER_DEBUG) {
                             CrayonLog::syslog("Default language URL: " . CrayonResources::langs()->url(CrayonLangs::DEFAULT_LANG));
                             CrayonLog::syslog("Default language Path: " . CrayonResources::langs()->path(CrayonLangs::DEFAULT_LANG));
                         }

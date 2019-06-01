@@ -4,7 +4,7 @@ Plugin Name: Urvanov Syntax Highlighter
 Plugin URI: https://github.com/urvanov-ru/crayon-syntax-highlighter
 Description: Supports multiple languages, themes, highlighting from a URL, local file or post text.
 Version: 2.8.5
-Author: Aram Kocharyan, Fedor Urvanov
+Author: Fedor Urvanov, Aram Kocharyan
 Author URI: https://urvanov.ru
 Text Domain: urvanov-syntax-highlighter
 Domain Path: /trans/
@@ -24,19 +24,19 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 require_once('global.php');
-require_once(CRAYON_HIGHLIGHTER_PHP);
-if (CRAYON_TAG_EDITOR) {
-    require_once(CRAYON_TAG_EDITOR_PHP);
+require_once(URVANOV_SYNTAX_HIGHLIGHTER_HIGHLIGHTER_PHP);
+if (URVANOV_SYNTAX_HIGHLIGHTER_TAG_EDITOR) {
+    require_once(URVANOV_SYNTAX_HIGHLIGHTER_TAG_EDITOR_PHP);
 }
-if (CRAYON_THEME_EDITOR) {
-    require_once(CRAYON_THEME_EDITOR_PHP);
+if (URVANOV_SYNTAX_HIGHLIGHTER_THEME_EDITOR) {
+    require_once(URVANOV_SYNTAX_HIGHLIGHTER_THEME_EDITOR_PHP);
 }
 require_once('crayon_settings_wp.class.php');
 
-crayon_set_info(array(
-	'Version' => '_2.7.2_beta',
+Urvanov_Syntax_Highlighter_Global::set_info(array(
+	'Version' => '2.8.5',
 	'Date' => '06th April, 2019',
-	'AuthorName' => 'Aram Kocharyan & Fedor Urvanov',
+	'AuthorName' => 'Fedor Urvanov & Aram Kocharyan',
 	'PluginURI' => 'https://github.com/urvanov-ru/crayon-syntax-highlighter',
 ));
 
@@ -544,15 +544,15 @@ class CrayonWP {
         if (!self::$enqueued) {
 
             CrayonLog::debug('enqueue');
-            global $CRAYON_VERSION;
+            global $URVANOV_SYNTAX_HIGHLIGHTER_VERSION;
             CrayonSettingsWP::load_settings(TRUE);
-            if (CRAYON_MINIFY) {
-                wp_enqueue_style('crayon', plugins_url(CRAYON_STYLE_MIN, __FILE__), array(), $CRAYON_VERSION);
-                wp_enqueue_script('crayon_js', plugins_url(CRAYON_JS_MIN, __FILE__), array('jquery'), $CRAYON_VERSION, CrayonGlobalSettings::val(CrayonSettings::DELAY_LOAD_JS));
+            if (URVANOV_SYNTAX_HIGHLIGHTER_MINIFY) {
+                wp_enqueue_style('crayon', plugins_url(URVANOV_SYNTAX_HIGHLIGHTER_STYLE_MIN, __FILE__), array(), $URVANOV_SYNTAX_HIGHLIGHTER_VERSION);
+                wp_enqueue_script('crayon_js', plugins_url(URVANOV_SYNTAX_HIGHLIGHTER_JS_MIN, __FILE__), array('jquery'), $URVANOV_SYNTAX_HIGHLIGHTER_VERSION, CrayonGlobalSettings::val(CrayonSettings::DELAY_LOAD_JS));
             } else {
-                wp_enqueue_style('crayon_style', plugins_url(CRAYON_STYLE, __FILE__), array(), $CRAYON_VERSION);
-                wp_enqueue_style('crayon_global_style', plugins_url(CRAYON_STYLE_GLOBAL, __FILE__), array(), $CRAYON_VERSION);
-                wp_enqueue_script('crayon_util_js', plugins_url(CRAYON_JS_UTIL, __FILE__), array('jquery'), $CRAYON_VERSION);
+                wp_enqueue_style('crayon_style', plugins_url(URVANOV_SYNTAX_HIGHLIGHTER_STYLE, __FILE__), array(), $URVANOV_SYNTAX_HIGHLIGHTER_VERSION);
+                wp_enqueue_style('crayon_global_style', plugins_url(URVANOV_SYNTAX_HIGHLIGHTER_STYLE_GLOBAL, __FILE__), array(), $URVANOV_SYNTAX_HIGHLIGHTER_VERSION);
+                wp_enqueue_script('crayon_util_js', plugins_url(URVANOV_SYNTAX_HIGHLIGHTER_JS_UTIL, __FILE__), array('jquery'), $URVANOV_SYNTAX_HIGHLIGHTER_VERSION);
                 CrayonSettingsWP::other_scripts();
             }
             CrayonSettingsWP::init_js_settings();
@@ -955,26 +955,26 @@ class CrayonWP {
     }
 
     public static function crayon_theme_css() {
-        global $CRAYON_VERSION;
+        global $URVANOV_SYNTAX_HIGHLIGHTER_VERSION;
         CrayonSettingsWP::load_settings();
         $css = CrayonResources::themes()->get_used_css();
         foreach ($css as $theme => $url) {
-            wp_enqueue_style('crayon-theme-' . $theme, $url, array(), $CRAYON_VERSION);
+            wp_enqueue_style('crayon-theme-' . $theme, $url, array(), $URVANOV_SYNTAX_HIGHLIGHTER_VERSION);
         }
     }
 
     public static function crayon_font_css() {
-        global $CRAYON_VERSION;
+        global $URVANOV_SYNTAX_HIGHLIGHTER_VERSION;
         CrayonSettingsWP::load_settings();
         $css = CrayonResources::fonts()->get_used_css();
         foreach ($css as $font_id => $url) {
-            wp_enqueue_style('crayon-font-' . $font_id, $url, array(), $CRAYON_VERSION);
+            wp_enqueue_style('crayon-font-' . $font_id, $url, array(), $URVANOV_SYNTAX_HIGHLIGHTER_VERSION);
         }
     }
 
     public static function init($request) {
         CrayonLog::debug('init');
-        crayon_load_plugin_textdomain();
+        Urvanov_Syntax_Highlighter_Global::load_plugin_textdomain();
     }
 
     public static function init_ajax() {
@@ -1109,7 +1109,7 @@ class CrayonWP {
     }
 
     public static function update() {
-        global $CRAYON_VERSION;
+        global $URVANOV_SYNTAX_HIGHLIGHTER_VERSION;
         CrayonSettingsWP::load_settings(TRUE);
         $settings = CrayonSettingsWP::get_settings();
         if ($settings === NULL || !isset($settings[CrayonSettings::VERSION])) {
@@ -1119,7 +1119,7 @@ class CrayonWP {
         $version = $settings[CrayonSettings::VERSION];
 
         // Only upgrade if the version differs
-        if ($version != $CRAYON_VERSION) {
+        if ($version != $URVANOV_SYNTAX_HIGHLIGHTER_VERSION) {
             $defaults = CrayonSettings::get_defaults_array();
             $touched = FALSE;
 
@@ -1145,9 +1145,9 @@ class CrayonWP {
             }
 
             // Save new version
-            $settings[CrayonSettings::VERSION] = $CRAYON_VERSION;
+            $settings[CrayonSettings::VERSION] = $URVANOV_SYNTAX_HIGHLIGHTER_VERSION;
             CrayonSettingsWP::save_settings($settings);
-            CrayonLog::syslog("Updated from $version to $CRAYON_VERSION");
+            CrayonLog::syslog("Updated from $version to $URVANOV_SYNTAX_HIGHLIGHTER_VERSION");
 
             // Refresh to show new settings
             header('Location: ' . CrayonUtil::current_url());
@@ -1335,10 +1335,10 @@ if (defined('ABSPATH')) {
 }
 
 function register_gutenberg_block() {
-    global $CRAYON_VERSION;
+    global $URVANOV_SYNTAX_HIGHLIGHTER_VERSION;
     wp_register_style('urvanov-syntax-highlighter-editor',
         plugins_url(URVANOV_SYNTAX_HIGHLIGHTER_EDITOR_CSS, __FILE__),
-        array( 'wp-edit-blocks' ), $CRAYON_VERSION);
+        array( 'wp-edit-blocks' ), $URVANOV_SYNTAX_HIGHLIGHTER_VERSION);
     
     register_block_type( 'urvanov-syntax-highlighter/code-block', array(
         'editor_style' => 'urvanov-syntax-highlighter-editor'//,
