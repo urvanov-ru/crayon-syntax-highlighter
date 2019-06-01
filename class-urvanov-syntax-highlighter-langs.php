@@ -2,7 +2,7 @@
 require_once ('global.php');
 require_once (URVANOV_SYNTAX_HIGHLIGHTER_RESOURCE_PHP);
 
-// Old name: CrayonLangsResourceType
+// Old name: Urvanov_Syntax_Highlighter_LangsResourceType
 class Urvanov_Syntax_Highlighter_Langs_Resource_Type {
 	const EXTENSION = 0;
 	const ALIAS = 1;
@@ -10,8 +10,8 @@ class Urvanov_Syntax_Highlighter_Langs_Resource_Type {
 }
 
 /* Manages languages once they are loaded. The parser directly loads them, saves them here. */
-// Old name: CrayonLangs
-class Urvanov_Syntax_Highlighter_Langs extends CrayonUserResourceCollection {
+// Old name: Urvanov_Syntax_Highlighter_Langs
+class Urvanov_Syntax_Highlighter_Langs extends Urvanov_Syntax_Highlighter_User_Resource_Collection {
 	// Properties and Constants ===============================================
 	// CSS classes for known elements
 	private static $known_elements = array('COMMENT' => 'c', 'PREPROCESSOR' => 'p', 'STRING' => 's', 'KEYWORD' => 'k',
@@ -191,7 +191,7 @@ class Urvanov_Syntax_Highlighter_Langs extends CrayonUserResourceCollection {
 		return FALSE;
 	}
 
-	/* Fetches a resource. Type is an int from CrayonLangsResourceType. */
+	/* Fetches a resource. Type is an int from Urvanov_Syntax_Highlighter_LangsResourceType. */
 	public function fetch($type, $reload = FALSE, $keep_empty_fetches = FALSE) {
 		$this->load();
 
@@ -285,7 +285,7 @@ class Urvanov_Syntax_Highlighter_Langs extends CrayonUserResourceCollection {
 
 	public static function sort_by_name($langs) {
 		// Sort by name
-		usort($langs, 'CrayonLangs::langcmp');
+		usort($langs, 'Urvanov_Syntax_Highlighter_Langs::langcmp');
 		$sorted_lags = array();
 		foreach ($langs as $lang) {
 			$sorted_lags[$lang->id()] = $lang;
@@ -318,7 +318,7 @@ class Urvanov_Syntax_Highlighter_Langs extends CrayonUserResourceCollection {
 
 /* Individual language. */
 // Old name: CrayonLang
-class Urvanov_Syntax_Highlighter_Lang extends CrayonVersionResource {
+class Urvanov_Syntax_Highlighter_Lang extends Urvanov_Syntax_Highlighter_Version_Resource {
 	private $ext = array();
 	private $aliases = array();
 	private $delimiters = '';

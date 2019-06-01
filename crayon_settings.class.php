@@ -204,7 +204,7 @@ class CrayonSettings {
             new CrayonSetting(self::TRIM_CODE_TAG, TRUE),
             new CrayonSetting(self::TAB_CONVERT, FALSE),
             new CrayonSetting(self::TAB_SIZE, 4),
-            new CrayonSetting(self::FALLBACK_LANG, CrayonLangs::DEFAULT_LANG),
+            new CrayonSetting(self::FALLBACK_LANG, Urvanov_Syntax_Highlighter_Langs::DEFAULT_LANG),
             new CrayonSetting(self::LOCAL_PATH, ''),
             new CrayonSetting(self::SCROLL, FALSE),
             new CrayonSetting(self::PLAIN, TRUE),

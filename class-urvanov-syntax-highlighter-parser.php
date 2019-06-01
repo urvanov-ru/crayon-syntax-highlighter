@@ -29,7 +29,7 @@ class Urvanov_Syntax_Highlighter_Parser {
 	 * @return array Array of all loaded Urvanov_Syntax_Highlighter_Langs.
 	 */
 	public static function parse_all() {
-		$langs = CrayonResources::langs()->get();
+		$langs = Urvanov_Syntax_Highlighter_Resources::langs()->get();
 		if (empty($langs)) {
 			return FALSE;
 		}
@@ -44,14 +44,14 @@ class Urvanov_Syntax_Highlighter_Parser {
 		regex in the Urvanov_Syntax_Highlighter_Lang with the given $id. */
 	public static function parse($id) {
 		// Verify the language is loaded and has not been parsed before
-		if ( !($lang = CrayonResources::langs()->get($id)) ) {
+		if ( !($lang = Urvanov_Syntax_Highlighter_Resources::langs()->get($id)) ) {
 			CrayonLog::syslog("The language with id '$id' was not loaded and could not be parsed.");
 			return FALSE;
 		} else if ($lang->is_parsed()) {
 			return;
 		}
 		// Read language file
-		$path = CrayonResources::langs()->path($id);
+		$path = Urvanov_Syntax_Highlighter_Resources::langs()->path($id);
         CrayonLog::debug('Parsing language ' . $path);
 		if ( ($file = CrayonUtil::lines($path, 'wcs')) === FALSE ) {
             CrayonLog::debug('Parsing failed ' . $path);
@@ -181,7 +181,7 @@ class Urvanov_Syntax_Highlighter_Parser {
 			$def = self::regex_match('#\(\?default(?:\:(\w+))?\)#', $regex);
 			if ( count($def) == 2 ) {
 				// Load default language
-				$default = CrayonResources::langs()->get(Urvanov_Syntax_Highlighter_Langs::DEFAULT_LANG);
+				$default = Urvanov_Syntax_Highlighter_Resources::langs()->get(Urvanov_Syntax_Highlighter_Langs::DEFAULT_LANG);
 				// If default has not been loaded, we can't use it, skip the element
 				if (!$default) {
 					CrayonLog::syslog(

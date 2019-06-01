@@ -69,7 +69,7 @@ class CrayonTagEditorWP {
                 'submit_edit' => Urvanov_Syntax_Highlighter_Global::urvanov__('Save'),
                 'bar' => '#crayon-te-bar',
                 'bar_content' => '#crayon-te-bar-content',
-                'extensions' => CrayonResources::langs()->extensions_inverted()
+                'extensions' => Urvanov_Syntax_Highlighter_Resources::langs()->extensions_inverted()
             );
         }
     }
@@ -167,11 +167,11 @@ class CrayonTagEditorWP {
 
     public static function content() {
         CrayonSettingsWP::load_settings();
-        $langs = CrayonLangs::sort_by_name(Urvanov_Syntax_Highlighter_Parser::parse_all());
+        $langs = Urvanov_Syntax_Highlighter_Langs::sort_by_name(Urvanov_Syntax_Highlighter_Parser::parse_all());
         $curr_lang = CrayonGlobalSettings::val(CrayonSettings::FALLBACK_LANG);
-        $themes = CrayonResources::themes()->get();
+        $themes = Urvanov_Syntax_Highlighter_Resources::themes()->get();
         $curr_theme = CrayonGlobalSettings::val(CrayonSettings::THEME);
-        $fonts = CrayonResources::fonts()->get();
+        $fonts = Urvanov_Syntax_Highlighter_Resources::fonts()->get();
         $curr_font = CrayonGlobalSettings::val(CrayonSettings::FONT);
         CrayonTagEditorWP::init_settings();
 

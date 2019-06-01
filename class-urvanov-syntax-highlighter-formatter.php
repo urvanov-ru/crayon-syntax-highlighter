@@ -91,7 +91,7 @@ class Urvanov_Syntax_Highlighter_Formatter {
         $theme_id = $hl->setting_val(CrayonSettings::THEME);
         $theme_id_dashed = CrayonUtil::space_to_hyphen($theme_id);
         if (!$hl->setting_val(CrayonSettings::ENQUEUE_THEMES)) {
-            $output .= CrayonResources::themes()->get_css($theme_id);
+            $output .= Urvanov_Syntax_Highlighter_Resources::themes()->get_css($theme_id);
         }
 
         // Print font id
@@ -99,7 +99,7 @@ class Urvanov_Syntax_Highlighter_Formatter {
         $font_id = $hl->setting_val(CrayonSettings::FONT);
         $font_id_dashed = CrayonUtil::space_to_hyphen($font_id);
         if (!$hl->setting_val(CrayonSettings::ENQUEUE_FONTS)) {
-            $output .= CrayonResources::fonts()->get_css($font_id);
+            $output .= Urvanov_Syntax_Highlighter_Resources::fonts()->get_css($font_id);
         }
 
         // Inline margin
@@ -504,7 +504,7 @@ class Urvanov_Syntax_Highlighter_Formatter {
         $code = preg_replace('#' . Urvanov_Syntax_Highlighter_Parser::URVANOV_SYNTAX_HIGHLIGHTER_ELEMENT_REGEX_CAPTURE . '#msi', '', $code);
 
         if (self::$delimiters == NULL) {
-            self::$delimiters = CrayonResources::langs()->delimiters();
+            self::$delimiters = Urvanov_Syntax_Highlighter_Resources::langs()->delimiters();
         }
 
         // Find all delimiters in all languages
@@ -530,7 +530,7 @@ class Urvanov_Syntax_Highlighter_Formatter {
         $capture_group = count($matches) - 2;
         $capture_groups = array_keys(self::$delimiters);
         $lang_id = $capture_groups[$capture_group];
-        if (($lang = CrayonResources::langs()->get($lang_id)) === NULL) {
+        if (($lang = Urvanov_Syntax_Highlighter_Resources::langs()->get($lang_id)) === NULL) {
             return $matches[0];
         }
         $internal = sprintf('{{crayon-internal:%d}}', count(self::$delim_pieces));

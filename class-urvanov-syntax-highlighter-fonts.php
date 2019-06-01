@@ -3,7 +3,7 @@ require_once ('global.php');
 require_once (URVANOV_SYNTAX_HIGHLIGHTER_RESOURCE_PHP);
 
 /* Manages fonts once they are loaded. */
-class Urvanov_Syntax_Highlighter_Fonts extends CrayonUserResourceCollection {
+class Urvanov_Syntax_Highlighter_Fonts extends Urvanov_Syntax_Highlighter_User_Resource_Collection {
 	// Properties and Constants ===============================================
 
 	const DEFAULT_FONT = 'monaco';

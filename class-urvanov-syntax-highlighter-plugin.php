@@ -362,15 +362,15 @@ class Urvanov_Syntax_Highlighter_Plugin {
 
                 // Capture theme
                 $theme_id = array_key_exists(CrayonSettings::THEME, $atts_array) ? $atts_array[CrayonSettings::THEME] : '';
-                $theme = CrayonResources::themes()->get($theme_id);
+                $theme = Urvanov_Syntax_Highlighter_Resources::themes()->get($theme_id);
                 // If theme not found, use fallbacks
                 if (!$theme) {
                     // Given theme is invalid, try global setting
                     $theme_id = CrayonGlobalSettings::val(CrayonSettings::THEME);
-                    $theme = CrayonResources::themes()->get($theme_id);
+                    $theme = Urvanov_Syntax_Highlighter_Resources::themes()->get($theme_id);
                     if (!$theme) {
                         // Global setting is invalid, fall back to default
-                        $theme = CrayonResources::themes()->get_default();
+                        $theme = Urvanov_Syntax_Highlighter_Resources::themes()->get_default();
                         $theme_id = CrayonThemes::DEFAULT_THEME;
                     }
                 }
@@ -384,15 +384,15 @@ class Urvanov_Syntax_Highlighter_Plugin {
 
                 // Capture font
                 $font_id = array_key_exists(CrayonSettings::FONT, $atts_array) ? $atts_array[CrayonSettings::FONT] : '';
-                $font = CrayonResources::fonts()->get($font_id);
+                $font = Urvanov_Syntax_Highlighter_Resources::fonts()->get($font_id);
                 // If font not found, use fallbacks
                 if (!$font) {
                     // Given font is invalid, try global setting
                     $font_id = CrayonGlobalSettings::val(CrayonSettings::FONT);
-                    $font = CrayonResources::fonts()->get($font_id);
+                    $font = Urvanov_Syntax_Highlighter_Resources::fonts()->get($font_id);
                     if (!$font) {
                         // Global setting is invalid, fall back to default
-                        $font = CrayonResources::fonts()->get_default();
+                        $font = Urvanov_Syntax_Highlighter_Resources::fonts()->get_default();
                         $font_id = Urvanov_Syntax_Highlighter_Fonts::DEFAULT_FONT;
                     }
                 }
@@ -576,7 +576,7 @@ class Urvanov_Syntax_Highlighter_Plugin {
             if (($in_flag[CrayonSettings::CAPTURE_MINI_TAG] && (CrayonGlobalSettings::val(CrayonSettings::CAPTURE_MINI_TAG)) || $force) ||
                 ($in_flag[CrayonSettings::INLINE_TAG] && (CrayonGlobalSettings::val(CrayonSettings::INLINE_TAG) && CrayonGlobalSettings::val(CrayonSettings::INLINE_TAG_CAPTURE)) || $force)
             ) {
-                $aliases = CrayonResources::langs()->ids_and_aliases();
+                $aliases = Urvanov_Syntax_Highlighter_Resources::langs()->ids_and_aliases();
                 self::$alias_regex = '';
                 for ($i = 0; $i < count($aliases); $i++) {
                     $alias = $aliases[$i];
@@ -957,7 +957,7 @@ class Urvanov_Syntax_Highlighter_Plugin {
     public static function crayon_theme_css() {
         global $URVANOV_SYNTAX_HIGHLIGHTER_VERSION;
         CrayonSettingsWP::load_settings();
-        $css = CrayonResources::themes()->get_used_css();
+        $css = Urvanov_Syntax_Highlighter_Resources::themes()->get_used_css();
         foreach ($css as $theme => $url) {
             wp_enqueue_style('crayon-theme-' . $theme, $url, array(), $URVANOV_SYNTAX_HIGHLIGHTER_VERSION);
         }
@@ -966,7 +966,7 @@ class Urvanov_Syntax_Highlighter_Plugin {
     public static function crayon_font_css() {
         global $URVANOV_SYNTAX_HIGHLIGHTER_VERSION;
         CrayonSettingsWP::load_settings();
-        $css = CrayonResources::fonts()->get_used_css();
+        $css = Urvanov_Syntax_Highlighter_Resources::fonts()->get_used_css();
         foreach ($css as $font_id => $url) {
             wp_enqueue_style('crayon-font-' . $font_id, $url, array(), $URVANOV_SYNTAX_HIGHLIGHTER_VERSION);
         }

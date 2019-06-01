@@ -233,7 +233,7 @@ class Urvanov_Syntax_Highlighter {
 			return $this->language;
 		}
 		
-		if ( ($lang = CrayonResources::langs()->get($id)) != FALSE || ($lang = CrayonResources::langs()->alias($id)) != FALSE ) {
+		if ( ($lang = Urvanov_Syntax_Highlighter_Resources::langs()->get($id)) != FALSE || ($lang = Urvanov_Syntax_Highlighter_Resources::langs()->alias($id)) != FALSE ) {
 			// Set the language if it exists or look for an alias
 			$this->language = $lang;
 		} else {
@@ -249,7 +249,7 @@ class Urvanov_Syntax_Highlighter {
 		if (!empty($id)) {
 			$this->log("The language '$id' could not be loaded.");
 		}
-		$this->language = CrayonResources::langs()->detect($this->url, $this->setting_val(CrayonSettings::FALLBACK_LANG));
+		$this->language = Urvanov_Syntax_Highlighter_Resources::langs()->detect($this->url, $this->setting_val(CrayonSettings::FALLBACK_LANG));
 	}
 
 	function url($url = NULL) {

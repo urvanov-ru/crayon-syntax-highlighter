@@ -151,7 +151,7 @@ class CrayonSettingsWP {
         if (!self::$admin_js_settings) {
             // We need to load themes at this stage
             CrayonSettingsWP::load_settings();
-            $themes_ = CrayonResources::themes()->get();
+            $themes_ = Urvanov_Syntax_Highlighter_Resources::themes()->get();
             $stockThemes = array();
             $userThemes = array();
             foreach ($themes_ as $theme) {
@@ -168,8 +168,8 @@ class CrayonSettingsWP {
                 'stockThemes' => $stockThemes,
                 'userThemes' => $userThemes,
                 'defaultTheme' => CrayonThemes::DEFAULT_THEME,
-                'themesURL' => CrayonResources::themes()->dirurl(false),
-                'userThemesURL' => CrayonResources::themes()->dirurl(true),
+                'themesURL' => Urvanov_Syntax_Highlighter_Resources::themes()->dirurl(false),
+                'userThemesURL' => Urvanov_Syntax_Highlighter_Resources::themes()->dirurl(true),
                 'sampleCode' => self::SAMPLE_CODE,
                 'dialogFunction' => 'wpdialog'
             );
@@ -270,8 +270,8 @@ class CrayonSettingsWP {
             CrayonGlobalSettings::set_mkdir('wp_mkdir_p');
 
             // Load all available languages and themes
-            CrayonResources::langs()->load();
-            CrayonResources::themes()->load();
+            Urvanov_Syntax_Highlighter_Resources::langs()->load();
+            Urvanov_Syntax_Highlighter_Resources::themes()->load();
 
             // Ensure all missing settings in db are replaced by default values
             $changed = FALSE;
@@ -794,11 +794,11 @@ class CrayonSettingsWP {
         // Specialised dropdown for languages
         if (array_key_exists(CrayonSettings::FALLBACK_LANG, self::$options)) {
             if (($langs = Urvanov_Syntax_Highlighter_Parser::parse_all()) != FALSE) {
-                $langs = CrayonLangs::sort_by_name($langs);
+                $langs = Urvanov_Syntax_Highlighter_Langs::sort_by_name($langs);
                 self::span(Urvanov_Syntax_Highlighter_Global::urvanov__('When no language is provided, use the fallback') . ': ');
                 self::dropdown(CrayonSettings::FALLBACK_LANG, FALSE, TRUE, TRUE, $langs);
                 // Information about parsing
-                $parsed = CrayonResources::langs()->is_parsed();
+                $parsed = Urvanov_Syntax_Highlighter_Resources::langs()->is_parsed();
                 $count = count($langs);
                 echo '</select>', URVANOV_SYNTAX_HIGHLIGHTER_BR, ($parsed ? '' : '<span class="crayon-error">'),
                 sprintf(urvanov_sh_n('%d language has been detected.', '%d languages have been detected.', $count), $count), ' ',
@@ -807,7 +807,7 @@ class CrayonSettingsWP {
                 // Check if fallback from db is loaded
                 $db_fallback = self::$options[CrayonSettings::FALLBACK_LANG]; // Fallback name from db
 
-                if (!CrayonResources::langs()->is_loaded($db_fallback) || !CrayonResources::langs()->exists($db_fallback)) {
+                if (!Urvanov_Syntax_Highlighter_Resources::langs()->is_loaded($db_fallback) || !Urvanov_Syntax_Highlighter_Resources::langs()->exists($db_fallback)) {
                     echo '<br/><span class="crayon-error">', sprintf(Urvanov_Syntax_Highlighter_Global::urvanov__('The selected language with id %s could not be loaded'), '<strong>' . $db_fallback . '</strong>'), '. </span>';
                 }
                 // Language parsing info
@@ -822,7 +822,7 @@ class CrayonSettingsWP {
         CrayonSettingsWP::load_settings();
         require_once(URVANOV_SYNTAX_HIGHLIGHTER_PARSER_PHP);
         if (($langs = Urvanov_Syntax_Highlighter_Parser::parse_all()) != FALSE) {
-            $langs = CrayonLangs::sort_by_name($langs);
+            $langs = Urvanov_Syntax_Highlighter_Langs::sort_by_name($langs);
             echo '<table class="crayon-table" cellspacing="0" cellpadding="0"><tr class="crayon-table-header">',
             '<td>', Urvanov_Syntax_Highlighter_Global::urvanov__('ID'), '</td><td>', Urvanov_Syntax_Highlighter_Global::urvanov__('Name'), '</td><td>', Urvanov_Syntax_Highlighter_Global::urvanov__('Version'), '</td><td>', Urvanov_Syntax_Highlighter_Global::urvanov__('File Extensions'), '</td><td>', Urvanov_Syntax_Highlighter_Global::urvanov__('Aliases'), '</td><td>', Urvanov_Syntax_Highlighter_Global::urvanov__('State'), '</td></tr>';
             $keys = array_values($langs);
@@ -933,12 +933,12 @@ class CrayonSettingsWP {
         // Print the theme CSS
         $theme_id = $crayon->setting_val(CrayonSettings::THEME);
         if ($theme_id != NULL) {
-            echo CrayonResources::themes()->get_css($theme_id, date('U'));
+            echo Urvanov_Syntax_Highlighter_Resources::themes()->get_css($theme_id, date('U'));
         }
 
         $font_id = $crayon->setting_val(CrayonSettings::FONT);
         if ($font_id != NULL /*&& $font_id != CrayonFonts::DEFAULT_FONT*/) {
-            echo CrayonResources::fonts()->get_css($font_id);
+            echo Urvanov_Syntax_Highlighter_Resources::fonts()->get_css($font_id);
         }
 
         // Load custom code based on language
@@ -975,13 +975,13 @@ class Human {
         if (!array_key_exists(CrayonSettings::THEME, self::$options)) {
             $db_theme = '';
         }
-        $themes_array = CrayonResources::themes()->get_array();
+        $themes_array = Urvanov_Syntax_Highlighter_Resources::themes()->get_array();
         // Mark user themes
         foreach ($themes_array as $id => $name) {
-            $mark = CrayonResources::themes()->get($id)->user() ? ' *' : '';
+            $mark = Urvanov_Syntax_Highlighter_Resources::themes()->get($id)->user() ? ' *' : '';
             $themes_array[$id] = array($name, $name . $mark);
         }
-        $missing_theme = !CrayonResources::themes()->is_loaded($db_theme) || !CrayonResources::themes()->exists($db_theme);
+        $missing_theme = !Urvanov_Syntax_Highlighter_Resources::themes()->is_loaded($db_theme) || !Urvanov_Syntax_Highlighter_Resources::themes()->exists($db_theme);
         self::dropdown(CrayonSettings::THEME, FALSE, FALSE, TRUE, $themes_array, $missing_theme ? CrayonThemes::DEFAULT_THEME : NULL);
         if ($editor) {
             return;
@@ -1027,7 +1027,7 @@ class Human {
         if (!array_key_exists(CrayonSettings::FONT, self::$options)) {
             $db_font = '';
         }
-        $fonts_array = CrayonResources::fonts()->get_array();
+        $fonts_array = Urvanov_Syntax_Highlighter_Resources::fonts()->get_array();
         self::dropdown(CrayonSettings::FONT, FALSE, TRUE, TRUE, $fonts_array);
         echo '<span class="crayon-span-5"></span>';
         // TODO(aramk) Add this blog article back.
@@ -1038,7 +1038,7 @@ class Human {
         echo '<span class="crayon-span-margin">', Urvanov_Syntax_Highlighter_Global::urvanov__('Pixels'), ',&nbsp;&nbsp;', Urvanov_Syntax_Highlighter_Global::urvanov__('Line Height'), ' </span>';
         self::input(array('id' => CrayonSettings::LINE_HEIGHT, 'size' => 2));
         echo '<span class="crayon-span-margin">', Urvanov_Syntax_Highlighter_Global::urvanov__('Pixels'), '</span></br>';
-        if ((!CrayonResources::fonts()->is_loaded($db_font) || !CrayonResources::fonts()->exists($db_font))) {
+        if ((!Urvanov_Syntax_Highlighter_Resources::fonts()->is_loaded($db_font) || !Urvanov_Syntax_Highlighter_Resources::fonts()->exists($db_font))) {
             // Default font doesn't actually exist as a file, it means do not override default theme font
             echo '<span class="crayon-error">', sprintf(Urvanov_Syntax_Highlighter_Global::urvanov__('The selected font with id %s could not be loaded'), '<strong>' . $db_font . '</strong>'), '. </span><br/>';
         }

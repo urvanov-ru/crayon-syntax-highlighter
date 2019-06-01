@@ -4,7 +4,8 @@ require_once (URVANOV_SYNTAX_HIGHLIGHTER_LANGS_PHP);
 require_once (URVANOV_SYNTAX_HIGHLIGHTER_THEMES_PHP);
 require_once (URVANOV_SYNTAX_HIGHLIGHTER_FONTS_PHP);
 
-class CrayonResources {
+// Old name: CrayonResources
+class Urvanov_Syntax_Highlighter_Resources {
 	private static $langs = NULL;
 	private static $themes = NULL;
 	private static $fonts = NULL;
@@ -13,7 +14,7 @@ class CrayonResources {
 
 	public static function langs() {
         if (self::$langs == NULL) {
-            self::$langs = new CrayonLangs();
+            self::$langs = new Urvanov_Syntax_Highlighter_Langs();
         }
 		return self::$langs;
 	}
@@ -33,7 +34,8 @@ class CrayonResources {
 	}
 }
 
-class CrayonResourceCollection {
+// Old name: CrayonResourceCollection
+class Urvanov_Syntax_Highlighter_Resource_Collection {
 	// Properties and Constants ===============================================
 
 	// Loaded resources
@@ -147,7 +149,7 @@ class CrayonResourceCollection {
 
 	/* Override in subclasses to create subclass object if needed */
 	public function resource_instance($id, $name = NULL) {
-		return new CrayonResource($id, $name);
+		return new Urvanov_Syntax_Highlighter_Resource($id, $name);
 	}
 
 	public function add($id, $resource) {
@@ -234,7 +236,8 @@ class CrayonResourceCollection {
 	}
 }
 
-class CrayonUsedResourceCollection extends CrayonResourceCollection {
+// Old name: CrayonUsedResourceCollection
+class Urvanov_Syntax_Highlighter_Used_Resource_Collection extends Urvanov_Syntax_Highlighter_Resource_Collection {
 
 	// Checks if any resoruces are being used
 	public function is_used($id = NULL) {
@@ -276,7 +279,7 @@ class CrayonUsedResourceCollection extends CrayonResourceCollection {
 
 	// XXX Override
 	public function resource_instance($id, $name = NULL) {
-		return new CrayonUsedResource($id, $name);
+		return new Urvanov_Syntax_Highlighter_Used_Resource($id, $name);
 	}
 
 	public function get_used_css() {
@@ -290,7 +293,8 @@ class CrayonUsedResourceCollection extends CrayonResourceCollection {
 	}
 }
 
-class CrayonUserResourceCollection extends CrayonUsedResourceCollection {
+// Old name: CrayonUserResourceCollection
+class Urvanov_Syntax_Highlighter_User_Resource_Collection extends Urvanov_Syntax_Highlighter_Used_Resource_Collection {
     private $user_dir = '';
     private $curr_dir = NULL;
     // TODO better to use a base dir and relative
@@ -306,7 +310,7 @@ class CrayonUserResourceCollection extends CrayonUsedResourceCollection {
     }
 
     public function create_user_resource_instance($id, $name = NULL) {
-        return new CrayonUserResource($id, $name);
+        return new Urvanov_Syntax_Highlighter_User_Resource($id, $name);
     }
 
     public function user_directory($dir = NULL) {
@@ -393,7 +397,8 @@ class CrayonUserResourceCollection extends CrayonUsedResourceCollection {
 
 }
 
-class CrayonResource {
+// Old name: CrayonResource
+class Urvanov_Syntax_Highlighter_Resource {
 	private $id = '';
 	private $name = '';
 
@@ -431,7 +436,8 @@ class CrayonResource {
 
 }
 
-class CrayonUsedResource extends CrayonResource {
+// Old name: CrayonUsedResource
+class Urvanov_Syntax_Highlighter_Used_Resource extends Urvanov_Syntax_Highlighter_Resource {
     // Keeps track of usage
 	private $used = FALSE;
 
@@ -444,7 +450,8 @@ class CrayonUsedResource extends CrayonResource {
 	}
 }
 
-class CrayonUserResource extends CrayonUsedResource {
+// Old name: CrayonUserResource
+class Urvanov_Syntax_Highlighter_User_Resource extends Urvanov_Syntax_Highlighter_Used_Resource {
     // Keeps track of user modifications
     private $user = FALSE;
 
@@ -457,7 +464,8 @@ class CrayonUserResource extends CrayonUsedResource {
     }
 }
 
-class CrayonVersionResource extends CrayonUserResource {
+// Old name: CrayonVersionResource
+class Urvanov_Syntax_Highlighter_Version_Resource extends Urvanov_Syntax_Highlighter_User_Resource {
     // Adds version
 	private $version = '';
 

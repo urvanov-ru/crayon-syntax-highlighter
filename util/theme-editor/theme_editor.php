@@ -57,7 +57,7 @@ class CrayonHTMLInput extends CrayonHTMLElement {
         $this->tag = 'input';
         $this->closed = TRUE;
         if ($name === NULL) {
-            $name = CrayonUserResource::clean_name($id);
+            $name = Urvanov_Syntax_Highlighter_User_Resource::clean_name($id);
         }
         $this->name = $name;
         $this->class .= $type;
@@ -274,11 +274,11 @@ class CrayonThemeEditorWP {
 
     public static function content() {
         self::initSettings();
-        $theme = CrayonResources::themes()->get_default();
+        $theme = Urvanov_Syntax_Highlighter_Resources::themes()->get_default();
         $editing = false;
 
         if (isset($_GET['curr_theme'])) {
-            $currTheme = CrayonResources::themes()->get($_GET['curr_theme']);
+            $currTheme = Urvanov_Syntax_Highlighter_Resources::themes()->get($_GET['curr_theme']);
             if ($currTheme) {
                 $theme = $currTheme;
             }
@@ -651,22 +651,22 @@ class CrayonThemeEditorWP {
         $allow_edit = CrayonUtil::set_default($_POST['allow_edit'], TRUE);
         $allow_edit_stock_theme = CrayonUtil::set_default($_POST['allow_edit_stock_theme'], URVANOV_SYNTAX_HIGHLIGHTER_DEBUG);
         $delete = CrayonUtil::set_default($_POST['delete'], TRUE);
-        $oldTheme = CrayonResources::themes()->get($oldID);
+        $oldTheme = Urvanov_Syntax_Highlighter_Resources::themes()->get($oldID);
 
         if (!empty($oldID) && !empty($css) && !empty($name)) {
             // By default, expect a user theme to be saved - prevents editing stock themes
             // If in DEBUG mode, then allow editing stock themes.
             $user = $oldTheme !== NULL && $allow_edit_stock_theme ? $oldTheme->user() : TRUE;
-            $oldPath = CrayonResources::themes()->path($oldID);
-            $oldDir = CrayonResources::themes()->dirpath_for_id($oldID);
+            $oldPath = Urvanov_Syntax_Highlighter_Resources::themes()->path($oldID);
+            $oldDir = Urvanov_Syntax_Highlighter_Resources::themes()->dirpath_for_id($oldID);
             // Create an instance to use functions, since late static binding is only available in 5.3 (PHP kinda sucks)
-            $theme = CrayonResources::themes()->resource_instance('');
+            $theme = Urvanov_Syntax_Highlighter_Resources::themes()->resource_instance('');
             $newID = $theme->clean_id($name);
-            $name = CrayonResource::clean_name($newID);
-            $newPath = CrayonResources::themes()->path($newID, $user);
-            $newDir = CrayonResources::themes()->dirpath_for_id($newID, $user);
+            $name = Urvanov_Syntax_Highlighter_Resource::clean_name($newID);
+            $newPath = Urvanov_Syntax_Highlighter_Resources::themes()->path($newID, $user);
+            $newDir = Urvanov_Syntax_Highlighter_Resources::themes()->dirpath_for_id($newID, $user);
 
-            $exists = CrayonResources::themes()->is_loaded($newID) || (is_file($newPath) && is_file($oldPath));
+            $exists = Urvanov_Syntax_Highlighter_Resources::themes()->is_loaded($newID) || (is_file($newPath) && is_file($oldPath));
             if ($exists && $oldPath != $newPath) {
                 // Never allow overwriting a theme with a different id!
                 echo -3;
@@ -748,7 +748,7 @@ class CrayonThemeEditorWP {
     public static function duplicate() {
         CrayonSettingsWP::load_settings();
         $oldID = $_POST['id'];
-        $oldPath = CrayonResources::themes()->path($oldID);
+        $oldPath = Urvanov_Syntax_Highlighter_Resources::themes()->path($oldID);
         $_POST['css'] = file_get_contents($oldPath);
         $_POST['delete'] = FALSE;
         $_POST['allow_edit'] = FALSE;
@@ -759,8 +759,8 @@ class CrayonThemeEditorWP {
     public static function delete() {
         CrayonSettingsWP::load_settings();
         $id = $_POST['id'];
-        $dir = CrayonResources::themes()->dirpath_for_id($id);
-        if (is_dir($dir) && CrayonResources::themes()->exists($id)) {
+        $dir = Urvanov_Syntax_Highlighter_Resources::themes()->dirpath_for_id($id);
+        if (is_dir($dir) && Urvanov_Syntax_Highlighter_Resources::themes()->exists($id)) {
             try {
                 CrayonUtil::deleteDir($dir);
                 CrayonGlobalSettings::set(CrayonSettings::THEME, CrayonThemes::DEFAULT_THEME);
@@ -781,11 +781,11 @@ class CrayonThemeEditorWP {
         CrayonSettingsWP::load_settings();
         $id = $_POST['id'];
         $message = $_POST['message'];
-        $dir = CrayonResources::themes()->dirpath_for_id($id);
+        $dir = Urvanov_Syntax_Highlighter_Resources::themes()->dirpath_for_id($id);
         $dest = $dir . 'tmp';
         wp_mkdir_p($dest);
 
-        if (is_dir($dir) && CrayonResources::themes()->exists($id)) {
+        if (is_dir($dir) && Urvanov_Syntax_Highlighter_Resources::themes()->exists($id)) {
             try {
                 $zipFile = CrayonUtil::createZip($dir, $dest, TRUE);
                 $result = CrayonUtil::emailFile(array(
@@ -845,7 +845,7 @@ class CrayonThemeEditorWP {
         if (isset(self::$infoFieldsInverse[$name])) {
             return self::$infoFieldsInverse[$name];
         } else {
-            return CrayonUserResource::clean_id($name);
+            return Urvanov_Syntax_Highlighter_User_Resource::clean_id($name);
         }
     }
 
@@ -854,7 +854,7 @@ class CrayonThemeEditorWP {
         if (isset(self::$infoFields[$id])) {
             return self::$infoFields[$id];
         } else {
-            return CrayonUserResource::clean_name($id);
+            return Urvanov_Syntax_Highlighter_User_Resource::clean_name($id);
         }
     }
 
