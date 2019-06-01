@@ -295,7 +295,7 @@ class Urvanov_Syntax_Highlighter_Plugin {
 
         // Convert [plain] tags into <pre><code></code></pre>, if needed
         if ((CrayonGlobalSettings::val(CrayonSettings::PLAIN_TAG) || $skip_setting_check) && $in_flag[CrayonSettings::PLAIN_TAG]) {
-            $wp_content = preg_replace_callback('#(?<!\$)\[\s*plain\s*\](.*?)\[\s*/\s*plain\s*\]#msi', 'CrayonFormatter::plain_code', $wp_content);
+            $wp_content = preg_replace_callback('#(?<!\$)\[\s*plain\s*\](.*?)\[\s*/\s*plain\s*\]#msi', 'Urvanov_Syntax_Highlighter_Formatter::plain_code', $wp_content);
         }
 
         // Add IDs to the Crayons
@@ -692,7 +692,7 @@ class Urvanov_Syntax_Highlighter_Plugin {
                 $crayon = self::shortcode($atts, $content, $id);
                 if (is_feed() && !$crayon->is_inline()) {
                     // Convert the plain code to entities and put in a <pre></pre> tag
-                    $crayon_formatted = CrayonFormatter::plain_code($crayon->code(), $crayon->setting_val(CrayonSettings::DECODE));
+                    $crayon_formatted = Urvanov_Syntax_Highlighter_Formatter::plain_code($crayon->code(), $crayon->setting_val(CrayonSettings::DECODE));
                 } else {
                     // Apply shortcode to the content
                     $crayon_formatted = $crayon->output(TRUE, FALSE);

@@ -160,10 +160,10 @@ class CrayonHighlighter {
 				CrayonParser::parse($this->language->id());
 				if (!$this->setting_val(CrayonSettings::ALTERNATE) || !$this->language->mode(CrayonParser::ALLOW_MIXED)) {
 					// Format the code with the generated regex and elements
-					$this->formatted_code = CrayonFormatter::format_code($code, $this->language, $this);
+					$this->formatted_code = Urvanov_Syntax_Highlighter_Formatter::format_code($code, $this->language, $this);
 				} else {
 					// Format the code with Mixed Highlighting
-					$this->formatted_code = CrayonFormatter::format_mixed_code($code, $this->language, $this);
+					$this->formatted_code = Urvanov_Syntax_Highlighter_Formatter::format_mixed_code($code, $this->language, $this);
 				}
 			} catch (Exception $e) {
 				$this->error($e->message());
@@ -177,7 +177,7 @@ class CrayonHighlighter {
 	/* Used to format the glue in between code when finding mixed languages */
 	private function format_glue($glue, $highlight = TRUE) {
 		// TODO $highlight
-		return CrayonFormatter::format_code($glue, $this->language, $this, $highlight);
+		return Urvanov_Syntax_Highlighter_Formatter::format_code($glue, $this->language, $this, $highlight);
 	}
 
 	/* Sends the code to the formatter for printing. Apart from the getters and setters, this is
@@ -186,9 +186,9 @@ class CrayonHighlighter {
 		$this->process();
 		if (empty($this->error)) {
 			// If no errors have occured, print the formatted code
-			$ret = CrayonFormatter::print_code($this, $this->formatted_code, $show_lines, $print);
+			$ret = Urvanov_Syntax_Highlighter_Formatter::print_code($this, $this->formatted_code, $show_lines, $print);
 		} else {
-			$ret = CrayonFormatter::print_error($this, $this->error, '', $print);
+			$ret = Urvanov_Syntax_Highlighter_Formatter::print_error($this, $this->error, '', $print);
 		}
 		// Reset the error message at the end of the print session
 		$this->error = '';

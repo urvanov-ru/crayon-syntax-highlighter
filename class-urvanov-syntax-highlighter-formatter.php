@@ -6,8 +6,8 @@ require_once(URVANOV_SYNTAX_HIGHLIGHTER_PARSER_PHP);
 require_once(URVANOV_SYNTAX_HIGHLIGHTER_THEMES_PHP);
 
 /*	Manages formatting the html with html and css. */
-
-class CrayonFormatter {
+// Old name: CrayonFormatter
+class Urvanov_Syntax_Highlighter_Formatter {
     // Properties and Constants ===============================================
     /*	Used to temporarily store the array of CrayonElements passed to format_code(), so that
      format_matches() can access them and identify which elements were captured and format
@@ -40,7 +40,7 @@ class CrayonFormatter {
                 if (!empty($regex) && !empty($elements)) {
                     // Get array of CrayonElements
                     self::$elements = array_values($elements);
-                    $code = preg_replace_callback($regex, 'CrayonFormatter::format_match', $code);
+                    $code = preg_replace_callback($regex, 'Urvanov_Syntax_Highlighter_Formatter::format_match', $code);
                 }
             } catch (Exception $e) {
                 $error = 'An error occured when formatting: ' . $e->message();
@@ -513,13 +513,13 @@ class CrayonFormatter {
         }
 
         // Extract delimited code, replace with internal elements
-        $internal_code = preg_replace_callback(self::$delim_regex, 'CrayonFormatter::delim_to_internal', $code);
+        $internal_code = preg_replace_callback(self::$delim_regex, 'Urvanov_Syntax_Highlighter_Formatter::delim_to_internal', $code);
 
         // Format with given language
-        $formatted_code = CrayonFormatter::format_code($internal_code, $language, $hl);
+        $formatted_code = Urvanov_Syntax_Highlighter_Formatter::format_code($internal_code, $language, $hl);
 
         // Replace internal elements with delimited pieces
-        $formatted_code = preg_replace_callback('#\{\{crayon-internal:(\d+)\}\}#', 'CrayonFormatter::internal_to_code', $formatted_code);
+        $formatted_code = preg_replace_callback('#\{\{crayon-internal:(\d+)\}\}#', 'Urvanov_Syntax_Highlighter_Formatter::internal_to_code', $formatted_code);
 
         return $formatted_code;
     }
@@ -535,7 +535,7 @@ class CrayonFormatter {
         }
         $internal = sprintf('{{crayon-internal:%d}}', count(self::$delim_pieces));
         // TODO fix
-        self::$delim_pieces[] = CrayonFormatter::format_code($matches[0], $lang, self::$curr);
+        self::$delim_pieces[] = Urvanov_Syntax_Highlighter_Formatter::format_code($matches[0], $lang, self::$curr);
         return $internal;
     }
 
