@@ -27,7 +27,7 @@ class CrayonResources {
 
 	public static function fonts() {
         if (self::$fonts == NULL) {
-            self::$fonts = new CrayonFonts();
+            self::$fonts = new Urvanov_Syntax_Highlighter_Fonts();
         }
 		return self::$fonts;
 	}

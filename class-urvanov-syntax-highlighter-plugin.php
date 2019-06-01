@@ -393,7 +393,7 @@ class Urvanov_Syntax_Highlighter_Plugin {
                     if (!$font) {
                         // Global setting is invalid, fall back to default
                         $font = CrayonResources::fonts()->get_default();
-                        $font_id = CrayonFonts::DEFAULT_FONT;
+                        $font_id = Urvanov_Syntax_Highlighter_Fonts::DEFAULT_FONT;
                     }
                 }
 

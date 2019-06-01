@@ -162,7 +162,7 @@ class CrayonSettings {
         $settings = array(
             new CrayonSetting(self::VERSION, $URVANOV_SYNTAX_HIGHLIGHTER_VERSION, NULL, TRUE),
             new CrayonSetting(self::THEME, CrayonThemes::DEFAULT_THEME),
-            new CrayonSetting(self::FONT, CrayonFonts::DEFAULT_FONT),
+            new CrayonSetting(self::FONT, Urvanov_Syntax_Highlighter_Fonts::DEFAULT_FONT),
             new CrayonSetting(self::FONT_SIZE_ENABLE, TRUE),
             new CrayonSetting(self::FONT_SIZE, 12),
             new CrayonSetting(self::LINE_HEIGHT, 15),

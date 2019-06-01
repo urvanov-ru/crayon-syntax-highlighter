@@ -324,7 +324,7 @@ class CrayonSettingsWP {
      * This looks through all posts and marks those which contain Crayons
      */
 // 	public static function scan_and_save_posts() {
-// 		self::save_posts(CrayonWP::scan_posts(TRUE, TRUE));
+// 		self::save_posts(Urvanov_Syntax_Highlighter_Plugin::scan_posts(TRUE, TRUE));
 // 	}
 
     /**
@@ -392,7 +392,7 @@ class CrayonSettingsWP {
      * This looks through all posts and marks those which contain Crayons
      */
 // 	public static function scan_and_save_posts() {
-// 		self::save_posts(CrayonWP::scan_posts(TRUE, TRUE));
+// 		self::save_posts(Urvanov_Syntax_Highlighter_Plugin::scan_posts(TRUE, TRUE));
 // 	}
 
     /**
