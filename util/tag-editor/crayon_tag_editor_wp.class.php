@@ -167,7 +167,7 @@ class CrayonTagEditorWP {
 
     public static function content() {
         CrayonSettingsWP::load_settings();
-        $langs = CrayonLangs::sort_by_name(CrayonParser::parse_all());
+        $langs = CrayonLangs::sort_by_name(Urvanov_Syntax_Highlighter_Parser::parse_all());
         $curr_lang = CrayonGlobalSettings::val(CrayonSettings::FALLBACK_LANG);
         $themes = CrayonResources::themes()->get();
         $curr_theme = CrayonGlobalSettings::val(CrayonSettings::THEME);

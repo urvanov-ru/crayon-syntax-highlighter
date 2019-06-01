@@ -793,7 +793,7 @@ class CrayonSettingsWP {
         echo '<a name="langs"></a>';
         // Specialised dropdown for languages
         if (array_key_exists(CrayonSettings::FALLBACK_LANG, self::$options)) {
-            if (($langs = CrayonParser::parse_all()) != FALSE) {
+            if (($langs = Urvanov_Syntax_Highlighter_Parser::parse_all()) != FALSE) {
                 $langs = CrayonLangs::sort_by_name($langs);
                 self::span(Urvanov_Syntax_Highlighter_Global::urvanov__('When no language is provided, use the fallback') . ': ');
                 self::dropdown(CrayonSettings::FALLBACK_LANG, FALSE, TRUE, TRUE, $langs);
@@ -821,7 +821,7 @@ class CrayonSettingsWP {
     public static function show_langs() {
         CrayonSettingsWP::load_settings();
         require_once(URVANOV_SYNTAX_HIGHLIGHTER_PARSER_PHP);
-        if (($langs = CrayonParser::parse_all()) != FALSE) {
+        if (($langs = Urvanov_Syntax_Highlighter_Parser::parse_all()) != FALSE) {
             $langs = CrayonLangs::sort_by_name($langs);
             echo '<table class="crayon-table" cellspacing="0" cellpadding="0"><tr class="crayon-table-header">',
             '<td>', Urvanov_Syntax_Highlighter_Global::urvanov__('ID'), '</td><td>', Urvanov_Syntax_Highlighter_Global::urvanov__('Name'), '</td><td>', Urvanov_Syntax_Highlighter_Global::urvanov__('Version'), '</td><td>', Urvanov_Syntax_Highlighter_Global::urvanov__('File Extensions'), '</td><td>', Urvanov_Syntax_Highlighter_Global::urvanov__('Aliases'), '</td><td>', Urvanov_Syntax_Highlighter_Global::urvanov__('State'), '</td></tr>';

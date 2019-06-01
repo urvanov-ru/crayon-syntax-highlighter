@@ -4,7 +4,8 @@ require_once (URVANOV_SYNTAX_HIGHLIGHTER_LANGS_PHP);
 
 /*	Manages parsing the syntax for any given language, constructing the regex, and validating the
 	elements. */
-class CrayonParser {
+// Old name: CrayonParser
+class Urvanov_Syntax_Highlighter_Parser {
 	// Properties and Constants ===============================================
 	const CASE_INSENSITIVE = 'CASE_INSENSITIVE';
 	const MULTI_LINE = 'MULTI_LINE';
@@ -23,9 +24,9 @@ class CrayonParser {
 	private function __construct() {}
 
 	/**
-	 * Parse all languages stored in CrayonLangs.
+	 * Parse all languages stored in Urvanov_Syntax_Highlighter_Langs.
 	 * Avoid using this unless you must list the details in language files for all languages.
-	 * @return array Array of all loaded CrayonLangs.
+	 * @return array Array of all loaded Urvanov_Syntax_Highlighter_Langs.
 	 */
 	public static function parse_all() {
 		$langs = CrayonResources::langs()->get();
@@ -88,7 +89,7 @@ class CrayonParser {
 		}
 
 		/* Add reserved Crayon element. This is used by Crayon internally. */
-		$crayon_element = new CrayonElement(self::URVANOV_SYNTAX_HIGHLIGHTER_ELEMENT, $path, self::URVANOV_SYNTAX_HIGHLIGHTER_ELEMENT_REGEX);
+		$crayon_element = new Urvanov_Syntax_Highlighter_Element(self::URVANOV_SYNTAX_HIGHLIGHTER_ELEMENT, $path, self::URVANOV_SYNTAX_HIGHLIGHTER_ELEMENT_REGEX);
 		$lang->element(self::URVANOV_SYNTAX_HIGHLIGHTER_ELEMENT, $crayon_element);
 
 		// Extract elements, classes and regex
@@ -130,8 +131,8 @@ class CrayonParser {
 				$error = TRUE;
 				continue;
 			}
-			// Create a new CrayonElement
-			$element = new CrayonElement($name, $path);
+			// Create a new Urvanov_Syntax_Highlighter_Element
+			$element = new Urvanov_Syntax_Highlighter_Element($name, $path);
 			$element->fallback($fallback);
 			if (!empty($class)) {
 				// Avoid setting known css to blank
@@ -151,11 +152,11 @@ class CrayonParser {
 		 * from the printed code appearing on the page - not good. This can also act to color any HTML entities
 		 * that are not picked up by previously defined elements.
 		 */
-		$html = new CrayonElement(self::HTML_CHAR, $path, self::HTML_CHAR_REGEX);
+		$html = new Urvanov_Syntax_Highlighter_Element(self::HTML_CHAR, $path, self::HTML_CHAR_REGEX);
 		$lang->element(self::HTML_CHAR, $html);
 	}
 
-	// Validates regex and accesses data stored in a CrayonElement
+	// Validates regex and accesses data stored in a Urvanov_Syntax_Highlighter_Element
 	public static function validate_regex($regex, $element) {
 		if (is_string($regex) && @get_class($element) == URVANOV_SYNTAX_HIGHLIGHTER_ELEMENT_CLASS) {
 			// If the (?alt) tag has been used, insert the file into the regex
@@ -180,7 +181,7 @@ class CrayonParser {
 			$def = self::regex_match('#\(\?default(?:\:(\w+))?\)#', $regex);
 			if ( count($def) == 2 ) {
 				// Load default language
-				$default = CrayonResources::langs()->get(CrayonLangs::DEFAULT_LANG);
+				$default = CrayonResources::langs()->get(Urvanov_Syntax_Highlighter_Langs::DEFAULT_LANG);
 				// If default has not been loaded, we can't use it, skip the element
 				if (!$default) {
 					CrayonLog::syslog(
@@ -195,8 +196,8 @@ class CrayonParser {
 					} else {
 						CrayonLog::syslog("The language at '{$element->path()}' referred to the Default Language regex for element '{$element->name()}', which did not exist.");
                         if (URVANOV_SYNTAX_HIGHLIGHTER_DEBUG) {
-                            CrayonLog::syslog("Default language URL: " . CrayonResources::langs()->url(CrayonLangs::DEFAULT_LANG));
-                            CrayonLog::syslog("Default language Path: " . CrayonResources::langs()->path(CrayonLangs::DEFAULT_LANG));
+                            CrayonLog::syslog("Default language URL: " . CrayonResources::langs()->url(Urvanov_Syntax_Highlighter_Langs::DEFAULT_LANG));
+                            CrayonLog::syslog("Default language Path: " . CrayonResources::langs()->path(Urvanov_Syntax_Highlighter_Langs::DEFAULT_LANG));
                         }
 						return FALSE;
 					}

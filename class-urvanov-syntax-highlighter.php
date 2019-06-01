@@ -158,8 +158,8 @@ class Urvanov_Syntax_Highlighter {
 				$this->code = $code;
 				
 				// Allow mixed if langauge supports it and setting is set
-				CrayonParser::parse($this->language->id());
-				if (!$this->setting_val(CrayonSettings::ALTERNATE) || !$this->language->mode(CrayonParser::ALLOW_MIXED)) {
+				Urvanov_Syntax_Highlighter_Parser::parse($this->language->id());
+				if (!$this->setting_val(CrayonSettings::ALTERNATE) || !$this->language->mode(Urvanov_Syntax_Highlighter_Parser::ALLOW_MIXED)) {
 					// Format the code with the generated regex and elements
 					$this->formatted_code = Urvanov_Syntax_Highlighter_Formatter::format_code($code, $this->language, $this);
 				} else {
@@ -241,7 +241,7 @@ class Urvanov_Syntax_Highlighter {
 		}
 		
 		// Prepare the language for use, even if we have no code, we need the name
-		CrayonParser::parse($this->language->id());
+		Urvanov_Syntax_Highlighter_Parser::parse($this->language->id());
 	}
 	
 	function language_detect() {

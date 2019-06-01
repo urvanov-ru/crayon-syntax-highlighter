@@ -33,7 +33,7 @@ class Urvanov_Syntax_Highlighter_Formatter {
             /* Perform the replace on the code using the regex, pass the captured matches for
              formatting before they are replaced */
             try {
-                CrayonParser::parse($language->id());
+                Urvanov_Syntax_Highlighter_Parser::parse($language->id());
                 // Match language regex
                 $elements = $language->elements();
                 $regex = $language->regex();
@@ -61,11 +61,11 @@ class Urvanov_Syntax_Highlighter_Formatter {
         if (array_key_exists($captured_group_number, self::$elements)) {
             $captured_element = self::$elements[$captured_group_number];
             // Avoid capturing and formatting internal Crayon elements
-            if ($captured_element->name() == CrayonParser::URVANOV_SYNTAX_HIGHLIGHTER_ELEMENT) {
+            if ($captured_element->name() == Urvanov_Syntax_Highlighter_Parser::URVANOV_SYNTAX_HIGHLIGHTER_ELEMENT) {
                 return $code; // Return as is
             } else {
                 // Separate lines and add css class, keep extended class last to allow overriding
-                $fallback_css = CrayonLangs::known_elements($captured_element->fallback());
+                $fallback_css = Urvanov_Syntax_Highlighter_Langs::known_elements($captured_element->fallback());
                 $element_css = $captured_element->css();
                 $css = !empty($fallback_css) ? $fallback_css . ' ' . $element_css : $element_css;
                 return self::split_lines($code, $css);
@@ -230,7 +230,7 @@ class Urvanov_Syntax_Highlighter_Formatter {
             $lang = $hl->language()->name();
             switch ($hl->setting_index(CrayonSettings::SHOW_LANG)) {
                 case 0 :
-                    if ($hl->language()->id() == CrayonLangs::DEFAULT_LANG) {
+                    if ($hl->language()->id() == Urvanov_Syntax_Highlighter_Langs::DEFAULT_LANG) {
                         break;
                     }
                 // Falls through
@@ -501,7 +501,7 @@ class Urvanov_Syntax_Highlighter_Formatter {
         self::$curr = $hl;
         self::$delim_pieces = array();
         // Remove crayon internal element from INPUT code
-        $code = preg_replace('#' . CrayonParser::URVANOV_SYNTAX_HIGHLIGHTER_ELEMENT_REGEX_CAPTURE . '#msi', '', $code);
+        $code = preg_replace('#' . Urvanov_Syntax_Highlighter_Parser::URVANOV_SYNTAX_HIGHLIGHTER_ELEMENT_REGEX_CAPTURE . '#msi', '', $code);
 
         if (self::$delimiters == NULL) {
             self::$delimiters = CrayonResources::langs()->delimiters();

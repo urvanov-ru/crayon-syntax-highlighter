@@ -17,7 +17,7 @@ class Urvanov_Syntax_Highlighter_Langs extends CrayonUserResourceCollection {
 	private static $known_elements = array('COMMENT' => 'c', 'PREPROCESSOR' => 'p', 'STRING' => 's', 'KEYWORD' => 'k',
 			'STATEMENT' => 'st', 'RESERVED' => 'r', 'TYPE' => 't', 'TAG' => 'ta', 'MODIFIER' => 'm', 'IDENTIFIER' => 'i',
 			'ENTITY' => 'e', 'VARIABLE' => 'v', 'CONSTANT' => 'cn', 'OPERATOR' => 'o', 'SYMBOL' => 'sy',
-			'NOTATION' => 'n', 'FADED' => 'f', CrayonParser::HTML_CHAR => 'h', CrayonParser::URVANOV_SYNTAX_HIGHLIGHTER_ELEMENT => 'crayon-internal-element');
+			'NOTATION' => 'n', 'FADED' => 'f', Urvanov_Syntax_Highlighter_Parser::HTML_CHAR => 'h', Urvanov_Syntax_Highlighter_Parser::URVANOV_SYNTAX_HIGHLIGHTER_ELEMENT => 'crayon-internal-element');
 	const DEFAULT_LANG = 'default';
 	const DEFAULT_LANG_NAME = 'Default';
 
@@ -75,7 +75,7 @@ class Urvanov_Syntax_Highlighter_Langs extends CrayonUserResourceCollection {
 		$result = parent::add_default();
 		if ($this->is_state_loading() && !$result) {
 			// Default not added, must already be loaded, ready to parse
-			CrayonParser::parse(self::DEFAULT_LANG);
+			Urvanov_Syntax_Highlighter_Parser::parse(self::DEFAULT_LANG);
 		}
 	}
 
@@ -334,7 +334,7 @@ class Urvanov_Syntax_Highlighter_Lang extends CrayonVersionResource {
 
 	function __construct($id, $name = NULL) {
 		parent::__construct($id, $name);
-		$this->modes = CrayonParser::modes();
+		$this->modes = Urvanov_Syntax_Highlighter_Parser::modes();
 	}
 
 	// Override
@@ -400,9 +400,9 @@ class Urvanov_Syntax_Highlighter_Lang extends CrayonVersionResource {
 				$regexes[] = $element->regex();
 			}
 			return '#' . '(?:('. implode(')|(', array_values($regexes)) . '))' . '#' .
-					($this->mode(CrayonParser::CASE_INSENSITIVE) ? 'i' : '') .
-					($this->mode(CrayonParser::MULTI_LINE) ? 'm' : '') .
-					($this->mode(CrayonParser::SINGLE_LINE) ? 's' : '');
+					($this->mode(Urvanov_Syntax_Highlighter_Parser::CASE_INSENSITIVE) ? 'i' : '') .
+					($this->mode(Urvanov_Syntax_Highlighter_Parser::MULTI_LINE) ? 'm' : '') .
+					($this->mode(Urvanov_Syntax_Highlighter_Parser::SINGLE_LINE) ? 's' : '');
 		} else if (is_string($element) && array_key_exists($element, $this->elements)) {
 			return $this->elements[$element]->regex();
 		}
@@ -425,7 +425,7 @@ class Urvanov_Syntax_Highlighter_Lang extends CrayonVersionResource {
 	}
 
 	function mode($name = NULL, $value = NULL) {
-		if (is_string($name) && CrayonParser::is_mode($name)) {
+		if (is_string($name) && Urvanov_Syntax_Highlighter_Parser::is_mode($name)) {
 			$name = trim(strtoupper($name));
 			if ($value == NULL && array_key_exists($name, $this->modes)) {
 				return $this->modes[$name];
@@ -513,7 +513,7 @@ class Urvanov_Syntax_Highlighter_Element {
 		if ($regex == NULL) {
 			return $this->regex;
 		} else if (is_string($regex)) {
-			if (($result = CrayonParser::validate_regex($regex, $this)) !== FALSE) {
+			if (($result = Urvanov_Syntax_Highlighter_Parser::validate_regex($regex, $this)) !== FALSE) {
 				$this->regex = $result;
 			} else {
 				return FALSE;
@@ -526,7 +526,7 @@ class Urvanov_Syntax_Highlighter_Element {
 		if ($css == NULL) {
 			return $this->css;
 		} else if (is_string($css)) {
-			$this->css = CrayonParser::validate_css($css);
+			$this->css = Urvanov_Syntax_Highlighter_Parser::validate_css($css);
 		}
 	}
 

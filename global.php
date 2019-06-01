@@ -30,8 +30,8 @@ define('URVANOV_SYNTAX_HIGHLIGHTER_DOMAIN', 'crayon-syntax-highlighter');
 
 // XXX Used to name the class
 
-define('URVANOV_SYNTAX_HIGHLIGHTER_HIGHLIGHTER', 'CrayonHighlighter');
-define('URVANOV_SYNTAX_HIGHLIGHTER_ELEMENT_CLASS', 'CrayonElement');
+define('URVANOV_SYNTAX_HIGHLIGHTER_HIGHLIGHTER', 'Urvanov_Syntax_Highlighter');
+define('URVANOV_SYNTAX_HIGHLIGHTER_ELEMENT_CLASS', 'Urvanov_Syntax_Highlighter_Element');
 define('URVANOV_SYNTAX_HIGHLIGHTER_SETTING_CLASS', 'CrayonSetting');
 
 // Directories
@@ -109,7 +109,7 @@ define('URVANOV_SYNTAX_HIGHLIGHTER_THEME_EDITOR_BUTTON', URVANOV_SYNTAX_HIGHLIGH
 define('URVANOV_SYNTAX_HIGHLIGHTER_FORMATTER_PHP', URVANOV_SYNTAX_HIGHLIGHTER_ROOT_PATH . 'class-urvanov-syntax-highlighter-formatter.php');
 define('URVANOV_SYNTAX_HIGHLIGHTER_HIGHLIGHTER_PHP', URVANOV_SYNTAX_HIGHLIGHTER_ROOT_PATH . 'class-urvanov-syntax-highlighter.php');
 define('URVANOV_SYNTAX_HIGHLIGHTER_LANGS_PHP', URVANOV_SYNTAX_HIGHLIGHTER_ROOT_PATH . 'class-urvanov-syntax-highlighter-langs.php');
-define('URVANOV_SYNTAX_HIGHLIGHTER_PARSER_PHP', URVANOV_SYNTAX_HIGHLIGHTER_ROOT_PATH . 'crayon_parser.class.php');
+define('URVANOV_SYNTAX_HIGHLIGHTER_PARSER_PHP', URVANOV_SYNTAX_HIGHLIGHTER_ROOT_PATH . 'class-urvanov-syntax-highlighter-parser.php');
 define('URVANOV_SYNTAX_HIGHLIGHTER_SETTINGS_PHP', URVANOV_SYNTAX_HIGHLIGHTER_ROOT_PATH . 'crayon_settings.class.php');
 define('URVANOV_SYNTAX_HIGHLIGHTER_THEMES_PHP', URVANOV_SYNTAX_HIGHLIGHTER_ROOT_PATH . 'crayon_themes.class.php');
 define('URVANOV_SYNTAX_HIGHLIGHTER_FONTS_PHP', URVANOV_SYNTAX_HIGHLIGHTER_ROOT_PATH . 'class-urvanov-syntax-highlighter-fonts.php');
