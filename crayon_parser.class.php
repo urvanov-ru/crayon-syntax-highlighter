@@ -40,7 +40,7 @@ class CrayonParser {
 
 	/*	Read a syntax file and parse the regex rules within it, this may require several other
 		files containing lists of keywords and such to be read. Updates the parsed elements and
-		regex in the CrayonLang with the given $id. */
+		regex in the Urvanov_Syntax_Highlighter_Lang with the given $id. */
 	public static function parse($id) {
 		// Verify the language is loaded and has not been parsed before
 		if ( !($lang = CrayonResources::langs()->get($id)) ) {
@@ -143,7 +143,7 @@ class CrayonParser {
 			}
 			// Add the regex to the element
 			$lang->element($name, $element);
-			$state = $error ? CrayonLang::PARSED_ERRORS : CrayonLang::PARSED_SUCCESS;
+			$state = $error ? Urvanov_Syntax_Highlighter_Lang::PARSED_ERRORS : Urvanov_Syntax_Highlighter_Lang::PARSED_SUCCESS;
 			$lang->state($state);
 		}
 

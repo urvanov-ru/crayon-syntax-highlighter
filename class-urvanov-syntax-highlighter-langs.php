@@ -2,14 +2,16 @@
 require_once ('global.php');
 require_once (URVANOV_SYNTAX_HIGHLIGHTER_RESOURCE_PHP);
 
-class CrayonLangsResourceType {
+// Old name: CrayonLangsResourceType
+class Urvanov_Syntax_Highlighter_Langs_Resource_Type {
 	const EXTENSION = 0;
 	const ALIAS = 1;
 	const DELIMITER = 2;
 }
 
 /* Manages languages once they are loaded. The parser directly loads them, saves them here. */
-class CrayonLangs extends CrayonUserResourceCollection {
+// Old name: CrayonLangs
+class Urvanov_Syntax_Highlighter_Langs extends CrayonUserResourceCollection {
 	// Properties and Constants ===============================================
 	// CSS classes for known elements
 	private static $known_elements = array('COMMENT' => 'c', 'PREPROCESSOR' => 'p', 'STRING' => 's', 'KEYWORD' => 'k',
@@ -19,7 +21,7 @@ class CrayonLangs extends CrayonUserResourceCollection {
 	const DEFAULT_LANG = 'default';
 	const DEFAULT_LANG_NAME = 'Default';
 
-	const RESOURCE_TYPE = 'CrayonLangsResourceType';
+	const RESOURCE_TYPE = 'Urvanov_Syntax_Highlighter_Lands_Resource_Type';
 
 	// Used to cache the objects, since they are unlikely to change during a single run
 	private static $resource_cache = array();
@@ -65,7 +67,7 @@ class CrayonLangs extends CrayonUserResourceCollection {
 
 	// XXX Override
 	public function create_user_resource_instance($id, $name = NULL) {
-        return new CrayonLang($id, $name);
+        return new Urvanov_Syntax_Highlighter_Lang($id, $name);
 	}
 
 	// XXX Override
@@ -78,7 +80,7 @@ class CrayonLangs extends CrayonUserResourceCollection {
 	}
 
 	/* Attempts to detect the language based on extension, otherwise falls back to fallback language given.
-	 * Returns a CrayonLang object. */
+	 * Returns a Urvanov_Syntax_Highlighter_Lang object. */
 	public function detect($path, $fallback_id = NULL) {
 		$this->load();
 		extract(pathinfo($path));
@@ -167,7 +169,7 @@ class CrayonLangs extends CrayonUserResourceCollection {
 		}
 	}
 
-	/* Returns the CrayonLang for the given extension */
+	/* Returns the Urvanov_Syntax_Highlighter_Lang for the given extension */
 	public function ext($ext) {
 		$this->load();
 		foreach ($this->get() as $lang) {
@@ -178,7 +180,7 @@ class CrayonLangs extends CrayonUserResourceCollection {
 		return FALSE;
 	}
 
-	/* Returns the CrayonLang for the given alias */
+	/* Returns the Urvanov_Syntax_Highlighter_Lang for the given alias */
 	public function alias($alias) {
 		$this->load();
 		foreach ($this->get() as $lang) {
@@ -198,13 +200,13 @@ class CrayonLangs extends CrayonUserResourceCollection {
 			foreach ($this->get() as $lang) {
 
 				switch ($type) {
-					case CrayonLangsResourceType::EXTENSION:
+					case Urvanov_Syntax_Highlighter_Langs_Resource_Type::EXTENSION:
 						$fetch = $lang->ext();
 						break;
-					case CrayonLangsResourceType::ALIAS:
+					case Urvanov_Syntax_Highlighter_Langs_Resource_Type::ALIAS:
 						$fetch = $lang->alias();
 						break;
-					case CrayonLangsResourceType::DELIMITER:
+					case Urvanov_Syntax_Highlighter_Langs_Resource_Type::DELIMITER:
 						$fetch = $lang->delimiter();
 						break;
 					default:
@@ -221,15 +223,15 @@ class CrayonLangs extends CrayonUserResourceCollection {
 	}
 
 	public function extensions($reload = FALSE) {
-		return $this->fetch(CrayonLangsResourceType::EXTENSION, $reload);
+		return $this->fetch(Urvanov_Syntax_Highlighter_Langs_Resource_Type::EXTENSION, $reload);
 	}
 
 	public function aliases($reload = FALSE) {
-		return $this->fetch(CrayonLangsResourceType::ALIAS, $reload);
+		return $this->fetch(Urvanov_Syntax_Highlighter_Langs_Resource_Type::ALIAS, $reload);
 	}
 
 	public function delimiters($reload = FALSE) {
-		return $this->fetch(CrayonLangsResourceType::DELIMITER, $reload);
+		return $this->fetch(Urvanov_Syntax_Highlighter_Langs_Resource_Type::DELIMITER, $reload);
 	}
 
 	public function extensions_inverted($reload = FALSE) {
@@ -244,7 +246,7 @@ class CrayonLangs extends CrayonUserResourceCollection {
 	}
 
 	public function ids_and_aliases($reload = FALSE) {
-		$fetch = $this->fetch(CrayonLangsResourceType::ALIAS, $reload, TRUE);
+		$fetch = $this->fetch(Urvanov_Syntax_Highlighter_Langs_Resource_Type::ALIAS, $reload, TRUE);
 		foreach ($fetch as $id=>$alias_array) {
 			$ids_and_aliases[] = $id;
 			foreach ($alias_array as $alias) {
@@ -295,7 +297,7 @@ class CrayonLangs extends CrayonUserResourceCollection {
 		if ($id === NULL) {
 			// Determine if all langs are successfully parsed
 			foreach ($this->get() as $lang) {
-				if ($lang->state() != CrayonLang::PARSED_SUCCESS) {
+				if ($lang->state() != Urvanov_Syntax_Highlighter_Lang::PARSED_SUCCESS) {
 					return FALSE;
 				}
 			}
@@ -315,7 +317,8 @@ class CrayonLangs extends CrayonUserResourceCollection {
 }
 
 /* Individual language. */
-class CrayonLang extends CrayonVersionResource {
+// Old name: CrayonLang
+class Urvanov_Syntax_Highlighter_Lang extends CrayonVersionResource {
 	private $ext = array();
 	private $aliases = array();
 	private $delimiters = '';
@@ -470,11 +473,12 @@ class CrayonLang extends CrayonVersionResource {
 	}
 
 	function is_default() {
-		return $this->id() == CrayonLangs::DEFAULT_LANG;
+		return $this->id() == Urvanov_Syntax_Highlighter_Langs::DEFAULT_LANG;
 	}
 }
 
-class CrayonElement {
+// Old name: CrayonElement
+class Urvanov_Syntax_Highlighter_Element {
 	// The pure regex syntax without any modifiers or delimiters
 	private $name = '';
 	private $css = '';
@@ -497,9 +501,9 @@ class CrayonElement {
 			return $this->name;
 		} else if (is_string($name)) {
 			$name = trim(strtoupper($name));
-			if (CrayonLangs::is_known_element($name)) {
+			if (Urvanov_Syntax_Highlighter_Langs::is_known_element($name)) {
 				// If known element, set CSS to known class
-				$this->css(CrayonLangs::known_elements($name));
+				$this->css(Urvanov_Syntax_Highlighter_Langs::known_elements($name));
 			}
 			$this->name = $name;
 		}
@@ -529,7 +533,7 @@ class CrayonElement {
 	function fallback($fallback = NULL) {
 		if ($fallback == NULL) {
 			return $this->fallback;
-		} else if (is_string($fallback) && CrayonLangs::is_known_element($fallback)) {
+		} else if (is_string($fallback) && Urvanov_Syntax_Highlighter_Langs::is_known_element($fallback)) {
 			$this->fallback = $fallback;
 		}
 	}
