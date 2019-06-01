@@ -41,8 +41,8 @@ Urvanov_Syntax_Highlighter_Global::set_info(array(
 ));
 
 /* The plugin class that manages all other classes and integrates Crayon with WP */
-
-class CrayonWP {
+// Old name: CrayonWP
+class Urvanov_Syntax_Highlighter_Plugin {
     // Properties and Constants ===============================================
 
     //	Associative array, keys are post IDs as strings and values are number of crayons parsed as ints
@@ -151,23 +151,23 @@ class CrayonWP {
         $url = $lang = $title = $mark = $range = $inline = '';
         extract($filtered_atts);
 
-        $crayon = self::instance($extra_attr, $id);
+        $highlighter_instance = self::instance($extra_attr, $id);
 
         // Set URL
-        $crayon->url($url);
-        $crayon->code($content);
+        $highlighter_instance->url($url);
+        $highlighter_instance->code($content);
         // Set attributes, should be set after URL to allow language auto detection
-        $crayon->language($lang);
-        $crayon->title($title);
-        $crayon->marked($mark);
-        $crayon->range($range);
+        $highlighter_instance->language($lang);
+        $highlighter_instance->title($title);
+        $highlighter_instance->marked($mark);
+        $highlighter_instance->range($range);
 
-        $crayon->is_inline($inline);
+        $highlighter_instance->is_inline($inline);
 
         // Determine if we should highlight
         $highlight = array_key_exists('highlight', $atts) ? CrayonUtil::str_to_bool($atts['highlight'], FALSE) : TRUE;
-        $crayon->is_highlighted($highlight);
-        return $crayon;
+        $highlighter_instance->is_highlighted($highlight);
+        return $highlighter_instance;
     }
 
     /* Returns Crayon instance */
@@ -175,28 +175,28 @@ class CrayonWP {
         CrayonLog::debug('instance');
 
         // Create Crayon
-        $crayon = new CrayonHighlighter();
+        $highlighter_instance = new CrayonHighlighter();
 
         /* Load settings and merge shortcode attributes which will override any existing.
          * Stores the other shortcode attributes as settings in the crayon. */
         if (!empty($extra_attr)) {
-            $crayon->settings($extra_attr);
+            $highlighter_instance->settings($extra_attr);
         }
         if (!empty($id)) {
-            $crayon->id($id);
+            $highlighter_instance->id($id);
         }
 
-        return $crayon;
+        return $highlighter_instance;
     }
 
     /* For manually highlighting code, useful for other PHP contexts */
     public static function highlight($code, $add_tags = FALSE) {
-        $captures = CrayonWP::capture_crayons(0, $code);
+        $captures = Urvanov_Syntax_Highlighter_Plugin::capture_crayons(0, $code);
         $the_captures = $captures['capture'];
         if (count($the_captures) == 0 && $add_tags) {
             // Nothing captured, so wrap in a pre and try again
             $code = '<pre>' . $code . '</pre>';
-            $captures = CrayonWP::capture_crayons(0, $code);
+            $captures = Urvanov_Syntax_Highlighter_Plugin::capture_crayons(0, $code);
             $the_captures = $captures['capture'];
         }
         $the_content = $captures['content'];
@@ -209,7 +209,7 @@ class CrayonWP {
                 CrayonSettings::ENQUEUE_FONTS => FALSE);
             $atts = array_merge($atts, $no_enqueue);
             $code = $capture['code'];
-            $crayon = CrayonWP::shortcode($atts, $code, $id);
+            $crayon = Urvanov_Syntax_Highlighter_Plugin::shortcode($atts, $code, $id);
             $crayon_formatted = $crayon->output(TRUE, FALSE);
             $the_content = CrayonUtil::preg_replace_escape_back(self::regex_with_id($id), $crayon_formatted, $the_content, 1, $count);
         }
@@ -268,7 +268,7 @@ class CrayonWP {
         // Convert <pre> tags to crayon tags, if needed
         if ((CrayonGlobalSettings::val(CrayonSettings::CAPTURE_PRE) || $skip_setting_check) && $in_flag[CrayonSettings::CAPTURE_PRE]) {
             // XXX This will fail if <pre></pre> is used inside another <pre></pre>
-            $wp_content = preg_replace_callback('#(?<!\$)<\s*pre(?=(?:([^>]*)\bclass\s*=\s*(["\'])(.*?)\2([^>]*))?)([^>]*)>(.*?)<\s*/\s*pre\s*>#msi', 'CrayonWP::pre_tag', $wp_content);
+            $wp_content = preg_replace_callback('#(?<!\$)<\s*pre(?=(?:([^>]*)\bclass\s*=\s*(["\'])(.*?)\2([^>]*))?)([^>]*)>(.*?)<\s*/\s*pre\s*>#msi', 'Urvanov_Syntax_Highlighter_Plugin::pre_tag', $wp_content);
         }
 
         // Convert mini [php][/php] tags to crayon tags, if needed
@@ -290,7 +290,7 @@ class CrayonWP {
                 $wp_content = preg_replace('#(?<!\$)\{\s*(' . self::$alias_regex . ')\b([^\}]*)\}(.*?)\{/(?:\1)\}(?!\$)#msi', '[crayon lang="\1" inline="true" \2]\3[/crayon]', $wp_content);
             }
             // Convert <span class="crayon-inline"> tags to inline crayon tags
-            $wp_content = preg_replace_callback('#(?<!\$)<\s*span([^>]*)\bclass\s*=\s*(["\'])(.*?)\2([^>]*)>(.*?)<\s*/\s*span\s*>#msi', 'CrayonWP::span_tag', $wp_content);
+            $wp_content = preg_replace_callback('#(?<!\$)<\s*span([^>]*)\bclass\s*=\s*(["\'])(.*?)\2([^>]*)>(.*?)<\s*/\s*span\s*>#msi', 'Urvanov_Syntax_Highlighter_Plugin::span_tag', $wp_content);
         }
 
         // Convert [plain] tags into <pre><code></code></pre>, if needed
@@ -300,7 +300,7 @@ class CrayonWP {
 
         // Add IDs to the Crayons
         CrayonLog::debug('capture adding id ' . $wp_id . ' , now has len ' . strlen($wp_content));
-        $wp_content = preg_replace_callback(self::REGEX_ID, 'CrayonWP::add_crayon_id', $wp_content);
+        $wp_content = preg_replace_callback(self::REGEX_ID, 'Urvanov_Syntax_Highlighter_Plugin::add_crayon_id', $wp_content);
 
         CrayonLog::debug('capture added id ' . $wp_id . ' : ' . strlen($wp_content));
 
@@ -682,7 +682,7 @@ class CrayonWP {
             $the_content_original = $the_content;
 
             // Replacing may cause <p> tags to become disjoint with a <div> inside them, close and reopen them if needed
-            $the_content = preg_replace_callback('#' . self::REGEX_BETWEEN_PARAGRAPH_SIMPLE . '#msi', 'CrayonWP::add_paragraphs', $the_content);
+            $the_content = preg_replace_callback('#' . self::REGEX_BETWEEN_PARAGRAPH_SIMPLE . '#msi', 'Urvanov_Syntax_Highlighter_Plugin::add_paragraphs', $the_content);
             // Loop through Crayons
             $post_in_queue = self::$post_queue[$post_id];
 
@@ -734,7 +734,7 @@ class CrayonWP {
                 $crayon_formatted = $crayon->output(TRUE, FALSE);
                 // Replacing may cause <p> tags to become disjoint with a <div> inside them, close and reopen them if needed
                 if (!$crayon->is_inline()) {
-                    $text = preg_replace_callback('#' . self::REGEX_BETWEEN_PARAGRAPH_SIMPLE . '#msi', 'CrayonWP::add_paragraphs', $text);
+                    $text = preg_replace_callback('#' . self::REGEX_BETWEEN_PARAGRAPH_SIMPLE . '#msi', 'Urvanov_Syntax_Highlighter_Plugin::add_paragraphs', $text);
                 }
                 // Replace the code with the Crayon
                 $text = CrayonUtil::preg_replace_escape_back(self::regex_with_id($id), $crayon_formatted, $text, 1, $text);
@@ -914,7 +914,7 @@ class CrayonWP {
             // Ignore revisions
             return;
         }
-        if (CrayonWP::scan_post($post)) {
+        if (Urvanov_Syntax_Highlighter_Plugin::scan_post($post)) {
             CrayonSettingsWP::add_post($postID, $save);
             if ($refresh_legacy) {
                 if (self::scan_legacy_post($post)) {
@@ -932,7 +932,7 @@ class CrayonWP {
     public static function refresh_posts() {
         CrayonSettingsWP::remove_posts();
         CrayonSettingsWP::remove_legacy_posts();
-        foreach (CrayonWP::get_posts() as $post) {
+        foreach (Urvanov_Syntax_Highlighter_Plugin::get_posts() as $post) {
             self::refresh_post($post, TRUE, FALSE);
         }
         CrayonSettingsWP::save_posts();
@@ -980,10 +980,10 @@ class CrayonWP {
     public static function init_ajax() {
         add_action('wp_ajax_crayon-tag-editor', 'CrayonTagEditorWP::content');
         add_action('wp_ajax_nopriv_crayon-tag-editor', 'CrayonTagEditorWP::content');
-        add_action('wp_ajax_crayon-highlight', 'CrayonWP::ajax_highlight');
-        add_action('wp_ajax_nopriv_crayon-highlight', 'CrayonWP::ajax_highlight');
+        add_action('wp_ajax_crayon-highlight', 'Urvanov_Syntax_Highlighter_Plugin::ajax_highlight');
+        add_action('wp_ajax_nopriv_crayon-highlight', 'Urvanov_Syntax_Highlighter_Plugin::ajax_highlight');
         if (current_user_can('manage_options')) {
-            add_action('wp_ajax_crayon-ajax', 'CrayonWP::ajax');
+            add_action('wp_ajax_crayon-ajax', 'Urvanov_Syntax_Highlighter_Plugin::ajax');
             add_action('wp_ajax_crayon-theme-editor', 'CrayonThemeEditorWP::content');
             add_action('wp_ajax_crayon-theme-editor-save', 'CrayonThemeEditorWP::save');
             add_action('wp_ajax_crayon-theme-editor-delete', 'CrayonThemeEditorWP::delete');
@@ -1192,7 +1192,7 @@ class CrayonWP {
 
         self::init_legacy_tag_bits();
         $args = array(
-            'callback' => 'CrayonWP::capture_replace_pre',
+            'callback' => 'Urvanov_Syntax_Highlighter_Plugin::capture_replace_pre',
             'callback_extra_args' => array('encode' => $encode),
             'ignore' => FALSE,
             'preserve_atts' => TRUE,
@@ -1277,64 +1277,64 @@ if (defined('ABSPATH')) {
     if (!is_admin()) {
         // Filters and Actions
 
-        add_filter('init', 'CrayonWP::init');
+        add_filter('init', 'Urvanov_Syntax_Highlighter_Plugin::init');
 
         CrayonSettingsWP::load_settings(TRUE);
         if (CrayonGlobalSettings::val(CrayonSettings::MAIN_QUERY)) {
-            add_action('wp', 'CrayonWP::wp', 100);
+            add_action('wp', 'Urvanov_Syntax_Highlighter_Plugin::wp', 100);
         } else {
-            add_filter('the_posts', 'CrayonWP::the_posts', 100);
+            add_filter('the_posts', 'Urvanov_Syntax_Highlighter_Plugin::the_posts', 100);
         }
 
         // XXX Some themes like to play with the content, make sure we replace after they're done
-        add_filter('the_content', 'CrayonWP::the_content', 100);
+        add_filter('the_content', 'Urvanov_Syntax_Highlighter_Plugin::the_content', 100);
 
         // Highlight bbPress content
-        add_filter('bbp_get_reply_content', 'CrayonWP::highlight', 100);
-        add_filter('bbp_get_topic_content', 'CrayonWP::highlight', 100);
-        add_filter('bbp_get_forum_content', 'CrayonWP::highlight', 100);
-        add_filter('bbp_get_topic_excerpt', 'CrayonWP::highlight', 100);
+        add_filter('bbp_get_reply_content', 'Urvanov_Syntax_Highlighter_Plugin::highlight', 100);
+        add_filter('bbp_get_topic_content', 'Urvanov_Syntax_Highlighter_Plugin::highlight', 100);
+        add_filter('bbp_get_forum_content', 'Urvanov_Syntax_Highlighter_Plugin::highlight', 100);
+        add_filter('bbp_get_topic_excerpt', 'Urvanov_Syntax_Highlighter_Plugin::highlight', 100);
 
         // Allow tags
-        add_action('init', 'CrayonWP::allowed_tags', 11);
+        add_action('init', 'Urvanov_Syntax_Highlighter_Plugin::allowed_tags', 11);
 
         if (CrayonGlobalSettings::val(CrayonSettings::COMMENTS)) {
             /* XXX This is called first to match Crayons, then higher priority replaces after other filters.
              Prevents Crayon from being formatted by the filters, and also keeps original comment formatting. */
-            add_filter('comment_text', 'CrayonWP::pre_comment_text', 1);
-            add_filter('comment_text', 'CrayonWP::comment_text', 100);
+            add_filter('comment_text', 'Urvanov_Syntax_Highlighter_Plugin::pre_comment_text', 1);
+            add_filter('comment_text', 'Urvanov_Syntax_Highlighter_Plugin::comment_text', 100);
         }
 
         // This ensures Crayons are not formatted by WP filters. Other plugins should specify priorities between 1 and 100.
-        add_filter('get_the_excerpt', 'CrayonWP::pre_excerpt', 1);
-        add_filter('get_the_excerpt', 'CrayonWP::post_get_excerpt', 100);
-        add_filter('the_excerpt', 'CrayonWP::post_excerpt', 100);
+        add_filter('get_the_excerpt', 'Urvanov_Syntax_Highlighter_Plugin::pre_excerpt', 1);
+        add_filter('get_the_excerpt', 'Urvanov_Syntax_Highlighter_Plugin::post_get_excerpt', 100);
+        add_filter('the_excerpt', 'Urvanov_Syntax_Highlighter_Plugin::post_excerpt', 100);
 
-        add_action('template_redirect', 'CrayonWP::wp_head', 0);
+        add_action('template_redirect', 'Urvanov_Syntax_Highlighter_Plugin::wp_head', 0);
 
         if (CrayonGlobalSettings::val(CrayonSettings::TAG_EDITOR_FRONT)) {
-            add_filter('comment_form_defaults', 'CrayonWP::tinymce_comment_enable');
+            add_filter('comment_form_defaults', 'Urvanov_Syntax_Highlighter_Plugin::tinymce_comment_enable');
         }
     } else {
         // Update between versions
-        CrayonWP::update();
+        Urvanov_Syntax_Highlighter_Plugin::update();
         // For marking a post as containing a Crayon
-        add_action('update_post', 'CrayonWP::save_post', 10, 2);
-        add_action('save_post', 'CrayonWP::save_post', 10, 2);
-        add_filter('wp_insert_post_data', 'CrayonWP::filter_post_data', '99', 2);
+        add_action('update_post', 'Urvanov_Syntax_Highlighter_Plugin::save_post', 10, 2);
+        add_action('save_post', 'Urvanov_Syntax_Highlighter_Plugin::save_post', 10, 2);
+        add_filter('wp_insert_post_data', 'Urvanov_Syntax_Highlighter_Plugin::filter_post_data', '99', 2);
     }
-    register_activation_hook(__FILE__, 'CrayonWP::install');
-    register_deactivation_hook(__FILE__, 'CrayonWP::uninstall');
+    register_activation_hook(__FILE__, 'Urvanov_Syntax_Highlighter_Plugin::install');
+    register_deactivation_hook(__FILE__, 'Urvanov_Syntax_Highlighter_Plugin::uninstall');
     if (CrayonGlobalSettings::val(CrayonSettings::COMMENTS)) {
-        add_action('comment_post', 'CrayonWP::save_comment', 10, 2);
-        add_action('edit_comment', 'CrayonWP::save_comment', 10, 2);
+        add_action('comment_post', 'Urvanov_Syntax_Highlighter_Plugin::save_comment', 10, 2);
+        add_action('edit_comment', 'Urvanov_Syntax_Highlighter_Plugin::save_comment', 10, 2);
     }
-    add_filter('init', 'CrayonWP::init_ajax');
+    add_filter('init', 'Urvanov_Syntax_Highlighter_Plugin::init_ajax');
 
     
 }
 
-function register_gutenberg_block() {
+function register_urvanov_syntax_highlighter_gutenberg_block() {
     global $URVANOV_SYNTAX_HIGHLIGHTER_VERSION;
     wp_register_style('urvanov-syntax-highlighter-editor',
         plugins_url(URVANOV_SYNTAX_HIGHLIGHTER_EDITOR_CSS, __FILE__),
@@ -1346,6 +1346,6 @@ function register_gutenberg_block() {
     ) );
 }
 
-add_action( 'init', 'register_gutenberg_block' );
+add_action( 'init', 'register_urvanov_syntax_highlighter_gutenberg_block' );
 
 ?>

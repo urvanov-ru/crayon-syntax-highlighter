@@ -88,7 +88,7 @@ class CrayonSettingsWP {
         global $URVANOV_SYNTAX_HIGHLIGHTER_VERSION;
 
         if (URVANOV_SYNTAX_HIGHLIGHTER_MINIFY) {
-            CrayonWP::enqueue_resources();
+            Urvanov_Syntax_Highlighter_Plugin::enqueue_resources();
         } else {
             wp_enqueue_script('crayon_util_js', plugins_url(URVANOV_SYNTAX_HIGHLIGHTER_JS_UTIL, __FILE__), array('jquery'), $URVANOV_SYNTAX_HIGHLIGHTER_VERSION);
             self::other_scripts();
@@ -313,7 +313,7 @@ class CrayonSettingsWP {
             // Load from db
             if (!(self::$crayon_posts = get_option(self::POSTS))) {
                 // Posts don't exist! Scan for them. This will fill self::$crayon_posts
-                self::$crayon_posts = CrayonWP::scan_posts();
+                self::$crayon_posts = Urvanov_Syntax_Highlighter_Plugin::scan_posts();
                 update_option(self::POSTS, self::$crayon_posts);
             }
         }
@@ -381,7 +381,7 @@ class CrayonSettingsWP {
             // Load from db
             if (!(self::$crayon_legacy_posts = get_option(self::LEGACY_POSTS))) {
                 // Posts don't exist! Scan for them. This will fill self::$crayon_legacy_posts
-                self::$crayon_legacy_posts = CrayonWP::scan_legacy_posts();
+                self::$crayon_legacy_posts = Urvanov_Syntax_Highlighter_Plugin::scan_legacy_posts();
                 update_option(self::LEGACY_POSTS, self::$crayon_legacy_posts);
             }
         }
@@ -544,11 +544,11 @@ class CrayonSettingsWP {
         // Convert old tags
         if (array_key_exists('convert', $inputs)) {
             $encode = array_key_exists('convert_encode', $inputs);
-            CrayonWP::convert_tags($encode);
+            Urvanov_Syntax_Highlighter_Plugin::convert_tags($encode);
         }
         // Refresh internal tag management
         if (array_key_exists('refresh_tags', $inputs)) {
-            CrayonWP::refresh_posts();
+            Urvanov_Syntax_Highlighter_Plugin::refresh_posts();
         }
         // Clear the log if needed
         if (array_key_exists(self::LOG_CLEAR, $_POST)) {
@@ -620,7 +620,7 @@ class CrayonSettingsWP {
                 if (CrayonGlobalSettings::has_changed($input, $input, $value)) {
                     // Needs to take place, in case it refresh depends on changed value
                     CrayonGlobalSettings::set($input, $value);
-                    CrayonWP::refresh_posts();
+                    Urvanov_Syntax_Highlighter_Plugin::refresh_posts();
                 }
             }
         }
@@ -908,7 +908,7 @@ class CrayonSettingsWP {
 
         self::load_settings(); // Run first to ensure global settings loaded
 
-        $crayon = CrayonWP::instance();
+        $crayon = Urvanov_Syntax_Highlighter_Plugin::instance();
 
         // Settings to prevent from validating
         $preview_settings = array(self::SAMPLE_CODE);
@@ -1253,7 +1253,7 @@ class Human {
 
     public static function plugin_row_meta($meta, $file) {
         global $URVANOV_SYNTAX_HIGHLIGHTER_DONATE;
-        if ($file == CrayonWP::basename()) {
+        if ($file == Urvanov_Syntax_Highlighter_Plugin::basename()) {
             $meta[] = '<a href="options-general.php?page=crayon_settings">' . Urvanov_Syntax_Highlighter_Global::urvanov__('Settings') . '</a>';
             $meta[] = '<a href="options-general.php?page=crayon_settings&theme-editor=1">' . Urvanov_Syntax_Highlighter_Global::urvanov__('Theme Editor') . '</a>';
             $meta[] = '<a href="' . $URVANOV_SYNTAX_HIGHLIGHTER_DONATE . '" target="_blank">' . Urvanov_Syntax_Highlighter_Global::urvanov__('Donate') . '</a>';
