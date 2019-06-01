@@ -31,7 +31,7 @@ if (URVANOV_SYNTAX_HIGHLIGHTER_TAG_EDITOR) {
 if (URVANOV_SYNTAX_HIGHLIGHTER_THEME_EDITOR) {
     require_once(URVANOV_SYNTAX_HIGHLIGHTER_THEME_EDITOR_PHP);
 }
-require_once('crayon_settings_wp.class.php');
+require_once('class-urvanov-syntax-highlighter-wp.php');
 
 Urvanov_Syntax_Highlighter_Global::set_info(array(
 	'Version' => '2.8.5',
@@ -321,7 +321,7 @@ class Urvanov_Syntax_Highlighter_Plugin {
         if ($capture['has_captured']) {
 
             // Crayons found! Load settings first to ensure global settings loaded
-            CrayonSettingsWP::load_settings();
+            Urvanov_Syntax_Highlighter_Settings_WP::load_settings();
 
             CrayonLog::debug('CAPTURED FOR ID ' . $wp_id);
 
@@ -455,10 +455,10 @@ class Urvanov_Syntax_Highlighter_Plugin {
         CrayonLog::debug('the_posts');
 
         // Whether to enqueue syles/scripts
-        CrayonSettingsWP::load_settings(TRUE); // We will eventually need more than the settings
+        Urvanov_Syntax_Highlighter_Settings_WP::load_settings(TRUE); // We will eventually need more than the settings
 
         self::init_tags_regex();
-        $crayon_posts = CrayonSettingsWP::load_posts(); // Loads posts containing crayons
+        $crayon_posts = Urvanov_Syntax_Highlighter_Settings_WP::load_posts(); // Loads posts containing crayons
 
         // Search for shortcode in posts
         foreach ($posts as $post) {
@@ -545,7 +545,7 @@ class Urvanov_Syntax_Highlighter_Plugin {
 
             CrayonLog::debug('enqueue');
             global $URVANOV_SYNTAX_HIGHLIGHTER_VERSION;
-            CrayonSettingsWP::load_settings(TRUE);
+            Urvanov_Syntax_Highlighter_Settings_WP::load_settings(TRUE);
             if (URVANOV_SYNTAX_HIGHLIGHTER_MINIFY) {
                 wp_enqueue_style('crayon', plugins_url(URVANOV_SYNTAX_HIGHLIGHTER_STYLE_MIN, __FILE__), array(), $URVANOV_SYNTAX_HIGHLIGHTER_VERSION);
                 wp_enqueue_script('crayon_js', plugins_url(URVANOV_SYNTAX_HIGHLIGHTER_JS_MIN, __FILE__), array('jquery'), $URVANOV_SYNTAX_HIGHLIGHTER_VERSION, CrayonGlobalSettings::val(CrayonSettings::DELAY_LOAD_JS));
@@ -553,15 +553,15 @@ class Urvanov_Syntax_Highlighter_Plugin {
                 wp_enqueue_style('crayon_style', plugins_url(URVANOV_SYNTAX_HIGHLIGHTER_STYLE, __FILE__), array(), $URVANOV_SYNTAX_HIGHLIGHTER_VERSION);
                 wp_enqueue_style('crayon_global_style', plugins_url(URVANOV_SYNTAX_HIGHLIGHTER_STYLE_GLOBAL, __FILE__), array(), $URVANOV_SYNTAX_HIGHLIGHTER_VERSION);
                 wp_enqueue_script('crayon_util_js', plugins_url(URVANOV_SYNTAX_HIGHLIGHTER_JS_UTIL, __FILE__), array('jquery'), $URVANOV_SYNTAX_HIGHLIGHTER_VERSION);
-                CrayonSettingsWP::other_scripts();
+                Urvanov_Syntax_Highlighter_Settings_WP::other_scripts();
             }
-            CrayonSettingsWP::init_js_settings();
+            Urvanov_Syntax_Highlighter_Settings_WP::init_js_settings();
             self::$enqueued = TRUE;
         }
     }
 
     private static function init_tags_regex($force = FALSE, $flags = NULL, &$tags_regex = NULL) {
-        CrayonSettingsWP::load_settings();
+        Urvanov_Syntax_Highlighter_Settings_WP::load_settings();
         self::init_tag_bits();
 
         // Default output
@@ -878,7 +878,7 @@ class Urvanov_Syntax_Highlighter_Plugin {
         if (!self::$enqueued) {
             CrayonLog::debug('head: missed enqueue');
             // We have missed our chance to check before enqueuing. Use setting to either load always or only in the_post
-            CrayonSettingsWP::load_settings(TRUE); // Ensure settings are loaded
+            Urvanov_Syntax_Highlighter_Settings_WP::load_settings(TRUE); // Ensure settings are loaded
             // If we need the tag editor loaded at all times, we must enqueue at all times
             if (!CrayonGlobalSettings::val(CrayonSettings::EFFICIENT_ENQUEUE) || CrayonGlobalSettings::val(CrayonSettings::TAG_EDITOR_FRONT)) {
                 CrayonLog::debug('head: force enqueue');
@@ -915,28 +915,28 @@ class Urvanov_Syntax_Highlighter_Plugin {
             return;
         }
         if (Urvanov_Syntax_Highlighter_Plugin::scan_post($post)) {
-            CrayonSettingsWP::add_post($postID, $save);
+            Urvanov_Syntax_Highlighter_Settings_WP::add_post($postID, $save);
             if ($refresh_legacy) {
                 if (self::scan_legacy_post($post)) {
-                    CrayonSettingsWP::add_legacy_post($postID, $save);
+                    Urvanov_Syntax_Highlighter_Settings_WP::add_legacy_post($postID, $save);
                 } else {
-                    CrayonSettingsWP::remove_legacy_post($postID, $save);
+                    Urvanov_Syntax_Highlighter_Settings_WP::remove_legacy_post($postID, $save);
                 }
             }
         } else {
-            CrayonSettingsWP::remove_post($postID, $save);
-            CrayonSettingsWP::remove_legacy_post($postID, $save);
+            Urvanov_Syntax_Highlighter_Settings_WP::remove_post($postID, $save);
+            Urvanov_Syntax_Highlighter_Settings_WP::remove_legacy_post($postID, $save);
         }
     }
 
     public static function refresh_posts() {
-        CrayonSettingsWP::remove_posts();
-        CrayonSettingsWP::remove_legacy_posts();
+        Urvanov_Syntax_Highlighter_Settings_WP::remove_posts();
+        Urvanov_Syntax_Highlighter_Settings_WP::remove_legacy_posts();
         foreach (Urvanov_Syntax_Highlighter_Plugin::get_posts() as $post) {
             self::refresh_post($post, TRUE, FALSE);
         }
-        CrayonSettingsWP::save_posts();
-        CrayonSettingsWP::save_legacy_posts();
+        Urvanov_Syntax_Highlighter_Settings_WP::save_posts();
+        Urvanov_Syntax_Highlighter_Settings_WP::save_legacy_posts();
 
     }
 
@@ -949,14 +949,14 @@ class Urvanov_Syntax_Highlighter_Plugin {
         $post_id = $comment->comment_post_ID;
         $found = preg_match(self::$tags_regex, $content);
         if ($found) {
-            CrayonSettingsWP::add_post($post_id);
+            Urvanov_Syntax_Highlighter_Settings_WP::add_post($post_id);
         }
         return $found;
     }
 
     public static function crayon_theme_css() {
         global $URVANOV_SYNTAX_HIGHLIGHTER_VERSION;
-        CrayonSettingsWP::load_settings();
+        Urvanov_Syntax_Highlighter_Settings_WP::load_settings();
         $css = Urvanov_Syntax_Highlighter_Resources::themes()->get_used_css();
         foreach ($css as $theme => $url) {
             wp_enqueue_style('crayon-theme-' . $theme, $url, array(), $URVANOV_SYNTAX_HIGHLIGHTER_VERSION);
@@ -965,7 +965,7 @@ class Urvanov_Syntax_Highlighter_Plugin {
 
     public static function crayon_font_css() {
         global $URVANOV_SYNTAX_HIGHLIGHTER_VERSION;
-        CrayonSettingsWP::load_settings();
+        Urvanov_Syntax_Highlighter_Settings_WP::load_settings();
         $css = Urvanov_Syntax_Highlighter_Resources::fonts()->get_used_css();
         foreach ($css as $font_id => $url) {
             wp_enqueue_style('crayon-font-' . $font_id, $url, array(), $URVANOV_SYNTAX_HIGHLIGHTER_VERSION);
@@ -989,9 +989,9 @@ class Urvanov_Syntax_Highlighter_Plugin {
             add_action('wp_ajax_crayon-theme-editor-delete', 'CrayonThemeEditorWP::delete');
             add_action('wp_ajax_crayon-theme-editor-duplicate', 'CrayonThemeEditorWP::duplicate');
             add_action('wp_ajax_crayon-theme-editor-submit', 'CrayonThemeEditorWP::submit');
-            add_action('wp_ajax_crayon-show-posts', 'CrayonSettingsWP::show_posts');
-            add_action('wp_ajax_crayon-show-langs', 'CrayonSettingsWP::show_langs');
-            add_action('wp_ajax_crayon-show-preview', 'CrayonSettingsWP::show_preview');
+            add_action('wp_ajax_crayon-show-posts', 'Urvanov_Syntax_Highlighter_Settings_WP::show_posts');
+            add_action('wp_ajax_crayon-show-langs', 'Urvanov_Syntax_Highlighter_Settings_WP::show_langs');
+            add_action('wp_ajax_crayon-show-preview', 'Urvanov_Syntax_Highlighter_Settings_WP::show_preview');
         }
     }
 
@@ -1000,7 +1000,7 @@ class Urvanov_Syntax_Highlighter_Plugin {
         foreach ($allowed as $allow) {
             if (array_key_exists($allow, $_GET)) {
                 CrayonGlobalSettings::set($allow, $_GET[$allow]);
-                CrayonSettingsWP::save_settings();
+                Urvanov_Syntax_Highlighter_Settings_WP::save_settings();
             }
         }
     }
@@ -1063,7 +1063,7 @@ class Urvanov_Syntax_Highlighter_Plugin {
         if ($captures['has_captured']) {
             return TRUE;
         } else if ($scan_comments) {
-            CrayonSettingsWP::load_settings(TRUE);
+            Urvanov_Syntax_Highlighter_Settings_WP::load_settings(TRUE);
             if (CrayonGlobalSettings::val(CrayonSettings::COMMENTS)) {
                 $comments = get_comments(array('post_id' => $id));
                 foreach ($comments as $comment) {
@@ -1110,8 +1110,8 @@ class Urvanov_Syntax_Highlighter_Plugin {
 
     public static function update() {
         global $URVANOV_SYNTAX_HIGHLIGHTER_VERSION;
-        CrayonSettingsWP::load_settings(TRUE);
-        $settings = CrayonSettingsWP::get_settings();
+        Urvanov_Syntax_Highlighter_Settings_WP::load_settings(TRUE);
+        $settings = Urvanov_Syntax_Highlighter_Settings_WP::get_settings();
         if ($settings === NULL || !isset($settings[CrayonSettings::VERSION])) {
             return;
         }
@@ -1146,7 +1146,7 @@ class Urvanov_Syntax_Highlighter_Plugin {
 
             // Save new version
             $settings[CrayonSettings::VERSION] = $URVANOV_SYNTAX_HIGHLIGHTER_VERSION;
-            CrayonSettingsWP::save_settings($settings);
+            Urvanov_Syntax_Highlighter_Settings_WP::save_settings($settings);
             CrayonLog::syslog("Updated from $version to $URVANOV_SYNTAX_HIGHLIGHTER_VERSION");
 
             // Refresh to show new settings
@@ -1185,7 +1185,7 @@ class Urvanov_Syntax_Highlighter_Plugin {
      * @param $encode Whether to detect missing "decode" attribute and encode html entities in the code.
      */
     public static function convert_tags($encode = FALSE) {
-        $crayon_posts = CrayonSettingsWP::load_legacy_posts();
+        $crayon_posts = Urvanov_Syntax_Highlighter_Settings_WP::load_legacy_posts();
         if ($crayon_posts === NULL) {
             return;
         }
@@ -1279,7 +1279,7 @@ if (defined('ABSPATH')) {
 
         add_filter('init', 'Urvanov_Syntax_Highlighter_Plugin::init');
 
-        CrayonSettingsWP::load_settings(TRUE);
+        Urvanov_Syntax_Highlighter_Settings_WP::load_settings(TRUE);
         if (CrayonGlobalSettings::val(CrayonSettings::MAIN_QUERY)) {
             add_action('wp', 'Urvanov_Syntax_Highlighter_Plugin::wp', 100);
         } else {

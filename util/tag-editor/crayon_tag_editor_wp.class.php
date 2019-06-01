@@ -9,15 +9,15 @@ class CrayonTagEditorWP {
     public static function init() {
         // Hooks
         if (URVANOV_SYNTAX_HIGHLIGHTER_TAG_EDITOR) {
-            CrayonSettingsWP::load_settings(TRUE);
+            Urvanov_Syntax_Highlighter_Settings_WP::load_settings(TRUE);
             if (is_admin()) {
                 // XXX Only runs in wp-admin
                 add_action('admin_print_scripts-post-new.php', 'CrayonTagEditorWP::enqueue_resources');
                 add_action('admin_print_scripts-post.php', 'CrayonTagEditorWP::enqueue_resources');
                 add_filter('tiny_mce_before_init', 'CrayonTagEditorWP::init_tinymce');
                 // Must come after
-                add_action("admin_print_scripts-post-new.php", 'CrayonSettingsWP::init_js_settings');
-                add_action("admin_print_scripts-post.php", 'CrayonSettingsWP::init_js_settings');
+                add_action("admin_print_scripts-post-new.php", 'Urvanov_Syntax_Highlighter_Settings_WP::init_js_settings');
+                add_action("admin_print_scripts-post.php", 'Urvanov_Syntax_Highlighter_Settings_WP::init_js_settings');
                 self::addbuttons();
             } else if (CrayonGlobalSettings::val(CrayonSettings::TAG_EDITOR_FRONT)) {
                 // XXX This will always need to enqueue, but only runs on front end
@@ -81,7 +81,7 @@ class CrayonTagEditorWP {
         if (URVANOV_SYNTAX_HIGHLIGHTER_MINIFY) {
             wp_deregister_script('crayon_js');
             wp_enqueue_script('crayon_js', plugins_url(URVANOV_SYNTAX_HIGHLIGHTER_JS_TE_MIN, dirname(dirname(__FILE__))), array('jquery', 'quicktags', 'wp-rich-text' , 'wp-element', 'wp-editor', 'wp-blocks', 'wp-components', 'wp-html-entities'), $URVANOV_SYNTAX_HIGHLIGHTER_VERSION);
-            CrayonSettingsWP::init_js_settings();
+            Urvanov_Syntax_Highlighter_Settings_WP::init_js_settings();
             wp_localize_script('crayon_js', 'CrayonTagEditorSettings', self::$settings);
         } else {
             wp_enqueue_script('crayon_colorbox_js', plugins_url(URVANOV_SYNTAX_HIGHLIGHTER_COLORBOX_JS, __FILE__), array('jquery'), $URVANOV_SYNTAX_HIGHLIGHTER_VERSION);
@@ -89,7 +89,7 @@ class CrayonTagEditorWP {
             wp_enqueue_script('crayon_te_js', plugins_url(URVANOV_SYNTAX_HIGHLIGHTER_TAG_EDITOR_JS, __FILE__), array('crayon_util_js', 'crayon_colorbox_js', 'wpdialogs', 'wp-rich-text' , 'wp-element', 'wp-editor', 'wp-blocks', 'wp-components', 'wp-html-entities'), $URVANOV_SYNTAX_HIGHLIGHTER_VERSION);
             wp_enqueue_script('crayon_qt_js', plugins_url(URVANOV_SYNTAX_HIGHLIGHTER_QUICKTAGS_JS, __FILE__), array('quicktags', 'crayon_te_js'), $URVANOV_SYNTAX_HIGHLIGHTER_VERSION, TRUE);
             wp_localize_script('crayon_te_js', 'CrayonTagEditorSettings', self::$settings);
-            CrayonSettingsWP::other_scripts();
+            Urvanov_Syntax_Highlighter_Settings_WP::other_scripts();
         }
     }
 
@@ -166,7 +166,7 @@ class CrayonTagEditorWP {
     }
 
     public static function content() {
-        CrayonSettingsWP::load_settings();
+        Urvanov_Syntax_Highlighter_Settings_WP::load_settings();
         $langs = Urvanov_Syntax_Highlighter_Langs::sort_by_name(Urvanov_Syntax_Highlighter_Parser::parse_all());
         $curr_lang = CrayonGlobalSettings::val(CrayonSettings::FALLBACK_LANG);
         $themes = Urvanov_Syntax_Highlighter_Resources::themes()->get();
@@ -272,7 +272,7 @@ class CrayonTagEditorWP {
                 $sections = array('Theme', 'Font', 'Metrics', 'Toolbar', 'Lines', 'Code');
                 foreach ($sections as $section) {
                     echo '<tr><th>', Urvanov_Syntax_Highlighter_Global::urvanov__($section), '</th><td>';
-                    call_user_func('CrayonSettingsWP::' . strtolower($section), TRUE);
+                    call_user_func('Urvanov_Syntax_Highlighter_Settings_WP::' . strtolower($section), TRUE);
                     echo '</td></tr>';
                 }
                 ?>

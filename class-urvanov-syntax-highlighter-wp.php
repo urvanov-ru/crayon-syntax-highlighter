@@ -8,8 +8,8 @@ require_once(URVANOV_SYNTAX_HIGHLIGHTER_SETTINGS_PHP);
 /*  Manages global settings within WP and integrates them with CrayonSettings.
  CrayonHighlighter and any non-WP classes will only use CrayonSettings to separate
 the implementation of global settings and ensure any system can use them. */
-
-class CrayonSettingsWP {
+// Old name: CrayonSettingsWP
+class Urvanov_Syntax_Highlighter_Settings_WP {
     // Properties and Constants ===============================================
 
     // A copy of the current options in db
@@ -51,25 +51,25 @@ class CrayonSettingsWP {
     // Methods ================================================================
 
     public static function admin_load() {
-        self::$admin_page = $admin_page = add_options_page('Crayon Syntax Highlighter ' . Urvanov_Syntax_Highlighter_Global::urvanov__('Settings'), 'Crayon', 'manage_options', 'crayon_settings', 'CrayonSettingsWP::settings');
-        add_action("admin_print_scripts-$admin_page", 'CrayonSettingsWP::admin_scripts');
-        add_action("admin_print_styles-$admin_page", 'CrayonSettingsWP::admin_styles');
+        self::$admin_page = $admin_page = add_options_page('Crayon Syntax Highlighter ' . Urvanov_Syntax_Highlighter_Global::urvanov__('Settings'), 'Crayon', 'manage_options', 'crayon_settings', 'Urvanov_Syntax_Highlighter_Settings_WP::settings');
+        add_action("admin_print_scripts-$admin_page", 'Urvanov_Syntax_Highlighter_Settings_WP::admin_scripts');
+        add_action("admin_print_styles-$admin_page", 'Urvanov_Syntax_Highlighter_Settings_WP::admin_styles');
         add_action("admin_print_scripts-$admin_page", 'CrayonThemeEditorWP::admin_resources');
         // Register settings, second argument is option name stored in db
-        register_setting(self::FIELDS, self::OPTIONS, 'CrayonSettingsWP::settings_validate');
-        add_action("admin_head-$admin_page", 'CrayonSettingsWP::admin_init');
+        register_setting(self::FIELDS, self::OPTIONS, 'Urvanov_Syntax_Highlighter_Settings_WP::settings_validate');
+        add_action("admin_head-$admin_page", 'Urvanov_Syntax_Highlighter_Settings_WP::admin_init');
         // Register settings for post page
-        add_action("admin_print_styles-post-new.php", 'CrayonSettingsWP::admin_scripts');
-        add_action("admin_print_styles-post.php", 'CrayonSettingsWP::admin_scripts');
-        add_action("admin_print_styles-post-new.php", 'CrayonSettingsWP::admin_styles');
-        add_action("admin_print_styles-post.php", 'CrayonSettingsWP::admin_styles');
+        add_action("admin_print_styles-post-new.php", 'Urvanov_Syntax_Highlighter_Settings_WP::admin_scripts');
+        add_action("admin_print_styles-post.php", 'Urvanov_Syntax_Highlighter_Settings_WP::admin_scripts');
+        add_action("admin_print_styles-post-new.php", 'Urvanov_Syntax_Highlighter_Settings_WP::admin_styles');
+        add_action("admin_print_styles-post.php", 'Urvanov_Syntax_Highlighter_Settings_WP::admin_styles');
 
         // TODO deprecated since WP 3.3, remove eventually
         global $wp_version;
         if ($wp_version >= '3.3') {
-            add_action("load-$admin_page", 'CrayonSettingsWP::help_screen');
+            add_action("load-$admin_page", 'Urvanov_Syntax_Highlighter_Settings_WP::help_screen');
         } else {
-            add_filter('contextual_help', 'CrayonSettingsWP::cont_help', 10, 3);
+            add_filter('contextual_help', 'Urvanov_Syntax_Highlighter_Settings_WP::cont_help', 10, 3);
         }
     }
 
@@ -150,7 +150,7 @@ class CrayonSettingsWP {
     public static function init_admin_js_settings() {
         if (!self::$admin_js_settings) {
             // We need to load themes at this stage
-            CrayonSettingsWP::load_settings();
+            Urvanov_Syntax_Highlighter_Settings_WP::load_settings();
             $themes_ = Urvanov_Syntax_Highlighter_Resources::themes()->get();
             $stockThemes = array();
             $userThemes = array();
@@ -520,12 +520,12 @@ class CrayonSettingsWP {
 
     private static function add_section($name, $title, $callback = NULL) {
         $callback = (empty($callback) ? 'blank' : $callback);
-        add_settings_section($name, $title, 'CrayonSettingsWP::' . $callback, self::SETTINGS);
+        add_settings_section($name, $title, 'Urvanov_Syntax_Highlighter_Settings_WP::' . $callback, self::SETTINGS);
     }
 
     private static function add_field($section, $title, $callback, $args = array()) {
         $unique = preg_replace('#\\s#', '_', strtolower($title));
-        add_settings_field($unique, $title, 'CrayonSettingsWP::' . $callback, self::SETTINGS, $section, $args);
+        add_settings_field($unique, $title, 'Urvanov_Syntax_Highlighter_Settings_WP::' . $callback, self::SETTINGS, $section, $args);
     }
 
     // Validates all the settings passed from the form in $inputs
@@ -819,7 +819,7 @@ class CrayonSettingsWP {
     }
 
     public static function show_langs() {
-        CrayonSettingsWP::load_settings();
+        Urvanov_Syntax_Highlighter_Settings_WP::load_settings();
         require_once(URVANOV_SYNTAX_HIGHLIGHTER_PARSER_PHP);
         if (($langs = Urvanov_Syntax_Highlighter_Parser::parse_all()) != FALSE) {
             $langs = Urvanov_Syntax_Highlighter_Langs::sort_by_name($langs);
@@ -865,7 +865,7 @@ class CrayonSettingsWP {
     }
 
     public static function show_posts() {
-        CrayonSettingsWP::load_settings();
+        Urvanov_Syntax_Highlighter_Settings_WP::load_settings();
         $postIDs = self::load_posts();
         $legacy_posts = self::load_legacy_posts();
         // Avoids O(n^2) by using a hash map, tradeoff in using strval
@@ -882,7 +882,7 @@ class CrayonSettingsWP {
             $posts[$i] = get_post($postIDs[$i]);
         }
 
-        usort($posts, 'CrayonSettingsWP::post_cmp');
+        usort($posts, 'Urvanov_Syntax_Highlighter_Settings_WP::post_cmp');
 
         for ($i = 0; $i < count($posts); $i++) {
             $post = $posts[$i];
@@ -1266,8 +1266,8 @@ class Human {
 
 if (defined('ABSPATH') && is_admin()) {
     // For the admin section
-    add_action('admin_menu', 'CrayonSettingsWP::admin_load');
-    add_filter('plugin_row_meta', 'CrayonSettingsWP::plugin_row_meta', 10, 2);
+    add_action('admin_menu', 'Urvanov_Syntax_Highlighter_Settings_WP::admin_load');
+    add_filter('plugin_row_meta', 'Urvanov_Syntax_Highlighter_Settings_WP::plugin_row_meta', 10, 2);
 }
 
 ?>

@@ -169,7 +169,7 @@ class CrayonThemeEditorWP {
     }
 
     public static function initSettings() {
-        CrayonSettingsWP::load_settings();
+        Urvanov_Syntax_Highlighter_Settings_WP::load_settings();
         self::initFields();
         self::initStrings();
         if (self::$settings === NULL) {
@@ -643,7 +643,7 @@ class CrayonThemeEditorWP {
      * Echos 0 on failure, 1 on success and 2 on success and if paths have changed.
      */
     public static function save() {
-        CrayonSettingsWP::load_settings();
+        Urvanov_Syntax_Highlighter_Settings_WP::load_settings();
         $oldID = stripslashes($_POST['id']);
         $name = stripslashes($_POST['name']);
         $css = stripslashes($_POST['css']);
@@ -736,7 +736,7 @@ class CrayonThemeEditorWP {
             // Set the new theme in settings
             if ($change_settings) {
                 CrayonGlobalSettings::set(CrayonSettings::THEME, $newID);
-                CrayonSettingsWP::save_settings();
+                Urvanov_Syntax_Highlighter_Settings_WP::save_settings();
             }
         } else {
             CrayonLog::syslog("$oldID=$oldID\n\n$name=$name", "THEME SAVE");
@@ -746,7 +746,7 @@ class CrayonThemeEditorWP {
     }
 
     public static function duplicate() {
-        CrayonSettingsWP::load_settings();
+        Urvanov_Syntax_Highlighter_Settings_WP::load_settings();
         $oldID = $_POST['id'];
         $oldPath = Urvanov_Syntax_Highlighter_Resources::themes()->path($oldID);
         $_POST['css'] = file_get_contents($oldPath);
@@ -757,14 +757,14 @@ class CrayonThemeEditorWP {
     }
 
     public static function delete() {
-        CrayonSettingsWP::load_settings();
+        Urvanov_Syntax_Highlighter_Settings_WP::load_settings();
         $id = $_POST['id'];
         $dir = Urvanov_Syntax_Highlighter_Resources::themes()->dirpath_for_id($id);
         if (is_dir($dir) && Urvanov_Syntax_Highlighter_Resources::themes()->exists($id)) {
             try {
                 CrayonUtil::deleteDir($dir);
                 CrayonGlobalSettings::set(CrayonSettings::THEME, CrayonThemes::DEFAULT_THEME);
-                CrayonSettingsWP::save_settings();
+                Urvanov_Syntax_Highlighter_Settings_WP::save_settings();
                 echo 1;
             } catch (Exception $e) {
                 CrayonLog::syslog($e->getMessage(), "THEME SAVE");
@@ -778,7 +778,7 @@ class CrayonThemeEditorWP {
 
     public static function submit() {
         global $URVANOV_SYNTAX_HIGHLIGHTER_EMAIL;
-        CrayonSettingsWP::load_settings();
+        Urvanov_Syntax_Highlighter_Settings_WP::load_settings();
         $id = $_POST['id'];
         $message = $_POST['message'];
         $dir = Urvanov_Syntax_Highlighter_Resources::themes()->dirpath_for_id($id);

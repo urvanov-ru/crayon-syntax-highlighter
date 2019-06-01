@@ -76,7 +76,7 @@ class Urvanov_Syntax_Highlighter {
 		if (function_exists('wp_remote_get')) {
 			$url_uid = 'crayon_' . CrayonUtil::str_uid($url);
 			$cached = get_transient($url_uid, 'crayon-syntax');
-			CrayonSettingsWP::load_cache();
+			Urvanov_Syntax_Highlighter_Settings_WP::load_cache();
 			if ($cached !== FALSE) {
 				$content = $cached;
 				$http_code = 200;
@@ -88,7 +88,7 @@ class Urvanov_Syntax_Highlighter {
 				$cache_sec = CrayonSettings::get_cache_sec($cache);
 				if ($cache_sec > 1 && $http_code >= 200 && $http_code < 400) {
 					set_transient($url_uid, $content, $cache_sec);
-					CrayonSettingsWP::add_cache($url_uid);
+					Urvanov_Syntax_Highlighter_Settings_WP::add_cache($url_uid);
 				}
 			}
 		} else if (in_array(parse_url($url, PHP_URL_SCHEME), array('ssl', 'http', 'https'))) {
