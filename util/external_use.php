@@ -11,7 +11,7 @@ CrayonGlobalSettings::plugin_path('http://localhost/crayon/wp-content/plugins/cr
 // Should be in the header
 crayon_resources();
 
-$crayon = new CrayonHighlighter();
+$crayon = new Urvanov_Syntax_Highlighter();
 $crayon->code('some code');
 $crayon->language('php');
 $crayon->title('the title');

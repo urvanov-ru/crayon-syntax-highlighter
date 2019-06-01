@@ -175,7 +175,7 @@ class Urvanov_Syntax_Highlighter_Plugin {
         CrayonLog::debug('instance');
 
         // Create Crayon
-        $highlighter_instance = new CrayonHighlighter();
+        $highlighter_instance = new Urvanov_Syntax_Highlighter();
 
         /* Load settings and merge shortcode attributes which will override any existing.
          * Stores the other shortcode attributes as settings in the crayon. */

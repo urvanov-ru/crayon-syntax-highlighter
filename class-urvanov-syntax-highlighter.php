@@ -7,7 +7,8 @@ require_once (URVANOV_SYNTAX_HIGHLIGHTER_SETTINGS_PHP);
 require_once (URVANOV_SYNTAX_HIGHLIGHTER_LANGS_PHP);
 
 /* The main class for managing the syntax highlighter */
-class CrayonHighlighter {
+// Old name: CrayonHighlighter
+class Urvanov_Syntax_Highlighter {
 	// Properties and Constants ===============================================
 	private $id = '';
 	// URL is initially NULL, meaning none provided
