@@ -23,7 +23,7 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
-require_once('global.php');
+require_once('class-urvanov-syntax-highlighter-global.php');
 require_once(URVANOV_SYNTAX_HIGHLIGHTER_HIGHLIGHTER_PHP);
 if (URVANOV_SYNTAX_HIGHLIGHTER_TAG_EDITOR) {
     require_once(URVANOV_SYNTAX_HIGHLIGHTER_TAG_EDITOR_PHP);

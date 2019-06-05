@@ -1,5 +1,5 @@
 <?php
-require_once('global.php');
+require_once('class-urvanov-syntax-highlighter-global.php');
 require_once(URVANOV_SYNTAX_HIGHLIGHTER_PARSER_PHP);
 require_once(URVANOV_SYNTAX_HIGHLIGHTER_THEMES_PHP);
 

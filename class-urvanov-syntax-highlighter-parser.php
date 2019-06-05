@@ -1,5 +1,5 @@
 <?php
-require_once ('global.php');
+require_once ('class-urvanov-syntax-highlighter-global.php');
 require_once (URVANOV_SYNTAX_HIGHLIGHTER_LANGS_PHP);
 
 /*	Manages parsing the syntax for any given language, constructing the regex, and validating the

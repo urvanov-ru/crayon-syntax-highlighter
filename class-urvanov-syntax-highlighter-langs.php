@@ -1,5 +1,5 @@
 <?php
-require_once ('global.php');
+require_once ('class-urvanov-syntax-highlighter-global.php');
 require_once (URVANOV_SYNTAX_HIGHLIGHTER_RESOURCE_PHP);
 
 // Old name: Urvanov_Syntax_Highlighter_LangsResourceType
