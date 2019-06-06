@@ -410,7 +410,7 @@ class Urvanov_Syntax_Highlighter_Settings {
             // Booleans settings that are sent as string are allowed to have "false" == false
             if (is_bool($setting->def())) {
                 if (is_string($value)) {
-                    $value = CrayonUtil::str_to_bool($value);
+                    $value = UrvanovSyntaxHighlighterUtil::str_to_bool($value);
                 }
             } else {
                 // Ensure we don't cast integer settings to 0 because $value doesn't have any numbers in it
@@ -479,7 +479,7 @@ class Urvanov_Syntax_Highlighter_Settings {
         // If a setting is given, it is automatically enabled
         foreach ($settings as $name => $value) {
             if (($setting = Urvanov_Syntax_Highlighter_Global_Settings::get($name)) !== FALSE && is_bool($setting->def())) {
-                $value = CrayonUtil::str_to_bool($value);
+                $value = UrvanovSyntaxHighlighterUtil::str_to_bool($value);
             }
 
             // XXX removed height and width, since it wasn't using the global settings for mode if only height was provided
@@ -501,21 +501,21 @@ class Urvanov_Syntax_Highlighter_Settings {
                 $settings[Urvanov_Syntax_Highlighter_Settings::ERROR_MSG_SHOW] = TRUE;
             } else if ($name == Urvanov_Syntax_Highlighter_Settings::H_ALIGN) {
                 $settings[Urvanov_Syntax_Highlighter_Settings::FLOAT_ENABLE] = TRUE;
-                $value = CrayonUtil::tlower($value);
+                $value = UrvanovSyntaxHighlighterUtil::tlower($value);
                 $values = array('none' => 0, 'left' => 1, 'center' => 2, 'right' => 3);
                 if (array_key_exists($value, $values)) {
                     $settings[Urvanov_Syntax_Highlighter_Settings::H_ALIGN] = $values[$value];
                 }
             } else if ($name == Urvanov_Syntax_Highlighter_Settings::SHOW_LANG) {
-                $value = CrayonUtil::tlower($value);
+                $value = UrvanovSyntaxHighlighterUtil::tlower($value);
                 $values = array('found' => 0, 'always' => 1, 'true' => 1, 'never' => 2, 'false' => 2);
                 if (array_key_exists($value, $values)) {
                     $settings[Urvanov_Syntax_Highlighter_Settings::SHOW_LANG] = $values[$value];
                 }
             } else if ($name == Urvanov_Syntax_Highlighter_Settings::TOOLBAR) {
-                if (CrayonUtil::tlower($value) == 'always') {
+                if (UrvanovSyntaxHighlighterUtil::tlower($value) == 'always') {
                     $settings[Urvanov_Syntax_Highlighter_Settings::TOOLBAR] = 1;
-                } else if (CrayonUtil::str_to_bool($value) === FALSE) {
+                } else if (UrvanovSyntaxHighlighterUtil::str_to_bool($value) === FALSE) {
                     $settings[Urvanov_Syntax_Highlighter_Settings::TOOLBAR] = 2;
                 }
             }
@@ -621,7 +621,7 @@ class Urvanov_Syntax_Highlighter_Global_Settings {
         if ($site_http === NULL) {
             return self::$site_http;
         } else {
-            self::$site_http = CrayonUtil::url_slash($site_http);
+            self::$site_http = UrvanovSyntaxHighlighterUtil::url_slash($site_http);
         }
     }
 
@@ -629,7 +629,7 @@ class Urvanov_Syntax_Highlighter_Global_Settings {
         if ($site_path === NULL) {
             return self::$site_path;
         } else {
-            self::$site_path = CrayonUtil::path_slash($site_path);
+            self::$site_path = UrvanovSyntaxHighlighterUtil::path_slash($site_path);
         }
     }
 
@@ -637,7 +637,7 @@ class Urvanov_Syntax_Highlighter_Global_Settings {
         if ($plugin_path === NULL) {
             return self::$plugin_path;
         } else {
-            self::$plugin_path = CrayonUtil::path_slash($plugin_path);
+            self::$plugin_path = UrvanovSyntaxHighlighterUtil::path_slash($plugin_path);
         }
     }
 
@@ -645,7 +645,7 @@ class Urvanov_Syntax_Highlighter_Global_Settings {
         if ($upload_path === NULL) {
             return self::$upload_path;
         } else {
-            self::$upload_path = CrayonUtil::path_slash($upload_path);
+            self::$upload_path = UrvanovSyntaxHighlighterUtil::path_slash($upload_path);
         }
     }
 
@@ -653,7 +653,7 @@ class Urvanov_Syntax_Highlighter_Global_Settings {
         if ($upload_url === NULL) {
             return self::$upload_url;
         } else {
-            self::$upload_url = CrayonUtil::url_slash($upload_url);
+            self::$upload_url = UrvanovSyntaxHighlighterUtil::url_slash($upload_url);
         }
     }
 
@@ -766,7 +766,7 @@ class Urvanov_Syntax_Highlighter_Setting {
     }
 
     function name($name = NULL) {
-        if (!CrayonUtil::str($this->name, $name)) {
+        if (!UrvanovSyntaxHighlighterUtil::str($this->name, $name)) {
             return $this->name;
         }
     }
@@ -845,7 +845,7 @@ class Urvanov_Syntax_Highlighter_Setting {
                 } else {
                     // Ensure all values are unique strings
 
-                    $default = CrayonUtil::array_unique_str($default);
+                    $default = UrvanovSyntaxHighlighterUtil::array_unique_str($default);
                 }
                 $this->value = 0; // initial index
 

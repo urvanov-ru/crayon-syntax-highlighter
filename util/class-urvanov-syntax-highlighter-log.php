@@ -11,7 +11,7 @@ class UrvanovSyntaxHighlighterLog {
 		if ($var === NULL) {
 			// Return log
 
-			if (($log = CrayonUtil::file(URVANOV_SYNTAX_HIGHLIGHTER_LOG_FILE)) !== FALSE) {
+			if (($log = UrvanovSyntaxHighlighterUtil::file(URVANOV_SYNTAX_HIGHLIGHTER_LOG_FILE)) !== FALSE) {
 				return $log;
 			} else {
 				return '';
@@ -35,7 +35,7 @@ class UrvanovSyntaxHighlighterLog {
 
 				// Remove absolute path to plugin directory from buffer
 				if ($trim_url) {
-					$buffer = CrayonUtil::path_rel($buffer);
+					$buffer = UrvanovSyntaxHighlighterUtil::path_rel($buffer);
 				}
 				$write = $title . ' ' . $buffer . URVANOV_SYNTAX_HIGHLIGHTER_NL /* . URVANOV_SYNTAX_HIGHLIGHTER_LINE . URVANOV_SYNTAX_HIGHLIGHTER_NL*/;
 				
@@ -80,7 +80,7 @@ class UrvanovSyntaxHighlighterLog {
 	}
 
 	public static function email($to, $from = NULL) {
-		if (($log_contents = CrayonUtil::file(URVANOV_SYNTAX_HIGHLIGHTER_LOG_FILE)) !== FALSE) {
+		if (($log_contents = UrvanovSyntaxHighlighterUtil::file(URVANOV_SYNTAX_HIGHLIGHTER_LOG_FILE)) !== FALSE) {
 			$headers = $from ? 'From: ' . $from : '';
 			$result = @mail($to, 'Crayon Syntax Highlighter Log', $log_contents, $headers);
 			self::log('The log was emailed to the admin.', 'Log Email');

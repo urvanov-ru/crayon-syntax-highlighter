@@ -1,7 +1,7 @@
 <?php
 
 /* Common utility functions mainly for formatting, parsing etc. */
-class CrayonUtil {
+class UrvanovSyntaxHighlighterUtil {
 
     // Used to detect touchscreen devices
     private static $touchscreen = NULL;
@@ -97,7 +97,7 @@ class CrayonUtil {
         }
 
         if (is_dir($src)) {
-            $src = CrayonUtil::path_slash($src);
+            $src = UrvanovSyntaxHighlighterUtil::path_slash($src);
             $base = $src;
             // Make sure the destination isn't in the files
             $files = self::getFiles($src, array('recursive' => TRUE, 'ignore' => array($dest)));
@@ -109,7 +109,7 @@ class CrayonUtil {
         }
 
         if (is_dir($dest)) {
-            $dest = CrayonUtil::path_slash($dest);
+            $dest = UrvanovSyntaxHighlighterUtil::path_slash($dest);
             $zipFile = $dest . basename($src) . '.zip';
         } else if (is_file($dest)) {
             $zipFile = $dest;
@@ -236,7 +236,7 @@ EOT;
         if ($ignore) {
             foreach ($ignore as $i) {
                 if (is_dir($i)) {
-                    $i = CrayonUtil::path_slash($i);
+                    $i = UrvanovSyntaxHighlighterUtil::path_slash($i);
                 }
                 $ignore_map[$i] = TRUE;
             }

@@ -89,7 +89,7 @@ class Urvanov_Syntax_Highlighter_Formatter {
         // Print theme id
         // We make the assumption that the id is correct (checked in crayon_wp)
         $theme_id = $hl->setting_val(Urvanov_Syntax_Highlighter_Settings::THEME);
-        $theme_id_dashed = CrayonUtil::space_to_hyphen($theme_id);
+        $theme_id_dashed = UrvanovSyntaxHighlighterUtil::space_to_hyphen($theme_id);
         if (!$hl->setting_val(Urvanov_Syntax_Highlighter_Settings::ENQUEUE_THEMES)) {
             $output .= Urvanov_Syntax_Highlighter_Resources::themes()->get_css($theme_id);
         }
@@ -97,7 +97,7 @@ class Urvanov_Syntax_Highlighter_Formatter {
         // Print font id
         // We make the assumption that the id is correct (checked in crayon_wp)
         $font_id = $hl->setting_val(Urvanov_Syntax_Highlighter_Settings::FONT);
-        $font_id_dashed = CrayonUtil::space_to_hyphen($font_id);
+        $font_id_dashed = UrvanovSyntaxHighlighterUtil::space_to_hyphen($font_id);
         if (!$hl->setting_val(Urvanov_Syntax_Highlighter_Settings::ENQUEUE_FONTS)) {
             $output .= Urvanov_Syntax_Highlighter_Resources::fonts()->get_css($font_id);
         }
@@ -220,7 +220,7 @@ class Urvanov_Syntax_Highlighter_Formatter {
         $title = $hl->title();
         // Decode if needed
         if ($hl->setting_val(Urvanov_Syntax_Highlighter_Settings::DECODE_ATTRIBUTES)) {
-            $title = CrayonUtil::html_entity_decode($title);
+            $title = UrvanovSyntaxHighlighterUtil::html_entity_decode($title);
         }
         $print_title = '<span class="crayon-title">' . $title . '</span>';
         // Determine whether to print language
@@ -245,7 +245,7 @@ class Urvanov_Syntax_Highlighter_Formatter {
         $code_settings = '';
         // Disable mouseover for touchscreen devices and mobiles, if we are told to
         $touch = FALSE; // Whether we have detected a touchscreen device
-        if ($hl->setting_val(Urvanov_Syntax_Highlighter_Settings::TOUCHSCREEN) && CrayonUtil::is_touch()) {
+        if ($hl->setting_val(Urvanov_Syntax_Highlighter_Settings::TOUCHSCREEN) && UrvanovSyntaxHighlighterUtil::is_touch()) {
             $touch = TRUE;
             $code_settings .= ' touchscreen';
         }
@@ -441,7 +441,7 @@ class Urvanov_Syntax_Highlighter_Formatter {
         $code_style .= $clear_style;
 
         // Determine if operating system is mac
-        $crayon_os = CrayonUtil::is_mac() ? 'mac' : 'pc';
+        $crayon_os = UrvanovSyntaxHighlighterUtil::is_mac() ? 'mac' : 'pc';
 
         // Produce output
         $output .= '
@@ -551,7 +551,7 @@ class Urvanov_Syntax_Highlighter_Formatter {
         }
         /* Convert <, > and & characters to entities, as these can appear as HTML tags and entities. */
         if ($escape) {
-            $code = CrayonUtil::htmlspecialchars($code);
+            $code = UrvanovSyntaxHighlighterUtil::htmlspecialchars($code);
         }
         if ($spaces) {
             // Replace 2 spaces with html escaped characters
@@ -574,7 +574,7 @@ class Urvanov_Syntax_Highlighter_Formatter {
             $code = $code[1];
         }
         if (!$encoded) {
-            $code = CrayonUtil::htmlentities($code);
+            $code = UrvanovSyntaxHighlighterUtil::htmlentities($code);
         }
         if (Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::TRIM_WHITESPACE)) {
             $code = trim($code);

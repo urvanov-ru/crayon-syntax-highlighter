@@ -688,10 +688,10 @@ class Urvanov_Syntax_Highlighter_Settings_WP {
 
     private static function button($args = array()) {
         extract($args);
-        CrayonUtil::set_var($id, '');
-        CrayonUtil::set_var($class, '');
-        CrayonUtil::set_var($onclick, '');
-        CrayonUtil::set_var($title, '');
+        UrvanovSyntaxHighlighterUtil::set_var($id, '');
+        UrvanovSyntaxHighlighterUtil::set_var($class, '');
+        UrvanovSyntaxHighlighterUtil::set_var($onclick, '');
+        UrvanovSyntaxHighlighterUtil::set_var($title, '');
         return '<a id="' . $id . '" class="button-primary ' . $class . '" onclick="' . $onclick . '">' . $title . '</a>';
     }
 
@@ -835,7 +835,7 @@ class Urvanov_Syntax_Highlighter_Settings_WP {
                 '<td>', $lang->version(), '</td>',
                 '<td>', implode(', ', $lang->ext()), '</td>',
                 '<td>', implode(', ', $lang->alias()), '</td>',
-                '<td class="', strtolower(CrayonUtil::space_to_hyphen($lang->state_info())), '">',
+                '<td class="', strtolower(UrvanovSyntaxHighlighterUtil::space_to_hyphen($lang->state_info())), '">',
                 $lang->state_info(), '</td>',
                 '</tr>';
             }

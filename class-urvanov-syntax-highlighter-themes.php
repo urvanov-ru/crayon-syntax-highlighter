@@ -38,7 +38,7 @@ class Urvanov_Syntax_Highlighter_Themes extends Urvanov_Syntax_Highlighter_User_
 
     // XXX Override
     public function filename($id, $user = NULL) {
-        return CrayonUtil::path_slash($id) . parent::filename($id, $user);
+        return UrvanovSyntaxHighlighterUtil::path_slash($id) . parent::filename($id, $user);
     }
 
 }

@@ -98,7 +98,7 @@ class Urvanov_Syntax_Highlighter_Resource_Collection {
 						// Check if $file is directory, remove extension when checking for existence.
 
 						if (!is_dir($dir . $file)) {
-							$file = CrayonUtil::path_rem_ext($file);
+							$file = UrvanovSyntaxHighlighterUtil::path_rem_ext($file);
 						}
 						if ($this->exists($file)) {
 							$this->add_resource($this->resource_instance($file));
@@ -222,7 +222,7 @@ class Urvanov_Syntax_Highlighter_Resource_Collection {
         if ($dir === NULL) {
             return $this->dir;
         } else {
-            $this->dir = CrayonUtil::path_slash($dir);
+            $this->dir = UrvanovSyntaxHighlighterUtil::path_slash($dir);
         }
 	}
 
@@ -317,7 +317,7 @@ class Urvanov_Syntax_Highlighter_User_Resource_Collection extends Urvanov_Syntax
         if ($dir === NULL) {
             return $this->user_dir;
         } else {
-            $this->user_dir = CrayonUtil::path_slash($dir);
+            $this->user_dir = UrvanovSyntaxHighlighterUtil::path_slash($dir);
         }
     }
 
@@ -366,7 +366,7 @@ class Urvanov_Syntax_Highlighter_User_Resource_Collection extends Urvanov_Syntax
 
     public function dirpath($user = NULL) {
         $path = $user ? $this->user_directory() : $this->directory();
-        return CrayonUtil::path_slash($path);
+        return UrvanovSyntaxHighlighterUtil::path_slash($path);
     }
 
     public function dirpath_for_id($id, $user = NULL) {
@@ -376,7 +376,7 @@ class Urvanov_Syntax_Highlighter_User_Resource_Collection extends Urvanov_Syntax
 
     public function dirurl($user = NULL) {
         $path = $user ? Urvanov_Syntax_Highlighter_Global_Settings::upload_url() : Urvanov_Syntax_Highlighter_Global_Settings::plugin_path();
-        return CrayonUtil::path_slash($path . $this->relative_directory());
+        return UrvanovSyntaxHighlighterUtil::path_slash($path . $this->relative_directory());
     }
 
     // XXX Override
@@ -404,7 +404,7 @@ class Urvanov_Syntax_Highlighter_Resource {
 
 	function __construct($id, $name = NULL) {
 		$id = $this->clean_id($id);
-		CrayonUtil::str($this->id, $id);
+		UrvanovSyntaxHighlighterUtil::str($this->id, $id);
 		( empty($name) ) ? $this->name( self::clean_name($this->id) ) : $this->name($name);
 	}
 
@@ -425,13 +425,13 @@ class Urvanov_Syntax_Highlighter_Resource {
 	}
 
 	function clean_id($id) {
-        $id = CrayonUtil::space_to_hyphen( strtolower(trim($id)) );
+        $id = UrvanovSyntaxHighlighterUtil::space_to_hyphen( strtolower(trim($id)) );
         return preg_replace('#[^\w-]#msi', '', $id);
 	}
 
 	public static function clean_name($id) {
-		$id = CrayonUtil::hyphen_to_space( strtolower(trim($id)) );
-		return CrayonUtil::ucwords($id);
+		$id = UrvanovSyntaxHighlighterUtil::hyphen_to_space( strtolower(trim($id)) );
+		return UrvanovSyntaxHighlighterUtil::ucwords($id);
 	}
 
 }

@@ -150,7 +150,7 @@ class CrayonThemeEditorWP {
                 'maintainer' => 'Maintainer',
                 'maintainer-url' => 'Maintainer URL'
             );
-            self::$infoFieldsInverse = CrayonUtil::array_flip(self::$infoFields);
+            self::$infoFieldsInverse = UrvanovSyntaxHighlighterUtil::array_flip(self::$infoFields);
             // A map of CSS element name and property to name
             self::$attributes = array();
             // A map of CSS attribute to input type
@@ -159,12 +159,12 @@ class CrayonThemeEditorWP {
                 'size' => array('border-width'),
                 'border-style' => array('border-style', 'border-bottom-style', 'border-top-style', 'border-left-style', 'border-right-style')
             );
-            self::$attributeGroupsInverse = CrayonUtil::array_flip(self::$attributeGroups);
+            self::$attributeGroupsInverse = UrvanovSyntaxHighlighterUtil::array_flip(self::$attributeGroups);
             // Mapping of input type to attribute group
             self::$attributeTypes = array(
                 'select' => array('border-style', 'font-style', 'font-weight', 'text-decoration')
             );
-            self::$attributeTypesInverse = CrayonUtil::array_flip(self::$attributeTypes);
+            self::$attributeTypesInverse = UrvanovSyntaxHighlighterUtil::array_flip(self::$attributeTypes);
         }
     }
 
@@ -285,7 +285,7 @@ class CrayonThemeEditorWP {
         }
 
         if (isset($_GET['editing'])) {
-            $editing = CrayonUtil::str_to_bool($_GET['editing'], FALSE);
+            $editing = UrvanovSyntaxHighlighterUtil::str_to_bool($_GET['editing'], FALSE);
         }
 
         $tInformation = Urvanov_Syntax_Highlighter_Global::urvanov__("Information");
@@ -647,10 +647,10 @@ class CrayonThemeEditorWP {
         $oldID = stripslashes($_POST['id']);
         $name = stripslashes($_POST['name']);
         $css = stripslashes($_POST['css']);
-        $change_settings = CrayonUtil::set_default($_POST['change_settings'], TRUE);
-        $allow_edit = CrayonUtil::set_default($_POST['allow_edit'], TRUE);
-        $allow_edit_stock_theme = CrayonUtil::set_default($_POST['allow_edit_stock_theme'], URVANOV_SYNTAX_HIGHLIGHTER_DEBUG);
-        $delete = CrayonUtil::set_default($_POST['delete'], TRUE);
+        $change_settings = UrvanovSyntaxHighlighterUtil::set_default($_POST['change_settings'], TRUE);
+        $allow_edit = UrvanovSyntaxHighlighterUtil::set_default($_POST['allow_edit'], TRUE);
+        $allow_edit_stock_theme = UrvanovSyntaxHighlighterUtil::set_default($_POST['allow_edit_stock_theme'], URVANOV_SYNTAX_HIGHLIGHTER_DEBUG);
+        $delete = UrvanovSyntaxHighlighterUtil::set_default($_POST['delete'], TRUE);
         $oldTheme = Urvanov_Syntax_Highlighter_Resources::themes()->get($oldID);
 
         if (!empty($oldID) && !empty($css) && !empty($name)) {
@@ -686,7 +686,7 @@ class CrayonThemeEditorWP {
                 if (is_dir($imageSrc)) {
                     try {
                         // Copy image folder
-                        CrayonUtil::copyDir($imageSrc, $newDir . 'images', 'wp_mkdir_p');
+                        UrvanovSyntaxHighlighterUtil::copyDir($imageSrc, $newDir . 'images', 'wp_mkdir_p');
                     } catch (Exception $e) {
                         UrvanovSyntaxHighlighterLog::syslog($e->getMessage(), "THEME SAVE");
                     }
@@ -715,7 +715,7 @@ class CrayonThemeEditorWP {
                     // Only delete the old path if it isn't the default theme
                     try {
                         // Delete the old path
-                        CrayonUtil::deleteDir($oldDir);
+                        UrvanovSyntaxHighlighterUtil::deleteDir($oldDir);
                     } catch (Exception $e) {
                         UrvanovSyntaxHighlighterLog::syslog($e->getMessage(), "THEME SAVE");
                     }
@@ -762,7 +762,7 @@ class CrayonThemeEditorWP {
         $dir = Urvanov_Syntax_Highlighter_Resources::themes()->dirpath_for_id($id);
         if (is_dir($dir) && Urvanov_Syntax_Highlighter_Resources::themes()->exists($id)) {
             try {
-                CrayonUtil::deleteDir($dir);
+                UrvanovSyntaxHighlighterUtil::deleteDir($dir);
                 Urvanov_Syntax_Highlighter_Global_Settings::set(Urvanov_Syntax_Highlighter_Settings::THEME, Urvanov_Syntax_Highlighter_Themes::DEFAULT_THEME);
                 Urvanov_Syntax_Highlighter_Settings_WP::save_settings();
                 echo 1;
@@ -787,15 +787,15 @@ class CrayonThemeEditorWP {
 
         if (is_dir($dir) && Urvanov_Syntax_Highlighter_Resources::themes()->exists($id)) {
             try {
-                $zipFile = CrayonUtil::createZip($dir, $dest, TRUE);
-                $result = CrayonUtil::emailFile(array(
+                $zipFile = UrvanovSyntaxHighlighterUtil::createZip($dir, $dest, TRUE);
+                $result = UrvanovSyntaxHighlighterUtil::emailFile(array(
                     'to' => $URVANOV_SYNTAX_HIGHLIGHTER_EMAIL,
                     'from' => get_bloginfo('admin_email'),
                     'subject' => 'Theme Editor Submission',
                     'message' => $message,
                     'file' => $zipFile
                 ));
-                CrayonUtil::deleteDir($dest);
+                UrvanovSyntaxHighlighterUtil::deleteDir($dest);
                 if ($result) {
                     echo 1;
                 } else {

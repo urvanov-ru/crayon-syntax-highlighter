@@ -61,20 +61,20 @@ class Urvanov_Syntax_Highlighter {
 		// from executing when they are loaded.
 		$url = $this->url;
 		if ($this->setting_val(Urvanov_Syntax_Highlighter_Settings::DECODE_ATTRIBUTES)) {
-			$url = CrayonUtil::html_entity_decode($url);
+			$url = UrvanovSyntaxHighlighterUtil::html_entity_decode($url);
 		}
-		$url = CrayonUtil::pathf($url);
+		$url = UrvanovSyntaxHighlighterUtil::pathf($url);
 		$site_http = Urvanov_Syntax_Highlighter_Global_Settings::site_url();
 		$scheme = parse_url($url, PHP_URL_SCHEME);
 		// Try to replace the site URL with a path to force local loading
 		if (empty($scheme)) {
 			// No url scheme is given - path may be given as relative
-			$url = CrayonUtil::path_slash($site_http) . CrayonUtil::path_slash($this->setting_val(Urvanov_Syntax_Highlighter_Settings::LOCAL_PATH)) . $url;
+			$url = UrvanovSyntaxHighlighterUtil::path_slash($site_http) . UrvanovSyntaxHighlighterUtil::path_slash($this->setting_val(Urvanov_Syntax_Highlighter_Settings::LOCAL_PATH)) . $url;
 		}
 		$http_code = 0;
 		// If available, use the built in wp remote http get function.
 		if (function_exists('wp_remote_get')) {
-			$url_uid = 'crayon_' . CrayonUtil::str_uid($url);
+			$url_uid = 'crayon_' . UrvanovSyntaxHighlighterUtil::str_uid($url);
 			$cached = get_transient($url_uid, 'crayon-syntax');
 			Urvanov_Syntax_Highlighter_Settings_WP::load_cache();
 			if ($cached !== FALSE) {
@@ -152,7 +152,7 @@ class Urvanov_Syntax_Highlighter {
 				}
 				// Decode html entities (e.g. if using visual editor or manually encoding)
 				if ($this->setting_val(Urvanov_Syntax_Highlighter_Settings::DECODE)) {
-					$code = CrayonUtil::html_entity_decode($code);
+					$code = UrvanovSyntaxHighlighterUtil::html_entity_decode($code);
 				}
 				// Save code so output is plain output is the same
 				$this->code = $code;
@@ -262,13 +262,13 @@ class Urvanov_Syntax_Highlighter {
 	}
 
 	function title($title = NULL) {
-		if (!CrayonUtil::str($this->title, $title)) {
+		if (!UrvanovSyntaxHighlighterUtil::str($this->title, $title)) {
 			return $this->title;
 		}
 	}
 
 	function line_count($line_count = NULL) {
-		if (!CrayonUtil::num($this->line_count, $line_count)) {
+		if (!UrvanovSyntaxHighlighterUtil::num($this->line_count, $line_count)) {
 			return $this->line_count;
 		}
 	}
@@ -280,16 +280,16 @@ class Urvanov_Syntax_Highlighter {
 		// If only an int is given
 		if (is_int($str)) {
 			$array = array($str);
-			return CrayonUtil::arr($this->marked_lines, $array);
+			return UrvanovSyntaxHighlighterUtil::arr($this->marked_lines, $array);
 		}
 		// A string with ints separated by commas, can also contain ranges
-		$array = CrayonUtil::trim_e($str);
+		$array = UrvanovSyntaxHighlighterUtil::trim_e($str);
 		$array = array_unique($array);
 		$lines = array();
 		foreach ($array as $line) {
 			// Check for ranges
 			if (strpos($line, '-') !== FALSE) {
-				$ranges = CrayonUtil::range_str($line);
+				$ranges = UrvanovSyntaxHighlighterUtil::range_str($line);
 				$lines = array_merge($lines, $ranges);
 			} else {
 				// Otherwise check the string for a number
@@ -299,14 +299,14 @@ class Urvanov_Syntax_Highlighter {
 				}
 			}
 		}
-		return CrayonUtil::arr($this->marked_lines, $lines);
+		return UrvanovSyntaxHighlighterUtil::arr($this->marked_lines, $lines);
 	}
 	
 	function range($str = NULL) {
 		if ($str === NULL) {
 			return $this->range;
 		} else {
-			$range = CrayonUtil::range_str_single($str);
+			$range = UrvanovSyntaxHighlighterUtil::range_str_single($str);
 			if ($range) {
 				$this->range = $range;
 			}
@@ -416,7 +416,7 @@ class Urvanov_Syntax_Highlighter {
 		if ($inline === NULL) {
 			return $this->is_inline;			
 		} else {
-			$inline = CrayonUtil::str_to_bool($inline, FALSE);
+			$inline = UrvanovSyntaxHighlighterUtil::str_to_bool($inline, FALSE);
 			$this->is_inline = $inline;
 		}
 	}

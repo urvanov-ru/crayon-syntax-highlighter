@@ -53,7 +53,7 @@ class Urvanov_Syntax_Highlighter_Parser {
 		// Read language file
 		$path = Urvanov_Syntax_Highlighter_Resources::langs()->path($id);
         UrvanovSyntaxHighlighterLog::debug('Parsing language ' . $path);
-		if ( ($file = CrayonUtil::lines($path, 'wcs')) === FALSE ) {
+		if ( ($file = UrvanovSyntaxHighlighterUtil::lines($path, 'wcs')) === FALSE ) {
             UrvanovSyntaxHighlighterLog::debug('Parsing failed ' . $path);
 			return FALSE;
 		}
@@ -164,7 +164,7 @@ class Urvanov_Syntax_Highlighter_Parser {
 			if ( count($file) == 2 ) {
 				// Element 0 has full match, 1 has captured groups
 				for ($i = 0; $i < count($file[1]); $i++) {
-					$file_lines = CrayonUtil::lines(dirname($element->path()) . Urvanov_Syntax_Highlighter_Global::fix_s() . $file[1][$i], 'rcwh');
+					$file_lines = UrvanovSyntaxHighlighterUtil::lines(dirname($element->path()) . Urvanov_Syntax_Highlighter_Global::fix_s() . $file[1][$i], 'rcwh');
 					if ($file_lines !== FALSE) {
 						$file_lines = implode('|', $file_lines);
 						// If any spaces exist, treat them as whitespace
@@ -213,10 +213,10 @@ class Urvanov_Syntax_Highlighter_Parser {
 			}
 
 			// Ensure all parenthesis are atomic to avoid conflicting with element matches
-			$regex = CrayonUtil::esc_atomic($regex);
+			$regex = UrvanovSyntaxHighlighterUtil::esc_atomic($regex);
 
 			// Escape #, this is our delimiter
-			$regex = CrayonUtil::esc_hash($regex);
+			$regex = UrvanovSyntaxHighlighterUtil::esc_hash($regex);
 
 			// Test if regex is valid
 			if (@preg_match("#$regex#", '') === FALSE) {

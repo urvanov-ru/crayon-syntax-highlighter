@@ -152,7 +152,7 @@ class Urvanov_Syntax_Highlighter_Langs extends Urvanov_Syntax_Highlighter_User_R
 
 	// Used to load aliases and extensions to languages
 	private function load_attr_file($path) {
-		if ( ($lines = CrayonUtil::lines($path, 'lwc')) !== FALSE) {
+		if ( ($lines = UrvanovSyntaxHighlighterUtil::lines($path, 'lwc')) !== FALSE) {
 			$attributes = array(); // key = language id, value = array of attr
 			foreach ($lines as $line) {
 				preg_match('#^[\t ]*([^\r\n\t ]+)[\t ]+([^\r\n]+)#', $line, $matches);
@@ -339,7 +339,7 @@ class Urvanov_Syntax_Highlighter_Lang extends Urvanov_Syntax_Highlighter_Version
 
 	// Override
 	function clean_id($id) {
-        $id = CrayonUtil::space_to_hyphen( strtolower(trim($id)) );
+        $id = UrvanovSyntaxHighlighterUtil::space_to_hyphen( strtolower(trim($id)) );
         return preg_replace('/[^\w-+#]/msi', '', $id);
 	}
 
@@ -386,7 +386,7 @@ class Urvanov_Syntax_Highlighter_Lang extends Urvanov_Syntax_Highlighter_Version
 			$this->delimiters = '(?:'.$delim.')';
 		} else if (is_array($delim) && !empty($delim)) {
 			for ($i = 0; $i < count($delim); $i++) {
-				$delim[$i] = CrayonUtil::esc_atomic($delim[$i]);
+				$delim[$i] = UrvanovSyntaxHighlighterUtil::esc_atomic($delim[$i]);
 			}
 
 			$this->delimiters = '(?:'.implode(')|(?:', $delim).')';
@@ -430,9 +430,9 @@ class Urvanov_Syntax_Highlighter_Lang extends Urvanov_Syntax_Highlighter_Version
 			if ($value == NULL && array_key_exists($name, $this->modes)) {
 				return $this->modes[$name];
 			} else if (is_string($value)) {
-				if (CrayonUtil::str_equal_array(trim($value), array('ON', 'YES', '1'))) {
+				if (UrvanovSyntaxHighlighterUtil::str_equal_array(trim($value), array('ON', 'YES', '1'))) {
 					$this->modes[$name] = TRUE;
-				} else if (CrayonUtil::str_equal_array(trim($value), array('OFF', 'NO', '0'))) {
+				} else if (UrvanovSyntaxHighlighterUtil::str_equal_array(trim($value), array('OFF', 'NO', '0'))) {
 					$this->modes[$name] = FALSE;
 				}
 			}
