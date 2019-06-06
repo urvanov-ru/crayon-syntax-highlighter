@@ -90,7 +90,7 @@ class Urvanov_Syntax_Highlighter_Resource_Collection {
 			// Look in directory for resources
 
 			if (!is_dir($dir)) {
-				CrayonLog::syslog('The resource directory is missing, should be at \'' . $dir . '\'.');
+				UrvanovSyntaxHighlighterLog::syslog('The resource directory is missing, should be at \'' . $dir . '\'.');
 			} else if (($handle = @opendir($dir)) != FALSE) {
 				// Loop over directory contents
 				while (($file = readdir($handle)) !== FALSE) {
@@ -108,7 +108,7 @@ class Urvanov_Syntax_Highlighter_Resource_Collection {
 				closedir($handle);
 			}
 		} catch (Exception $e) {
-			CrayonLog::syslog('An error occured when trying to load resources: ' . $e->getFile() . $e->getLine());
+			UrvanovSyntaxHighlighterLog::syslog('An error occured when trying to load resources: ' . $e->getFile() . $e->getLine());
 		}
 	}
 
@@ -126,7 +126,7 @@ class Urvanov_Syntax_Highlighter_Resource_Collection {
 		if (!$this->is_state_loading()) {
 			return FALSE;
 		} else if (!$this->is_loaded($this->default_id)) {
-			CrayonLog::syslog('The default resource could not be loaded from \'' . $this->dir . '\'.');
+			UrvanovSyntaxHighlighterLog::syslog('The default resource could not be loaded from \'' . $this->dir . '\'.');
 			// Add the default, but it will not be functionable
 
 			$default = $this->resource_instance($this->default_id, $this->default_name);
@@ -156,9 +156,9 @@ class Urvanov_Syntax_Highlighter_Resource_Collection {
 		if (is_string($id) && !empty($id)) {
 			$this->collection[$id] = $resource;
 			asort($this->collection);
-            CrayonLog::debug('Added resource: ' . $this->path($id));
+            UrvanovSyntaxHighlighterLog::debug('Added resource: ' . $this->path($id));
 		} else {
-            CrayonLog::syslog('Could not add resource: ', $id);
+            UrvanovSyntaxHighlighterLog::syslog('Could not add resource: ', $id);
         }
 	}
 

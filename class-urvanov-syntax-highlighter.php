@@ -316,7 +316,7 @@ class Urvanov_Syntax_Highlighter {
 
 	function log($var) {
 		if ($this->setting_val(Urvanov_Syntax_Highlighter_Settings::ERROR_LOG)) {
-			CrayonLog::log($var);
+			UrvanovSyntaxHighlighterLog::log($var);
 		}
 	}
 

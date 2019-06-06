@@ -263,10 +263,10 @@ class Urvanov_Syntax_Highlighter_Settings_WP {
             Urvanov_Syntax_Highlighter_Global_Settings::plugin_path(plugins_url('', __FILE__));
             $upload = wp_upload_dir();
 
-            CrayonLog::debug($upload, "WP UPLOAD FUNCTION");
+            UrvanovSyntaxHighlighterLog::debug($upload, "WP UPLOAD FUNCTION");
             Urvanov_Syntax_Highlighter_Global_Settings::upload_path(CrayonUtil::path_slash($upload['basedir']) . URVANOV_SYNTAX_HIGHLIGHTER_DIR);
             Urvanov_Syntax_Highlighter_Global_Settings::upload_url($upload['baseurl'] . '/' . URVANOV_SYNTAX_HIGHLIGHTER_DIR);
-            CrayonLog::debug(Urvanov_Syntax_Highlighter_Global_Settings::upload_path(), "UPLOAD PATH");
+            UrvanovSyntaxHighlighterLog::debug(Urvanov_Syntax_Highlighter_Global_Settings::upload_path(), "UPLOAD PATH");
             Urvanov_Syntax_Highlighter_Global_Settings::set_mkdir('wp_mkdir_p');
 
             // Load all available languages and themes
@@ -552,15 +552,15 @@ class Urvanov_Syntax_Highlighter_Settings_WP {
         }
         // Clear the log if needed
         if (array_key_exists(self::LOG_CLEAR, $_POST)) {
-            CrayonLog::clear();
+            UrvanovSyntaxHighlighterLog::clear();
         }
         // Send to admin
         if (array_key_exists(self::LOG_EMAIL_ADMIN, $_POST)) {
-            CrayonLog::email(get_bloginfo('admin_email'));
+            UrvanovSyntaxHighlighterLog::email(get_bloginfo('admin_email'));
         }
         // Send to developer
         if (array_key_exists(self::LOG_EMAIL_DEV, $_POST)) {
-            CrayonLog::email($URVANOV_SYNTAX_HIGHLIGHTER_EMAIL, get_bloginfo('admin_email'));
+            UrvanovSyntaxHighlighterLog::email($URVANOV_SYNTAX_HIGHLIGHTER_EMAIL, get_bloginfo('admin_email'));
         }
 
         // Clear the cache
@@ -1163,7 +1163,7 @@ class Human {
     }
 
     public static function log() {
-        $log = CrayonLog::log();
+        $log = UrvanovSyntaxHighlighterLog::log();
         touch(URVANOV_SYNTAX_HIGHLIGHTER_LOG_FILE);
         $exists = file_exists(URVANOV_SYNTAX_HIGHLIGHTER_LOG_FILE);
         $writable = is_writable(URVANOV_SYNTAX_HIGHLIGHTER_LOG_FILE);

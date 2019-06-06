@@ -2,7 +2,7 @@
 require_once (URVANOV_SYNTAX_HIGHLIGHTER_ROOT_PATH . 'crayon_settings.class.php');
 
 /* Manages logging variable values to the log file. */
-class CrayonLog {
+class UrvanovSyntaxHighlighterLog {
 	private static $file = NULL;
 
 	// Logs a variable value to a log file

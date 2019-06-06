@@ -21,19 +21,19 @@ class Urvanov_Syntax_Highlighter_Themes extends Urvanov_Syntax_Highlighter_User_
         $this->relative_directory(URVANOV_SYNTAX_HIGHLIGHTER_THEME_DIR);
         $this->extension('css');
 
-        CrayonLog::debug("Setting theme directories");
+        UrvanovSyntaxHighlighterLog::debug("Setting theme directories");
         $upload = Urvanov_Syntax_Highlighter_Global_Settings::upload_path();
         if ($upload) {
             $this->user_directory($upload . URVANOV_SYNTAX_HIGHLIGHTER_THEME_DIR);
             if (!is_dir($this->user_directory())) {
                 Urvanov_Syntax_Highlighter_Global_Settings::mkdir($this->user_directory());
-                CrayonLog::debug($this->user_directory(), "THEME USER DIR");
+                UrvanovSyntaxHighlighterLog::debug($this->user_directory(), "THEME USER DIR");
             }
         } else {
-            CrayonLog::syslog("Upload directory is empty: " . $upload . " cannot load themes.");
+            UrvanovSyntaxHighlighterLog::syslog("Upload directory is empty: " . $upload . " cannot load themes.");
         }
-        CrayonLog::debug($this->directory());
-        CrayonLog::debug($this->user_directory());
+        UrvanovSyntaxHighlighterLog::debug($this->directory());
+        UrvanovSyntaxHighlighterLog::debug($this->user_directory());
 	}
 
     // XXX Override

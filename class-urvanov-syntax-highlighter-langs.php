@@ -33,19 +33,19 @@ class Urvanov_Syntax_Highlighter_Langs extends Urvanov_Syntax_Highlighter_User_R
         $this->relative_directory(URVANOV_SYNTAX_HIGHLIGHTER_LANG_DIR);
         $this->extension('txt');
 
-        CrayonLog::debug("Setting lang directories");
+        UrvanovSyntaxHighlighterLog::debug("Setting lang directories");
         $upload = Urvanov_Syntax_Highlighter_Global_Settings::upload_path();
         if ($upload) {
             $this->user_directory($upload . URVANOV_SYNTAX_HIGHLIGHTER_LANG_DIR);
             if (!is_dir($this->user_directory())) {
                 Urvanov_Syntax_Highlighter_Global_Settings::mkdir($this->user_directory());
-                CrayonLog::debug($this->user_directory(), "LANG USER DIR");
+                UrvanovSyntaxHighlighterLog::debug($this->user_directory(), "LANG USER DIR");
             }
         } else {
-            CrayonLog::syslog("Upload directory is empty: " . $upload . " cannot load languages.");
+            UrvanovSyntaxHighlighterLog::syslog("Upload directory is empty: " . $upload . " cannot load languages.");
         }
-        CrayonLog::debug($this->directory());
-        CrayonLog::debug($this->user_directory());
+        UrvanovSyntaxHighlighterLog::debug($this->directory());
+        UrvanovSyntaxHighlighterLog::debug($this->user_directory());
 	}
 
     public function filename($id, $user = NULL) {
@@ -164,7 +164,7 @@ class Urvanov_Syntax_Highlighter_Langs extends Urvanov_Syntax_Highlighter_User_R
 			}
 			return $attributes;
 		} else {
-			CrayonLog::syslog('Could not load attr file: ' . $path);
+			UrvanovSyntaxHighlighterLog::syslog('Could not load attr file: ' . $path);
 			return FALSE;
 		}
 	}

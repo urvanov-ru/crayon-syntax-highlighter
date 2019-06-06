@@ -45,16 +45,16 @@ class Urvanov_Syntax_Highlighter_Parser {
 	public static function parse($id) {
 		// Verify the language is loaded and has not been parsed before
 		if ( !($lang = Urvanov_Syntax_Highlighter_Resources::langs()->get($id)) ) {
-			CrayonLog::syslog("The language with id '$id' was not loaded and could not be parsed.");
+			UrvanovSyntaxHighlighterLog::syslog("The language with id '$id' was not loaded and could not be parsed.");
 			return FALSE;
 		} else if ($lang->is_parsed()) {
 			return;
 		}
 		// Read language file
 		$path = Urvanov_Syntax_Highlighter_Resources::langs()->path($id);
-        CrayonLog::debug('Parsing language ' . $path);
+        UrvanovSyntaxHighlighterLog::debug('Parsing language ' . $path);
 		if ( ($file = CrayonUtil::lines($path, 'wcs')) === FALSE ) {
-            CrayonLog::debug('Parsing failed ' . $path);
+            UrvanovSyntaxHighlighterLog::debug('Parsing failed ' . $path);
 			return FALSE;
 		}
 
@@ -101,7 +101,7 @@ class Urvanov_Syntax_Highlighter_Parser {
 			$classes = $matches[2];
 			$regexes = $matches[3];
 		} else {
-			CrayonLog::syslog("No regex patterns and/or elements were parsed from language file at '$path'.");
+			UrvanovSyntaxHighlighterLog::syslog("No regex patterns and/or elements were parsed from language file at '$path'.");
 		}
 
 		// Remember state in case we encounter catchable exceptions
@@ -114,7 +114,7 @@ class Urvanov_Syntax_Highlighter_Parser {
 			$name = trim(strtoupper($name));
 			// Ensure both the element and regex are valid
 			if (empty($name) || empty($regex)) {
-				CrayonLog::syslog("Element(s) and/or regex(es) are missing in '$path'.");
+				UrvanovSyntaxHighlighterLog::syslog("Element(s) and/or regex(es) are missing in '$path'.");
 				$error = TRUE;
 				continue;
 			}
@@ -127,7 +127,7 @@ class Urvanov_Syntax_Highlighter_Parser {
 				$name = $pieces[0];
 				$fallback = '';
 			} else {
-				CrayonLog::syslog("Too many colons found in element name '$name' in '$path'");
+				UrvanovSyntaxHighlighterLog::syslog("Too many colons found in element name '$name' in '$path'");
 				$error = TRUE;
 				continue;
 			}
@@ -171,7 +171,7 @@ class Urvanov_Syntax_Highlighter_Parser {
 						$file_lines = preg_replace('#[ \t]+#msi', '\s+', $file_lines);
 						$regex = str_replace($file[0][$i], "(?:$file_lines)", $regex);
 					} else {
-						CrayonLog::syslog("Parsing of '{$element->path()}' failed, an (?alt) tag failed for the element '{$element->name()}'" );
+						UrvanovSyntaxHighlighterLog::syslog("Parsing of '{$element->path()}' failed, an (?alt) tag failed for the element '{$element->name()}'" );
 						return FALSE;
 					}
 				}
@@ -184,7 +184,7 @@ class Urvanov_Syntax_Highlighter_Parser {
 				$default = Urvanov_Syntax_Highlighter_Resources::langs()->get(Urvanov_Syntax_Highlighter_Langs::DEFAULT_LANG);
 				// If default has not been loaded, we can't use it, skip the element
 				if (!$default) {
-					CrayonLog::syslog(
+					UrvanovSyntaxHighlighterLog::syslog(
 							"Could not use default regex in the element '{$element->name()}' in '{$element->path()}'");
 					return FALSE;
 				}
@@ -194,10 +194,10 @@ class Urvanov_Syntax_Highlighter_Parser {
 					if (($default_element = $default->element($element_name)) != FALSE) {
 						$regex = str_replace($def[0][$i], '(?:' . $default_element->regex() .')', $regex);
 					} else {
-						CrayonLog::syslog("The language at '{$element->path()}' referred to the Default Language regex for element '{$element->name()}', which did not exist.");
+						UrvanovSyntaxHighlighterLog::syslog("The language at '{$element->path()}' referred to the Default Language regex for element '{$element->name()}', which did not exist.");
                         if (URVANOV_SYNTAX_HIGHLIGHTER_DEBUG) {
-                            CrayonLog::syslog("Default language URL: " . Urvanov_Syntax_Highlighter_Resources::langs()->url(Urvanov_Syntax_Highlighter_Langs::DEFAULT_LANG));
-                            CrayonLog::syslog("Default language Path: " . Urvanov_Syntax_Highlighter_Resources::langs()->path(Urvanov_Syntax_Highlighter_Langs::DEFAULT_LANG));
+                            UrvanovSyntaxHighlighterLog::syslog("Default language URL: " . Urvanov_Syntax_Highlighter_Resources::langs()->url(Urvanov_Syntax_Highlighter_Langs::DEFAULT_LANG));
+                            UrvanovSyntaxHighlighterLog::syslog("Default language Path: " . Urvanov_Syntax_Highlighter_Resources::langs()->path(Urvanov_Syntax_Highlighter_Langs::DEFAULT_LANG));
                         }
 						return FALSE;
 					}
@@ -220,7 +220,7 @@ class Urvanov_Syntax_Highlighter_Parser {
 
 			// Test if regex is valid
 			if (@preg_match("#$regex#", '') === FALSE) {
-				CrayonLog::syslog("The regex for the element '{$element->name()}' in '{$element->path()}' is not valid.");
+				UrvanovSyntaxHighlighterLog::syslog("The regex for the element '{$element->name()}' in '{$element->path()}' is not valid.");
 				return FALSE;
 			}
 

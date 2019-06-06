@@ -44,7 +44,7 @@ class Urvanov_Syntax_Highlighter_Formatter {
                 }
             } catch (Exception $e) {
                 $error = 'An error occured when formatting: ' . $e->message();
-                $hl ? $hl->log($error) : CrayonLog::syslog($error);
+                $hl ? $hl->log($error) : UrvanovSyntaxHighlighterLog::syslog($error);
             }
             return $code;
         } else {

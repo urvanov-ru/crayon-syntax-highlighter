@@ -17,7 +17,7 @@ class CrayonUtil {
         if (($str = self::file($path)) === FALSE) {
             // Log failure, n = no log
             if (strpos($opts, 'n') === FALSE) {
-                CrayonLog::syslog("Cannot read lines at '$path'.", "CrayonUtil::lines()");
+                UrvanovSyntaxHighlighterLog::syslog("Cannot read lines at '$path'.", "CrayonUtil::lines()");
             }
             return FALSE;
         }
@@ -342,7 +342,7 @@ EOT;
             self::$touchscreen = (self::strposa($user_agent, $devices) !== FALSE);
             return self::$touchscreen;
         } else {
-            CrayonLog::syslog('Error occurred when trying to identify touchscreen devices');
+            UrvanovSyntaxHighlighterLog::syslog('Error occurred when trying to identify touchscreen devices');
         }
     }
 

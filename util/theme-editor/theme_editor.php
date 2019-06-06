@@ -688,7 +688,7 @@ class CrayonThemeEditorWP {
                         // Copy image folder
                         CrayonUtil::copyDir($imageSrc, $newDir . 'images', 'wp_mkdir_p');
                     } catch (Exception $e) {
-                        CrayonLog::syslog($e->getMessage(), "THEME SAVE");
+                        UrvanovSyntaxHighlighterLog::syslog($e->getMessage(), "THEME SAVE");
                     }
                 }
             }
@@ -717,7 +717,7 @@ class CrayonThemeEditorWP {
                         // Delete the old path
                         CrayonUtil::deleteDir($oldDir);
                     } catch (Exception $e) {
-                        CrayonLog::syslog($e->getMessage(), "THEME SAVE");
+                        UrvanovSyntaxHighlighterLog::syslog($e->getMessage(), "THEME SAVE");
                     }
                 }
                 // Refresh
@@ -739,7 +739,7 @@ class CrayonThemeEditorWP {
                 Urvanov_Syntax_Highlighter_Settings_WP::save_settings();
             }
         } else {
-            CrayonLog::syslog("$oldID=$oldID\n\n$name=$name", "THEME SAVE");
+            UrvanovSyntaxHighlighterLog::syslog("$oldID=$oldID\n\n$name=$name", "THEME SAVE");
             echo -1;
         }
         exit();
@@ -767,7 +767,7 @@ class CrayonThemeEditorWP {
                 Urvanov_Syntax_Highlighter_Settings_WP::save_settings();
                 echo 1;
             } catch (Exception $e) {
-                CrayonLog::syslog($e->getMessage(), "THEME SAVE");
+                UrvanovSyntaxHighlighterLog::syslog($e->getMessage(), "THEME SAVE");
                 echo -2;
             }
         } else {
@@ -802,7 +802,7 @@ class CrayonThemeEditorWP {
                     echo -3;
                 }
             } catch (Exception $e) {
-                CrayonLog::syslog($e->getMessage(), "THEME SUBMIT");
+                UrvanovSyntaxHighlighterLog::syslog($e->getMessage(), "THEME SUBMIT");
                 echo -2;
             }
         } else {
