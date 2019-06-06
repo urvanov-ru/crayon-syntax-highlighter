@@ -1,7 +1,7 @@
 <?php
 
 /* Used to measure execution time */
-class CrayonTimer {
+class UrvanovSyntaxHighlighterTimer {
 	const NO_SET = -1;
 	private $start_time = self::NO_SET;
 

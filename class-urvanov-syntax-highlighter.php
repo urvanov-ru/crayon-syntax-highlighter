@@ -123,7 +123,7 @@ class Urvanov_Syntax_Highlighter {
 
 	/* Central point of access for all other functions to update code. */
 	public function process() {
-		$tmr = new CrayonTimer();
+		$tmr = new UrvanovSyntaxHighlighterTimer();
 		$this->runtime = NULL;
 		if ($this->needs_load) {
 			$tmr->start();
