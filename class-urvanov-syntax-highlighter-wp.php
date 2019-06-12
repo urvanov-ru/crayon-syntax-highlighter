@@ -264,7 +264,7 @@ class Urvanov_Syntax_Highlighter_Settings_WP {
             $upload = wp_upload_dir();
 
             UrvanovSyntaxHighlighterLog::debug($upload, "WP UPLOAD FUNCTION");
-            Urvanov_Syntax_Highlighter_Global_Settings::upload_path(CrayonUtil::path_slash($upload['basedir']) . URVANOV_SYNTAX_HIGHLIGHTER_DIR);
+            Urvanov_Syntax_Highlighter_Global_Settings::upload_path(UrvanovSyntaxHighlighterUtil::path_slash($upload['basedir']) . URVANOV_SYNTAX_HIGHLIGHTER_DIR);
             Urvanov_Syntax_Highlighter_Global_Settings::upload_url($upload['baseurl'] . '/' . URVANOV_SYNTAX_HIGHLIGHTER_DIR);
             UrvanovSyntaxHighlighterLog::debug(Urvanov_Syntax_Highlighter_Global_Settings::upload_path(), "UPLOAD PATH");
             Urvanov_Syntax_Highlighter_Global_Settings::set_mkdir('wp_mkdir_p');

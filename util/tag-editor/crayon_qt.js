@@ -2,7 +2,7 @@
 
     var settings = CrayonTagEditorSettings;
 
-    window.CrayonQuickTags = new function () {
+    window.urvanovSyntaxHighlighterQuickTags = new function () {
 
         var base = this;
 
@@ -45,7 +45,7 @@
     };
 
     $(document).ready(function () {
-        CrayonQuickTags.init();
+        urvanovSyntaxHighlighterQuickTags.init();
     });
 
 })(jQueryCrayon);

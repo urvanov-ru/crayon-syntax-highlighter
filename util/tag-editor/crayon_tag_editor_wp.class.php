@@ -2,7 +2,7 @@
 
 require_once(URVANOV_SYNTAX_HIGHLIGHTER_ROOT_PATH . 'crayon_settings_wp.class.php');
 
-class CrayonTagEditorWP {
+class UrvanovSyntaxHighlighterTagEditorWP {
 
     public static $settings = null;
 
@@ -12,17 +12,17 @@ class CrayonTagEditorWP {
             Urvanov_Syntax_Highlighter_Settings_WP::load_settings(TRUE);
             if (is_admin()) {
                 // XXX Only runs in wp-admin
-                add_action('admin_print_scripts-post-new.php', 'CrayonTagEditorWP::enqueue_resources');
-                add_action('admin_print_scripts-post.php', 'CrayonTagEditorWP::enqueue_resources');
-                add_filter('tiny_mce_before_init', 'CrayonTagEditorWP::init_tinymce');
+                add_action('admin_print_scripts-post-new.php', 'UrvanovSyntaxHighlighterTagEditorWP::enqueue_resources');
+                add_action('admin_print_scripts-post.php', 'UrvanovSyntaxHighlighterTagEditorWP::enqueue_resources');
+                add_filter('tiny_mce_before_init', 'UrvanovSyntaxHighlighterTagEditorWP::init_tinymce');
                 // Must come after
                 add_action("admin_print_scripts-post-new.php", 'Urvanov_Syntax_Highlighter_Settings_WP::init_js_settings');
                 add_action("admin_print_scripts-post.php", 'Urvanov_Syntax_Highlighter_Settings_WP::init_js_settings');
                 self::addbuttons();
             } else if (Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::TAG_EDITOR_FRONT)) {
                 // XXX This will always need to enqueue, but only runs on front end
-                add_action('wp', 'CrayonTagEditorWP::enqueue_resources');
-                add_filter('tiny_mce_before_init', 'CrayonTagEditorWP::init_tinymce');
+                add_action('wp', 'UrvanovSyntaxHighlighterTagEditorWP::enqueue_resources');
+                add_filter('tiny_mce_before_init', 'UrvanovSyntaxHighlighterTagEditorWP::init_tinymce');
                 self::addbuttons();
             }
         }
@@ -103,9 +103,9 @@ class CrayonTagEditorWP {
 
     public static function addbuttons() {
         // Add only in Rich Editor mode
-        add_filter('mce_external_plugins', 'CrayonTagEditorWP::add_plugin');
-        add_filter('mce_buttons', 'CrayonTagEditorWP::register_buttons');
-        add_filter('bbp_before_get_the_content_parse_args', 'CrayonTagEditorWP::bbp_get_the_content_args');
+        add_filter('mce_external_plugins', 'UrvanovSyntaxHighlighterTagEditorWP::add_plugin');
+        add_filter('mce_buttons', 'UrvanovSyntaxHighlighterTagEditorWP::register_buttons');
+        add_filter('bbp_before_get_the_content_parse_args', 'UrvanovSyntaxHighlighterTagEditorWP::bbp_get_the_content_args');
     }
 
     public static function bbp_get_the_content_args($args) {
@@ -159,8 +159,8 @@ class CrayonTagEditorWP {
     public static function submit() {
         ?>
         <input type="button"
-               class="button-primary <?php echo CrayonTagEditorWP::$settings['submit_css']; ?>"
-               value="<?php echo CrayonTagEditorWP::$settings['submit_add']; ?>"
+               class="button-primary <?php echo UrvanovSyntaxHighlighterTagEditorWP::$settings['submit_css']; ?>"
+               value="<?php echo UrvanovSyntaxHighlighterTagEditorWP::$settings['submit_add']; ?>"
                name="submit"/>
     <?php
     }
@@ -173,7 +173,7 @@ class CrayonTagEditorWP {
         $curr_theme = Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::THEME);
         $fonts = Urvanov_Syntax_Highlighter_Resources::fonts()->get();
         $curr_font = Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::FONT);
-        CrayonTagEditorWP::init_settings();
+        UrvanovSyntaxHighlighterTagEditorWP::init_settings();
 
         ?>
 
@@ -286,7 +286,7 @@ class CrayonTagEditorWP {
 }
 
 if (defined('ABSPATH')) {
-    add_action('init', 'CrayonTagEditorWP::init');
+    add_action('init', 'UrvanovSyntaxHighlighterTagEditorWP::init');
 }
 
 ?>

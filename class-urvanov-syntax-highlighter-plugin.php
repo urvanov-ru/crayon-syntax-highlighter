@@ -580,7 +580,7 @@ class Urvanov_Syntax_Highlighter_Plugin {
                 self::$alias_regex = '';
                 for ($i = 0; $i < count($aliases); $i++) {
                     $alias = $aliases[$i];
-                    $alias_regex = UrvanovSyntaxHighlighterUtil::esc_hash(CrayonUtil::esc_regex($alias));
+                    $alias_regex = UrvanovSyntaxHighlighterUtil::esc_hash(UrvanovSyntaxHighlighterUtil::esc_regex($alias));
                     if ($i != count($aliases) - 1) {
                         $alias_regex .= '|';
                     }
@@ -902,8 +902,8 @@ class Urvanov_Syntax_Highlighter_Plugin {
 
     public static function filter_post_data($data, $postarr) {
         // Remove the selected CSS that may be present from the tag editor.
-        CrayonTagEditorWP::init_settings();
-        $css_selected = CrayonTagEditorWP::$settings['css_selected'];
+        UrvanovSyntaxHighlighterTagEditorWP::init_settings();
+        $css_selected = UrvanovSyntaxHighlighterTagEditorWP::$settings['css_selected'];
         $data['post_content'] = preg_replace("#(class\s*=\s*(\\\\[\"'])[^\"']*)$css_selected([^\"']*\\2)#msi", '$1$3', $data['post_content']);
         return $data;
     }
@@ -978,8 +978,8 @@ class Urvanov_Syntax_Highlighter_Plugin {
     }
 
     public static function init_ajax() {
-        add_action('wp_ajax_crayon-tag-editor', 'CrayonTagEditorWP::content');
-        add_action('wp_ajax_nopriv_crayon-tag-editor', 'CrayonTagEditorWP::content');
+        add_action('wp_ajax_crayon-tag-editor', 'UrvanovSyntaxHighlighterTagEditorWP::content');
+        add_action('wp_ajax_nopriv_crayon-tag-editor', 'UrvanovSyntaxHighlighterTagEditorWP::content');
         add_action('wp_ajax_crayon-highlight', 'Urvanov_Syntax_Highlighter_Plugin::ajax_highlight');
         add_action('wp_ajax_nopriv_crayon-highlight', 'Urvanov_Syntax_Highlighter_Plugin::ajax_highlight');
         if (current_user_can('manage_options')) {
