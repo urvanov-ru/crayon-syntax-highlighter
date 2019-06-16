@@ -1,6 +1,6 @@
 (function ($) {
 
-    window.CrayonTinyMCE = new function () {
+    window.UrvanovSyntaxHighlighterTinyMCE = new function () {
 
         // TinyMCE specific
         var name = 'crayon_tinymce';
@@ -264,7 +264,7 @@
 
     $(document).ready(function () {
         // Load TinyMCE
-        CrayonTinyMCE.loadTinyMCE();
+        UrvanovSyntaxHighlighterTinyMCE.loadTinyMCE();
     });
 
 })(jQueryCrayon);
