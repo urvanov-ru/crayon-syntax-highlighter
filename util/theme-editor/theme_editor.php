@@ -69,7 +69,7 @@ class Urvanov_Syntax_Highlighter_HTML_Input extends Urvanov_Syntax_Highlighter_H
     }
 }
 
-class CrayonHTMLSelect extends Urvanov_Syntax_Highlighter_HTML_Input {
+class Urvanov_Syntax_Highlighter_HTML_Select extends Urvanov_Syntax_Highlighter_HTML_Input {
     public $options;
     public $selected = NULL;
 
@@ -578,7 +578,7 @@ class CrayonThemeEditorWP {
         $group = self::getAttributeGroup($attribute);
         $type = self::getAttributeType($group);
         if ($type == 'select') {
-            $input = new CrayonHTMLSelect($element . '_' . $attribute, $name);
+            $input = new Urvanov_Syntax_Highlighter_HTML_Select($element . '_' . $attribute, $name);
             if ($group == 'border-style') {
                 $input->addOptions(Urvanov_Syntax_Highlighter_HTML_Element::$borderStyles);
             } else if ($group == 'float') {
