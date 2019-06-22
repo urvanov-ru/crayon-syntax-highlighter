@@ -108,7 +108,7 @@ class Urvanov_Syntax_Highlighter_HTML_Select extends Urvanov_Syntax_Highlighter_
     }
 }
 
-class CrayonHTMLSeparator extends Urvanov_Syntax_Highlighter_HTML_Element {
+class Urvanov_Syntax_Highlighter_HTML_Separator extends Urvanov_Syntax_Highlighter_HTML_Element {
     public $name = '';
 
     public function __construct($name) {
@@ -117,7 +117,7 @@ class CrayonHTMLSeparator extends Urvanov_Syntax_Highlighter_HTML_Element {
     }
 }
 
-class CrayonHTMLTitle extends CrayonHTMLSeparator {
+class CrayonHTMLTitle extends Urvanov_Syntax_Highlighter_HTML_Separator {
 
 }
 
@@ -243,7 +243,7 @@ class CrayonThemeEditorWP {
         foreach ($inputs as $input) {
             if ($input instanceof Urvanov_Syntax_Highlighter_HTML_Input) {
                 $str .= self::formField($input->name, $input);
-            } else if ($input instanceof CrayonHTMLSeparator) {
+            } else if ($input instanceof Urvanov_Syntax_Highlighter_HTML_Separator) {
                 $sepClass = '';
                 if ($input instanceof CrayonHTMLTitle) {
                     $sepClass .= ' title';
@@ -424,7 +424,7 @@ class CrayonThemeEditorWP {
                         $inline = '-inline';
                         self::createAttributesForm(array(
                             new CrayonHTMLTitle($tFrame),
-                            new CrayonHTMLSeparator($tNormal),
+                            new Urvanov_Syntax_Highlighter_HTML_Separator($tNormal),
 //                            self::createAttribute('', 'background', $tBackground),
                             array(
                                 $tBorder,
@@ -432,7 +432,7 @@ class CrayonThemeEditorWP {
                                 self::createAttribute('', 'border-color'),
                                 self::createAttribute('', 'border-style')
                             ),
-                            new CrayonHTMLSeparator($tInline),
+                            new Urvanov_Syntax_Highlighter_HTML_Separator($tInline),
                             self::createAttribute($inline, 'background', $tBackground),
                             array(
                                 $tBorder,
@@ -450,11 +450,11 @@ class CrayonThemeEditorWP {
                         $stripedMarkedLine = ' .crayon-marked-line.crayon-striped-line';
                         self::createAttributesForm(array(
                             new CrayonHTMLTitle($tLines),
-                            new CrayonHTMLSeparator($tNormal),
+                            new Urvanov_Syntax_Highlighter_HTML_Separator($tNormal),
                             self::createAttribute('', 'background', $tBackground),
-                            new CrayonHTMLSeparator($tStriped),
+                            new Urvanov_Syntax_Highlighter_HTML_Separator($tStriped),
                             self::createAttribute($stripedLine, 'background', $tBackground),
-                            new CrayonHTMLSeparator($tMarked),
+                            new Urvanov_Syntax_Highlighter_HTML_Separator($tMarked),
                             self::createAttribute($markedLine, 'background', $tBackground),
                             array(
                                 $tBorder,
@@ -464,7 +464,7 @@ class CrayonThemeEditorWP {
                             ),
                             self::createAttribute($markedLine . $top, 'border-top-style', $tTopBorder),
                             self::createAttribute($markedLine . $bottom, 'border-bottom-style', $tBottomBorder),
-                            new CrayonHTMLSeparator($tStripedMarked),
+                            new Urvanov_Syntax_Highlighter_HTML_Separator($tStripedMarked),
                             self::createAttribute($stripedMarkedLine, 'background', $tBackground),
                         ));
                         ?>
@@ -483,13 +483,13 @@ class CrayonThemeEditorWP {
                                 self::createAttribute($nums, 'border-right-color'),
                                 self::createAttribute($nums, 'border-right-style'),
                             ),
-                            new CrayonHTMLSeparator($tNormal),
+                            new Urvanov_Syntax_Highlighter_HTML_Separator($tNormal),
                             self::createAttribute($nums, 'background', $tBackground),
                             self::createAttribute($nums, 'color', $tText),
-                            new CrayonHTMLSeparator($tStriped),
+                            new Urvanov_Syntax_Highlighter_HTML_Separator($tStriped),
                             self::createAttribute($stripedNum, 'background', $tBackground),
                             self::createAttribute($stripedNum, 'color', $tText),
-                            new CrayonHTMLSeparator($tMarked),
+                            new Urvanov_Syntax_Highlighter_HTML_Separator($tMarked),
                             self::createAttribute($markedNum, 'background', $tBackground),
                             self::createAttribute($markedNum, 'color', $tText),
                             array(
@@ -500,7 +500,7 @@ class CrayonThemeEditorWP {
                             ),
                             self::createAttribute($markedNum.$top, 'border-top-style', $tTopBorder),
                             self::createAttribute($markedNum.$bottom, 'border-bottom-style', $tBottomBorder),
-                            new CrayonHTMLSeparator($tStripedMarked),
+                            new Urvanov_Syntax_Highlighter_HTML_Separator($tStripedMarked),
                             self::createAttribute($stripedMarkedNum, 'background', $tBackground),
                             self::createAttribute($stripedMarkedNum, 'color', $tText),
                         ));
@@ -515,7 +515,7 @@ class CrayonThemeEditorWP {
                         $language = ' .crayon-language';
                         self::createAttributesForm(array(
                             new CrayonHTMLTitle($tToolbar),
-                            new CrayonHTMLSeparator($tFrame),
+                            new Urvanov_Syntax_Highlighter_HTML_Separator($tFrame),
                             self::createAttribute($toolbar, 'background', $tBackground),
                             array(
                                 $tBottomBorder,
@@ -530,14 +530,14 @@ class CrayonThemeEditorWP {
                                 self::createAttribute($title, 'font-style'),
                                 self::createAttribute($title, 'text-decoration')
                             ),
-                            new CrayonHTMLSeparator($tButtons),
+                            new Urvanov_Syntax_Highlighter_HTML_Separator($tButtons),
                             self::createAttribute($button, 'background-color', $tBackground),
                             self::createAttribute($button.$hover, 'background-color', $tHover),
                             self::createAttribute($button.$active, 'background-color', $tActive),
                             self::createAttribute($button.$pressed, 'background-color', $tPressed),
                             self::createAttribute($button.$pressed.$hover, 'background-color', $tHoverPressed),
                             self::createAttribute($button.$pressed.$active, 'background-color', $tActivePressed),
-                            new CrayonHTMLSeparator($tInformation . ' ' . Urvanov_Syntax_Highlighter_Global::urvanov__("(Used for Copy/Paste)")),
+                            new Urvanov_Syntax_Highlighter_HTML_Separator($tInformation . ' ' . Urvanov_Syntax_Highlighter_Global::urvanov__("(Used for Copy/Paste)")),
                             self::createAttribute($info, 'background', $tBackground),
                             array(
                                 $tText,
@@ -552,7 +552,7 @@ class CrayonThemeEditorWP {
                                 self::createAttribute($info, 'border-bottom-color'),
                                 self::createAttribute($info, 'border-bottom-style'),
                             ),
-                            new CrayonHTMLSeparator($tLanguage),
+                            new Urvanov_Syntax_Highlighter_HTML_Separator($tLanguage),
                             array(
                                 $tText,
                                 self::createAttribute($language, 'color'),
