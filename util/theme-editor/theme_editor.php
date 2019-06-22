@@ -49,7 +49,7 @@ class Urvanov_Syntax_Highlighter_HTML_Element {
     }
 }
 
-class CrayonHTMLInput extends Urvanov_Syntax_Highlighter_HTML_Element {
+class Urvanov_Syntax_Highlighter_HTML_Input extends Urvanov_Syntax_Highlighter_HTML_Element {
     public $name;
     public $type;
 
@@ -69,7 +69,7 @@ class CrayonHTMLInput extends Urvanov_Syntax_Highlighter_HTML_Element {
     }
 }
 
-class CrayonHTMLSelect extends CrayonHTMLInput {
+class CrayonHTMLSelect extends Urvanov_Syntax_Highlighter_HTML_Input {
     public $options;
     public $selected = NULL;
 
@@ -241,7 +241,7 @@ class CrayonThemeEditorWP {
         $str = '<form class="' . self::$settings['prefix'] . '-form"><table>';
         $sepCount = 0;
         foreach ($inputs as $input) {
-            if ($input instanceof CrayonHTMLInput) {
+            if ($input instanceof Urvanov_Syntax_Highlighter_HTML_Input) {
                 $str .= self::formField($input->name, $input);
             } else if ($input instanceof CrayonHTMLSeparator) {
                 $sepClass = '';
@@ -624,7 +624,7 @@ class CrayonThemeEditorWP {
                 ));
             }
         } else {
-            $input = new CrayonHTMLInput($element . '_' . $attribute, $name);
+            $input = new Urvanov_Syntax_Highlighter_HTML_Input($element . '_' . $attribute, $name);
         }
         $input->addClass(self::ATTRIBUTE);
         $input->addAttributes(array(
