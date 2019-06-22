@@ -121,7 +121,7 @@ class Urvanov_Syntax_Highlighter_HTML_Title extends Urvanov_Syntax_Highlighter_H
 
 }
 
-class CrayonThemeEditorWP {
+class Urvanov_Syntax_Highlighter_Theme_Editor_WP {
 
     public static $attributes = NULL;
     public static $attributeGroups = NULL;
