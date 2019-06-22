@@ -117,7 +117,7 @@ class Urvanov_Syntax_Highlighter_HTML_Separator extends Urvanov_Syntax_Highlight
     }
 }
 
-class CrayonHTMLTitle extends Urvanov_Syntax_Highlighter_HTML_Separator {
+class Urvanov_Syntax_Highlighter_HTML_Title extends Urvanov_Syntax_Highlighter_HTML_Separator {
 
 }
 
@@ -245,7 +245,7 @@ class CrayonThemeEditorWP {
                 $str .= self::formField($input->name, $input);
             } else if ($input instanceof Urvanov_Syntax_Highlighter_HTML_Separator) {
                 $sepClass = '';
-                if ($input instanceof CrayonHTMLTitle) {
+                if ($input instanceof Urvanov_Syntax_Highlighter_HTML_Title) {
                     $sepClass .= ' title';
                 }
                 if ($sepCount == 0) {
@@ -375,7 +375,7 @@ class CrayonThemeEditorWP {
                     <div id="tabs-1">
                         <?php
                         self::createAttributesForm(array(
-                            new CrayonHTMLTitle($tInformation)
+                            new Urvanov_Syntax_Highlighter_HTML_Title($tInformation)
                         ));
                         ?>
                         <div id="tabs-1-contents"></div>
@@ -405,7 +405,7 @@ class CrayonThemeEditorWP {
                             'h' => Urvanov_Syntax_Highlighter_Global::urvanov__("HTML"),
                             '' => Urvanov_Syntax_Highlighter_Global::urvanov__("Unhighlighted")
                         );
-                        $atts = array(new CrayonHTMLTitle($tHighlighting));
+                        $atts = array(new Urvanov_Syntax_Highlighter_HTML_Title($tHighlighting));
                         foreach ($elems as $class => $name) {
                             $fullClass = $class != '' ? $highlight . ' .crayon-' . $class : $highlight;
                             $atts[] = array(
@@ -423,7 +423,7 @@ class CrayonThemeEditorWP {
                         <?php
                         $inline = '-inline';
                         self::createAttributesForm(array(
-                            new CrayonHTMLTitle($tFrame),
+                            new Urvanov_Syntax_Highlighter_HTML_Title($tFrame),
                             new Urvanov_Syntax_Highlighter_HTML_Separator($tNormal),
 //                            self::createAttribute('', 'background', $tBackground),
                             array(
@@ -449,7 +449,7 @@ class CrayonThemeEditorWP {
                         $markedLine = ' .crayon-marked-line';
                         $stripedMarkedLine = ' .crayon-marked-line.crayon-striped-line';
                         self::createAttributesForm(array(
-                            new CrayonHTMLTitle($tLines),
+                            new Urvanov_Syntax_Highlighter_HTML_Title($tLines),
                             new Urvanov_Syntax_Highlighter_HTML_Separator($tNormal),
                             self::createAttribute('', 'background', $tBackground),
                             new Urvanov_Syntax_Highlighter_HTML_Separator($tStriped),
@@ -476,7 +476,7 @@ class CrayonThemeEditorWP {
                         $markedNum = ' .crayon-marked-num';
                         $stripedMarkedNum = ' .crayon-marked-num.crayon-striped-num';
                         self::createAttributesForm(array(
-                            new CrayonHTMLTitle($tNumbers),
+                            new Urvanov_Syntax_Highlighter_HTML_Title($tNumbers),
                             array(
                                 $tBorderRight,
                                 self::createAttribute($nums, 'border-right-width'),
@@ -514,7 +514,7 @@ class CrayonThemeEditorWP {
                         $info = ' .crayon-info';
                         $language = ' .crayon-language';
                         self::createAttributesForm(array(
-                            new CrayonHTMLTitle($tToolbar),
+                            new Urvanov_Syntax_Highlighter_HTML_Title($tToolbar),
                             new Urvanov_Syntax_Highlighter_HTML_Separator($tFrame),
                             self::createAttribute($toolbar, 'background', $tBackground),
                             array(
