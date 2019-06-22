@@ -1,6 +1,7 @@
 <?php
 
-class CrayonHTMLElement {
+// Old name : CrayonHTMLElement
+class Urvanov_Syntax_Highlighter_HTML_Element {
     public $id;
     public $class = '';
     public $tag = 'div';
@@ -48,7 +49,7 @@ class CrayonHTMLElement {
     }
 }
 
-class CrayonHTMLInput extends CrayonHTMLElement {
+class CrayonHTMLInput extends Urvanov_Syntax_Highlighter_HTML_Element {
     public $name;
     public $type;
 
@@ -107,7 +108,7 @@ class CrayonHTMLSelect extends CrayonHTMLInput {
     }
 }
 
-class CrayonHTMLSeparator extends CrayonHTMLElement {
+class CrayonHTMLSeparator extends Urvanov_Syntax_Highlighter_HTML_Element {
     public $name = '';
 
     public function __construct($name) {
@@ -176,7 +177,7 @@ class CrayonThemeEditorWP {
             self::$settings = array(
                 // Only things the theme editor needs
                 'cssThemePrefix' => Urvanov_Syntax_Highlighter_Themes::CSS_PREFIX,
-                'cssInputPrefix' => CrayonHTMLElement::CSS_INPUT_PREFIX,
+                'cssInputPrefix' => Urvanov_Syntax_Highlighter_HTML_Element::CSS_INPUT_PREFIX,
                 'attribute' => self::ATTRIBUTE,
                 'fields' => self::$infoFields,
                 'fieldsInverse' => self::$infoFieldsInverse,
@@ -209,7 +210,7 @@ class CrayonThemeEditorWP {
                 'submitMessage' => Urvanov_Syntax_Highlighter_Global::urvanov__("Please include this theme in Crayon!"),
                 'submitSucceed' => Urvanov_Syntax_Highlighter_Global::urvanov__("Submit was successful."),
                 'submitFail' => Urvanov_Syntax_Highlighter_Global::urvanov__("Submit failed!"),
-                'borderStyles' => CrayonHTMLElement::$borderStyles
+                'borderStyles' => Urvanov_Syntax_Highlighter_HTML_Element::$borderStyles
             );
         }
     }
@@ -579,7 +580,7 @@ class CrayonThemeEditorWP {
         if ($type == 'select') {
             $input = new CrayonHTMLSelect($element . '_' . $attribute, $name);
             if ($group == 'border-style') {
-                $input->addOptions(CrayonHTMLElement::$borderStyles);
+                $input->addOptions(Urvanov_Syntax_Highlighter_HTML_Element::$borderStyles);
             } else if ($group == 'float') {
                 $input->addOptions(array(
                     'left',
