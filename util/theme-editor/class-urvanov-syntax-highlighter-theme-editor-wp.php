@@ -645,13 +645,13 @@ class Urvanov_Syntax_Highlighter_Theme_Editor_WP {
      */
     public static function save() {
         Urvanov_Syntax_Highlighter_Settings_WP::load_settings();
-        $oldID = stripslashes($_POST['id']);
-        $name = stripslashes($_POST['name']);
-        $css = stripslashes($_POST['css']);
-        $change_settings = UrvanovSyntaxHighlighterUtil::set_default($_POST['change_settings'], TRUE);
-        $allow_edit = UrvanovSyntaxHighlighterUtil::set_default($_POST['allow_edit'], TRUE);
-        $allow_edit_stock_theme = UrvanovSyntaxHighlighterUtil::set_default($_POST['allow_edit_stock_theme'], URVANOV_SYNTAX_HIGHLIGHTER_DEBUG);
-        $delete = UrvanovSyntaxHighlighterUtil::set_default($_POST['delete'], TRUE);
+        $oldID = stripslashes(sanitize_text_field($_POST['id']));
+        $name = stripslashes(sanitize_text_field($_POST['name']));
+        $css = stripslashes(sanitize_text_field($_POST['css']));
+        $change_settings = UrvanovSyntaxHighlighterUtil::set_default(sanitize_text_field($_POST['change_settings']), TRUE);
+        $allow_edit = UrvanovSyntaxHighlighterUtil::set_default(sanitize_text_field($_POST['allow_edit']), TRUE);
+        $allow_edit_stock_theme = UrvanovSyntaxHighlighterUtil::set_default(sanitize_text_field($_POST['allow_edit_stock_theme']), URVANOV_SYNTAX_HIGHLIGHTER_DEBUG);
+        $delete = UrvanovSyntaxHighlighterUtil::set_default(sanitize_text_field($_POST['delete']), TRUE);
         $oldTheme = Urvanov_Syntax_Highlighter_Resources::themes()->get($oldID);
 
         if (!empty($oldID) && !empty($css) && !empty($name)) {
@@ -748,7 +748,7 @@ class Urvanov_Syntax_Highlighter_Theme_Editor_WP {
 
     public static function duplicate() {
         Urvanov_Syntax_Highlighter_Settings_WP::load_settings();
-        $oldID = $_POST['id'];
+        $oldID = sanitize_text_field($_POST['id']);
         $oldPath = Urvanov_Syntax_Highlighter_Resources::themes()->path($oldID);
         $_POST['css'] = file_get_contents($oldPath);
         $_POST['delete'] = FALSE;
@@ -759,7 +759,7 @@ class Urvanov_Syntax_Highlighter_Theme_Editor_WP {
 
     public static function delete() {
         Urvanov_Syntax_Highlighter_Settings_WP::load_settings();
-        $id = $_POST['id'];
+        $id = sanitize_text_field($_POST['id']);
         $dir = Urvanov_Syntax_Highlighter_Resources::themes()->dirpath_for_id($id);
         if (is_dir($dir) && Urvanov_Syntax_Highlighter_Resources::themes()->exists($id)) {
             try {
@@ -780,8 +780,8 @@ class Urvanov_Syntax_Highlighter_Theme_Editor_WP {
     public static function submit() {
         global $URVANOV_SYNTAX_HIGHLIGHTER_EMAIL;
         Urvanov_Syntax_Highlighter_Settings_WP::load_settings();
-        $id = $_POST['id'];
-        $message = $_POST['message'];
+        $id = sanitize_text_field($_POST['id']);
+        $message = sanitize_text_field($_POST['message']);
         $dir = Urvanov_Syntax_Highlighter_Resources::themes()->dirpath_for_id($id);
         $dest = $dir . 'tmp';
         wp_mkdir_p($dest);

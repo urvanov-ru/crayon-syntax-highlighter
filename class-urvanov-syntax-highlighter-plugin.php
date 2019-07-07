@@ -218,9 +218,9 @@ class Urvanov_Syntax_Highlighter_Plugin {
 
     public static function ajax_highlight() {
         header('Content-Type: text/plain');
-        $code = isset($_POST['code']) ? $_POST['code'] : null;
+        $code = isset($_POST['code']) ? sanitize_text_field($_POST['code']) : null;
         if (!$code) {
-            $code = isset($_GET['code']) ? $_GET['code'] : null;
+        	$code = isset($_GET['code']) ? sanitize_text_field($_GET['code']) : null;
         }
         if ($code) {
             echo self::highlight($code, FALSE);

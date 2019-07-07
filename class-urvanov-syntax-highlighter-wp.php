@@ -916,7 +916,7 @@ class Urvanov_Syntax_Highlighter_Settings_WP {
         // Load settings from GET and validate
         foreach ($_POST as $key => $value) {
             //	echo $key, ' ', $value , '<br/>';
-            $value = stripslashes($value);
+        	$value = stripslashes(sanitize_text_field($value));
             if (!in_array($key, $preview_settings)) {
                 $_POST[$key] = Urvanov_Syntax_Highlighter_Settings::validate($key, $value);
             } else {
@@ -946,7 +946,7 @@ class Urvanov_Syntax_Highlighter_Settings_WP {
         $path = Urvanov_Syntax_Highlighter_Global_Settings::plugin_path() . URVANOV_SYNTAX_HIGHLIGHTER_UTIL_DIR . '/sample/' . $lang . '.txt';
 
         if (isset($_POST[self::SAMPLE_CODE])) {
-            $crayon->code($_POST[self::SAMPLE_CODE]);
+        	$crayon->code(sanitize_text_field($_POST[self::SAMPLE_CODE]));
         } else if ($lang && @file_exists($path)) {
             $crayon->url($path);
         } else {
