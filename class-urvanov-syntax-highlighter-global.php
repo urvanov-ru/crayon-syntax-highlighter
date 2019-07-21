@@ -24,10 +24,6 @@ $URVANOV_SYNTAX_HIGHLIGHTER_GIT = 'http://github.com/aramk/crayon-syntax-highlig
 $URVANOV_SYNTAX_HIGHLIGHTER_PLUGIN_WP = 'https://wordpress.org/plugins/crayon-syntax-highlighter/';
 
 
-// General definitions
-define('URVANOV_SYNTAX_HIGHLIGHTER_DOMAIN', 'crayon-syntax-highlighter');
-
-
 // XXX Used to name the class
 
 define('URVANOV_SYNTAX_HIGHLIGHTER_HIGHLIGHTER', 'Urvanov_Syntax_Highlighter');
@@ -231,14 +227,14 @@ if ( !class_exists( 'Urvanov_Syntax_Highlighter_Global' ) ) {
 		// Old name: crayon_load_plugin_textdomain
 		function load_plugin_textdomain() {
 		    if (function_exists('load_plugin_textdomain')) {
-		        load_plugin_textdomain(URVANOV_SYNTAX_HIGHLIGHTER_DOMAIN, false, URVANOV_SYNTAX_HIGHLIGHTER_DIR . URVANOV_SYNTAX_HIGHLIGHTER_TRANS_DIR);
+		    	load_plugin_textdomain('urvanov-syntax-highlighter', false, URVANOV_SYNTAX_HIGHLIGHTER_DIR . URVANOV_SYNTAX_HIGHLIGHTER_TRANS_DIR);
 		    }
 		}
 		
 		// Old name: crayon__
 		function urvanov__($text) {
 		    if (function_exists('__')) {
-		        return __($text, URVANOV_SYNTAX_HIGHLIGHTER_DOMAIN);
+		    	return __($text, 'urvanov-syntax-highlighter');
 		    } else {
 		        return $text;
 		    }
@@ -247,7 +243,7 @@ if ( !class_exists( 'Urvanov_Syntax_Highlighter_Global' ) ) {
 		// Old name: crayon_e
 		function urvanov_e($text) {
 		    if (function_exists('_e')) {
-		        _e($text, URVANOV_SYNTAX_HIGHLIGHTER_DOMAIN);
+		    	_e($text, 'urvanov-syntax-highlighter');
 		    } else {
 		        echo $text;
 		    }
@@ -256,7 +252,7 @@ if ( !class_exists( 'Urvanov_Syntax_Highlighter_Global' ) ) {
 		// Old name: crayon_n
 		function urvanov_n($singular, $plural, $count) {
 		    if (function_exists('_n')) {
-		        return _n($singular, $plural, $count, URVANOV_SYNTAX_HIGHLIGHTER_DOMAIN);
+		    	return _n($singular, $plural, $count, 'urvanov-syntax-highlighter');
 		    } else {
 		        return $count > 1 ? $plural : $singular;
 		    }
@@ -265,7 +261,7 @@ if ( !class_exists( 'Urvanov_Syntax_Highlighter_Global' ) ) {
 		// Old name: crayon_x
 		function urvanov_x($text, $context) {
 		    if (function_exists('_x')) {
-		        return _x($text, $context, URVANOV_SYNTAX_HIGHLIGHTER_DOMAIN);
+		    	return _x($text, $context, 'urvanov-syntax-highlighter');
 		    } else {
 		        return $text;
 		    }

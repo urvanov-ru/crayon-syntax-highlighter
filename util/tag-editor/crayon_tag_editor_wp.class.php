@@ -1,6 +1,6 @@
 <?php
 
-require_once(URVANOV_SYNTAX_HIGHLIGHTER_ROOT_PATH . 'crayon_settings_wp.class.php');
+require_once(URVANOV_SYNTAX_HIGHLIGHTER_ROOT_PATH . 'class-urvanov-syntax-highlighter-settings.php');
 
 class UrvanovSyntaxHighlighterTagEditorWP {
 

@@ -89,8 +89,8 @@ class Urvanov_Syntax_Highlighter_Parser {
 		}
 
 		/* Add reserved Crayon element. This is used by Crayon internally. */
-		$crayon_element = new Urvanov_Syntax_Highlighter_Element(self::URVANOV_SYNTAX_HIGHLIGHTER_ELEMENT, $path, self::URVANOV_SYNTAX_HIGHLIGHTER_ELEMENT_REGEX);
-		$lang->element(self::URVANOV_SYNTAX_HIGHLIGHTER_ELEMENT, $crayon_element);
+		$urvanov_syntax_highlighter_element = new Urvanov_Syntax_Highlighter_Element(self::URVANOV_SYNTAX_HIGHLIGHTER_ELEMENT, $path, self::URVANOV_SYNTAX_HIGHLIGHTER_ELEMENT_REGEX);
+		$lang->element(self::URVANOV_SYNTAX_HIGHLIGHTER_ELEMENT, $urvanov_syntax_highlighter_element);
 
 		// Extract elements, classes and regex
 		$pattern = '#^[ \t]*([\w:]+)[ \t]+(?:\[([\w\t ]*)\][ \t]+)?([^\r\n]+)[ \t]*#m';
