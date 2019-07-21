@@ -1,8 +1,8 @@
-// Crayon Syntax Highlighter Admin JavaScript
+// Urvanov Syntax Highlighter Admin JavaScript
 
 (function ($) {
 
-    window.CrayonSyntaxAdmin = new function () {
+    window.UrvanovSyntaxHighlighterAdmin = new function () {
         var base = this;
 
         // Preview
@@ -30,24 +30,24 @@
         var util = null;
 
         base.init = function () {
-            CrayonUtil.log('admin init');
-            settings = CrayonSyntaxSettings;
-            adminSettings = CrayonAdminSettings;
-            strings = CrayonAdminStrings;
-            util = CrayonUtil;
+            UrvanovSyntaxHighlighterUtil.log('admin init');
+            settings = UrvanovSyntaxHighlighterSettings;
+            adminSettings = UrvanovSyntaxHighlighterAdminSettings;
+            strings = UrvanovSyntaxHighlighterAdminStrings;
+            util = UrvanovSyntaxHighlighterUtil;
 
             // Dialogs
             var dialogFunction = adminSettings.dialogFunction;
             dialogFunction = $.fn[dialogFunction] ? dialogFunction : 'dialog';
-            $.fn.crayonDialog = $.fn[dialogFunction];
+            $.fn.urvanovSyntaxHighlighterDialog = $.fn[dialogFunction];
 
             // Wraps
-            main_wrap = $('#crayon-main-wrap');
-            theme_editor_wrap = $('#crayon-theme-editor-wrap');
+            main_wrap = $('#urvanov-syntax-highlighter-main-wrap');
+            theme_editor_wrap = $('#urvanov-syntax-highlighter-theme-editor-wrap');
 
             // Themes
-            theme_select = $('#crayon-theme');
-            theme_info = $('#crayon-theme-info');
+            theme_select = $('#urvanov-syntax-highlighter-theme');
+            theme_info = $('#urvanov-syntax-highlighter-theme-info');
             theme_ver = theme_info.find('.version').next('div');
             theme_author = theme_info.find('.author').next('div');
             theme_desc = theme_info.find('.desc');
@@ -57,11 +57,11 @@
                 base.preview_update();
             });
 
-            theme_editor_edit_button = $('#crayon-theme-editor-edit-button');
-            theme_editor_create_button = $('#crayon-theme-editor-create-button');
-            theme_editor_duplicate_button = $('#crayon-theme-editor-duplicate-button');
-            theme_editor_delete_button = $('#crayon-theme-editor-delete-button');
-            theme_editor_submit_button = $('#crayon-theme-editor-submit-button');
+            theme_editor_edit_button = $('#urvanov-syntax-highlighter-theme-editor-edit-button');
+            theme_editor_create_button = $('#urvanov-syntax-highlighter-theme-editor-create-button');
+            theme_editor_duplicate_button = $('#urvanov-syntax-highlighter-theme-editor-duplicate-button');
+            theme_editor_delete_button = $('#urvanov-syntax-highlighter-theme-editor-delete-button');
+            theme_editor_submit_button = $('#urvanov-syntax-highlighter-theme-editor-submit-button');
             theme_editor_edit_button.click(function () {
                 base.show_theme_editor(theme_editor_edit_button,
                     true);
@@ -71,33 +71,33 @@
                     false);
             });
             theme_editor_duplicate_button.click(function () {
-                CrayonSyntaxThemeEditor.duplicate(adminSettings.currTheme, adminSettings.currThemeName);
+                UrvanovSyntaxHighlighterSyntaxThemeEditor.duplicate(adminSettings.currTheme, adminSettings.currThemeName);
             });
             theme_editor_delete_button.click(function () {
                 if (!theme_editor_edit_button.attr('disabled')) {
-                    CrayonSyntaxThemeEditor.del(adminSettings.currTheme, adminSettings.currThemeName);
+                    UrvanovSyntaxHighlighterSyntaxThemeEditor.del(adminSettings.currTheme, adminSettings.currThemeName);
                 }
                 return false;
             });
             theme_editor_submit_button.click(function () {
-                CrayonSyntaxThemeEditor.submit(adminSettings.currTheme, adminSettings.currThemeName);
+                UrvanovSyntaxHighlighterSyntaxThemeEditor.submit(adminSettings.currTheme, adminSettings.currThemeName);
             });
 
             // Help
-            help = $('.crayon-help-close');
+            help = $('.urvanov-syntax-highlighter-help-close');
             help.click(function () {
-                $('.crayon-help').hide();
-                CrayonUtil.getAJAX({
-                    action: 'crayon-ajax',
+                $('.urvanov-syntax-highlighter-help').hide();
+                UrvanovSyntaxHighlighterUtil.getAJAX({
+                    action: 'urvanov-syntax-highlighter-ajax',
                     'hide-help': 1
                 });
             });
 
             // Preview
-            preview = $('#crayon-live-preview');
-            previewWrapper = $('#crayon-live-preview-wrapper');
-            previewInner = $('#crayon-live-preview-inner');
-            preview_info = $('#crayon-preview-info');
+            preview = $('#urvanov-syntax-highlighter-live-preview');
+            previewWrapper = $('#urvanov-syntax-highlighter-live-preview-wrapper');
+            previewInner = $('#urvanov-syntax-highlighter-live-preview-inner');
+            preview_info = $('#urvanov-syntax-highlighter-preview-info');
             preview_cbox = util.cssElem('#preview');
             if (preview.length != 0) {
                 // Preview not needed in Tag Editor
@@ -111,29 +111,29 @@
             }
 
             $('#show-posts').click(function () {
-                CrayonUtil.getAJAX({
-                    action: 'crayon-show-posts'
+                UrvanovSyntaxHighlighterUtil.getAJAX({
+                    action: 'urvanov-syntax-highlighter-show-posts'
                 }, function (data) {
-                    $('#crayon-subsection-posts-info').html(data);
+                    $('#urvanov-syntax-highlighter-subsection-posts-info').html(data);
                 });
             });
 
             $('#show-langs').click(function () {
-                CrayonUtil.getAJAX({
-                    action: 'crayon-show-langs'
+                UrvanovSyntaxHighlighterUtil.getAJAX({
+                    action: 'urvanov-syntax-highlighter-show-langs'
                 }, function (data) {
                     $('#lang-info').hide();
-                    $('#crayon-subsection-langs-info').html(data);
+                    $('#urvanov-syntax-highlighter-subsection-langs-info').html(data);
                 });
             });
 
             // Convert
-            $('#crayon-settings-form input').live(
+            $('#urvanov-syntax-highlighter-settings-form input').live(
                 'focusin focusout mouseup',
                 function () {
-                    $('#crayon-settings-form').data('lastSelected', $(this));
+                    $('#urvanov-syntax-highlighter-settings-form').data('lastSelected', $(this));
                 });
-            $('#crayon-settings-form')
+            $('#urvanov-syntax-highlighter-settings-form')
                 .submit(
                 function () {
                     var last = $(this).data('lastSelected').get(0);
@@ -146,7 +146,7 @@
 
             // Alignment
             align_drop = util.cssElem('#h-align');
-            float = $('#crayon-subsection-float');
+            float = $('#urvanov-syntax-highlighter-subsection-float');
             align_drop.change(function () {
                 float_toggle();
             });
@@ -163,7 +163,7 @@
             });
 
             // Toolbar
-            overlay = $('#crayon-subsection-toolbar');
+            overlay = $('#urvanov-syntax-highlighter-subsection-toolbar');
             toolbar = util.cssElem('#toolbar');
             toggle_toolbar();
             toolbar.change(function () {
@@ -172,7 +172,7 @@
 
             // Copy
             plain = util.cssElem('#plain');
-            copy = $('#crayon-subsection-copy-check');
+            copy = $('#urvanov-syntax-highlighter-subsection-copy-check');
             plain.change(function () {
                 if (plain.is(':checked')) {
                     copy.show();
@@ -182,12 +182,12 @@
             });
 
             // Log
-            log_wrapper = $('#crayon-log-wrapper');
-            log_button = $('#crayon-log-toggle');
-            log_text = $('#crayon-log-text');
+            log_wrapper = $('#urvanov-syntax-highlighter-log-wrapper');
+            log_button = $('#urvanov-syntax-highlighter-log-toggle');
+            log_text = $('#urvanov-syntax-highlighter-log-text');
             var show_log = log_button.attr('show_txt');
             var hide_log = log_button.attr('hide_txt');
-            clog = $('#crayon-log');
+            clog = $('#urvanov-syntax-highlighter-log');
             log_button.val(show_log);
             log_button.click(function () {
                 clog.width(log_wrapper.width());
@@ -199,34 +199,34 @@
                 log_button.val(text);
             });
 
-            change_button = $('#crayon-change-code');
+            change_button = $('#urvanov-syntax-highlighter-change-code');
             change_button.click(function () {
                 base.createDialog({
                     title: strings.changeCode,
-                    html: '<textarea id="crayon-change-code-text"></textarea>',
+                    html: '<textarea id="urvanov-syntax-highlighter-change-code-text"></textarea>',
                     desc: null,
                     value: '',
                     options: {
                         buttons: {
                             "OK": function () {
-                                change_code = $('#crayon-change-code-text').val();
+                                change_code = $('#urvanov-syntax-highlighter-change-code-text').val();
                                 base.preview_update();
-                                $(this).crayonDialog('close');
+                                $(this).urvanovSyntaxHighlighterDialog('close');
                             },
                             "Cancel": function () {
-                                $(this).crayonDialog('close');
+                                $(this).urvanovSyntaxHighlighterDialog('close');
                             }
                         },
                         open: function () {
                             if (change_code) {
-                                $('#crayon-change-code-text').val(change_code);
+                                $('#urvanov-syntax-highlighter-change-code-text').val(change_code);
                             }
                         }
                     }
                 });
                 return false;
             });
-            $('#crayon-fallback-lang').change(function () {
+            $('#urvanov-syntax-highlighter-fallback-lang').change(function () {
                 change_code = null;
                 base.preview_update();
             });
@@ -237,7 +237,7 @@
             var val = 0;
             var obj;
             var getVars = $.extend({
-                action: 'crayon-show-preview',
+                action: 'urvanov-syntax-highlighter-show-preview',
                 theme: adminSettings.currTheme
             }, vars);
             if (change_code) {
@@ -250,14 +250,14 @@
                 } else {
                     val = obj.val();
                 }
-                getVars[preview_obj_names[i]] = val;//CrayonUtil.escape(val);
+                getVars[preview_obj_names[i]] = val;//UrvanovSyntaxHighlighterUtil.escape(val);
             }
 
             // Load Preview
-            CrayonUtil.postAJAX(getVars, function (data) {
+            UrvanovSyntaxHighlighterUtil.postAJAX(getVars, function (data) {
                 preview.html(data);
-                // Important! Calls the crayon.js init
-                CrayonSyntax.init();
+                // Important! Calls the urvanov_syntax_highlighter.js init
+                UrvanovSyntaxHighlighterSyntax.init();
                 base.preview_ready();
             });
         };
@@ -266,14 +266,14 @@
             if (!preview_loaded) {
                 preview_loaded = true;
                 if (window.GET['theme-editor']) {
-                    CrayonSyntaxAdmin.show_theme_editor(
+                    UrvanovSyntaxHighlighterAdmin.show_theme_editor(
                         theme_editor_edit_button, true);
                 }
             }
         };
 
         var preview_toggle = function () {
-            // CrayonUtil.log('preview_toggle');
+            // UrvanovSyntaxHighlighterUtil.log('preview_toggle');
             if (preview_cbox.is(':checked')) {
                 preview.show();
                 preview_info.show();
@@ -309,13 +309,13 @@
             // Checks if the text input is changed, if so, runs the callback
             // with given event
             preview_txt_change = function (callback, event) {
-                // CrayonUtil.log('checking if changed');
+                // UrvanovSyntaxHighlighterUtil.log('checking if changed');
                 var obj = event.target;
                 var last = preview_last_values[obj.id];
-                // CrayonUtil.log('last' + preview_last_values[obj.id]);
+                // UrvanovSyntaxHighlighterUtil.log('last' + preview_last_values[obj.id]);
 
                 if (obj.value != last) {
-                    // CrayonUtil.log('changed');
+                    // UrvanovSyntaxHighlighterUtil.log('changed');
                     // Update last value to current
                     preview_last_values[obj.id] = obj.value;
                     // Run callback with event
@@ -325,7 +325,7 @@
 
             // Only updates when text is changed
             preview_txt_callback = function (event) {
-                // CrayonUtil.log('txt callback');
+                // UrvanovSyntaxHighlighterUtil.log('txt callback');
                 preview_txt_change(base.preview_update, event);
             };
 
@@ -334,7 +334,7 @@
                 preview_txt_change(function () {
                     clearInterval(preview_delay_timer);
                     preview_delay_timer = setInterval(function () {
-                        // CrayonUtil.log('delayed update');
+                        // UrvanovSyntaxHighlighterUtil.log('delayed update');
                         base.preview_update();
                         clearInterval(preview_delay_timer);
                     }, 500);
@@ -342,7 +342,7 @@
             };
 
             // Retreive preview objects
-            $('[crayon-preview="1"]').each(function (i) {
+            $('[urvanov-syntax-highlighter-preview="1"]').each(function (i) {
                 var obj = $(this);
                 var id = obj.attr('id');
                 // XXX Remove prefix
@@ -445,13 +445,13 @@
 
         base.show_theme_info = function (callback) {
             base.refresh_theme_info(function () {
-                var info = CrayonSyntaxThemeEditor.readCSSInfo(adminSettings.currThemeCSS);
+                var info = UrvanovSyntaxHighlighterSyntaxThemeEditor.readCSSInfo(adminSettings.currThemeCSS);
                 var infoHTML = '';
                 for (id in info) {
                     if (id != 'name') {
                         infoHTML += '<div class="fieldset">';
                         if (id != 'description') {
-                            infoHTML += '<div class="' + id + ' field">' + CrayonSyntaxThemeEditor.getFieldName(id) + ':</div>';
+                            infoHTML += '<div class="' + id + ' field">' + UrvanovSyntaxHighlighterSyntaxThemeEditor.getFieldName(id) + ':</div>';
                         }
                         infoHTML += '<div class="' + id + ' value">' + info[id].linkify('_blank') + '</div></div>';
                     }
@@ -459,10 +459,10 @@
                 var type, typeName;
                 if (adminSettings.currThemeIsUser) {
                     type = 'user';
-                    typeName = CrayonThemeEditorStrings.userTheme;
+                    typeName = UrvanovSyntaxHighlighterThemeEditorStrings.userTheme;
                 } else {
                     type = 'stock';
-                    typeName = CrayonThemeEditorStrings.stockTheme;
+                    typeName = UrvanovSyntaxHighlighterThemeEditorStrings.stockTheme;
                 }
                 infoHTML = '<div class="type ' + type + '">' + typeName + '</div><div class="content">' + infoHTML + '</div>';
                 theme_info.html(infoHTML);
@@ -486,17 +486,17 @@
             adminSettings.editing_theme = editing;
             theme_editor_loading = true;
             // Load theme editor
-            CrayonUtil.getAJAX({
-                action: 'crayon-theme-editor',
+            UrvanovSyntaxHighlighterUtil.getAJAX({
+                action: 'urvanov-syntax-highlighter-theme-editor',
                 currTheme: adminSettings.currTheme,
                 editing: editing
             }, function (data) {
                 theme_editor_wrap.html(data);
                 // Load preview into editor
                 if (theme_editor_loading) {
-                    CrayonSyntaxThemeEditor.init();
+                    UrvanovSyntaxHighlighterSyntaxThemeEditor.init();
                 }
-                CrayonSyntaxThemeEditor.show(function () {
+                UrvanovSyntaxHighlighterSyntaxThemeEditor.show(function () {
                     base.show_theme_editor_now(button);
                 }, previewInner);
             });
@@ -505,7 +505,7 @@
 
         base.resetPreview = function () {
             previewWrapper.append(previewInner);
-            CrayonSyntaxThemeEditor.removeStyle();
+            UrvanovSyntaxHighlighterSyntaxThemeEditor.removeStyle();
         };
 
         base.show_theme_editor_now = function (button) {
@@ -523,7 +523,7 @@
                 options: {
                     buttons: {
                         "OK": function () {
-                            $(this).crayonDialog('close');
+                            $(this).urvanovSyntaxHighlighterDialog('close');
                         }
                     }
                 }
@@ -553,13 +553,13 @@
                 if (args.yes) {
                     args.yes();
                 }
-                $(this).crayonDialog('close');
+                $(this).urvanovSyntaxHighlighterDialog('close');
             };
             options.buttons[args.noLabel] = function () {
                 if (args.no) {
                     args.no();
                 }
-                $(this).crayonDialog('close');
+                $(this).urvanovSyntaxHighlighterDialog('close');
             };
             options = $.extend(options, args.options);
             options.open = function () {
@@ -569,11 +569,11 @@
                     args.options.open();
                 }
             };
-            $('<div></div>').appendTo('body').html(args.html).crayonDialog(options);
+            $('<div></div>').appendTo('body').html(args.html).urvanovSyntaxHighlighterDialog(options);
             // Can be modified afterwards
             return args;
         };
 
     };
 
-})(jQueryCrayon);
+})(jQueryUrvanovSyntaxHighlighter);

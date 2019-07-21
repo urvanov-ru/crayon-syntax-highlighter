@@ -532,7 +532,7 @@ EOT;
         return $p . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
     }
 
-    // Removes crayon plugin path from absolute path
+    // Removes Urvanov Syntax Highlighter plugin path from absolute path
     public static function path_rel($url) {
         if (is_string($url)) {
             return str_replace(URVANOV_SYNTAX_HIGHLIGHTER_ROOT_PATH, '/', $url);

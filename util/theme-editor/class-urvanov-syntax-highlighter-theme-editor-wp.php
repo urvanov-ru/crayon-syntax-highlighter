@@ -8,7 +8,7 @@ class Urvanov_Syntax_Highlighter_HTML_Element {
     public $closed = FALSE;
     public $contents = '';
     public $attributes = array();
-    const CSS_INPUT_PREFIX = "crayon-theme-input-";
+    const CSS_INPUT_PREFIX = "urvanov-syntax-highlighter-theme-input-";
 
     public static $borderStyles = array(
         'none',
@@ -181,7 +181,7 @@ class Urvanov_Syntax_Highlighter_Theme_Editor_WP {
                 'attribute' => self::ATTRIBUTE,
                 'fields' => self::$infoFields,
                 'fieldsInverse' => self::$infoFieldsInverse,
-                'prefix' => 'crayon-theme-editor'
+                'prefix' => 'urvanov-syntax-highlighter-theme-editor'
             );
         }
     }
@@ -205,9 +205,9 @@ class Urvanov_Syntax_Highlighter_Theme_Editor_WP {
                 'editingTheme' => Urvanov_Syntax_Highlighter_Global::urvanov__("Editing Theme: %s"),
                 'creatingTheme' => Urvanov_Syntax_Highlighter_Global::urvanov__("Creating Theme: %s"),
                 'submit' => Urvanov_Syntax_Highlighter_Global::urvanov__("Submit Your Theme"),
-                'submitText' => Urvanov_Syntax_Highlighter_Global::urvanov__("Submit your User Theme for inclusion as a Stock Theme in Crayon! This will email me your theme - make sure it's considerably different from the stock themes :)"),
+                'submitText' => Urvanov_Syntax_Highlighter_Global::urvanov__("Submit your User Theme for inclusion as a Stock Theme in Urvanov Syntax Highlighter! This will email me your theme - make sure it's considerably different from the stock themes :)"),
                 'message' => Urvanov_Syntax_Highlighter_Global::urvanov__("Message"),
-                'submitMessage' => Urvanov_Syntax_Highlighter_Global::urvanov__("Please include this theme in Crayon!"),
+                'submitMessage' => Urvanov_Syntax_Highlighter_Global::urvanov__("Please include this theme in Urvanov Syntax Highlighter!"),
                 'submitSucceed' => Urvanov_Syntax_Highlighter_Global::urvanov__("Submit was successful."),
                 'submitFail' => Urvanov_Syntax_Highlighter_Global::urvanov__("Submit failed!"),
                 'borderStyles' => Urvanov_Syntax_Highlighter_HTML_Element::$borderStyles
@@ -225,15 +225,15 @@ class Urvanov_Syntax_Highlighter_Theme_Editor_WP {
         wp_enqueue_script('jquery_tinycolor_js', plugins_url(URVANOV_SYNTAX_HIGHLIGHTER_JS_TINYCOLOR, $path), array(), $URVANOV_SYNTAX_HIGHLIGHTER_VERSION);
 
         if (URVANOV_SYNTAX_HIGHLIGHTER_MINIFY) {
-            wp_enqueue_script('crayon_theme_editor', plugins_url(URVANOV_SYNTAX_HIGHLIGHTER_THEME_EDITOR_JS, $path), array('jquery', 'crayon_js', 'crayon_admin_js', 'cssjson_js', 'jquery_colorpicker_js', 'jquery_tinycolor_js'), $URVANOV_SYNTAX_HIGHLIGHTER_VERSION);
+            wp_enqueue_script('urvanov_syntax_highlighter_theme_editor', plugins_url(URVANOV_SYNTAX_HIGHLIGHTER_THEME_EDITOR_JS, $path), array('jquery', 'urvanov_syntax_highlighter_js', 'urvanov_syntax_highlighter_admin_js', 'cssjson_js', 'jquery_colorpicker_js', 'jquery_tinycolor_js'), $URVANOV_SYNTAX_HIGHLIGHTER_VERSION);
         } else {
-            wp_enqueue_script('crayon_theme_editor', plugins_url(URVANOV_SYNTAX_HIGHLIGHTER_THEME_EDITOR_JS, $path), array('jquery', 'crayon_util_js', 'crayon_admin_js', 'cssjson_js', 'jquery_colorpicker_js', 'jquery_tinycolor_js'), $URVANOV_SYNTAX_HIGHLIGHTER_VERSION);
+            wp_enqueue_script('urvanov_syntax_highlighter_theme_editor', plugins_url(URVANOV_SYNTAX_HIGHLIGHTER_THEME_EDITOR_JS, $path), array('jquery', 'urvanov_syntax_highlighter_util_js', 'urvanov_syntax_highlighter_admin_js', 'cssjson_js', 'jquery_colorpicker_js', 'jquery_tinycolor_js'), $URVANOV_SYNTAX_HIGHLIGHTER_VERSION);
         }
 
-        wp_localize_script('crayon_theme_editor', 'CrayonThemeEditorSettings', self::$settings);
-        wp_localize_script('crayon_theme_editor', 'CrayonThemeEditorStrings', self::$strings);
+        wp_localize_script('urvanov_syntax_highlighter_theme_editor', 'UrvanovSyntaxHighlighterThemeEditorSettings', self::$settings);
+        wp_localize_script('urvanov_syntax_highlighter_theme_editor', 'UrvanovSyntaxHighlighterThemeEditorStrings', self::$strings);
 
-        wp_enqueue_style('crayon_theme_editor', plugins_url(URVANOV_SYNTAX_HIGHLIGHTER_THEME_EDITOR_STYLE, $path), array('wp-jquery-ui-dialog'), $URVANOV_SYNTAX_HIGHLIGHTER_VERSION);
+        wp_enqueue_style('urvanov_syntax_highlighter_theme_editor', plugins_url(URVANOV_SYNTAX_HIGHLIGHTER_THEME_EDITOR_STYLE, $path), array('wp-jquery-ui-dialog'), $URVANOV_SYNTAX_HIGHLIGHTER_VERSION);
         wp_enqueue_style('jquery_colorpicker', plugins_url(URVANOV_SYNTAX_HIGHLIGHTER_CSS_JQUERY_COLORPICKER, $path), array(), $URVANOV_SYNTAX_HIGHLIGHTER_VERSION);
     }
 
@@ -319,18 +319,18 @@ class Urvanov_Syntax_Highlighter_Theme_Editor_WP {
         $tStripedMarked = Urvanov_Syntax_Highlighter_Global::urvanov__("Striped & Marked");
         $tLanguage = Urvanov_Syntax_Highlighter_Global::urvanov__("Language");
 
-        $top = '.crayon-top';
-        $bottom = '.crayon-bottom';
+        $top = '.urvanov-syntax-highlighter-top';
+        $bottom = '.urvanov-syntax-highlighter-bottom';
         $hover = ':hover';
         $active = ':active';
-        $pressed = '.crayon-pressed';
+        $pressed = '.urvanov-syntax-highlighter-pressed';
 
         ?>
 
     <div
             id="icon-options-general" class="icon32"></div>
     <h2>
-        Crayon Syntax Highlighter
+        Urvanov Syntax Highlighter
         <?php Urvanov_Syntax_Highlighter_Global::urvanov_e('Theme Editor'); ?>
     </h2>
 
@@ -346,31 +346,31 @@ class Urvanov_Syntax_Highlighter_Theme_Editor_WP {
     <div id="<?php echo self::$settings['prefix'] ?>-info"></div>
 
     <p>
-        <a id="crayon-editor-back" class="button-primary"><?php Urvanov_Syntax_Highlighter_Global::urvanov_e("Back To Settings"); ?></a>
-        <a id="crayon-editor-save" class="button-primary"><?php Urvanov_Syntax_Highlighter_Global::urvanov_e("Save"); ?></a>
-        <span id="crayon-editor-status"></span>
+        <a id="urvanov-syntax-highlighter-editor-back" class="button-primary"><?php Urvanov_Syntax_Highlighter_Global::urvanov_e("Back To Settings"); ?></a>
+        <a id="urvanov-syntax-highlighter-editor-save" class="button-primary"><?php Urvanov_Syntax_Highlighter_Global::urvanov_e("Save"); ?></a>
+        <span id="urvanov-syntax-highlighter-editor-status"></span>
     </p>
 
     <?php //Urvanov_Syntax_Highlighter_Global::urvanov_e('Use the Sidebar on the right to change the Theme of the Preview window.') ?>
 
-    <div id="crayon-editor-top-controls"></div>
+    <div id="urvanov-syntax-highlighter-editor-top-controls"></div>
 
-    <table id="crayon-editor-table" style="width: 100%;" cellspacing="5"
+    <table id="urvanov-syntax-highlighter-editor-table" style="width: 100%;" cellspacing="5"
            cellpadding="0">
         <tr>
-            <td id="crayon-editor-preview-wrapper">
-                <div id="crayon-editor-preview"></div>
+            <td id="urvanov-syntax-highlighter-editor-preview-wrapper">
+                <div id="urvanov-syntax-highlighter-editor-preview"></div>
             </td>
-            <div id="crayon-editor-preview-css"></div>
-            <td id="crayon-editor-control-wrapper">
-                <div id="crayon-editor-controls">
+            <div id="urvanov-syntax-highlighter-editor-preview-css"></div>
+            <td id="urvanov-syntax-highlighter-editor-control-wrapper">
+                <div id="urvanov-syntax-highlighter-editor-controls">
                     <ul>
-                        <li title="<?php echo $tInformation ?>"><a class="crayon-tab-information" href="#tabs-1"></a></li>
-                        <li title="<?php echo $tHighlighting ?>"><a class="crayon-tab-highlighting" href="#tabs-2"></a></li>
-                        <li title="<?php echo $tFrame ?>"><a class="crayon-tab-frame" href="#tabs-3"></a></li>
-                        <li title="<?php echo $tLines ?>"><a class="crayon-tab-lines" href="#tabs-4"></a></li>
-                        <li title="<?php echo $tNumbers ?>"><a class="crayon-tab-numbers" href="#tabs-5"></a></li>
-                        <li title="<?php echo $tToolbar ?>"><a class="crayon-tab-toolbar" href="#tabs-6"></a></li>
+                        <li title="<?php echo $tInformation ?>"><a class="urvanov-syntax-highlighter-tab-information" href="#tabs-1"></a></li>
+                        <li title="<?php echo $tHighlighting ?>"><a class="urvanov-syntax-highlighter-tab-highlighting" href="#tabs-2"></a></li>
+                        <li title="<?php echo $tFrame ?>"><a class="urvanov-syntax-highlighter-tab-frame" href="#tabs-3"></a></li>
+                        <li title="<?php echo $tLines ?>"><a class="urvanov-syntax-highlighter-tab-lines" href="#tabs-4"></a></li>
+                        <li title="<?php echo $tNumbers ?>"><a class="urvanov-syntax-highlighter-tab-numbers" href="#tabs-5"></a></li>
+                        <li title="<?php echo $tToolbar ?>"><a class="urvanov-syntax-highlighter-tab-toolbar" href="#tabs-6"></a></li>
                     </ul>
                     <div id="tabs-1">
                         <?php
@@ -383,7 +383,7 @@ class Urvanov_Syntax_Highlighter_Theme_Editor_WP {
                     </div>
                     <div id="tabs-2">
                         <?php
-                        $highlight = ' .crayon-pre';
+                        $highlight = ' .urvanov-syntax-highlighter-pre';
                         $elems = array(
                             'c' => Urvanov_Syntax_Highlighter_Global::urvanov__("Comment"),
                             's' => Urvanov_Syntax_Highlighter_Global::urvanov__("String"),
@@ -407,7 +407,7 @@ class Urvanov_Syntax_Highlighter_Theme_Editor_WP {
                         );
                         $atts = array(new Urvanov_Syntax_Highlighter_HTML_Title($tHighlighting));
                         foreach ($elems as $class => $name) {
-                            $fullClass = $class != '' ? $highlight . ' .crayon-' . $class : $highlight;
+                            $fullClass = $class != '' ? $highlight . ' .urvanov-syntax-highlighter-' . $class : $highlight;
                             $atts[] = array(
                                 $name,
                                 self::createAttribute($fullClass, 'color'),
@@ -445,9 +445,9 @@ class Urvanov_Syntax_Highlighter_Theme_Editor_WP {
                     </div>
                     <div id="tabs-4">
                         <?php
-                        $stripedLine = ' .crayon-striped-line';
-                        $markedLine = ' .crayon-marked-line';
-                        $stripedMarkedLine = ' .crayon-marked-line.crayon-striped-line';
+                        $stripedLine = ' .urvanov-syntax-highlighter-striped-line';
+                        $markedLine = ' .urvanov-syntax-highlighter-marked-line';
+                        $stripedMarkedLine = ' .urvanov-syntax-highlighter-marked-line.urvanov-syntax-highlighter-striped-line';
                         self::createAttributesForm(array(
                             new Urvanov_Syntax_Highlighter_HTML_Title($tLines),
                             new Urvanov_Syntax_Highlighter_HTML_Separator($tNormal),
@@ -471,10 +471,10 @@ class Urvanov_Syntax_Highlighter_Theme_Editor_WP {
                     </div>
                     <div id="tabs-5">
                         <?php
-                        $nums = ' .crayon-table .crayon-nums';
-                        $stripedNum = ' .crayon-striped-num';
-                        $markedNum = ' .crayon-marked-num';
-                        $stripedMarkedNum = ' .crayon-marked-num.crayon-striped-num';
+                        $nums = ' .urvanov-syntax-highlighter-table .urvanov-syntax-highlighter-nums';
+                        $stripedNum = ' .urvanov-syntax-highlighter-striped-num';
+                        $markedNum = ' .urvanov-syntax-highlighter-marked-num';
+                        $stripedMarkedNum = ' .urvanov-syntax-highlighter-marked-num.urvanov-syntax-highlighter-striped-num';
                         self::createAttributesForm(array(
                             new Urvanov_Syntax_Highlighter_HTML_Title($tNumbers),
                             array(
@@ -508,11 +508,11 @@ class Urvanov_Syntax_Highlighter_Theme_Editor_WP {
                     </div>
                     <div id="tabs-6">
                         <?php
-                        $toolbar = ' .crayon-toolbar';
-                        $title = ' .crayon-title';
-                        $button = ' .crayon-button';
-                        $info = ' .crayon-info';
-                        $language = ' .crayon-language';
+                        $toolbar = ' .urvanov-syntax-highlighter-toolbar';
+                        $title = ' .urvanov-syntax-highlighter-title';
+                        $button = ' .urvanov-syntax-highlighter-button';
+                        $info = ' .urvanov-syntax-highlighter-info';
+                        $language = ' .urvanov-syntax-highlighter-language';
                         self::createAttributesForm(array(
                             new Urvanov_Syntax_Highlighter_HTML_Title($tToolbar),
                             new Urvanov_Syntax_Highlighter_HTML_Separator($tFrame),

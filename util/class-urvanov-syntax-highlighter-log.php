@@ -1,5 +1,5 @@
 <?php
-require_once (URVANOV_SYNTAX_HIGHLIGHTER_ROOT_PATH . 'crayon_settings.class.php');
+require_once (URVANOV_SYNTAX_HIGHLIGHTER_ROOT_PATH . 'class-urvanov-syntax-highlighter-settings.php');
 
 /* Manages logging variable values to the log file. */
 class UrvanovSyntaxHighlighterLog {

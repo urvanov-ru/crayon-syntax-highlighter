@@ -36,15 +36,15 @@
                             wp.components.IconButton,
                             {
                                 icon: 'editor-code',
-                                title: 'Crayon',
+                                title: 'UrvanovSyntaxHighlighter',
                                 onClick: function() {
-                                     window.CrayonTagEditor.showDialog({
+                                     window.UrvanovSyntaxHighlighterTagEditor.showDialog({
                                          update: function(shortcode) {
                                         },
                                         br_html_block_after : '',
                                         input: 'decode',
                                         output: 'encode',
-                                        node:  content ? CrayonUtil.htmlToElements(content)[0] : null,
+                                        node:  content ? UrvanovSyntaxHighlighterUtil.htmlToElements(content)[0] : null,
                                          insert: function(shortcode) {
                                                          onChangeContent(
                                                              shortcode
@@ -56,7 +56,7 @@
 
                                    }
                             },
-                            "Crayon"
+                            "UrvanovSyntaxHighlighter"
                         )
                     )
                 ),
@@ -70,11 +70,11 @@
         },
     } );
 
-    var CrayonButton = function( props ) {
+    var UrvanovSyntaxHighlighterButton = function( props ) {
         return wp.element.createElement(
             wp.editor.RichTextToolbarButton, {
                 icon: 'editor-code',
-                title: 'Crayon',
+                title: 'UrvanovSyntaxHighlighter',
                 onClick: function(onClickArg) {
                     var activeFormat = wp.richText.getActiveFormat(props.value, 'urvanov-syntax-highlighter/code-inline');
                     var startIndex = props.value.start;
@@ -95,16 +95,16 @@
                         var inputRichTextValue = wp.richText.slice(props.value, startIndex, endIndex);
                         var inputValue = wp.richText.toHTMLString({
                             value: inputRichTextValue});
-                        var inputNode = CrayonUtil.htmlToElements(inputValue)[0];
+                        var inputNode = UrvanovSyntaxHighlighterUtil.htmlToElements(inputValue)[0];
                     } else {
                     	var inputRichTextValue = wp.richText.slice(props.value, startIndex, endIndex);
-                        var inputValue = '<span class="' + CrayonTagEditorSettings.inline_css + '">' + wp.richText.toHTMLString({
+                        var inputValue = '<span class="' + UrvanovSyntaxHighlighterTagEditorSettings.inline_css + '">' + wp.richText.toHTMLString({
                             value: inputRichTextValue}) + '</span>';
-                        var inputNode = CrayonUtil.htmlToElements(inputValue)[0];
+                        var inputNode = UrvanovSyntaxHighlighterUtil.htmlToElements(inputValue)[0];
                     }
                     
 
-                     window.CrayonTagEditor.showDialog({
+                     window.UrvanovSyntaxHighlighterTagEditor.showDialog({
                          update: function(shortcode) {
                         },
                         node:  inputNode,
@@ -134,14 +134,14 @@
     
     wp.richText.registerFormatType(
         'urvanov-syntax-highlighter/code-inline', {
-            title: 'Crayon',
+            title: 'UrvanovSyntaxHighlighter',
             tagName: 'span',
             className: null,
-            edit: CrayonButton
+            edit: UrvanovSyntaxHighlighterButton
         }
     );
 
-    window.CrayonTagEditor = new function () {
+    window.UrvanovSyntaxHighlighterTagEditor = new function () {
         var base = this;
 
         var isInit = false;
@@ -155,7 +155,7 @@
         var code_refresh, url_refresh;
 
         // Current $ obj of pre node
-        var currCrayon = null;
+        var currUrvanovSyntaxHighlighter = null;
         // Classes from pre node, excl. settings
         var currClasses = '';
         // Whether to make span or pre
@@ -176,7 +176,7 @@
             closeButton: false,
             fixed: true,
             transition: 'none',
-            className: 'crayon-colorbox',
+            className: 'urvanov-syntax-highlighter-colorbox',
             onOpen: function () {
                 $(this.outer).prepend($(s.bar_content));
             },
@@ -189,9 +189,9 @@
         };
 
         base.init = function () {
-            s = CrayonTagEditorSettings;
-            gs = CrayonSyntaxSettings;
-            util = CrayonUtil;
+            s = UrvanovSyntaxHighlighterTagEditorSettings;
+            gs = UrvanovSyntaxHighlighterSyntaxSettings;
+            util = UrvanovSyntaxHighlighterUtil;
             // This allows us to call $.colorbox and reload without needing a button click.
             colorboxSettings.href = s.content_css;
         };
@@ -204,7 +204,7 @@
             var $buttons = $(buttonCls);
             $buttons.each(function (i, button) {
                 var $button = $(button);
-                var $wrapper = $('<a class="crayon-tag-editor-button-wrapper"></a>').attr('href', s.content_css);
+                var $wrapper = $('<a class="urvanov-syntax-highlighter-tag-editor-button-wrapper"></a>').attr('href', s.content_css);
                 $button.after($wrapper);
                 $wrapper.append($button);
                 $wrapper.colorbox(colorboxSettings);
@@ -226,7 +226,7 @@
                 return;
             }
             // Load the editor content
-            CrayonUtil.getAJAX({action: 'crayon-tag-editor', is_admin: gs.is_admin}, function (data) {
+            UrvanovSyntaxHighlighterUtil.getAJAX({action: 'urvanov-syntax-highlighter-tag-editor', is_admin: gs.is_admin}, function (data) {
                 dialog = $('<div id="' + s.css + '"></div>');
                 dialog.appendTo('body').hide();
                 dialog.html(data);
@@ -237,7 +237,7 @@
                 cancel = dialog.find(s.cancel_css);
 
                 code = $(s.code_css);
-                clear = $('#crayon-te-clear');
+                clear = $('#urvanov-syntax-highlighter-te-clear');
                 code_refresh = function () {
                     var clear_visible = clear.is(":visible");
                     if (code.val().length > 0 && !clear_visible) {
@@ -258,7 +258,7 @@
 
                 var url = $(s.url_css);
                 var url_info = $(s.url_info_css);
-                var exts = CrayonTagEditorSettings.extensions;
+                var exts = UrvanovSyntaxHighlighterTagEditorSettings.extensions;
                 url_refresh = function () {
                     if (url.val().length > 0 && !url_info.is(":visible")) {
                         url_info.show();
@@ -268,12 +268,12 @@
                     }
 
                     // Check for extensions and select language automatically
-                    var ext = CrayonUtil.getExt(url.val());
+                    var ext = UrvanovSyntaxHighlighterUtil.getExt(url.val());
                     if (ext) {
                         var lang = exts[ext];
                         // Otherwise use the extention as the lang
                         var lang_id = lang ? lang : ext;
-                        var final_lang = CrayonTagEditorSettings.fallback_lang;
+                        var final_lang = UrvanovSyntaxHighlighterTagEditorSettings.fallback_lang;
                         $(s.lang_css + ' option').each(function () {
                             if ($(this).val() == lang_id) {
                                 final_lang = lang_id;
@@ -293,13 +293,13 @@
                     }
                     // Depends on type
                     var value = base.settingValue(setting);
-                    CrayonUtil.log(setting.attr('id') + ' value: ' + value);
+                    UrvanovSyntaxHighlighterUtil.log(setting.attr('id') + ' value: ' + value);
                     var highlight = null;
                     if (setting.is('input[type=checkbox]')) {
                         highlight = setting.next('span');
                     }
 
-                    CrayonUtil.log('   >>> ' + setting.attr('id') + ' is ' + orig_value + ' = ' + value);
+                    UrvanovSyntaxHighlighterUtil.log('   >>> ' + setting.attr('id') + ' is ' + orig_value + ' = ' + value);
                     if (orig_value == value) {
                         // No change
                         setting.removeClass(gs.changed);
@@ -354,7 +354,7 @@
 
             // Need to reset all settings back to original, clear yellow highlighting
             base.resetSettings();
-            // Save these for when we add a Crayon
+            // Save these for when we add a UrvanovSyntaxHighlighter
             insertCallback = args.insert;
             editCallback = args.edit;
             showCallback = args.show;
@@ -382,11 +382,11 @@
                 e.preventDefault();
             });
 
-            if (base.isCrayon(currNode)) {
-                currCrayon = $(currNode);
-                if (currCrayon.length != 0) {
+            if (base.isUrvanovSyntaxHighlighter(currNode)) {
+                currUrvanovSyntaxHighlighter = $(currNode);
+                if (currUrvanovSyntaxHighlighter.length != 0) {
                     // Read back settings for editing
-                    currClasses = currCrayon.attr('class');
+                    currClasses = currUrvanovSyntaxHighlighter.attr('class');
                     var re = new RegExp('\\b([A-Za-z-]+)' + s.attr_sep + '(\\S+)', 'gim');
                     var matches = re.execAll(currClasses);
                     // Retain all other classes, remove settings
@@ -399,13 +399,13 @@
                     }
 
                     // Title
-                    var title = currCrayon.attr('title');
+                    var title = currUrvanovSyntaxHighlighter.attr('title');
                     if (title) {
                         atts['title'] = title;
                     }
 
                     // URL
-                    var url = currCrayon.attr('data-url');
+                    var url = currUrvanovSyntaxHighlighter.attr('data-url');
                     if (url) {
                         atts['url'] = url;
                     }
@@ -416,7 +416,7 @@
                     }
 
                     // Inline
-                    is_inline = currCrayon.hasClass(s.inline_css);
+                    is_inline = currUrvanovSyntaxHighlighter.hasClass(s.inline_css);
                     atts['inline'] = is_inline ? '1' : '0';
 
                     // Ensure language goes to fallback if invalid
@@ -449,33 +449,33 @@
                                 highlight.addClass(gs.changed);
                             }
                         }
-                        CrayonUtil.log('loaded: ' + att + ':' + value);
+                        UrvanovSyntaxHighlighterUtil.log('loaded: ' + att + ':' + value);
                     }
 
                     editing = true;
                     base.setSubmitText(s.submit_edit);
 
                     // Code
-                    var content = currCrayon.html();
+                    var content = currUrvanovSyntaxHighlighter.html();
                     if (inputHTML == 'encode') {
-                        content = CrayonUtil.encode_html(content);
+                        content = UrvanovSyntaxHighlighterUtil.encode_html(content);
                     } else if (inputHTML == 'decode') {
-                        content = CrayonUtil.decode_html(content);
+                        content = UrvanovSyntaxHighlighterUtil.decode_html(content);
                     }
                     code.val(content);
 
                 } else {
-                    CrayonUtil.log('cannot load currNode of type pre');
+                    UrvanovSyntaxHighlighterUtil.log('cannot load currNode of type pre');
                 }
             } else {
                 if (selectCallback) {
                     // Add selected content as code
                     code.val(selectCallback);
                 }
-                // We are creating a new Crayon, not editing
+                // We are creating a new UrvanovSyntaxHighlighter, not editing
                 editing = false;
                 base.setSubmitText(s.submit_add);
-                currCrayon = null;
+                currUrvanovSyntaxHighlighter = null;
                 currClasses = '';
             }
 
@@ -498,7 +498,7 @@
                     inline_hide.closest('tr').hide();
                     for (var i in disabled) {
                         var obj = $(disabled[i]);
-                        obj.addClass('crayon-disabled');
+                        obj.addClass('urvanov-syntax-highlighter-disabled');
                     }
                 } else {
                     inline_hide.show();
@@ -506,7 +506,7 @@
                     inline_hide.closest('tr').show();
                     for (var i in disabled) {
                         var obj = $(disabled[i]);
-                        obj.removeClass('crayon-disabled');
+                        obj.removeClass('urvanov-syntax-highlighter-disabled');
                     }
                 }
             });
@@ -538,8 +538,8 @@
             };
 
             ajax_class_timer = setInterval(function () {
-                if (typeof ajax_window != 'undefined' && !ajax_window.hasClass('crayon-te-ajax')) {
-                    ajax_window.addClass('crayon-te-ajax');
+                if (typeof ajax_window != 'undefined' && !ajax_window.hasClass('urvanov-syntax-highlighter-te-ajax')) {
+                    ajax_window.addClass('urvanov-syntax-highlighter-te-ajax');
                     clearInterval(ajax_class_timer);
                     fallback();
                 }
@@ -552,8 +552,8 @@
             }, 40);
         };
 
-        // XXX Add Crayon to editor
-        base.addCrayon = function () {
+        // XXX Add UrvanovSyntaxHighlighter to editor
+        base.addUrvanovSyntaxHighlighter = function () {
             var url = $(s.url_css);
             if (url.val().length == 0 && code.val().length == 0) {
                 code.addClass(gs.selected);
@@ -637,7 +637,7 @@
             for (var id in atts) {
                 // Remove prefix, if exists
                 var value = atts[id];
-                CrayonUtil.log('add ' + id + ':' + value);
+                UrvanovSyntaxHighlighterUtil.log('add ' + id + ':' + value);
                 shortcode += id + s.attr_sep + value + ' ';
             }
 
@@ -661,9 +661,9 @@
 
             var content = $(s.code_css).val();
             if (outputHTML == 'encode') {
-                content = CrayonUtil.encode_html(content);
+                content = UrvanovSyntaxHighlighterUtil.encode_html(content);
             } else if (outputHTML == 'decode') {
-                content = CrayonUtil.decode_html(content);
+                content = UrvanovSyntaxHighlighterUtil.decode_html(content);
             }
             content = typeof content != 'undefined' ? content : '';
             shortcode += '>' + content + '</' + tag + '>' + br_after;
@@ -680,14 +680,14 @@
         };
 
         base.submitButton = function () {
-            CrayonUtil.log('submit');
-            if (base.addCrayon() != false) {
+            UrvanovSyntaxHighlighterUtil.log('submit');
+            if (base.addUrvanovSyntaxHighlighter() != false) {
                 base.hideDialog();
             }
         };
 
         base.hideDialog = function () {
-            CrayonUtil.log('hide');
+            UrvanovSyntaxHighlighterUtil.log('hide');
             if (hideCallback) {
                 hideCallback();
             }
@@ -703,7 +703,7 @@
         };
 
         base.resetSettings = function () {
-            CrayonUtil.log('reset');
+            UrvanovSyntaxHighlighterUtil.log('reset');
             $('.' + gs.setting).each(function () {
                 var setting = $(this);
                 base.settingValue(setting, setting.attr(gs.orig_value));
@@ -753,7 +753,7 @@
             return atts;
         };
 
-        base.isCrayon = function (node) {
+        base.isUrvanovSyntaxHighlighter = function (node) {
             return node != null &&
                 (node.nodeName == 'PRE' || (node.nodeName == 'SPAN' && $(node).hasClass(s.inline_css)));
         };
@@ -773,4 +773,4 @@
         };
 
     };
-})(jQueryCrayon, wp);
+})(jQueryUrvanovSyntaxHighlighter, wp);

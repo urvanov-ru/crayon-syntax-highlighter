@@ -9,6 +9,6 @@
     font-style: normal;
 }
 
-.crayon-font-inconsolata * {
+.urvanov-syntax-highlighter-font-inconsolata * {
     font-family: Inconsolata, 'InconsolataRegular', 'Courier New', monospace !important;
 }

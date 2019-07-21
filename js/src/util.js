@@ -1,15 +1,15 @@
 // To avoid duplicates conflicting
-var jQueryCrayon = jQuery;
+var jQueryUrvanovSyntaxHighlighter = jQuery;
 
 (function ($) {
 
-    CrayonUtil = new function () {
+    UrvanovSyntaxHighlighterUtil = new function () {
 
         var base = this;
         var settings = null;
 
         base.init = function () {
-            settings = CrayonSyntaxSettings;
+            settings = UrvanovSyntaxHighlighterSyntaxSettings;
             base.initGET();
         };
 
@@ -185,7 +185,7 @@ var jQueryCrayon = jQuery;
     };
 
     $(document).ready(function () {
-        CrayonUtil.init();
+        UrvanovSyntaxHighlighterUtil.init();
     });
 
     // http://stackoverflow.com/questions/2360655/jquery-event-handlers-always-execute-in-order-they-were-bound-any-way-around-t
@@ -271,4 +271,4 @@ var jQueryCrayon = jQuery;
         return title;
     };
 
-})(jQueryCrayon);
+})(jQueryUrvanovSyntaxHighlighter);
