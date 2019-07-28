@@ -74,8 +74,8 @@ class Urvanov_Syntax_Highlighter {
 		$http_code = 0;
 		// If available, use the built in wp remote http get function.
 		if (function_exists('wp_remote_get')) {
-			$url_uid = 'crayon_' . UrvanovSyntaxHighlighterUtil::str_uid($url);
-			$cached = get_transient($url_uid, 'crayon-syntax');
+			$url_uid = 'urvanov_syntax_highlighter_' . UrvanovSyntaxHighlighterUtil::str_uid($url);
+			$cached = get_transient($url_uid, 'urvanov-syntax-highlighter-syntax');
 			Urvanov_Syntax_Highlighter_Settings_WP::load_cache();
 			if ($cached !== FALSE) {
 				$content = $cached;

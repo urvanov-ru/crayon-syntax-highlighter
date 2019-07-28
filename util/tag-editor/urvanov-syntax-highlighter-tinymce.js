@@ -51,7 +51,7 @@
             tinymce.PluginManager.add(name, function (ed, url) {
                 // TODO(aramk) This is called twice for some reason.
                 ed.on('init', function () {
-                    ed.dom.loadCSS(url + '/crayon_te.css');
+                    ed.dom.loadCSS(url + '/urvanov_syntax_highlighter_te.css');
                     if (isInit) {
                         return;
                     }
@@ -149,7 +149,7 @@
                 init: function (ed, url) {
 
                     ed.onInit.add(function (ed) {
-                        ed.dom.loadCSS(url + '/crayon_te.css');
+                        ed.dom.loadCSS(url + '/urvanov_syntax_highlighter_te.css');
                     });
 
                     // Prevent <p> on enter, turn into \n
@@ -248,10 +248,10 @@
                 },
                 getInfo: function () {
                     return {
-                        longname: 'Crayon Syntax Highlighter',
-                        author: 'Aram Kocharyan',
-                        authorurl: 'http://aramk.com/',
-                        infourl: 'https://github.com/aramk/crayon-syntax-highlighter',
+                        longname: 'Urvanov Syntax Highlighter',
+                        author: 'Fedor Urvanov & Aram Kocharyan',
+                        authorurl: 'https://urvanov.ru/',
+                        infourl: 'https://github.com/urvanov-ru/crayon-syntax-highlighter',
                         version: "1.0"
                     };
                 }

@@ -20,8 +20,8 @@ $URVANOV_SYNTAX_HIGHLIGHTER_DONATE = 'http://bit.ly/crayondonate';
 $URVANOV_SYNTAX_HIGHLIGHTER_WEBSITE = 'https://github.com/aramk/crayon-syntax-highlighter';
 $URVANOV_SYNTAX_HIGHLIGHTER_EMAIL = 'crayon.syntax@gmail.com';
 $URVANOV_SYNTAX_HIGHLIGHTER_TWITTER = 'http://twitter.com/crayonsyntax';
-$URVANOV_SYNTAX_HIGHLIGHTER_GIT = 'http://github.com/aramk/crayon-syntax-highlighter';
-$URVANOV_SYNTAX_HIGHLIGHTER_PLUGIN_WP = 'https://wordpress.org/plugins/crayon-syntax-highlighter/';
+$URVANOV_SYNTAX_HIGHLIGHTER_GIT = 'http://github.com/aramk/urvanov-syntax-highlighter';
+$URVANOV_SYNTAX_HIGHLIGHTER_PLUGIN_WP = 'https://wordpress.org/plugins/urvanov-syntax-highlighter/';
 
 
 // XXX Used to name the class
@@ -87,7 +87,7 @@ define('URVANOV_SYNTAX_HIGHLIGHTER_TAG_EDITOR_JS', 'crayon_tag_editor.js');
 define('URVANOV_SYNTAX_HIGHLIGHTER_EDITOR_CSS', 'urvanov_syntax_highlighter_editor.css');
 define('URVANOV_SYNTAX_HIGHLIGHTER_COLORBOX_JS', 'colorbox/jquery.colorbox-min.js');
 define('URVANOV_SYNTAX_HIGHLIGHTER_COLORBOX_CSS', 'colorbox/colorbox.css');
-define('URVANOV_SYNTAX_HIGHLIGHTER_TAG_EDITOR_PHP', URVANOV_SYNTAX_HIGHLIGHTER_TAG_EDITOR_PATH . 'crayon_tag_editor_wp.class.php');
+define('URVANOV_SYNTAX_HIGHLIGHTER_TAG_EDITOR_PHP', URVANOV_SYNTAX_HIGHLIGHTER_TAG_EDITOR_PATH . 'class-urvanov-syntax-highlighter-tag-editor-wp.class.php');
 define('URVANOV_SYNTAX_HIGHLIGHTER_TINYMCE_JS', 'crayon_tinymce.js');
 define('URVANOV_SYNTAX_HIGHLIGHTER_QUICKTAGS_JS', 'crayon_qt.js');
 define('URVANOV_SYNTAX_HIGHLIGHTER_STYLE', URVANOV_SYNTAX_HIGHLIGHTER_CSS_SRC_DIR . 'crayon_style.css');
@@ -110,9 +110,9 @@ define('URVANOV_SYNTAX_HIGHLIGHTER_SETTINGS_PHP', URVANOV_SYNTAX_HIGHLIGHTER_ROO
 define('URVANOV_SYNTAX_HIGHLIGHTER_THEMES_PHP', URVANOV_SYNTAX_HIGHLIGHTER_ROOT_PATH . 'class-urvanov-syntax-highlighter-themes.php');
 define('URVANOV_SYNTAX_HIGHLIGHTER_FONTS_PHP', URVANOV_SYNTAX_HIGHLIGHTER_ROOT_PATH . 'class-urvanov-syntax-highlighter-fonts.php');
 define('URVANOV_SYNTAX_HIGHLIGHTER_RESOURCE_PHP', URVANOV_SYNTAX_HIGHLIGHTER_ROOT_PATH . 'class-urvanov-syntax-highlighter-resource.php');
-define('URVANOV_SYNTAX_HIGHLIGHTER_UTIL_PHP', URVANOV_SYNTAX_HIGHLIGHTER_UTIL_DIR . 'crayon_util.class.php');
-define('URVANOV_SYNTAX_HIGHLIGHTER_TIMER_PHP', URVANOV_SYNTAX_HIGHLIGHTER_UTIL_DIR . 'crayon_timer.class.php');
-define('URVANOV_SYNTAX_HIGHLIGHTER_LOG_PHP', URVANOV_SYNTAX_HIGHLIGHTER_UTIL_DIR . 'crayon_log.class.php');
+define('URVANOV_SYNTAX_HIGHLIGHTER_UTIL_PHP', URVANOV_SYNTAX_HIGHLIGHTER_UTIL_DIR . 'class-urvanov-syntax-highlighter-util.class.php');
+define('URVANOV_SYNTAX_HIGHLIGHTER_TIMER_PHP', URVANOV_SYNTAX_HIGHLIGHTER_UTIL_DIR . 'class-urvanov-syntax-highlighter-timer.class.php');
+define('URVANOV_SYNTAX_HIGHLIGHTER_LOG_PHP', URVANOV_SYNTAX_HIGHLIGHTER_UTIL_DIR . 'class-urvanov-syntax-highlighter-log.class.php');
 
 // Script time
 
