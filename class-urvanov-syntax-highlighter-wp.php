@@ -923,32 +923,32 @@ class Urvanov_Syntax_Highlighter_Settings_WP {
                 $_POST[$key] = $value;
             }
         }
-        $urvanov-syntax-highlighter->settings($_POST);
+        $urvanov_syntax_highlighter->settings($_POST);
         if (!isset($urvanov_syntax_highlighter_preview_dont_override_get) || !$urvanov_syntax_highlighter_preview_dont_override_get) {
             $settings = array(Urvanov_Syntax_Highlighter_Settings::TOP_SET => TRUE, Urvanov_Syntax_Highlighter_Settings::TOP_MARGIN => 10,
                 Urvanov_Syntax_Highlighter_Settings::BOTTOM_SET => FALSE, Urvanov_Syntax_Highlighter_Settings::BOTTOM_MARGIN => 0);
-            $urvanov-syntax-highlighter->settings($settings);
+            $urvanov_syntax_highlighter->settings($settings);
         }
 
         // Print the theme CSS
-        $theme_id = $urvanov-syntax-highlighter->setting_val(Urvanov_Syntax_Highlighter_Settings::THEME);
+        $theme_id = $urvanov_syntax_highlighter->setting_val(Urvanov_Syntax_Highlighter_Settings::THEME);
         if ($theme_id != NULL) {
             echo Urvanov_Syntax_Highlighter_Resources::themes()->get_css($theme_id, date('U'));
         }
 
-        $font_id = $urvanov-syntax-highlighter->setting_val(Urvanov_Syntax_Highlighter_Settings::FONT);
+        $font_id = $urvanov_syntax_highlighter->setting_val(Urvanov_Syntax_Highlighter_Settings::FONT);
         if ($font_id != NULL /*&& $font_id != CrayonFonts::DEFAULT_FONT*/) {
             echo Urvanov_Syntax_Highlighter_Resources::fonts()->get_css($font_id);
         }
 
         // Load custom code based on language
-        $lang = $urvanov-syntax-highlighter->setting_val(Urvanov_Syntax_Highlighter_Settings::FALLBACK_LANG);
+        $lang = $urvanov_syntax_highlighter->setting_val(Urvanov_Syntax_Highlighter_Settings::FALLBACK_LANG);
         $path = Urvanov_Syntax_Highlighter_Global_Settings::plugin_path() . URVANOV_SYNTAX_HIGHLIGHTER_UTIL_DIR . '/sample/' . $lang . '.txt';
 
         if (isset($_POST[self::SAMPLE_CODE])) {
-        	$urvanov-syntax-highlighter->code(sanitize_text_field($_POST[self::SAMPLE_CODE]));
+        	$urvanov_syntax_highlighter->code(sanitize_text_field($_POST[self::SAMPLE_CODE]));
         } else if ($lang && @file_exists($path)) {
-            $urvanov-syntax-highlighter->url($path);
+            $urvanov_syntax_highlighter->url($path);
         } else {
             $code = "
 // A sample class
@@ -960,11 +960,11 @@ class Human {
 	}
 }
 ";
-            $urvanov-syntax-highlighter->code($code);
+            $urvanov_syntax_highlighter->code($code);
         }
-        $urvanov-syntax-highlighter->title('Sample Code');
-        $urvanov-syntax-highlighter->marked('5-7');
-        $urvanov-syntax-highlighter->output($highlight = true, $nums = true, $print = true);
+        $urvanov_syntax_highlighter->title('Sample Code');
+        $urvanov_syntax_highlighter->marked('5-7');
+        $urvanov_syntax_highlighter->output($highlight = true, $nums = true, $print = true);
         echo '</div>';
         Urvanov_Syntax_Highlighter_Global::load_plugin_textdomain();
         exit();

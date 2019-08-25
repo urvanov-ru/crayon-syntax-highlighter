@@ -1,5 +1,145 @@
 <?php
 
+
+
+
+
+if ( !class_exists( 'Urvanov_Syntax_Highlighter_Global' ) ) {
+	class Urvanov_Syntax_Highlighter_Global {
+		
+
+		
+		// Turn on the error & exception handlers
+		//crayon_handler_on();
+		
+		// GLOBAL FUNCTIONS
+		
+		// Check for forwardslash/backslash in folder path to structure paths
+		// Old name crayon_s
+		public static function fix_s($url = '') {
+		    $url = strval($url);
+		    if (!empty($url) && !preg_match('#(\\\\|/)$#', $url)) {
+		        return $url . '/';
+		    } else if (empty($url)) {
+		        return '/';
+		    } else {
+		        return $url;
+		    }
+		}
+		
+		// Returns path using forward slashes, slash added at the end
+		// Old name crayon_pf
+		public static function path_forward_slashes($url, $slash = TRUE) {
+		    $url = trim(strval($url));
+		    if ($slash) {
+		        $url = Urvanov_Syntax_Highlighter_Global::fix_s($url);
+		    }
+		    return str_replace('\\', '/', $url);
+		}
+		
+		// Returns path using back slashes
+		// Old name: crayon_pb
+		public static function path_back_slashes($url) {
+		    return str_replace('/', '\\', Urvanov_Syntax_Highlighter_Global::fix_s(trim(strval($url))));
+		}
+		
+		// Get/Set plugin information
+		// Old name: crayon_set_info
+		public static function set_info($info_array) {
+		    global $URVANOV_SYNTAX_HIGHLIGHTER_VERSION, $URVANOV_SYNTAX_HIGHLIGHTER_DATE, $URVANOV_SYNTAX_HIGHLIGHTER_AUTHOR, $URVANOV_SYNTAX_HIGHLIGHTER_WEBSITE;
+		    if (!is_array($info_array)) {
+		        return;
+		    }
+		    Urvanov_Syntax_Highlighter_Global::set_info_key('Version', $info_array, $URVANOV_SYNTAX_HIGHLIGHTER_VERSION);
+		    Urvanov_Syntax_Highlighter_Global::set_info_key('Date', $info_array, $URVANOV_SYNTAX_HIGHLIGHTER_DATE);
+		    Urvanov_Syntax_Highlighter_Global::set_info_key('AuthorName', $info_array, $URVANOV_SYNTAX_HIGHLIGHTER_AUTHOR);
+		    Urvanov_Syntax_Highlighter_Global::set_info_key('PluginURI', $info_array, $URVANOV_SYNTAX_HIGHLIGHTER_WEBSITE);
+		}
+		
+		// Old name: crayon_set_info_key
+		public static function set_info_key($key, $array, &$info) {
+		    if (array_key_exists($key, $array)) {
+		        $info = $array[$key];
+		    } else {
+		        return FALSE;
+		    }
+		}
+		
+		// Old name: crayon_vargs
+		public static function vargs(&$var, $default) {
+		    $var = isset($var) ? $var : $default;
+		}
+		
+		// Checks if the input is a valid PHP file and matches the $valid filename
+		// Old name: crayon_is_php_file
+		public static function is_php_file($filepath, $valid) {
+		    $path = pathinfo(Urvanov_Syntax_Highlighter_Global::path_forward_slashes($filepath));
+		    return is_file($filepath) && $path['extension'] === 'php' && $path['filename'] === $valid;
+		}
+		
+		// Stops the script if Urvanov_Syntax_Highlighter_Global::is_php_file() returns false or a remote path is given
+		// Old name: crayon_die_if_not_php
+		public static function die_if_not_php($filepath, $valid) {
+		    if (!Urvanov_Syntax_Highlighter_Global::is_php_file($filepath, $valid) || Urvanov_Syntax_Highlighter_Global::is_path_url($filepath)) {
+		        die("[ERROR] '$filepath' is not a valid PHP file for '$valid'");
+		    }
+		}
+		
+		// Old name: crayon_is_path_url
+		public static function is_path_url($path) {
+		    $parts = parse_url($path);
+		    return isset($parts['scheme']) && strlen($parts['scheme']) > 1;
+		}
+		
+		// LANGUAGE TRANSLATION FUNCTIONS
+		
+		// Old name: crayon_load_plugin_textdomain
+		public static function load_plugin_textdomain() {
+		    if (function_exists('load_plugin_textdomain')) {
+		    	load_plugin_textdomain('urvanov-syntax-highlighter', false, URVANOV_SYNTAX_HIGHLIGHTER_DIR . URVANOV_SYNTAX_HIGHLIGHTER_TRANS_DIR);
+		    }
+		}
+		
+		// Old name: crayon__
+		public static function urvanov__($text) {
+		    if (function_exists('__')) {
+		    	return __($text, 'urvanov-syntax-highlighter');
+		    } else {
+		        return $text;
+		    }
+		}
+		
+		// Old name: crayon_e
+		public static function urvanov_e($text) {
+		    if (function_exists('_e')) {
+		    	_e($text, 'urvanov-syntax-highlighter');
+		    } else {
+		        echo $text;
+		    }
+		}
+		
+		// Old name: crayon_n
+		public static function urvanov_n($singular, $plural, $count) {
+		    if (function_exists('_n')) {
+		    	return _n($singular, $plural, $count, 'urvanov-syntax-highlighter');
+		    } else {
+		        return $count > 1 ? $plural : $singular;
+		    }
+		}
+		
+		// Old name: crayon_x
+		public static function urvanov_x($text, $context) {
+		    if (function_exists('_x')) {
+		    	return _x($text, $context, 'urvanov-syntax-highlighter');
+		    } else {
+		        return $text;
+		    }
+		}
+	}
+}
+
+
+
 // Switches
 define('URVANOV_SYNTAX_HIGHLIGHTER_DEBUG', FALSE);
 
@@ -87,7 +227,7 @@ define('URVANOV_SYNTAX_HIGHLIGHTER_TAG_EDITOR_JS', 'crayon_tag_editor.js');
 define('URVANOV_SYNTAX_HIGHLIGHTER_EDITOR_CSS', 'urvanov_syntax_highlighter_editor.css');
 define('URVANOV_SYNTAX_HIGHLIGHTER_COLORBOX_JS', 'colorbox/jquery.colorbox-min.js');
 define('URVANOV_SYNTAX_HIGHLIGHTER_COLORBOX_CSS', 'colorbox/colorbox.css');
-define('URVANOV_SYNTAX_HIGHLIGHTER_TAG_EDITOR_PHP', URVANOV_SYNTAX_HIGHLIGHTER_TAG_EDITOR_PATH . 'class-urvanov-syntax-highlighter-tag-editor-wp.class.php');
+define('URVANOV_SYNTAX_HIGHLIGHTER_TAG_EDITOR_PHP', URVANOV_SYNTAX_HIGHLIGHTER_TAG_EDITOR_PATH . 'class-urvanov-syntax-highlighter-tag-editor-wp.php');
 define('URVANOV_SYNTAX_HIGHLIGHTER_TINYMCE_JS', 'crayon_tinymce.js');
 define('URVANOV_SYNTAX_HIGHLIGHTER_QUICKTAGS_JS', 'crayon_qt.js');
 define('URVANOV_SYNTAX_HIGHLIGHTER_STYLE', URVANOV_SYNTAX_HIGHLIGHTER_CSS_SRC_DIR . 'crayon_style.css');
@@ -110,9 +250,9 @@ define('URVANOV_SYNTAX_HIGHLIGHTER_SETTINGS_PHP', URVANOV_SYNTAX_HIGHLIGHTER_ROO
 define('URVANOV_SYNTAX_HIGHLIGHTER_THEMES_PHP', URVANOV_SYNTAX_HIGHLIGHTER_ROOT_PATH . 'class-urvanov-syntax-highlighter-themes.php');
 define('URVANOV_SYNTAX_HIGHLIGHTER_FONTS_PHP', URVANOV_SYNTAX_HIGHLIGHTER_ROOT_PATH . 'class-urvanov-syntax-highlighter-fonts.php');
 define('URVANOV_SYNTAX_HIGHLIGHTER_RESOURCE_PHP', URVANOV_SYNTAX_HIGHLIGHTER_ROOT_PATH . 'class-urvanov-syntax-highlighter-resource.php');
-define('URVANOV_SYNTAX_HIGHLIGHTER_UTIL_PHP', URVANOV_SYNTAX_HIGHLIGHTER_UTIL_DIR . 'class-urvanov-syntax-highlighter-util.class.php');
-define('URVANOV_SYNTAX_HIGHLIGHTER_TIMER_PHP', URVANOV_SYNTAX_HIGHLIGHTER_UTIL_DIR . 'class-urvanov-syntax-highlighter-timer.class.php');
-define('URVANOV_SYNTAX_HIGHLIGHTER_LOG_PHP', URVANOV_SYNTAX_HIGHLIGHTER_UTIL_DIR . 'class-urvanov-syntax-highlighter-log.class.php');
+define('URVANOV_SYNTAX_HIGHLIGHTER_UTIL_PHP', URVANOV_SYNTAX_HIGHLIGHTER_UTIL_DIR . 'class-urvanov-syntax-highlighter-util.php');
+define('URVANOV_SYNTAX_HIGHLIGHTER_TIMER_PHP', URVANOV_SYNTAX_HIGHLIGHTER_UTIL_DIR . 'class-urvanov-syntax-highlighter-timer.php');
+define('URVANOV_SYNTAX_HIGHLIGHTER_LOG_PHP', URVANOV_SYNTAX_HIGHLIGHTER_UTIL_DIR . 'class-urvanov-syntax-highlighter-log.php');
 
 // Script time
 
@@ -133,139 +273,4 @@ define('URVANOV_SYNTAX_HIGHLIGHTER_LINE', "-------------------------------------
 require_once (URVANOV_SYNTAX_HIGHLIGHTER_UTIL_PHP);
 require_once (URVANOV_SYNTAX_HIGHLIGHTER_TIMER_PHP);
 require_once (URVANOV_SYNTAX_HIGHLIGHTER_LOG_PHP);
-
-
-if ( !class_exists( 'Urvanov_Syntax_Highlighter_Global' ) ) {
-	class Urvanov_Syntax_Highlighter_Global {
-		
-
-		
-		// Turn on the error & exception handlers
-		//crayon_handler_on();
-		
-		// GLOBAL FUNCTIONS
-		
-		// Check for forwardslash/backslash in folder path to structure paths
-		// Old name crayon_s
-		function fix_s($url = '') {
-		    $url = strval($url);
-		    if (!empty($url) && !preg_match('#(\\\\|/)$#', $url)) {
-		        return $url . '/';
-		    } else if (empty($url)) {
-		        return '/';
-		    } else {
-		        return $url;
-		    }
-		}
-		
-		// Returns path using forward slashes, slash added at the end
-		// Old name crayon_pf
-		function path_forward_slashes($url, $slash = TRUE) {
-		    $url = trim(strval($url));
-		    if ($slash) {
-		        $url = Urvanov_Syntax_Highlighter_Global::fix_s($url);
-		    }
-		    return str_replace('\\', '/', $url);
-		}
-		
-		// Returns path using back slashes
-		// Old name: crayon_pb
-		function path_back_slashes($url) {
-		    return str_replace('/', '\\', Urvanov_Syntax_Highlighter_Global::fix_s(trim(strval($url))));
-		}
-		
-		// Get/Set plugin information
-		// Old name: crayon_set_info
-		function set_info($info_array) {
-		    global $URVANOV_SYNTAX_HIGHLIGHTER_VERSION, $URVANOV_SYNTAX_HIGHLIGHTER_DATE, $URVANOV_SYNTAX_HIGHLIGHTER_AUTHOR, $URVANOV_SYNTAX_HIGHLIGHTER_WEBSITE;
-		    if (!is_array($info_array)) {
-		        return;
-		    }
-		    Urvanov_Syntax_Highlighter_Global::set_info_key('Version', $info_array, $URVANOV_SYNTAX_HIGHLIGHTER_VERSION);
-		    Urvanov_Syntax_Highlighter_Global::set_info_key('Date', $info_array, $URVANOV_SYNTAX_HIGHLIGHTER_DATE);
-		    Urvanov_Syntax_Highlighter_Global::set_info_key('AuthorName', $info_array, $URVANOV_SYNTAX_HIGHLIGHTER_AUTHOR);
-		    Urvanov_Syntax_Highlighter_Global::set_info_key('PluginURI', $info_array, $URVANOV_SYNTAX_HIGHLIGHTER_WEBSITE);
-		}
-		
-		// Old name: crayon_set_info_key
-		function set_info_key($key, $array, &$info) {
-		    if (array_key_exists($key, $array)) {
-		        $info = $array[$key];
-		    } else {
-		        return FALSE;
-		    }
-		}
-		
-		// Old name: crayon_vargs
-		function vargs(&$var, $default) {
-		    $var = isset($var) ? $var : $default;
-		}
-		
-		// Checks if the input is a valid PHP file and matches the $valid filename
-		// Old name: crayon_is_php_file
-		function is_php_file($filepath, $valid) {
-		    $path = pathinfo(Urvanov_Syntax_Highlighter_Global::path_forward_slashes($filepath));
-		    return is_file($filepath) && $path['extension'] === 'php' && $path['filename'] === $valid;
-		}
-		
-		// Stops the script if Urvanov_Syntax_Highlighter_Global::is_php_file() returns false or a remote path is given
-		// Old name: crayon_die_if_not_php
-		function die_if_not_php($filepath, $valid) {
-		    if (!Urvanov_Syntax_Highlighter_Global::is_php_file($filepath, $valid) || Urvanov_Syntax_Highlighter_Global::is_path_url($filepath)) {
-		        die("[ERROR] '$filepath' is not a valid PHP file for '$valid'");
-		    }
-		}
-		
-		// Old name: crayon_is_path_url
-		function is_path_url($path) {
-		    $parts = parse_url($path);
-		    return isset($parts['scheme']) && strlen($parts['scheme']) > 1;
-		}
-		
-		// LANGUAGE TRANSLATION FUNCTIONS
-		
-		// Old name: crayon_load_plugin_textdomain
-		function load_plugin_textdomain() {
-		    if (function_exists('load_plugin_textdomain')) {
-		    	load_plugin_textdomain('urvanov-syntax-highlighter', false, URVANOV_SYNTAX_HIGHLIGHTER_DIR . URVANOV_SYNTAX_HIGHLIGHTER_TRANS_DIR);
-		    }
-		}
-		
-		// Old name: crayon__
-		function urvanov__($text) {
-		    if (function_exists('__')) {
-		    	return __($text, 'urvanov-syntax-highlighter');
-		    } else {
-		        return $text;
-		    }
-		}
-		
-		// Old name: crayon_e
-		function urvanov_e($text) {
-		    if (function_exists('_e')) {
-		    	_e($text, 'urvanov-syntax-highlighter');
-		    } else {
-		        echo $text;
-		    }
-		}
-		
-		// Old name: crayon_n
-		function urvanov_n($singular, $plural, $count) {
-		    if (function_exists('_n')) {
-		    	return _n($singular, $plural, $count, 'urvanov-syntax-highlighter');
-		    } else {
-		        return $count > 1 ? $plural : $singular;
-		    }
-		}
-		
-		// Old name: crayon_x
-		function urvanov_x($text, $context) {
-		    if (function_exists('_x')) {
-		    	return _x($text, $context, 'urvanov-syntax-highlighter');
-		    } else {
-		        return $text;
-		    }
-		}
-	}
-}
 ?>
