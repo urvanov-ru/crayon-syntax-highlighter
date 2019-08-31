@@ -50,8 +50,8 @@ class UrvanovSyntaxHighlighterTagEditorWP {
                 'switch_html' => '#content-html',
                 'switch_tmce' => '#content-tmce',
                 'tinymce_button_generic' => '.mce-btn',
-                'tinymce_button' => 'a.mce_urvanov-syntax-highlighter_tinymce,.mce-i-urvanov-syntax-highlighter_tinymce',
-                'tinymce_button_unique' => 'mce_urvanov-syntax-highlighter_tinymce',
+                'tinymce_button' => 'a.mce_urvanov_syntax_highlighter_tinymce,.mce-i-urvanov_syntax_highlighter_tinymce',
+                'tinymce_button_unique' => 'mce_urvanov_syntax_highlighter_tinymce',
                 'tinymce_highlight' => 'mce-active',
                 'submit_css' => '#urvanov-syntax-highlighter-te-ok',
                 'cancel_css' => '#urvanov-syntax-highlighter-te-cancel',
@@ -77,7 +77,6 @@ class UrvanovSyntaxHighlighterTagEditorWP {
     public static function enqueue_resources() {
         global $URVANOV_SYNTAX_HIGHLIGHTER_VERSION;
         self::init_settings();
-
         if (URVANOV_SYNTAX_HIGHLIGHTER_MINIFY) {
             wp_deregister_script('urvanov_syntax_highlighter_js');
             wp_enqueue_script('urvanov_syntax_highlighter_js', plugins_url(URVANOV_SYNTAX_HIGHLIGHTER_JS_TE_MIN, dirname(dirname(__FILE__))), array('jquery', 'quicktags', 'wp-rich-text' , 'wp-element', 'wp-editor', 'wp-blocks', 'wp-components', 'wp-html-entities'), $URVANOV_SYNTAX_HIGHLIGHTER_VERSION);

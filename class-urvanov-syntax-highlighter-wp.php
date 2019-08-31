@@ -139,11 +139,11 @@ class Urvanov_Syntax_Highlighter_Settings_WP {
             );
         }
         if (URVANOV_SYNTAX_HIGHLIGHTER_MINIFY) {
-            wp_localize_script('urvanov_syntax_highlighter_js', 'CrayonSyntaxSettings', self::$js_settings);
-            wp_localize_script('urvanov_syntax_highlighter_js', 'CrayonSyntaxStrings', self::$js_strings);
+            wp_localize_script('urvanov_syntax_highlighter_js', 'UrvanovSyntaxHighlighterSyntaxSettings', self::$js_settings);
+            wp_localize_script('urvanov_syntax_highlighter_js', 'UrvanovSyntaxHighlighterSyntaxStrings', self::$js_strings);
         } else {
-            wp_localize_script('urvanov_syntax_highlighter_util_js', 'CrayonSyntaxSettings', self::$js_settings);
-            wp_localize_script('urvanov_syntax_highlighter_util_js', 'CrayonSyntaxStrings', self::$js_strings);
+            wp_localize_script('urvanov_syntax_highlighter_util_js', 'UrvanovSyntaxHighlighterSyntaxSettings', self::$js_settings);
+            wp_localize_script('urvanov_syntax_highlighter_util_js', 'UrvanovSyntaxHighlighterSyntaxStrings', self::$js_strings);
         }
     }
 

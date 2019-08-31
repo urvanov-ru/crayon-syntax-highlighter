@@ -88,7 +88,6 @@ class Urvanov_Syntax_Highlighter_Resource_Collection {
 		}
 		try {
 			// Look in directory for resources
-
 			if (!is_dir($dir)) {
 				UrvanovSyntaxHighlighterLog::syslog('The resource directory is missing, should be at \'' . $dir . '\'.');
 			} else if (($handle = @opendir($dir)) != FALSE) {

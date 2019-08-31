@@ -978,20 +978,20 @@ class Urvanov_Syntax_Highlighter_Plugin {
     }
 
     public static function init_ajax() {
-        add_action('wp_ajax_crayon-tag-editor', 'UrvanovSyntaxHighlighterTagEditorWP::content');
-        add_action('wp_ajax_nopriv_crayon-tag-editor', 'UrvanovSyntaxHighlighterTagEditorWP::content');
-        add_action('wp_ajax_crayon-highlight', 'Urvanov_Syntax_Highlighter_Plugin::ajax_highlight');
-        add_action('wp_ajax_nopriv_crayon-highlight', 'Urvanov_Syntax_Highlighter_Plugin::ajax_highlight');
+        add_action('wp_ajax_urvanov-syntax-highlighter-tag-editor', 'UrvanovSyntaxHighlighterTagEditorWP::content');
+        add_action('wp_ajax_nopriv_urvanov-syntax-highlighter-tag-editor', 'UrvanovSyntaxHighlighterTagEditorWP::content');
+        add_action('wp_ajax_urvanov-syntax-highlighter-highlight', 'Urvanov_Syntax_Highlighter_Plugin::ajax_highlight');
+        add_action('wp_ajax_nopriv_urvanov-syntax-highlighter-highlight', 'Urvanov_Syntax_Highlighter_Plugin::ajax_highlight');
         if (current_user_can('manage_options')) {
-            add_action('wp_ajax_crayon-ajax', 'Urvanov_Syntax_Highlighter_Plugin::ajax');
-            add_action('wp_ajax_crayon-theme-editor', 'CrayonThemeEditorWP::content');
-            add_action('wp_ajax_crayon-theme-editor-save', 'CrayonThemeEditorWP::save');
-            add_action('wp_ajax_crayon-theme-editor-delete', 'CrayonThemeEditorWP::delete');
-            add_action('wp_ajax_crayon-theme-editor-duplicate', 'CrayonThemeEditorWP::duplicate');
-            add_action('wp_ajax_crayon-theme-editor-submit', 'CrayonThemeEditorWP::submit');
-            add_action('wp_ajax_crayon-show-posts', 'Urvanov_Syntax_Highlighter_Settings_WP::show_posts');
-            add_action('wp_ajax_crayon-show-langs', 'Urvanov_Syntax_Highlighter_Settings_WP::show_langs');
-            add_action('wp_ajax_crayon-show-preview', 'Urvanov_Syntax_Highlighter_Settings_WP::show_preview');
+            add_action('wp_ajax_urvanov-syntax-highlighter-ajax', 'Urvanov_Syntax_Highlighter_Plugin::ajax');
+            add_action('wp_ajax_urvanov-syntax-highlighter-theme-editor', 'Urvanov_Syntax_Highlighter_Theme_Editor_WP::content');
+            add_action('wp_ajax_urvanov-syntax-highlighter-theme-editor-save', 'Urvanov_Syntax_Highlighter_Theme_Editor_WP::save');
+            add_action('wp_ajax_urvanov-syntax-highlighter-theme-editor-delete', 'Urvanov_Syntax_Highlighter_Theme_Editor_WP::delete');
+            add_action('wp_ajax_urvanov-syntax-highlighter-theme-editor-duplicate', 'Urvanov_Syntax_Highlighter_Theme_Editor_WP::duplicate');
+            add_action('wp_ajax_urvanov-syntax-highlighter-theme-editor-submit', 'Urvanov_Syntax_Highlighter_Theme_Editor_WP::submit');
+            add_action('wp_ajax_urvanov-syntax-highlighter-show-posts', 'Urvanov_Syntax_Highlighter_Settings_WP::show_posts');
+            add_action('wp_ajax_urvanov-syntax-highlighter-show-langs', 'Urvanov_Syntax_Highlighter_Settings_WP::show_langs');
+            add_action('wp_ajax_urvanov-syntax-highlighter-show-preview', 'Urvanov_Syntax_Highlighter_Settings_WP::show_preview');
         }
     }
 

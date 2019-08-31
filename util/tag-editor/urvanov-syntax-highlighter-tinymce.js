@@ -42,8 +42,8 @@
                 return this._loadTinyMCEv3();
             }
 
-            s = CrayonTagEditorSettings;
-            te = CrayonTagEditor;
+            s = UrvanovSyntaxHighlighterTagEditorSettings;
+            te = UrvanovSyntaxHighlighterTagEditor;
 
             // TODO(aramk) find the TinyMCE version 4 compliant command for this.
             //tinymce.PluginManager.requireLangPack(name);
@@ -267,4 +267,4 @@
         UrvanovSyntaxHighlighterTinyMCE.loadTinyMCE();
     });
 
-})(jQueryCrayon);
+})(jQueryUrvanovSyntaxHighlighter);
