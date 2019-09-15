@@ -2,7 +2,7 @@
 
 (function ($) {
 
-    UrvanovSyntaxHighlighterSyntaxThemeEditor = new function () {
+    UrvanovSyntaxHighlighterThemeEditor = new function () {
 
         var base = this;
 
@@ -11,7 +11,7 @@
         var settings = UrvanovSyntaxHighlighterThemeEditorSettings;
         var strings = UrvanovSyntaxHighlighterThemeEditorStrings;
         var adminStrings = UrvanovSyntaxHighlighterAdminStrings;
-        var admin = UrvanovSyntaxHighlighterSyntaxAdmin;
+        var admin = UrvanovSyntaxHighlighterAdmin;
 
         var preview, previewUrvanovSyntaxHighlighter, previewCSS, status, title, info;
         var colorPickerPos;

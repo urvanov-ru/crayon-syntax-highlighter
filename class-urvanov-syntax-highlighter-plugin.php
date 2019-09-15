@@ -545,16 +545,18 @@ class Urvanov_Syntax_Highlighter_Plugin {
 
             UrvanovSyntaxHighlighterLog::debug('enqueue');
             global $URVANOV_SYNTAX_HIGHLIGHTER_VERSION;
+            UrvanovSyntaxHighlighterLog::debug('Loading settings...');
             Urvanov_Syntax_Highlighter_Settings_WP::load_settings(TRUE);
             if (URVANOV_SYNTAX_HIGHLIGHTER_MINIFY) {
-                wp_enqueue_style('crayon', plugins_url(URVANOV_SYNTAX_HIGHLIGHTER_STYLE_MIN, __FILE__), array(), $URVANOV_SYNTAX_HIGHLIGHTER_VERSION);
-                wp_enqueue_script('crayon_js', plugins_url(URVANOV_SYNTAX_HIGHLIGHTER_JS_MIN, __FILE__), array('jquery'), $URVANOV_SYNTAX_HIGHLIGHTER_VERSION, Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::DELAY_LOAD_JS));
+                wp_enqueue_style('urvanov_syntax_highlighter', plugins_url(URVANOV_SYNTAX_HIGHLIGHTER_STYLE_MIN, __FILE__), array(), $URVANOV_SYNTAX_HIGHLIGHTER_VERSION);
+                wp_enqueue_script('urvanov_syntax_highlighter_js', plugins_url(URVANOV_SYNTAX_HIGHLIGHTER_JS_MIN, __FILE__), array('jquery'), $URVANOV_SYNTAX_HIGHLIGHTER_VERSION, Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::DELAY_LOAD_JS));
             } else {
-                wp_enqueue_style('crayon_style', plugins_url(URVANOV_SYNTAX_HIGHLIGHTER_STYLE, __FILE__), array(), $URVANOV_SYNTAX_HIGHLIGHTER_VERSION);
-                wp_enqueue_style('crayon_global_style', plugins_url(URVANOV_SYNTAX_HIGHLIGHTER_STYLE_GLOBAL, __FILE__), array(), $URVANOV_SYNTAX_HIGHLIGHTER_VERSION);
-                wp_enqueue_script('crayon_util_js', plugins_url(URVANOV_SYNTAX_HIGHLIGHTER_JS_UTIL, __FILE__), array('jquery'), $URVANOV_SYNTAX_HIGHLIGHTER_VERSION);
+                wp_enqueue_style('urvanov_syntax_highlighter_style', plugins_url(URVANOV_SYNTAX_HIGHLIGHTER_STYLE, __FILE__), array(), $URVANOV_SYNTAX_HIGHLIGHTER_VERSION);
+                wp_enqueue_style('urvanov_syntax_highlighter_global_style', plugins_url(URVANOV_SYNTAX_HIGHLIGHTER_STYLE_GLOBAL, __FILE__), array(), $URVANOV_SYNTAX_HIGHLIGHTER_VERSION);
+                wp_enqueue_script('urvanov_syntax_highlighter_util_js', plugins_url(URVANOV_SYNTAX_HIGHLIGHTER_JS_UTIL, __FILE__), array('jquery'), $URVANOV_SYNTAX_HIGHLIGHTER_VERSION);
                 Urvanov_Syntax_Highlighter_Settings_WP::other_scripts();
             }
+            UrvanovSyntaxHighlighterLog::debug('Initializing js settings...');
             Urvanov_Syntax_Highlighter_Settings_WP::init_js_settings();
             self::$enqueued = TRUE;
         }

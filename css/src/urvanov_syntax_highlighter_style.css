@@ -1,10 +1,10 @@
 /*
 Urvanov Syntax Highlighter Structure Style Sheet
 
-- This style sheet is used to structure a urvanov-syntax-highlighter's dimensions and visibility, but does not contain any details regarding
+- This style sheet is used to structure a urvanov-syntax-highlighter-'s dimensions and visibility, but does not contain any details regarding
 coloring etc.
 - Attributes, where possible, are kept flexible such that Themes can customise them.
-- Themes are used to add coloring to the urvanov-syntax-highlighter and the syntax highlighting itself.
+- Themes are used to add coloring to the urvanov-syntax-highlighter- and the syntax highlighting itself.
 - Themes can be considered as layers on top of this style sheet.
 - Several attributes are marked !important where they are required to remain unchanged by CSS precedence,
   which may occur from conflicts with certain Wordpress Themes.

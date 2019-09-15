@@ -223,7 +223,7 @@ class Urvanov_Syntax_Highlighter_Theme_Editor_WP {
         wp_enqueue_script('cssjson_js', plugins_url(URVANOV_SYNTAX_HIGHLIGHTER_CSSJSON_JS, $path), $URVANOV_SYNTAX_HIGHLIGHTER_VERSION);
         wp_enqueue_script('jquery_colorpicker_js', plugins_url(URVANOV_SYNTAX_HIGHLIGHTER_JS_JQUERY_COLORPICKER, $path), array('jquery', 'jquery-ui-core', 'jquery-ui-widget', 'jquery-ui-tabs', 'jquery-ui-draggable', 'jquery-ui-dialog', 'jquery-ui-position', 'jquery-ui-mouse', 'jquery-ui-slider', 'jquery-ui-droppable', 'jquery-ui-selectable', 'jquery-ui-resizable'), $URVANOV_SYNTAX_HIGHLIGHTER_VERSION);
         wp_enqueue_script('jquery_tinycolor_js', plugins_url(URVANOV_SYNTAX_HIGHLIGHTER_JS_TINYCOLOR, $path), array(), $URVANOV_SYNTAX_HIGHLIGHTER_VERSION);
-
+        UrvanovSyntaxHighlighterLog::debug(self::$settings, 'Theme editor settings');
         if (URVANOV_SYNTAX_HIGHLIGHTER_MINIFY) {
             wp_enqueue_script('urvanov_syntax_highlighter_theme_editor', plugins_url(URVANOV_SYNTAX_HIGHLIGHTER_THEME_EDITOR_JS, $path), array('jquery', 'urvanov_syntax_highlighter_js', 'urvanov_syntax_highlighter_admin_js', 'cssjson_js', 'jquery_colorpicker_js', 'jquery_tinycolor_js'), $URVANOV_SYNTAX_HIGHLIGHTER_VERSION);
         } else {

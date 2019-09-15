@@ -5,159 +5,159 @@ Version: 1.0
 Author: Vedran Kesegić
 URL: http://www.sqlxdetails.com
 */
-.crayon-theme-ssms2012 {
+.urvanov-syntax-highlighter-theme-ssms2012 {
 	border-width: 1px !important;
 	border-color: #999 !important;
 	border-style: solid !important;
 	text-shadow: none !important;
 	background: #ffffff !important;
 }
-.crayon-theme-ssms2012-inline {
+.urvanov-syntax-highlighter-theme-ssms2012-inline {
 	border-width: 1px !important;
 	border-color: #ddd !important;
 	border-style: solid !important;
 	background: #fafafa !important;
 }
-.crayon-theme-ssms2012 .crayon-table .crayon-nums {
+.urvanov-syntax-highlighter-theme-ssms2012 .urvanov-syntax-highlighter-table .urvanov-syntax-highlighter-nums {
 	background: #dfefff !important;
 	color: #5499de !important;
 }
-.crayon-theme-ssms2012 .crayon-striped-line {
+.urvanov-syntax-highlighter-theme-ssms2012 .urvanov-syntax-highlighter-striped-line {
 }
-.crayon-theme-ssms2012 .crayon-striped-num {
+.urvanov-syntax-highlighter-theme-ssms2012 .urvanov-syntax-highlighter-striped-num {
 	background: #c8e1fa !important;
 	color: #317cc5 !important;
 }
-.crayon-theme-ssms2012 .crayon-marked-line {
+.urvanov-syntax-highlighter-theme-ssms2012 .urvanov-syntax-highlighter-marked-line {
 	background: #fffee2 !important;
 	border-width: 1px !important;
 	border-color: #e9e579 !important;
 }
-.crayon-theme-ssms2012 .crayon-marked-num {
+.urvanov-syntax-highlighter-theme-ssms2012 .urvanov-syntax-highlighter-marked-num {
 	color: #1561ac !important;
 	background: #b3d3f4 !important;
 	border-width: 1px !important;
 	border-color: #5999d9 !important;
 }
-.crayon-theme-ssms2012 .crayon-marked-line.crayon-striped-line {
+.urvanov-syntax-highlighter-theme-ssms2012 .urvanov-syntax-highlighter-marked-line.urvanov-syntax-highlighter-striped-line {
 	background: #faf8d1 !important;
 }
-.crayon-theme-ssms2012 .crayon-marked-num.crayon-striped-num {
+.urvanov-syntax-highlighter-theme-ssms2012 .urvanov-syntax-highlighter-marked-num.urvanov-syntax-highlighter-striped-num {
 	background: #9ec5ec !important;
 	color: #105395 !important;
 }
-.crayon-theme-ssms2012 .crayon-marked-line.crayon-top {
+.urvanov-syntax-highlighter-theme-ssms2012 .urvanov-syntax-highlighter-marked-line.urvanov-syntax-highlighter-top {
 	border-top-style: solid !important;
 }
-.crayon-theme-ssms2012 .crayon-marked-num.crayon-top {
+.urvanov-syntax-highlighter-theme-ssms2012 .urvanov-syntax-highlighter-marked-num.urvanov-syntax-highlighter-top {
 	border-top-style: solid !important;
 }
-.crayon-theme-ssms2012 .crayon-marked-line.crayon-bottom {
+.urvanov-syntax-highlighter-theme-ssms2012 .urvanov-syntax-highlighter-marked-line.urvanov-syntax-highlighter-bottom {
 	border-bottom-style: solid !important;
 }
-.crayon-theme-ssms2012 .crayon-marked-num.crayon-bottom {
+.urvanov-syntax-highlighter-theme-ssms2012 .urvanov-syntax-highlighter-marked-num.urvanov-syntax-highlighter-bottom {
 	border-bottom-style: solid !important;
 }
-.crayon-theme-ssms2012 .crayon-info {
+.urvanov-syntax-highlighter-theme-ssms2012 .urvanov-syntax-highlighter-info {
 	background: #faf9d7 !important;
 	border-bottom-width: 1px !important;
 	border-bottom-color: #b1af5e !important;
 	border-bottom-style: solid !important;
 	color: #7e7d34 !important;
 }
-.crayon-theme-ssms2012 .crayon-toolbar {
+.urvanov-syntax-highlighter-theme-ssms2012 .urvanov-syntax-highlighter-toolbar {
 	background: #DDD !important;
 	border-bottom-width: 1px !important;
 	border-bottom-color: #BBB !important;
 	border-bottom-style: solid !important;
 }
-.crayon-theme-ssms2012 .crayon-toolbar > div {
+.urvanov-syntax-highlighter-theme-ssms2012 .urvanov-syntax-highlighter-toolbar > div {
 	float: left !important;
 }
-.crayon-theme-ssms2012 .crayon-toolbar .crayon-tools {
+.urvanov-syntax-highlighter-theme-ssms2012 .urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-tools {
 	float: right !important;
 }
-.crayon-theme-ssms2012 .crayon-title {
+.urvanov-syntax-highlighter-theme-ssms2012 .urvanov-syntax-highlighter-title {
 	color: #333 !important;
 }
-.crayon-theme-ssms2012 .crayon-language {
+.urvanov-syntax-highlighter-theme-ssms2012 .urvanov-syntax-highlighter-language {
 	color: #999 !important;
 }
-.crayon-theme-ssms2012 .crayon-button {
+.urvanov-syntax-highlighter-theme-ssms2012 .urvanov-syntax-highlighter-button {
 	background-color: transparent !important;
 }
-.crayon-theme-ssms2012 .crayon-button:hover {
+.urvanov-syntax-highlighter-theme-ssms2012 .urvanov-syntax-highlighter-button:hover {
 	background-color: #EEE !important;
 	color: #666;
 }
-.crayon-theme-ssms2012 .crayon-button.crayon-pressed:hover {
+.urvanov-syntax-highlighter-theme-ssms2012 .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-pressed:hover {
 	background-color: #EEE !important;
 	color: #666;
 }
-.crayon-theme-ssms2012 .crayon-button.crayon-pressed {
+.urvanov-syntax-highlighter-theme-ssms2012 .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-pressed {
 	background-color: #BCBCBC !important;
 	color: #FFF;
 }
-.crayon-theme-ssms2012 .crayon-button.crayon-pressed:active {
+.urvanov-syntax-highlighter-theme-ssms2012 .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-pressed:active {
 	background-color: #BCBCBC !important;
 	color: #FFF;
 }
-.crayon-theme-ssms2012 .crayon-button:active {
+.urvanov-syntax-highlighter-theme-ssms2012 .urvanov-syntax-highlighter-button:active {
 	background-color: #BCBCBC !important;
 	color: #FFF;
 }
-.crayon-theme-ssms2012 .crayon-pre .crayon-c {
+.urvanov-syntax-highlighter-theme-ssms2012 .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-c {
 	color: #008000 !important;
 }
-.crayon-theme-ssms2012 .crayon-pre .crayon-s {
+.urvanov-syntax-highlighter-theme-ssms2012 .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-s {
 	color: #ff0000 !important;
 }
-.crayon-theme-ssms2012 .crayon-pre .crayon-p {
+.urvanov-syntax-highlighter-theme-ssms2012 .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-p {
 	color: #b85c00 !important;
 }
-.crayon-theme-ssms2012 .crayon-pre .crayon-ta {
+.urvanov-syntax-highlighter-theme-ssms2012 .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-ta {
 	color: #FF0000 !important;
 }
-.crayon-theme-ssms2012 .crayon-pre .crayon-k {
+.urvanov-syntax-highlighter-theme-ssms2012 .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-k {
 	color: #0000ff !important;
 }
-.crayon-theme-ssms2012 .crayon-pre .crayon-st {
+.urvanov-syntax-highlighter-theme-ssms2012 .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-st {
 	color: #800080 !important;
 }
-.crayon-theme-ssms2012 .crayon-pre .crayon-r {
+.urvanov-syntax-highlighter-theme-ssms2012 .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-r {
 	color: #800080 !important;
 }
-.crayon-theme-ssms2012 .crayon-pre .crayon-t {
+.urvanov-syntax-highlighter-theme-ssms2012 .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-t {
 	color: #800080 !important;
 }
-.crayon-theme-ssms2012 .crayon-pre .crayon-m {
+.urvanov-syntax-highlighter-theme-ssms2012 .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-m {
 	color: #800080 !important;
 }
-.crayon-theme-ssms2012 .crayon-pre .crayon-i {
+.urvanov-syntax-highlighter-theme-ssms2012 .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-i {
 	color: #008080 !important;
 }
-.crayon-theme-ssms2012 .crayon-pre .crayon-e {
+.urvanov-syntax-highlighter-theme-ssms2012 .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-e {
 	color: #ff00ff !important;
 }
-.crayon-theme-ssms2012 .crayon-pre .crayon-v {
+.urvanov-syntax-highlighter-theme-ssms2012 .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-v {
 	color: #002D7A !important;
 }
-.crayon-theme-ssms2012 .crayon-pre .crayon-cn {
+.urvanov-syntax-highlighter-theme-ssms2012 .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-cn {
 	color: #000000 !important;
 }
-.crayon-theme-ssms2012 .crayon-pre .crayon-o {
+.urvanov-syntax-highlighter-theme-ssms2012 .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-o {
 	color: #808080 !important;
 }
-.crayon-theme-ssms2012 .crayon-pre .crayon-sy {
+.urvanov-syntax-highlighter-theme-ssms2012 .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-sy {
 	color: #333 !important;
 }
-.crayon-theme-ssms2012 .crayon-pre .crayon-n {
+.urvanov-syntax-highlighter-theme-ssms2012 .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-n {
 	color: #666 !important;
 	font-style: italic !important;
 }
-.crayon-theme-ssms2012 .crayon-pre .crayon-f {
+.urvanov-syntax-highlighter-theme-ssms2012 .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-f {
 	color: #999 !important;
 }
-.crayon-theme-ssms2012 .crayon-pre .crayon-h {
+.urvanov-syntax-highlighter-theme-ssms2012 .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-h {
 	color: #006fe0 !important;
 }

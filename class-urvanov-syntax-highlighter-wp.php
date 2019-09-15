@@ -54,7 +54,7 @@ class Urvanov_Syntax_Highlighter_Settings_WP {
         self::$admin_page = $admin_page = add_options_page('Crayon Syntax Highlighter ' . Urvanov_Syntax_Highlighter_Global::urvanov__('Settings'), 'Crayon', 'manage_options', 'urvanov_syntax_highlighter_settings', 'Urvanov_Syntax_Highlighter_Settings_WP::settings');
         add_action("admin_print_scripts-$admin_page", 'Urvanov_Syntax_Highlighter_Settings_WP::admin_scripts');
         add_action("admin_print_styles-$admin_page", 'Urvanov_Syntax_Highlighter_Settings_WP::admin_styles');
-        add_action("admin_print_scripts-$admin_page", 'CrayonThemeEditorWP::admin_resources');
+        add_action("admin_print_scripts-$admin_page", 'Urvanov_Syntax_Highlighter_Theme_Editor_WP::admin_resources');
         // Register settings, second argument is option name stored in db
         register_setting(self::FIELDS, self::OPTIONS, 'Urvanov_Syntax_Highlighter_Settings_WP::settings_validate');
         add_action("admin_head-$admin_page", 'Urvanov_Syntax_Highlighter_Settings_WP::admin_init');
@@ -103,6 +103,7 @@ class Urvanov_Syntax_Highlighter_Settings_WP {
     }
 
     public static function other_scripts() {
+        UrvanovSyntaxHighlighterLog::debug('other_scripts');
         global $URVANOV_SYNTAX_HIGHLIGHTER_VERSION;
         self::load_settings(TRUE);
         $deps = array('jquery', 'urvanov_syntax_highlighter_util_js');
@@ -111,10 +112,12 @@ class Urvanov_Syntax_Highlighter_Settings_WP {
             wp_enqueue_script('urvanov_syntax_highlighter_jquery_popup', plugins_url(URVANOV_SYNTAX_HIGHLIGHTER_JQUERY_POPUP, __FILE__), array('jquery'), $URVANOV_SYNTAX_HIGHLIGHTER_VERSION);
             $deps[] = 'urvanov_syntax_highlighter_jquery_popup';
         }
-        wp_enqueue_script('urvanov_syntax_highlighter_js', plugins_url(URVANOV_SYNTAX_HIGHLIGHTER_JS, __FILE__), $deps, $URVANOV_SYNTAX_HIGHLIGHTER_VERSION);
+        $result = wp_enqueue_script('urvanov_syntax_highlighter_js', plugins_url(URVANOV_SYNTAX_HIGHLIGHTER_JS, __FILE__), $deps, $URVANOV_SYNTAX_HIGHLIGHTER_VERSION);
+        UrvanovSyntaxHighlighterLog::debug($result, 'wp_enqueue_script='.$result);
     }
 
     public static function init_js_settings() {
+        UrvanovSyntaxHighlighterLog::debug('Init js settings...');
         // This stores JS variables used in AJAX calls and in the JS files
         global $URVANOV_SYNTAX_HIGHLIGHTER_VERSION;
         self::load_settings(TRUE);
@@ -138,9 +141,13 @@ class Urvanov_Syntax_Highlighter_Settings_WP {
                 'minimize' => Urvanov_Syntax_Highlighter_Global::urvanov__('Click To Expand Code')
             );
         }
+        UrvanovSyntaxHighlighterLog::debug(self::$js_settings, 'UrvanovSyntaxHighlighterSyntaxSettings to js...');
         if (URVANOV_SYNTAX_HIGHLIGHTER_MINIFY) {
-            wp_localize_script('urvanov_syntax_highlighter_js', 'UrvanovSyntaxHighlighterSyntaxSettings', self::$js_settings);
+            
+            $result = wp_localize_script('urvanov_syntax_highlighter_js', 'UrvanovSyntaxHighlighterSyntaxSettings', self::$js_settings);
+            UrvanovSyntaxHighlighterLog::debug($result, 'wp_localize_script UrvanovSyntaxHighlighterSyntaxSettings result = '.$result);
             wp_localize_script('urvanov_syntax_highlighter_js', 'UrvanovSyntaxHighlighterSyntaxStrings', self::$js_strings);
+            UrvanovSyntaxHighlighterLog::debug($result, 'wp_localize_script UrvanovSyntaxHighlighterSyntaxString result = '.$result);
         } else {
             wp_localize_script('urvanov_syntax_highlighter_util_js', 'UrvanovSyntaxHighlighterSyntaxSettings', self::$js_settings);
             wp_localize_script('urvanov_syntax_highlighter_util_js', 'UrvanovSyntaxHighlighterSyntaxStrings', self::$js_strings);
@@ -173,8 +180,9 @@ class Urvanov_Syntax_Highlighter_Settings_WP {
                 'sampleCode' => self::SAMPLE_CODE,
                 'dialogFunction' => 'wpdialog'
             );
-            wp_localize_script('urvanov_syntax_highlighter_admin_js', 'CrayonAdminSettings', self::$admin_js_settings);
+            wp_localize_script('urvanov_syntax_highlighter_admin_js', 'UrvanovSyntaxHighlighterAdminSettings', self::$admin_js_settings);
         }
+
         if (!self::$admin_js_strings) {
             self::$admin_js_strings = array(
                 'prompt' => Urvanov_Syntax_Highlighter_Global::urvanov__("Prompt"),
@@ -185,7 +193,7 @@ class Urvanov_Syntax_Highlighter_Settings_WP {
                 'confirm' => Urvanov_Syntax_Highlighter_Global::urvanov__("Confirm"),
                 'changeCode' => Urvanov_Syntax_Highlighter_Global::urvanov__("Change Code")
             );
-            wp_localize_script('urvanov_syntax_highlighter_admin_js', 'CrayonAdminStrings', self::$admin_js_strings);
+            wp_localize_script('urvanov_syntax_highlighter_admin_js', 'UrvanovSyntaxHighlighterAdminStrings', self::$admin_js_strings);
         }
     }
 
@@ -197,7 +205,7 @@ class Urvanov_Syntax_Highlighter_Settings_WP {
 
         <script type="text/javascript">
             jQuery(document).ready(function () {
-                CrayonSyntaxAdmin.init();
+            	UrvanovSyntaxHighlighterAdmin.init();
             });
         </script>
 
@@ -264,6 +272,7 @@ class Urvanov_Syntax_Highlighter_Settings_WP {
             $upload = wp_upload_dir();
 
             UrvanovSyntaxHighlighterLog::debug($upload, "WP UPLOAD FUNCTION");
+            UrvanovSyntaxHighlighterLog::debug(URVANOV_SYNTAX_HIGHLIGHTER_DIR, "URVANOV_SYNTAX_HIGHLIGHTER_DIR=".URVANOV_SYNTAX_HIGHLIGHTER_DIR);
             Urvanov_Syntax_Highlighter_Global_Settings::upload_path(UrvanovSyntaxHighlighterUtil::path_slash($upload['basedir']) . URVANOV_SYNTAX_HIGHLIGHTER_DIR);
             Urvanov_Syntax_Highlighter_Global_Settings::upload_url($upload['baseurl'] . '/' . URVANOV_SYNTAX_HIGHLIGHTER_DIR);
             UrvanovSyntaxHighlighterLog::debug(Urvanov_Syntax_Highlighter_Global_Settings::upload_path(), "UPLOAD PATH");
@@ -801,7 +810,7 @@ class Urvanov_Syntax_Highlighter_Settings_WP {
                 $parsed = Urvanov_Syntax_Highlighter_Resources::langs()->is_parsed();
                 $count = count($langs);
                 echo '</select>', URVANOV_SYNTAX_HIGHLIGHTER_BR, ($parsed ? '' : '<span class="urvanov-syntax-highlighter-error">'),
-                sprintf(urvanov_sh_n('%d language has been detected.', '%d languages have been detected.', $count), $count), ' ',
+                sprintf(Urvanov_Syntax_Highlighter_Global::urvanov_n('%d language has been detected.', '%d languages have been detected.', $count), $count), ' ',
                 $parsed ? Urvanov_Syntax_Highlighter_Global::urvanov__('Parsing was successful') : Urvanov_Syntax_Highlighter_Global::urvanov__('Parsing was unsuccessful'),
                 ($parsed ? '. ' : '</span>');
                 // Check if fallback from db is loaded
@@ -908,7 +917,7 @@ class Urvanov_Syntax_Highlighter_Settings_WP {
 
         self::load_settings(); // Run first to ensure global settings loaded
 
-        $crayon = Urvanov_Syntax_Highlighter_Plugin::instance();
+        $urvanov_syntax_highlighter = Urvanov_Syntax_Highlighter_Plugin::instance();
 
         // Settings to prevent from validating
         $preview_settings = array(self::SAMPLE_CODE);

@@ -4,7 +4,7 @@ Description: Theme similar to prism.js with rounded corners
 Version: 1.0
 Author: Augustin
 */
-.crayon-theme-prism-like {
+.urvanov-syntax-highlighter-theme-prism-like {
 	margin-bottom: 25px !important;
 	background-color: #F5F2F0 !important;
 	border-radius: 5px;
@@ -15,28 +15,28 @@ Author: Augustin
 	border-color: #dedede !important;
 	background: #f5f5f5 !important;
 }
-.crayon-theme-prism-like .crayon-toolbar {
+.urvanov-syntax-highlighter-theme-prism-like .urvanov-syntax-highlighter-toolbar {
 	background-color: #eee !important;
 	border-bottom-style: solid !important;
 	border-bottom-width: 1px !important;
 	border-bottom-color: #dedede !important;
 }
-.crayon-theme-prism-like .crayon-toolbar .crayon-language {
+.urvanov-syntax-highlighter-theme-prism-like .urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-language {
 	font-size: 80% !important;
 	color: #666 !important;
 }
-.crayon-theme-prism-like .crayon-toolbar .crayon-title {
+.urvanov-syntax-highlighter-theme-prism-like .urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-title {
 	font-size: 80% !important;
 	color: #666 !important;
 }
-.crayon-theme-prism-like .crayon-table .crayon-nums {
+.urvanov-syntax-highlighter-theme-prism-like .urvanov-syntax-highlighter-table .urvanov-syntax-highlighter-nums {
 	background-color: #eee !important;
 }
-.crayon-theme-prism-like .crayon-table .crayon-nums-content {
+.urvanov-syntax-highlighter-theme-prism-like .urvanov-syntax-highlighter-table .urvanov-syntax-highlighter-nums-content {
 	padding-top: 5px !important;
 	padding-bottom: 3px !important;
 }
-.crayon-theme-prism-like .crayon-table .crayon-num {
+.urvanov-syntax-highlighter-theme-prism-like .urvanov-syntax-highlighter-table .urvanov-syntax-highlighter-num {
 	min-width: 1.2em !important;
 	text-align: right !important;
 	color: #aaa !important;
@@ -44,76 +44,76 @@ Author: Augustin
 	border-right-width: 1px !important;
 	border-right-color: #dedede !important;
 }
-.crayon-theme-prism-like .crayon-pre {
+.urvanov-syntax-highlighter-theme-prism-like .urvanov-syntax-highlighter-pre {
 	padding-top: 5px !important;
 	padding-bottom: 3px !important;
 }
-.crayon-theme-prism-like .crayon-marked-line {
+.urvanov-syntax-highlighter-theme-prism-like .urvanov-syntax-highlighter-marked-line {
 	background: #fffee2 !important;
 }
-.crayon-theme-prism-like .crayon-marked-num {
+.urvanov-syntax-highlighter-theme-prism-like .urvanov-syntax-highlighter-marked-num {
 	color: #1561ac !important;
 	background: #b3d3f4 !important;
 	border-width: 1px !important;
 	border-color: #5999d9 !important;
 }
-.crayon-theme-prism-like .crayon-pre .crayon-c {
+.urvanov-syntax-highlighter-theme-prism-like .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-c {
 	color: #7D8B99 !important;
 	font-style: italic !important;
 }
-.crayon-theme-prism-like .crayon-pre .crayon-s {
+.urvanov-syntax-highlighter-theme-prism-like .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-s {
 	color: #669900 !important;
 }
-.crayon-theme-prism-like .crayon-pre .crayon-p {
+.urvanov-syntax-highlighter-theme-prism-like .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-p {
 	color: #b85c00 !important;
 }
-.crayon-theme-prism-like .crayon-pre .crayon-ta {
+.urvanov-syntax-highlighter-theme-prism-like .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-ta {
 	color: #FF0000 !important;
 }
-.crayon-theme-prism-like .crayon-pre .crayon-k {
+.urvanov-syntax-highlighter-theme-prism-like .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-k {
 	color: #2F9C0A !important;
 }
-.crayon-theme-prism-like .crayon-pre .crayon-st {
+.urvanov-syntax-highlighter-theme-prism-like .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-st {
 	color: #1990C5 !important;
 	font-weight: bold !important;
 }
-.crayon-theme-prism-like .crayon-pre .crayon-r {
+.urvanov-syntax-highlighter-theme-prism-like .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-r {
 	color: #1990C5 !important;
 	font-weight: bold !important;
 }
-.crayon-theme-prism-like .crayon-pre .crayon-t {
+.urvanov-syntax-highlighter-theme-prism-like .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-t {
 	color: #1990C5 !important;
 	font-weight: bold !important;
 }
-.crayon-theme-prism-like .crayon-pre .crayon-m {
+.urvanov-syntax-highlighter-theme-prism-like .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-m {
 	color: #1990C5 !important;
 	font-weight: bold !important;
 }
-.crayon-theme-prism-like .crayon-pre .crayon-i {
+.urvanov-syntax-highlighter-theme-prism-like .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-i {
 	color: #000 !important;
 }
-.crayon-theme-prism-like .crayon-pre .crayon-e {
+.urvanov-syntax-highlighter-theme-prism-like .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-e {
 	color: black !important;
 }
-.crayon-theme-prism-like .crayon-pre .crayon-v {
+.urvanov-syntax-highlighter-theme-prism-like .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-v {
 	color: black !important;
 }
-.crayon-theme-prism-like .crayon-pre .crayon-cn {
+.urvanov-syntax-highlighter-theme-prism-like .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-cn {
 	color: #990055 !important;
 }
-.crayon-theme-prism-like .crayon-pre .crayon-o {
+.urvanov-syntax-highlighter-theme-prism-like .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-o {
 	color: #A67F59 !important;
 }
-.crayon-theme-prism-like .crayon-pre .crayon-sy {
+.urvanov-syntax-highlighter-theme-prism-like .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-sy {
 	color: #333 !important;
 }
-.crayon-theme-prism-like .crayon-pre .crayon-n {
+.urvanov-syntax-highlighter-theme-prism-like .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-n {
 	color: #666 !important;
 	font-style: italic !important;
 }
-.crayon-theme-prism-like .crayon-pre .crayon-f {
+.urvanov-syntax-highlighter-theme-prism-like .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-f {
 	color: #999 !important;
 }
-.crayon-theme-prism-like .crayon-pre .crayon-h {
+.urvanov-syntax-highlighter-theme-prism-like .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-h {
 	color: #006fe0 !important;
 }

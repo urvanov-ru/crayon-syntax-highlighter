@@ -31,7 +31,7 @@
 
         base.init = function () {
             UrvanovSyntaxHighlighterUtil.log('admin init');
-            settings = UrvanovSyntaxHighlighterSettings;
+            settings = UrvanovSyntaxHighlighterSyntaxSettings;
             adminSettings = UrvanovSyntaxHighlighterAdminSettings;
             strings = UrvanovSyntaxHighlighterAdminStrings;
             util = UrvanovSyntaxHighlighterUtil;
@@ -71,16 +71,16 @@
                     false);
             });
             theme_editor_duplicate_button.click(function () {
-                UrvanovSyntaxHighlighterSyntaxThemeEditor.duplicate(adminSettings.currTheme, adminSettings.currThemeName);
+                UrvanovSyntaxHighlighterThemeEditor.duplicate(adminSettings.currTheme, adminSettings.currThemeName);
             });
             theme_editor_delete_button.click(function () {
                 if (!theme_editor_edit_button.attr('disabled')) {
-                    UrvanovSyntaxHighlighterSyntaxThemeEditor.del(adminSettings.currTheme, adminSettings.currThemeName);
+                    UrvanovSyntaxHighlighterThemeEditor.del(adminSettings.currTheme, adminSettings.currThemeName);
                 }
                 return false;
             });
             theme_editor_submit_button.click(function () {
-                UrvanovSyntaxHighlighterSyntaxThemeEditor.submit(adminSettings.currTheme, adminSettings.currThemeName);
+                UrvanovSyntaxHighlighterThemeEditor.submit(adminSettings.currTheme, adminSettings.currThemeName);
             });
 
             // Help
@@ -445,13 +445,13 @@
 
         base.show_theme_info = function (callback) {
             base.refresh_theme_info(function () {
-                var info = UrvanovSyntaxHighlighterSyntaxThemeEditor.readCSSInfo(adminSettings.currThemeCSS);
+                var info = UrvanovSyntaxHighlighterThemeEditor.readCSSInfo(adminSettings.currThemeCSS);
                 var infoHTML = '';
                 for (id in info) {
                     if (id != 'name') {
                         infoHTML += '<div class="fieldset">';
                         if (id != 'description') {
-                            infoHTML += '<div class="' + id + ' field">' + UrvanovSyntaxHighlighterSyntaxThemeEditor.getFieldName(id) + ':</div>';
+                            infoHTML += '<div class="' + id + ' field">' + UrvanovSyntaxHighlighterThemeEditor.getFieldName(id) + ':</div>';
                         }
                         infoHTML += '<div class="' + id + ' value">' + info[id].linkify('_blank') + '</div></div>';
                     }
@@ -494,9 +494,9 @@
                 theme_editor_wrap.html(data);
                 // Load preview into editor
                 if (theme_editor_loading) {
-                    UrvanovSyntaxHighlighterSyntaxThemeEditor.init();
+                    UrvanovSyntaxHighlighterThemeEditor.init();
                 }
-                UrvanovSyntaxHighlighterSyntaxThemeEditor.show(function () {
+                UrvanovSyntaxHighlighterThemeEditor.show(function () {
                     base.show_theme_editor_now(button);
                 }, previewInner);
             });
@@ -505,7 +505,7 @@
 
         base.resetPreview = function () {
             previewWrapper.append(previewInner);
-            UrvanovSyntaxHighlighterSyntaxThemeEditor.removeStyle();
+            UrvanovSyntaxHighlighterThemeEditor.removeStyle();
         };
 
         base.show_theme_editor_now = function (button) {

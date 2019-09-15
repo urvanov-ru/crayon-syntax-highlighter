@@ -1,4 +1,4 @@
-urvanov<?php
+<?php
 
 
 
@@ -141,7 +141,7 @@ if ( !class_exists( 'Urvanov_Syntax_Highlighter_Global' ) ) {
 
 
 // Switches
-define('URVANOV_SYNTAX_HIGHLIGHTER_DEBUG', FALSE);
+define('URVANOV_SYNTAX_HIGHLIGHTER_DEBUG', TRUE);
 
 define('URVANOV_SYNTAX_HIGHLIGHTER_TAG_EDITOR', TRUE);
 define('URVANOV_SYNTAX_HIGHLIGHTER_THEME_EDITOR', TRUE);

@@ -17,7 +17,7 @@ class UrvanovSyntaxHighlighterUtil {
         if (($str = self::file($path)) === FALSE) {
             // Log failure, n = no log
             if (strpos($opts, 'n') === FALSE) {
-                UrvanovSyntaxHighlighterLog::syslog("Cannot read lines at '$path'.", "CrayonUtil::lines()");
+                UrvanovSyntaxHighlighterLog::syslog("Cannot read lines at '$path'.", "UrvanovSyntaxHighlighterUtil::lines()");
             }
             return FALSE;
         }

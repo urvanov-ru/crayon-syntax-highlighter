@@ -5,168 +5,168 @@ Version: 1.2
 Author: J. Newing (synmuffin)
 URL: http://epicgeeks.net/
 */
-.crayon-theme-epicgeeks {
+.urvanov-syntax-highlighter-theme-epicgeeks {
 	text-shadow: none !important;
 	background: #ffffe1 !important;
 	border-width: 1px !important;
 	border-color: #e1e1e1 !important;
 	border-style: solid !important;
 }
-.crayon-theme-epicgeeks .crayon-code {
+.urvanov-syntax-highlighter-theme-epicgeeks .urvanov-syntax-highlighter-code {
 	background: #fdfdfd !important;
 }
-.crayon-theme-epicgeeks-inline {
+.urvanov-syntax-highlighter-theme-epicgeeks-inline {
 	border-width: 1px !important;
 	border-color: #e1e1e1 !important;
 	border-style: solid !important;
 	background: #ffffe1 !important;
 }
-.crayon-theme-epicgeeks .crayon-table .crayon-nums {
+.urvanov-syntax-highlighter-theme-epicgeeks .urvanov-syntax-highlighter-table .urvanov-syntax-highlighter-nums {
 	background: #ffff9f !important;
 	color: #333333 !important;
 	border-right-width: 1px !important;
 	border-right-color: #3cc0ff !important;
 	border-right-style: dashed !important;
 }
-.crayon-theme-epicgeeks .crayon-striped-line {
+.urvanov-syntax-highlighter-theme-epicgeeks .urvanov-syntax-highlighter-striped-line {
 	background: #ffffd2 !important;
 	border-width: 1px !important;
 	border-color: #f0f0f0 !important;
 	border-style: dashed !important;
 }
-.crayon-theme-epicgeeks .crayon-striped-num {
+.urvanov-syntax-highlighter-theme-epicgeeks .urvanov-syntax-highlighter-striped-num {
 	background: #ffff7c !important;
 	border-width: 1px !important;
 	border-color: #cccccc !important;
 	border-style: dashed !important;
 }
-.crayon-theme-epicgeeks .crayon-marked-line {
+.urvanov-syntax-highlighter-theme-epicgeeks .urvanov-syntax-highlighter-marked-line {
 	background: #fffee2 !important;
 	border-width: 1px !important;
 	border-color: #e9e579 !important;
 }
-.crayon-theme-epicgeeks .crayon-marked-num {
+.urvanov-syntax-highlighter-theme-epicgeeks .urvanov-syntax-highlighter-marked-num {
 	color: #1561ac !important;
 	background: #f2f24b !important;
 	border-width: 1px !important;
 	border-color: #e9e579 !important;
 }
-.crayon-theme-epicgeeks .crayon-marked-line.crayon-striped-line {
+.urvanov-syntax-highlighter-theme-epicgeeks .urvanov-syntax-highlighter-marked-line.urvanov-syntax-highlighter-striped-line {
 	background: #faf8d1 !important;
 }
-.crayon-theme-epicgeeks .crayon-marked-num.crayon-striped-num {
+.urvanov-syntax-highlighter-theme-epicgeeks .urvanov-syntax-highlighter-marked-num.urvanov-syntax-highlighter-striped-num {
 	background: #dddd1c !important;
 	color: #105395 !important;
 }
-.crayon-theme-epicgeeks .crayon-marked-line.crayon-top {
+.urvanov-syntax-highlighter-theme-epicgeeks .urvanov-syntax-highlighter-marked-line.urvanov-syntax-highlighter-top {
 	border-top-style: solid !important;
 }
-.crayon-theme-epicgeeks .crayon-marked-num.crayon-top {
+.urvanov-syntax-highlighter-theme-epicgeeks .urvanov-syntax-highlighter-marked-num.urvanov-syntax-highlighter-top {
 	border-top-style: solid !important;
 }
-.crayon-theme-epicgeeks .crayon-marked-line.crayon-bottom {
+.urvanov-syntax-highlighter-theme-epicgeeks .urvanov-syntax-highlighter-marked-line.urvanov-syntax-highlighter-bottom {
 	border-bottom-style: solid !important;
 }
-.crayon-theme-epicgeeks .crayon-marked-num.crayon-bottom {
+.urvanov-syntax-highlighter-theme-epicgeeks .urvanov-syntax-highlighter-marked-num.urvanov-syntax-highlighter-bottom {
 	border-bottom-style: solid !important;
 }
-.crayon-theme-epicgeeks .crayon-info {
+.urvanov-syntax-highlighter-theme-epicgeeks .urvanov-syntax-highlighter-info {
 	background: #faf9d7 !important;
 	border-bottom-width: 1px !important;
 	border-bottom-color: #b1af5e !important;
 	border-bottom-style: dashed !important;
 	color: #7e7d34 !important;
 }
-.crayon-theme-epicgeeks .crayon-toolbar {
+.urvanov-syntax-highlighter-theme-epicgeeks .urvanov-syntax-highlighter-toolbar {
 	background: #f9f9f9 !important;
 	border-bottom-width: 1px !important;
 	border-bottom-color: #d2d2d2 !important;
 	border-bottom-style: solid !important;
 }
-.crayon-theme-epicgeeks .crayon-toolbar > div {
+.urvanov-syntax-highlighter-theme-epicgeeks .urvanov-syntax-highlighter-toolbar > div {
 	float: left !important;
 }
-.crayon-theme-epicgeeks .crayon-toolbar .crayon-tools {
+.urvanov-syntax-highlighter-theme-epicgeeks .urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-tools {
 	float: right !important;
 }
-.crayon-theme-epicgeeks .crayon-title {
+.urvanov-syntax-highlighter-theme-epicgeeks .urvanov-syntax-highlighter-title {
 	color: #333 !important;
 }
-.crayon-theme-epicgeeks .crayon-language {
+.urvanov-syntax-highlighter-theme-epicgeeks .urvanov-syntax-highlighter-language {
 	color: #999 !important;
 }
-.crayon-theme-epicgeeks .crayon-button {
+.urvanov-syntax-highlighter-theme-epicgeeks .urvanov-syntax-highlighter-button {
 	background-color: transparent !important;
 }
-.crayon-theme-epicgeeks .crayon-button:hover {
+.urvanov-syntax-highlighter-theme-epicgeeks .urvanov-syntax-highlighter-button:hover {
 	background-color: #EFEFEF !important;
 	color: #666;
 }
-.crayon-theme-epicgeeks .crayon-button.crayon-pressed:hover {
+.urvanov-syntax-highlighter-theme-epicgeeks .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-pressed:hover {
 	background-color: #EFEFEF !important;
 	color: #666;
 }
-.crayon-theme-epicgeeks .crayon-button.crayon-pressed {
+.urvanov-syntax-highlighter-theme-epicgeeks .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-pressed {
 	background-color: #DDD !important;
 	color: #FFF;
 }
-.crayon-theme-epicgeeks .crayon-button.crayon-pressed:active {
+.urvanov-syntax-highlighter-theme-epicgeeks .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-pressed:active {
 	background-color: #DDD !important;
 	color: #FFF;
 }
-.crayon-theme-epicgeeks .crayon-button:active {
+.urvanov-syntax-highlighter-theme-epicgeeks .urvanov-syntax-highlighter-button:active {
 	background-color: #DDD !important;
 	color: #FFF;
 }
-.crayon-theme-epicgeeks .crayon-pre .crayon-c {
+.urvanov-syntax-highlighter-theme-epicgeeks .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-c {
 	color: #787878 !important;
 }
-.crayon-theme-epicgeeks .crayon-pre .crayon-p {
+.urvanov-syntax-highlighter-theme-epicgeeks .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-p {
 	color: #a3a3a3 !important;
 }
-.crayon-theme-epicgeeks .crayon-pre .crayon-s {
+.urvanov-syntax-highlighter-theme-epicgeeks .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-s {
 	color: #90c300 !important;
 }
-.crayon-theme-epicgeeks .crayon-pre .crayon-k {
+.urvanov-syntax-highlighter-theme-epicgeeks .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-k {
 	color: #ff00aa !important;
 }
-.crayon-theme-epicgeeks .crayon-pre .crayon-st {
+.urvanov-syntax-highlighter-theme-epicgeeks .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-st {
 	color: #ff00aa !important;
 }
-.crayon-theme-epicgeeks .crayon-pre .crayon-r {
+.urvanov-syntax-highlighter-theme-epicgeeks .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-r {
 	color: #ff00aa !important;
 }
-.crayon-theme-epicgeeks .crayon-pre .crayon-t {
+.urvanov-syntax-highlighter-theme-epicgeeks .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-t {
 	color: #ff00aa !important;
 }
-.crayon-theme-epicgeeks .crayon-pre .crayon-m {
+.urvanov-syntax-highlighter-theme-epicgeeks .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-m {
 	color: #ff00aa !important;
 }
-.crayon-theme-epicgeeks .crayon-pre .crayon-i {
+.urvanov-syntax-highlighter-theme-epicgeeks .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-i {
 	color: #878787 !important;
 }
-.crayon-theme-epicgeeks .crayon-pre .crayon-v {
+.urvanov-syntax-highlighter-theme-epicgeeks .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-v {
 	color: #ca00ff !important;
 }
-.crayon-theme-epicgeeks .crayon-pre .crayon-e {
+.urvanov-syntax-highlighter-theme-epicgeeks .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-e {
 	color: #00d5ff !important;
 }
-.crayon-theme-epicgeeks .crayon-pre .crayon-cn {
+.urvanov-syntax-highlighter-theme-epicgeeks .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-cn {
 	color: #e87b7b !important;
 }
-.crayon-theme-epicgeeks .crayon-pre .crayon-o {
+.urvanov-syntax-highlighter-theme-epicgeeks .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-o {
 	color: #006fe0 !important;
 }
-.crayon-theme-epicgeeks .crayon-pre .crayon-h {
+.urvanov-syntax-highlighter-theme-epicgeeks .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-h {
 	color: #006fe0 !important;
 }
-.crayon-theme-epicgeeks .crayon-pre .crayon-sy {
+.urvanov-syntax-highlighter-theme-epicgeeks .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-sy {
 	color: #3c3c3c !important;
 }
-.crayon-theme-epicgeeks .crayon-pre .crayon-n {
+.urvanov-syntax-highlighter-theme-epicgeeks .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-n {
 	color: #b7b7b7 !important;
 	font-style: italic !important;
 }
-.crayon-theme-epicgeeks .crayon-pre .crayon-f {
+.urvanov-syntax-highlighter-theme-epicgeeks .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-f {
 	color: #cfcfcf !important;
 }

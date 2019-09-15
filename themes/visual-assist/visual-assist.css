@@ -5,163 +5,163 @@ Version: 1.0
 Author: Brady Reuter
 URL:
 */
-.crayon-theme-visual-assist {
+.urvanov-syntax-highlighter-theme-visual-assist {
 	border-width: 1px !important;
 	border-color: #303030 !important;
 	text-shadow: none !important;
 	background: #303030 !important;
 }
-.crayon-theme-visual-assist-inline {
+.urvanov-syntax-highlighter-theme-visual-assist-inline {
 	border-width: 1px !important;
 	border-color: #000000 !important;
 	background: #303030 !important;
 }
-.crayon-theme-visual-assist .crayon-table .crayon-nums {
+.urvanov-syntax-highlighter-theme-visual-assist .urvanov-syntax-highlighter-table .urvanov-syntax-highlighter-nums {
 	background: #303030 !important;
 	color: #c2c2c2 !important;
 	border-right-width: 1px !important;
 	border-right-color: #8c8d8f !important;
 	border-right-style: solid !important;
 }
-.crayon-theme-visual-assist .crayon-striped-line {
+.urvanov-syntax-highlighter-theme-visual-assist .urvanov-syntax-highlighter-striped-line {
 	background: #353535 !important;
 }
-.crayon-theme-visual-assist .crayon-striped-num {
+.urvanov-syntax-highlighter-theme-visual-assist .urvanov-syntax-highlighter-striped-num {
 	background: #353535 !important;
 	color: #c2c2c2 !important;
 }
-.crayon-theme-visual-assist .crayon-marked-line {
+.urvanov-syntax-highlighter-theme-visual-assist .urvanov-syntax-highlighter-marked-line {
 	background: #323232 !important;
 	border-width: 1px !important;
 	border-color: #595959 !important;
 }
-.crayon-theme-visual-assist .crayon-marked-num {
+.urvanov-syntax-highlighter-theme-visual-assist .urvanov-syntax-highlighter-marked-num {
 	color: #ffffff !important;
 	background: #363636 !important;
 	border-width: 1px !important;
 	border-color: #595959 !important;
 }
-.crayon-theme-visual-assist .crayon-marked-line.crayon-striped-line {
+.urvanov-syntax-highlighter-theme-visual-assist .urvanov-syntax-highlighter-marked-line.urvanov-syntax-highlighter-striped-line {
 	background: #343941 !important;
 }
-.crayon-theme-visual-assist .crayon-marked-num.crayon-striped-num {
+.urvanov-syntax-highlighter-theme-visual-assist .urvanov-syntax-highlighter-marked-num.urvanov-syntax-highlighter-striped-num {
 	background: #222222 !important;
 	color: #ffffff !important;
 }
-.crayon-theme-visual-assist .crayon-marked-line.crayon-top {
+.urvanov-syntax-highlighter-theme-visual-assist .urvanov-syntax-highlighter-marked-line.urvanov-syntax-highlighter-top {
 }
-.crayon-theme-visual-assist .crayon-marked-num.crayon-top {
+.urvanov-syntax-highlighter-theme-visual-assist .urvanov-syntax-highlighter-marked-num.urvanov-syntax-highlighter-top {
 }
-.crayon-theme-visual-assist .crayon-marked-line.crayon-bottom {
+.urvanov-syntax-highlighter-theme-visual-assist .urvanov-syntax-highlighter-marked-line.urvanov-syntax-highlighter-bottom {
 }
-.crayon-theme-visual-assist .crayon-marked-num.crayon-bottom {
+.urvanov-syntax-highlighter-theme-visual-assist .urvanov-syntax-highlighter-marked-num.urvanov-syntax-highlighter-bottom {
 }
-.crayon-theme-visual-assist .crayon-info {
+.urvanov-syntax-highlighter-theme-visual-assist .urvanov-syntax-highlighter-info {
 	background: #333333 !important;
 	border-bottom-width: 1px !important;
 	border-bottom-color: #b1af5e !important;
 	color: #eeeeee !important;
 	border-bottom-style: solid !important;
 }
-.crayon-theme-visual-assist .crayon-toolbar {
+.urvanov-syntax-highlighter-theme-visual-assist .urvanov-syntax-highlighter-toolbar {
 	background: #2a2a2a !important;
 	border-bottom-width: 1px !important;
 	border-bottom-color: #2e2e2e !important;
 	border-bottom-style: solid !important;
 }
-.crayon-theme-visual-assist .crayon-toolbar > div {
+.urvanov-syntax-highlighter-theme-visual-assist .urvanov-syntax-highlighter-toolbar > div {
 	float: left !important;
 }
-.crayon-theme-visual-assist .crayon-toolbar .crayon-tools {
+.urvanov-syntax-highlighter-theme-visual-assist .urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-tools {
 	float: right !important;
 }
-.crayon-theme-visual-assist .crayon-title {
+.urvanov-syntax-highlighter-theme-visual-assist .urvanov-syntax-highlighter-title {
 	color: #d3d3d3 !important;
 }
-.crayon-theme-visual-assist .crayon-language {
+.urvanov-syntax-highlighter-theme-visual-assist .urvanov-syntax-highlighter-language {
 	color: #d3d3d3 !important;
 }
-.crayon-theme-visual-assist .crayon-button {
+.urvanov-syntax-highlighter-theme-visual-assist .urvanov-syntax-highlighter-button {
 }
-.crayon-theme-visual-assist .crayon-button:hover {
+.urvanov-syntax-highlighter-theme-visual-assist .urvanov-syntax-highlighter-button:hover {
 	background-color: #d3d3d3 !important;
 	color: #666;
 }
-.crayon-theme-visual-assist .crayon-button.crayon-pressed:hover {
+.urvanov-syntax-highlighter-theme-visual-assist .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-pressed:hover {
 	background-color: #bcbcbc !important;
 	color: #666;
 }
-.crayon-theme-visual-assist .crayon-button.crayon-pressed {
+.urvanov-syntax-highlighter-theme-visual-assist .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-pressed {
 	background-color: #626262 !important;
 	color: #FFF;
 }
-.crayon-theme-visual-assist .crayon-button.crayon-pressed:active {
+.urvanov-syntax-highlighter-theme-visual-assist .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-pressed:active {
 	background-color: #626262 !important;
 	color: #FFF;
 }
-.crayon-theme-visual-assist .crayon-button:active {
+.urvanov-syntax-highlighter-theme-visual-assist .urvanov-syntax-highlighter-button:active {
 	background-color: #bcbcbc !important;
 	color: #FFF;
 }
-.crayon-theme-visual-assist .crayon-pre .crayon-c {
+.urvanov-syntax-highlighter-theme-visual-assist .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-c {
 	color: #57A64A !important;
 	font-style: italic !important;
 }
-.crayon-theme-visual-assist .crayon-pre .crayon-s {
+.urvanov-syntax-highlighter-theme-visual-assist .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-s {
 	color: #D69D85 !important;
 }
-.crayon-theme-visual-assist .crayon-pre .crayon-p {
+.urvanov-syntax-highlighter-theme-visual-assist .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-p {
 	color: #9B9B8B !important;
 }
-.crayon-theme-visual-assist .crayon-pre .crayon-ta {
+.urvanov-syntax-highlighter-theme-visual-assist .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-ta {
 	color: #d35a5a !important;
 }
-.crayon-theme-visual-assist .crayon-pre .crayon-k {
+.urvanov-syntax-highlighter-theme-visual-assist .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-k {
 	color: #569CD6 !important;
 }
-.crayon-theme-visual-assist .crayon-pre .crayon-st {
+.urvanov-syntax-highlighter-theme-visual-assist .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-st {
 	color: #20b0da !important;
 }
-.crayon-theme-visual-assist .crayon-pre .crayon-r {
+.urvanov-syntax-highlighter-theme-visual-assist .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-r {
 	color: #f4bb15 !important;
 }
-.crayon-theme-visual-assist .crayon-pre .crayon-t {
+.urvanov-syntax-highlighter-theme-visual-assist .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-t {
 	color: #f4bb15 !important;
 }
-.crayon-theme-visual-assist .crayon-pre .crayon-m {
+.urvanov-syntax-highlighter-theme-visual-assist .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-m {
 	color: #569CD6 !important;
 }
-.crayon-theme-visual-assist .crayon-pre .crayon-i {
+.urvanov-syntax-highlighter-theme-visual-assist .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-i {
 	color: #dcdcdc !important;
 }
-.crayon-theme-visual-assist .crayon-pre .crayon-e {
+.urvanov-syntax-highlighter-theme-visual-assist .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-e {
 	color: #ff8000 !important;
 }
-.crayon-theme-visual-assist .crayon-pre .crayon-v {
+.urvanov-syntax-highlighter-theme-visual-assist .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-v {
 	color: #bdb76b !important;
 }
-.crayon-theme-visual-assist .crayon-pre .crayon-cn {
+.urvanov-syntax-highlighter-theme-visual-assist .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-cn {
 	color: #e7a37a !important;
 }
-.crayon-theme-visual-assist .crayon-pre .crayon-o {
+.urvanov-syntax-highlighter-theme-visual-assist .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-o {
 	color: #DADADA !important;
 }
-.crayon-theme-visual-assist .crayon-pre .crayon-sy {
+.urvanov-syntax-highlighter-theme-visual-assist .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-sy {
 	color: #D8D8D8 !important;
 }
-.crayon-theme-visual-assist .crayon-pre .crayon-n {
+.urvanov-syntax-highlighter-theme-visual-assist .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-n {
 	color: #666 !important;
 	font-style: italic !important;
 }
-.crayon-theme-visual-assist .crayon-pre .crayon-f {
+.urvanov-syntax-highlighter-theme-visual-assist .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-f {
 	color: #999999 !important;
 }
-.crayon-theme-visual-assist .crayon-pre .crayon-h {
+.urvanov-syntax-highlighter-theme-visual-assist .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-h {
 	color: #006fe0 !important;
 }
-.crayon-theme-visual-assist .crayon-pre {
+.urvanov-syntax-highlighter-theme-visual-assist .urvanov-syntax-highlighter-pre {
 	color: #ffffff !important;
 }
-.crayon-theme-visual-assist {
+.urvanov-syntax-highlighter-theme-visual-assist {
 	background: #323232 !important;
 }
