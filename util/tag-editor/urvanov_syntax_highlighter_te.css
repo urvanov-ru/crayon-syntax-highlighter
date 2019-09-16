@@ -11,12 +11,12 @@ pre.urvanov-syntax-highlighter-selected {
 	border: 1px solid #9dc8e6 !important;
 }
 
-pre, span.urvanov-syntax-highlighter-inline {
+pre, span.crayon-inline {
 	font-family: "Courier 10 Pitch", Courier, monospace !important;
 	font-size: 80% !important;
 }
 
-span.urvanov-syntax-highlighter-inline {
+span.crayon-inline {
 	background: #F4F4F4 !important;
 	border: 1px solid #CCC !important;
 	padding: 2px 3px;
@@ -26,7 +26,7 @@ span.urvanov-syntax-highlighter-inline {
 	/* padding: 0.3em 0.5em !important; */
 }
 
-span.urvanov-syntax-highlighter-inline.urvanov-syntax-highlighter-selected {
+span.crayon-inline.urvanov-syntax-highlighter-selected {
 	background: #d2eeca !important;
 	border: 1px solid #b8dc9b !important;
 }

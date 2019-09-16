@@ -1,5 +1,6 @@
 (function ($, wp) {
-
+    var CRAYON_INLINE_CSS = 'crayon-inline';
+    
     var el = wp.element.createElement,
     registerBlockType = wp.blocks.registerBlockType,
     blockStyle = {  };
@@ -98,7 +99,7 @@
                         var inputNode = UrvanovSyntaxHighlighterUtil.htmlToElements(inputValue)[0];
                     } else {
                     	var inputRichTextValue = wp.richText.slice(props.value, startIndex, endIndex);
-                        var inputValue = '<span class="' + UrvanovSyntaxHighlighterTagEditorSettings.inline_css + '">' + wp.richText.toHTMLString({
+                        var inputValue = '<span class="' + CRAYON_INLINE_CSS + '">' + wp.richText.toHTMLString({
                             value: inputRichTextValue}) + '</span>';
                         var inputNode = UrvanovSyntaxHighlighterUtil.htmlToElements(inputValue)[0];
                     }
@@ -416,7 +417,7 @@
                     }
 
                     // Inline
-                    is_inline = currUrvanovSyntaxHighlighter.hasClass(s.inline_css);
+                    is_inline = currUrvanovSyntaxHighlighter.hasClass(CRAYON_INLINE_CSS);
                     atts['inline'] = is_inline ? '1' : '0';
 
                     // Ensure language goes to fallback if invalid
@@ -592,11 +593,11 @@
             var atts = {};
             shortcode += 'class="';
 
-            var inline_re = new RegExp('\\b' + s.inline_css + '\\b', 'gim');
+            var inline_re = new RegExp('\\b' + CRAYON_INLINE_CSS + '\\b', 'gim');
             if (is_inline) {
                 // If don't have inline class, add it
                 if (inline_re.exec(currClasses) == null) {
-                    currClasses += ' ' + s.inline_css + ' ';
+                    currClasses += ' ' + CRAYON_INLINE_CSS + ' ';
                 }
             } else {
                 // Remove inline css if it exists
@@ -755,7 +756,7 @@
 
         base.isUrvanovSyntaxHighlighter = function (node) {
             return node != null &&
-                (node.nodeName == 'PRE' || (node.nodeName == 'SPAN' && $(node).hasClass(s.inline_css)));
+                (node.nodeName == 'PRE' || (node.nodeName == 'SPAN' && $(node).hasClass(CRAYON_INLINE_CSS)));
         };
 
         base.elemValue = function (obj) {
