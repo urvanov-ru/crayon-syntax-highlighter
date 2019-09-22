@@ -340,7 +340,7 @@ class Urvanov_Syntax_Highlighter_Lang extends Urvanov_Syntax_Highlighter_Version
 	// Override
 	function clean_id($id) {
         $id = UrvanovSyntaxHighlighterUtil::space_to_hyphen( strtolower(trim($id)) );
-        return preg_replace('/[^\w-+#]/msi', '', $id);
+        return preg_replace('/[^\w\-+#]/msi', '', $id);
 	}
 
 	function ext($ext = NULL) {
