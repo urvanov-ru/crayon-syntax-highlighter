@@ -121,6 +121,27 @@ class Urvanov_Syntax_Highlighter_HTML_Title extends Urvanov_Syntax_Highlighter_H
 
 }
 
+class Urvanov_Syntax_Highlighter_Theme_Editor_Save {
+	public $id;
+	public $name;
+	public $css;
+	public $change_settings;
+	public $allow_edit;
+	public $allow_edit_stock_theme;
+	public $delete;
+	
+	public function initialize_from_post() {
+		Urvanov_Syntax_Highlighter_Settings_WP::load_settings();
+		$id = stripslashes(sanitize_text_field($_POST['id']));
+		$name = stripslashes(sanitize_text_field($_POST['name']));
+		$css = stripslashes(sanitize_text_field($_POST['css']));
+		$change_settings = UrvanovSyntaxHighlighterUtil::set_default(sanitize_text_field($_POST['change_settings']), TRUE);
+		$allow_edit = UrvanovSyntaxHighlighterUtil::set_default(sanitize_text_field($_POST['allow_edit']), TRUE);
+		$allow_edit_stock_theme = UrvanovSyntaxHighlighterUtil::set_default(sanitize_text_field($_POST['allow_edit_stock_theme']), URVANOV_SYNTAX_HIGHLIGHTER_DEBUG);
+		$delete = UrvanovSyntaxHighlighterUtil::set_default(sanitize_text_field($_POST['delete']), TRUE);
+	}
+}
+
 class Urvanov_Syntax_Highlighter_Theme_Editor_WP {
 
     public static $attributes = NULL;
@@ -639,31 +660,36 @@ class Urvanov_Syntax_Highlighter_Theme_Editor_WP {
         echo self::form($atts);
     }
 
+    public static function save() {
+    	$save_args = new Urvanov_Syntax_Highlighter_Theme_Editor_Save;
+    	$save_args.initialize_from_post();
+    }
+    
     /**
      * Saves the given theme id and css, making any necessary path and id changes to ensure the new theme is valid.
      * Echos 0 on failure, 1 on success and 2 on success and if paths have changed.
      */
-    public static function save() {
-        Urvanov_Syntax_Highlighter_Settings_WP::load_settings();
-        $oldID = stripslashes(sanitize_text_field($_POST['id']));
-        $name = stripslashes(sanitize_text_field($_POST['name']));
-        $css = stripslashes(sanitize_text_field($_POST['css']));
-        $change_settings = UrvanovSyntaxHighlighterUtil::set_default(sanitize_text_field($_POST['change_settings']), TRUE);
-        $allow_edit = UrvanovSyntaxHighlighterUtil::set_default(sanitize_text_field($_POST['allow_edit']), TRUE);
-        $allow_edit_stock_theme = UrvanovSyntaxHighlighterUtil::set_default(sanitize_text_field($_POST['allow_edit_stock_theme']), URVANOV_SYNTAX_HIGHLIGHTER_DEBUG);
-        $delete = UrvanovSyntaxHighlighterUtil::set_default(sanitize_text_field($_POST['delete']), TRUE);
-        $oldTheme = Urvanov_Syntax_Highlighter_Resources::themes()->get($oldID);
-
-        if (!empty($oldID) && !empty($css) && !empty($name)) {
+    public static function saveFromArgs($save_args) {
+    	Urvanov_Syntax_Highlighter_Settings_WP::load_settings();
+    	$save_args->id = stripslashes(sanitize_text_field($_POST['id']));
+    	$save_args->name = stripslashes(sanitize_text_field($_POST['name']));
+    	$save_args->css = stripslashes(sanitize_text_field($_POST['css']));
+    	$save_args->change_settings = UrvanovSyntaxHighlighterUtil::set_default(sanitize_text_field($_POST['change_settings']), TRUE);
+    	$save_args->allow_edit = UrvanovSyntaxHighlighterUtil::set_default(sanitize_text_field($_POST['allow_edit']), TRUE);
+    	$save_args->allow_edit_stock_theme = UrvanovSyntaxHighlighterUtil::set_default(sanitize_text_field($_POST['allow_edit_stock_theme']), URVANOV_SYNTAX_HIGHLIGHTER_DEBUG);
+    	$save_args->delete = UrvanovSyntaxHighlighterUtil::set_default(sanitize_text_field($_POST['delete']), TRUE);
+    	$oldTheme = Urvanov_Syntax_Highlighter_Resources::themes()->get($save_args->id);
+    	
+        if (!empty($save_args->id) && !empty($save_args->css) && !empty($save_args->name)) {
             // By default, expect a user theme to be saved - prevents editing stock themes
             // If in DEBUG mode, then allow editing stock themes.
-            $user = $oldTheme !== NULL && $allow_edit_stock_theme ? $oldTheme->user() : TRUE;
-            $oldPath = Urvanov_Syntax_Highlighter_Resources::themes()->path($oldID);
-            $oldDir = Urvanov_Syntax_Highlighter_Resources::themes()->dirpath_for_id($oldID);
+            $user = $oldTheme !== NULL && $save_args->allow_edit_stock_theme ? $oldTheme->user() : TRUE;
+            $oldPath = Urvanov_Syntax_Highlighter_Resources::themes()->path($save_args->id);
+            $oldDir = Urvanov_Syntax_Highlighter_Resources::themes()->dirpath_for_id($save_args->id);
             // Create an instance to use functions, since late static binding is only available in 5.3 (PHP kinda sucks)
             $theme = Urvanov_Syntax_Highlighter_Resources::themes()->resource_instance('');
-            $newID = $theme->clean_id($name);
-            $name = Urvanov_Syntax_Highlighter_Resource::clean_name($newID);
+            $newID = $theme->clean_id($save_args->name);
+            $save_args->name = Urvanov_Syntax_Highlighter_Resource::clean_name($newID);
             $newPath = Urvanov_Syntax_Highlighter_Resources::themes()->path($newID, $user);
             $newDir = Urvanov_Syntax_Highlighter_Resources::themes()->dirpath_for_id($newID, $user);
 
@@ -674,7 +700,7 @@ class Urvanov_Syntax_Highlighter_Theme_Editor_WP {
                 exit();
             }
 
-            if ($oldPath == $newPath && $allow_edit === FALSE) {
+            if ($oldPath == $newPath && $save_args->allow_edit === FALSE) {
                 // Don't allow editing
                 echo -4;
                 exit();
@@ -695,24 +721,24 @@ class Urvanov_Syntax_Highlighter_Theme_Editor_WP {
             }
 
             $refresh = FALSE;
-            $replaceID = $oldID;
+            $replaceID = $save_args->id;
             // Replace ids in the CSS
-            if (!is_file($oldPath) || strpos($css, Urvanov_Syntax_Highlighter_Themes::CSS_PREFIX . $oldID) === FALSE) {
+            if (!is_file($oldPath) || strpos($save_args->css, Urvanov_Syntax_Highlighter_Themes::CSS_PREFIX . $save_args->id) === FALSE) {
                 // The old path/id is no longer valid - something has gone wrong - we should refresh afterwards
                 $refresh = TRUE;
             }
             // XXX This is case sensitive to avoid modifying text, but it means that CSS must be in lowercase
-            $css = preg_replace('#(?<=' . Urvanov_Syntax_Highlighter_Themes::CSS_PREFIX . ')' . $replaceID . '\b#ms', $newID, $css);
+            $save_args->css = preg_replace('#(?<=' . Urvanov_Syntax_Highlighter_Themes::CSS_PREFIX . ')' . $replaceID . '\b#ms', $newID, $save_args->css);
 
             // Replace the name with the new one
-            $info = self::getCSSInfo($css);
-            $info['name'] = $name;
-            $css = self::setCSSInfo($css, $info);
+            $info = self::getCSSInfo($save_args->css);
+            $info['name'] = $save_args->name;
+            $save_args->css = self::setCSSInfo($save_args->css, $info);
 
-            $result = @file_put_contents($newPath, $css);
+            $result = @file_put_contents($newPath, $save_args->css);
             $success = $result !== FALSE;
             if ($success && $oldPath !== $newPath) {
-                if ($oldID !== Urvanov_Syntax_Highlighter_Themes::DEFAULT_THEME && $delete) {
+                if ($save_args->id !== Urvanov_Syntax_Highlighter_Themes::DEFAULT_THEME && $save_args->delete) {
                     // Only delete the old path if it isn't the default theme
                     try {
                         // Delete the old path
@@ -735,12 +761,12 @@ class Urvanov_Syntax_Highlighter_Theme_Editor_WP {
                 }
             }
             // Set the new theme in settings
-            if ($change_settings) {
+            if ($save_args->change_settings) {
                 Urvanov_Syntax_Highlighter_Global_Settings::set(Urvanov_Syntax_Highlighter_Settings::THEME, $newID);
                 Urvanov_Syntax_Highlighter_Settings_WP::save_settings();
             }
         } else {
-            UrvanovSyntaxHighlighterLog::syslog("$oldID=$oldID\n\n$name=$name", "THEME SAVE");
+            UrvanovSyntaxHighlighterLog::syslog("$save_args->id=$save_args->id\n\n$save_args->name=$save_args->name", "THEME SAVE");
             echo -1;
         }
         exit();
