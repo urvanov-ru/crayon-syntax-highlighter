@@ -776,11 +776,12 @@ class Urvanov_Syntax_Highlighter_Theme_Editor_WP {
         Urvanov_Syntax_Highlighter_Settings_WP::load_settings();
         $oldID = sanitize_text_field($_POST['id']);
         $oldPath = Urvanov_Syntax_Highlighter_Resources::themes()->path($oldID);
-        $_POST['css'] = file_get_contents($oldPath);
-        $_POST['delete'] = FALSE;
-        $_POST['allow_edit'] = FALSE;
-        $_POST['allow_edit_stock_theme'] = FALSE;
-        self::save();
+        $save_args = new Urvanov_Syntax_Highlighter_Theme_Editor_Save();
+        $save_args->css = file_get_contents($oldPath);
+        $save_args->delete = FALSE;
+        $save_args->allow_edit = FALSE;
+        $save_args->allow_edit_stock_theme = FALSE;
+        self::saveFromArgs($save_args);
     }
 
     public static function delete() {
