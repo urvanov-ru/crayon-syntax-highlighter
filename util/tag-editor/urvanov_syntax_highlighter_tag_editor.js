@@ -137,7 +137,7 @@
         'urvanov-syntax-highlighter/code-inline', {
             title: 'UrvanovSyntaxHighlighter',
             tagName: 'span',
-            className: null,
+            className: CRAYON_INLINE_CSS,
             edit: UrvanovSyntaxHighlighterButton
         }
     );
