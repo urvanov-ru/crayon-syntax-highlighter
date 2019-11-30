@@ -228,7 +228,7 @@ define('URVANOV_SYNTAX_HIGHLIGHTER_EDITOR_CSS', 'util/tag-editor/urvanov_syntax_
 define('URVANOV_SYNTAX_HIGHLIGHTER_COLORBOX_JS', 'colorbox/jquery.colorbox-min.js');
 define('URVANOV_SYNTAX_HIGHLIGHTER_COLORBOX_CSS', 'colorbox/colorbox.css');
 define('URVANOV_SYNTAX_HIGHLIGHTER_TAG_EDITOR_PHP', URVANOV_SYNTAX_HIGHLIGHTER_TAG_EDITOR_PATH . 'class-urvanov-syntax-highlighter-tag-editor-wp.php');
-define('URVANOV_SYNTAX_HIGHLIGHTER_TINYMCE_JS', 'crayon_tinymce.js');
+define('URVANOV_SYNTAX_HIGHLIGHTER_TINYMCE_JS', 'urvanov_syntax_highlighter_tinymce.js');
 define('URVANOV_SYNTAX_HIGHLIGHTER_QUICKTAGS_JS', 'urvanov_syntax_highlighter_qt.js');
 define('URVANOV_SYNTAX_HIGHLIGHTER_STYLE', URVANOV_SYNTAX_HIGHLIGHTER_CSS_SRC_DIR . 'urvanov_syntax_highlighter_style.css');
 define('URVANOV_SYNTAX_HIGHLIGHTER_STYLE_ADMIN', URVANOV_SYNTAX_HIGHLIGHTER_CSS_SRC_DIR . 'admin_style.css');
