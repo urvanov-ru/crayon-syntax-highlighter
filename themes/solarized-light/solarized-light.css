@@ -8,170 +8,170 @@ Maintainer: Eduan Lavaque
 Maintainer URL: http://eduantech.com/
 Notes: I don't provide striped lines because it would break the original purpose of this colorscheme.
 */
-.crayon-theme-solarized-light {
+.urvanov-syntax-highlighter-theme-solarized-light {
 	text-shadow: none !important;
 	background: #fdf6e3 !important;
 	border-style: solid !important;
 	border-width: 1px !important;
 	border-color: #999 !important;
 }
-.crayon-theme-solarized-light .crayon-code {
+.urvanov-syntax-highlighter-theme-solarized-light .urvanov-syntax-highlighter-code {
 	background: #fdf6e3 !important;
 }
-.crayon-theme-solarized-light-inline {
+.urvanov-syntax-highlighter-theme-solarized-light-inline {
 	background: #fdf6e3 !important;
 	border-style: solid !important;
 	border-width: 1px !important;
 	border-color: #ddd !important;
 }
-.crayon-theme-solarized-light .crayon-table .crayon-nums {
+.urvanov-syntax-highlighter-theme-solarized-light .urvanov-syntax-highlighter-table .urvanov-syntax-highlighter-nums {
 	background: #eee8d5 !important;
 	color: #93a1a1 !important;
 }
-.crayon-theme-solarized-light .crayon-striped-line {
+.urvanov-syntax-highlighter-theme-solarized-light .urvanov-syntax-highlighter-striped-line {
 	background: #fdf6e3 !important;
 	border-width: 1px !important;
 	border-color: #CCC !important;
 }
-.crayon-theme-solarized-light .crayon-striped-num {
+.urvanov-syntax-highlighter-theme-solarized-light .urvanov-syntax-highlighter-striped-num {
 	color: #93a1a1 !important;
 	background: #eee8d5 !important;
 	border-width: 1px !important;
 	border-color: #CCC !important;
 }
-.crayon-theme-solarized-light .crayon-marked-line {
+.urvanov-syntax-highlighter-theme-solarized-light .urvanov-syntax-highlighter-marked-line {
 	background: #eee8d5 !important;
 }
-.crayon-theme-solarized-light .crayon-marked-num {
+.urvanov-syntax-highlighter-theme-solarized-light .urvanov-syntax-highlighter-marked-num {
 	color: #93a1a1 !important;
 	background: #fdf6e3 !important;
 }
-.crayon-theme-solarized-light .crayon-marked-line.crayon-striped-line {
+.urvanov-syntax-highlighter-theme-solarized-light .urvanov-syntax-highlighter-marked-line.urvanov-syntax-highlighter-striped-line {
 	background: #eee8d5 !important;
 }
-.crayon-theme-solarized-light .crayon-marked-num.crayon-striped-num {
+.urvanov-syntax-highlighter-theme-solarized-light .urvanov-syntax-highlighter-marked-num.urvanov-syntax-highlighter-striped-num {
 	background: #fdf6e3 !important;
 }
-.crayon-theme-solarized-light .crayon-marked-line.crayon-top {
+.urvanov-syntax-highlighter-theme-solarized-light .urvanov-syntax-highlighter-marked-line.urvanov-syntax-highlighter-top {
 	border-top-style: solid !important;
 	border-color: #839496 !important;
 	border-width: 1px !important;
 }
-.crayon-theme-solarized-light .crayon-marked-num.crayon-top {
+.urvanov-syntax-highlighter-theme-solarized-light .urvanov-syntax-highlighter-marked-num.urvanov-syntax-highlighter-top {
 	border-top-style: solid !important;
 	border-color: #839496 !important;
 	border-width: 1px !important;
 }
-.crayon-theme-solarized-light .crayon-marked-line.crayon-bottom {
+.urvanov-syntax-highlighter-theme-solarized-light .urvanov-syntax-highlighter-marked-line.urvanov-syntax-highlighter-bottom {
 	border-bottom-style: solid !important;
 	border-color: #839496 !important;
 	border-width: 1px !important;
 }
-.crayon-theme-solarized-light .crayon-marked-num.crayon-bottom {
+.urvanov-syntax-highlighter-theme-solarized-light .urvanov-syntax-highlighter-marked-num.urvanov-syntax-highlighter-bottom {
 	border-bottom-style: solid !important;
 	border-color: #839496 !important;
 	border-width: 1px !important;
 }
-.crayon-theme-solarized-light .crayon-info {
+.urvanov-syntax-highlighter-theme-solarized-light .urvanov-syntax-highlighter-info {
 	background: #faf9d7 !important;
 	color: #7e7d34 !important;
 	border-bottom-style: solid !important;
 	border-bottom-width: 1px !important;
 	border-bottom-color: #b1af5e !important;
 }
-.crayon-theme-solarized-light .crayon-toolbar {
+.urvanov-syntax-highlighter-theme-solarized-light .urvanov-syntax-highlighter-toolbar {
 	background: #DDD !important;
 	border-bottom-style: solid !important;
 	border-bottom-width: 1px !important;
 	border-bottom-color: #BBB !important;
 }
-.crayon-theme-solarized-light .crayon-toolbar > div {
+.urvanov-syntax-highlighter-theme-solarized-light .urvanov-syntax-highlighter-toolbar > div {
 	float: left !important;
 }
-.crayon-theme-solarized-light .crayon-toolbar .crayon-tools {
+.urvanov-syntax-highlighter-theme-solarized-light .urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-tools {
 	float: right !important;
 }
-.crayon-theme-solarized-light .crayon-title {
+.urvanov-syntax-highlighter-theme-solarized-light .urvanov-syntax-highlighter-title {
 	color: #333 !important;
 }
-.crayon-theme-solarized-light .crayon-language {
+.urvanov-syntax-highlighter-theme-solarized-light .urvanov-syntax-highlighter-language {
 	color: #999 !important;
 }
-.crayon-theme-solarized-light .crayon-button {
+.urvanov-syntax-highlighter-theme-solarized-light .urvanov-syntax-highlighter-button {
 	background-color: transparent !important;
 }
-.crayon-theme-solarized-light .crayon-button:hover {
+.urvanov-syntax-highlighter-theme-solarized-light .urvanov-syntax-highlighter-button:hover {
 	background-color: #EEE !important;
 	color: #666;
 }
-.crayon-theme-solarized-light .crayon-button.crayon-pressed:hover {
+.urvanov-syntax-highlighter-theme-solarized-light .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-pressed:hover {
 	background-color: #EEE !important;
 	color: #666;
 }
-.crayon-theme-solarized-light .crayon-button.crayon-pressed {
+.urvanov-syntax-highlighter-theme-solarized-light .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-pressed {
 	background-color: #BCBCBC !important;
 	color: #FFF;
 }
-.crayon-theme-solarized-light .crayon-button.crayon-pressed:active {
+.urvanov-syntax-highlighter-theme-solarized-light .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-pressed:active {
 	background-color: #BCBCBC !important;
 	color: #FFF;
 }
-.crayon-theme-solarized-light .crayon-button:active {
+.urvanov-syntax-highlighter-theme-solarized-light .urvanov-syntax-highlighter-button:active {
 	background-color: #BCBCBC !important;
 	color: #FFF;
 }
-.crayon-theme-solarized-light .crayon-pre .crayon-c {
+.urvanov-syntax-highlighter-theme-solarized-light .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-c {
 	color: #93a1a1 !important;
 }
-.crayon-theme-solarized-light .crayon-pre .crayon-s {
+.urvanov-syntax-highlighter-theme-solarized-light .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-s {
 	color: #2aa198 !important;
 }
-.crayon-theme-solarized-light .crayon-pre .crayon-k {
+.urvanov-syntax-highlighter-theme-solarized-light .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-k {
 	color: #cb4b16 !important;
 }
-.crayon-theme-solarized-light .crayon-pre .crayon-st {
+.urvanov-syntax-highlighter-theme-solarized-light .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-st {
 	color: #859900 !important;
 }
-.crayon-theme-solarized-light .crayon-pre .crayon-r {
+.urvanov-syntax-highlighter-theme-solarized-light .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-r {
 	color: #cb4b16 !important;
 }
-.crayon-theme-solarized-light .crayon-pre .crayon-t {
+.urvanov-syntax-highlighter-theme-solarized-light .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-t {
 	color: #b58900 !important;
 }
-.crayon-theme-solarized-light .crayon-pre .crayon-m {
+.urvanov-syntax-highlighter-theme-solarized-light .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-m {
 	color: #b58900 !important;
 }
-.crayon-theme-solarized-light .crayon-pre .crayon-i {
+.urvanov-syntax-highlighter-theme-solarized-light .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-i {
 	color: #839496 !important;
 }
-.crayon-theme-solarized-light .crayon-pre .crayon-e {
+.urvanov-syntax-highlighter-theme-solarized-light .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-e {
 	color: #839496 !important;
 }
-.crayon-theme-solarized-light .crayon-pre .crayon-v {
+.urvanov-syntax-highlighter-theme-solarized-light .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-v {
 	color: #268bd2 !important;
 }
-.crayon-theme-solarized-light .crayon-pre .crayon-cn {
+.urvanov-syntax-highlighter-theme-solarized-light .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-cn {
 	color: #2aa198 !important;
 }
-.crayon-theme-solarized-light .crayon-pre .crayon-o {
+.urvanov-syntax-highlighter-theme-solarized-light .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-o {
 	color: #859900 !important;
 }
-.crayon-theme-solarized-light .crayon-pre .crayon-sy {
+.urvanov-syntax-highlighter-theme-solarized-light .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-sy {
 	color: #dc322f !important;
 }
-.crayon-theme-solarized-light .crayon-pre .crayon-n {
+.urvanov-syntax-highlighter-theme-solarized-light .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-n {
 	color: #666 !important;
 	font-style: italic !important;
 }
-.crayon-theme-solarized-light .crayon-pre .crayon-f {
+.urvanov-syntax-highlighter-theme-solarized-light .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-f {
 	color: #999 !important;
 }
-.crayon-theme-solarized-light .crayon-pre .crayon-h {
+.urvanov-syntax-highlighter-theme-solarized-light .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-h {
 	color: #dc322f !important;
 }
-.crayon-theme-solarized-light .crayon-pre .crayon-p {
+.urvanov-syntax-highlighter-theme-solarized-light .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-p {
 	color: #dc322f !important;
 }
-.crayon-theme-solarized-light .crayon-pre .crayon-ta {
+.urvanov-syntax-highlighter-theme-solarized-light .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-ta {
 	color: #268bd2 !important;
 }

@@ -1,15 +1,15 @@
 // To avoid duplicates conflicting
-var jQueryCrayon = jQuery;
+var jQueryUrvanovSyntaxHighlighter = jQuery;
 
 (function ($) {
 
-    CrayonUtil = new function () {
+    UrvanovSyntaxHighlighterUtil = new function () {
 
         var base = this;
         var settings = null;
 
         base.init = function () {
-            settings = CrayonSyntaxSettings;
+            settings = UrvanovSyntaxHighlighterSyntaxSettings;
             base.initGET();
         };
 
@@ -77,6 +77,15 @@ var jQueryCrayon = jQuery;
             args.version = settings.version;
             $.get(settings.ajaxurl, args, callback);
         };
+        
+        /**
+         * @param {String} HTML representing any number of sibling elements
+         * @return {NodeList} 
+         */
+        base.htmlToElements = function (html) {
+            return $.parseHTML(html, document, true);
+        }
+
 
         base.postAJAX = function (args, callback) {
             args.version = settings.version;
@@ -108,8 +117,8 @@ var jQueryCrayon = jQuery;
         };
 
         base.decode_html = function (str) {
-            return String(str).replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(
-                /&gt;/g, '>');
+            return String(str).replace(/&lt;/g, '<').replace(
+                /&gt;/g, '>').replace(/&amp;/g, '&');
         };
 
         base.encode_html = function (str) {
@@ -176,7 +185,7 @@ var jQueryCrayon = jQuery;
     };
 
     $(document).ready(function () {
-        CrayonUtil.init();
+        UrvanovSyntaxHighlighterUtil.init();
     });
 
     // http://stackoverflow.com/questions/2360655/jquery-event-handlers-always-execute-in-order-they-were-bound-any-way-around-t
@@ -262,4 +271,4 @@ var jQueryCrayon = jQuery;
         return title;
     };
 
-})(jQueryCrayon);
+})(jQueryUrvanovSyntaxHighlighter);

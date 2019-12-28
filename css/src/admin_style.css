@@ -1,12 +1,12 @@
-#crayon-log-wrapper {
+#urvanov-syntax-highlighter-log-wrapper {
 	/*width: 100%;*/
 }
 
-#crayon-main-wrap .form-table th {
+#urvanov-syntax-highlighter-main-wrap .form-table th {
 	width: 100px;
 }
 
-#crayon-log {
+#urvanov-syntax-highlighter-log {
 	display: none;
 	max-height: 200px;
 	/*width: 100%;
@@ -25,32 +25,32 @@
 	margin-bottom: 5px;
 }
 
-.crayon-span,.crayon-span-5,.crayon-span-10,.crayon-span-50,.crayon-span-100,.crayon-span-110 {
+.urvanov-syntax-highlighter-span,.urvanov-syntax-highlighter-span-5,.urvanov-syntax-highlighter-span-10,.urvanov-syntax-highlighter-span-50,.urvanov-syntax-highlighter-span-100,.urvanov-syntax-highlighter-span-110 {
 	line-height: 24px;
 	display: inline-block;
 }
 
-.crayon-span-5 {
+.urvanov-syntax-highlighter-span-5 {
 	min-width: 5px;
 }
 
-.crayon-span-10 {
+.urvanov-syntax-highlighter-span-10 {
 	min-width: 10px;
 }
 
-.crayon-span-50 {
+.urvanov-syntax-highlighter-span-50 {
 	min-width: 50px;
 }
 
-.crayon-span-100 {
+.urvanov-syntax-highlighter-span-100 {
 	min-width: 100px;
 }
 
-.crayon-span-110 {
+.urvanov-syntax-highlighter-span-110 {
 	min-width: 117px;
 }
 
-.crayon-span-margin {
+.urvanov-syntax-highlighter-span-margin {
 	margin-left: 5px;
 }
 
@@ -58,49 +58,49 @@
 	min-width: 65px;
 }
 
-.crayon-error {
+.urvanov-syntax-highlighter-error {
 	color: #F00;
 }
 
-.crayon-success {
+.urvanov-syntax-highlighter-success {
 	color: #00F;
 }
 
-.crayon-warning {
+.urvanov-syntax-highlighter-warning {
 	color: #FF8000;
 }
 
-.crayon-help {
+.urvanov-syntax-highlighter-help {
 	min-height: 30px;
 	padding: 5px 10px;
 }
 
-.crayon-help .crayon-help-close,
-.crayon-help .crayon-help-close:active,
-.crayon-help .crayon-help-close:hover {
+.urvanov-syntax-highlighter-help .urvanov-syntax-highlighter-help-close,
+.urvanov-syntax-highlighter-help .urvanov-syntax-highlighter-help-close:active,
+.urvanov-syntax-highlighter-help .urvanov-syntax-highlighter-help-close:hover {
 	text-decoration: none;
 	float: right;
 	color: #000;
 }
 
-.crayon-help span,
-.crayon-help a {
+.urvanov-syntax-highlighter-help span,
+.urvanov-syntax-highlighter-help a {
 	margin: 0;
 	padding: 0;
 	font-size: 12px;
 }
 
-#crayon-log-text {
+#urvanov-syntax-highlighter-log-text {
 	font: 11px/13px Monaco, 'MonacoRegular', 'Courier New', monospace;
 }
 
-#crayon-log-controls {
+#urvanov-syntax-highlighter-log-controls {
 	float: left;
 	margin-right: 5px;
 	/*margin: 5px 0px;*/
 }
 
-.crayon-table {
+.urvanov-syntax-highlighter-table {
 	font-size: 12px;
 	border: 1px solid #999;
 	padding: 0;
@@ -108,7 +108,7 @@
 	margin-top: 12px;
 }
 
-.crayon-table td {
+.urvanov-syntax-highlighter-table td {
 	vertical-align: top;
 	border-bottom: 1px solid #AAA;
 	padding: 0px 6px;
@@ -116,17 +116,17 @@
 	background: #EEE;
 }
 
-.crayon-table-light td {
+.urvanov-syntax-highlighter-table-light td {
 	background: #F8F8F8;
 }
 
-.crayon-table-header td {
+.urvanov-syntax-highlighter-table-header td {
 	font-weight: bold;
 	background: #CCC;
 }
 
-.crayon-table-last td,
-.crayon-table tr:last-child td {
+.urvanov-syntax-highlighter-table-last td,
+.urvanov-syntax-highlighter-table tr:last-child td {
 	border: 0;
 }
 
@@ -138,98 +138,98 @@
 	padding: 5px 0px;
 }
 
-.crayon-table .not-parsed {
+.urvanov-syntax-highlighter-table .not-parsed {
 	color: #F00;
 }
 
-.crayon-table .parsed-with-errors {
+.urvanov-syntax-highlighter-table .parsed-with-errors {
 	color: #FF9900;
 }
 
-.crayon-table .successfully-parsed {
+.urvanov-syntax-highlighter-table .successfully-parsed {
 	color: #77A000;
 }
 
-#crayon-live-preview,
-#crayon-log-wrapper {
+#urvanov-syntax-highlighter-live-preview,
+#urvanov-syntax-highlighter-log-wrapper {
 	padding: 0px;
 	width: 100%;
 	float: left;
 	clear: both;
 }
 
-#crayon-live-preview {
+#urvanov-syntax-highlighter-live-preview {
 	float: none;
 	padding: 0;
 }
 
-#crayon-logo {
+#urvanov-syntax-highlighter-logo {
 	text-align: center;
 }
 
-#crayon-info,
-#crayon-info td {
+#urvanov-syntax-highlighter-info,
+#urvanov-syntax-highlighter-info td {
 	border: none;
 	padding: 0 5px;
 	margin: 0px;
 }
 
-.crayon-admin-button {
+.urvanov-syntax-highlighter-admin-button {
 	display: inline-block;
 	text-align: center;
 }
 
-#crayon-subsection-langs-info {
+#urvanov-syntax-highlighter-subsection-langs-info {
 	margin-top: 5px;
 }
 
-#crayon-theme-editor-admin-buttons {
+#urvanov-syntax-highlighter-theme-editor-admin-buttons {
 	display: inline;
 }
 
-#crayon-theme-editor-admin-buttons .crayon-admin-button {
+#urvanov-syntax-highlighter-theme-editor-admin-buttons .urvanov-syntax-highlighter-admin-button {
 	margin-left: 5px;
 }
 
-#crayon-theme-info {
+#urvanov-syntax-highlighter-theme-info {
     display: table;
     padding: 0;
     margin: 0;
     margin-top: 5px;
 }
-#crayon-theme-info > div {
+#urvanov-syntax-highlighter-theme-info > div {
     display: table-cell;
     vertical-align: middle;
 }
-#crayon-theme-info .content * {
+#urvanov-syntax-highlighter-theme-info .content * {
     float: left;
 }
-#crayon-theme-info .field {
+#urvanov-syntax-highlighter-theme-info .field {
 	font-weight: bold;
 }
-#crayon-theme-info .field,
-#crayon-theme-info .value {
+#urvanov-syntax-highlighter-theme-info .field,
+#urvanov-syntax-highlighter-theme-info .value {
 	margin-left: 5px;
 }
-#crayon-theme-info .description.value {
+#urvanov-syntax-highlighter-theme-info .description.value {
     font-style: italic;
     color: #999;
 }
-#crayon-theme-info .type {
+#urvanov-syntax-highlighter-theme-info .type {
     text-align: center;
     min-width: 120px;
     font-weight: bold;
     border-right: 1px solid #ccc;
     padding-right: 5px;
 }
-#crayon-theme-info .type.stock {
+#urvanov-syntax-highlighter-theme-info .type.stock {
     color: #666;
 }
-#crayon-theme-info .type.user {
+#urvanov-syntax-highlighter-theme-info .type.user {
     color: #5b9a00;
 }
 
-#crayon-editor-table td {
+#urvanov-syntax-highlighter-editor-table td {
 	vertical-align: top;
 }
 
@@ -261,25 +261,25 @@
 	width: 75px;
 }
 
-#crayon-donate,
-#crayon-donate input {
+#urvanov-syntax-highlighter-donate,
+#urvanov-syntax-highlighter-donate input {
 	margin: 0;
 	display: inline;
 	padding: 0;
 }
 
-#crayon-theme-editor-info a {
+#urvanov-syntax-highlighter-theme-editor-info a {
     text-decoration: none !important;
     font-style: italic !important;
     color: #666 !important;
 }
 
-#crayon-main-wrap .form-table .note {
+#urvanov-syntax-highlighter-main-wrap .form-table .note {
     font-style: italic;
     color: #999;
 }
 
-#crayon-change-code-text {
+#urvanov-syntax-highlighter-change-code-text {
     width: 400px;
     height: 300px;
 }

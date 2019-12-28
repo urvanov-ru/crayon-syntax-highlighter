@@ -97,5 +97,5 @@ jqueryPopup.defaultSettings = {
 		object.unbind(event, object.handler);
 	};
 
-})(jQueryCrayon);
+})(jQueryUrvanovSyntaxHighlighter);
 

@@ -1,13 +1,13 @@
-=== Crayon Syntax Highlighter ===
-Contributors: akarmenia
+=== Urvanov Syntax Highlighter ===
+Contributors: urvanov
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=AW99EMEPQ4CFE&lc=AU&item_name=Crayon%20Syntax%20Highlighter%20Donation&item_number=crayon%2ddonate&currency_code=AUD&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted
 License: GPLv3 or later
 Tags: syntax highlighter, syntax, highlighter, highlighting, crayon, code highlighter, bbpress
-Requires at least: 3.0
-Tested up to: 4.5.2
+Requires at least: 5.3
+Tested up to: 5.3
 Stable tag: trunk
 
-Syntax Highlighter supporting multiple languages, themes, fonts, highlighting from a URL, or post text.
+Reincarnation of Crayon Syntax Highlighter. Syntax Highlighter supporting multiple languages, themes, fonts, highlighting from a URL, or post text.
 
 == Description ==
 
@@ -321,6 +321,12 @@ Contact me at http://twitter.com/crayonsyntax or crayon.syntax@gmail.com.
 5. Theme Editor.
 
 == Changelog ==
+
+= 2.8.6
+* ADDED:
+    * Refactored to fit Wordpress Code Codex. 
+    * Renamed to Urvanov Syntax Highlighter.
+    * PHP 7 support
 
 = 2.8.5
 * ADDED: 

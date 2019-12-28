@@ -1,0 +1,530 @@
+/*
+Urvanov Syntax Highlighter Structure Style Sheet
+
+- This style sheet is used to structure a urvanov-syntax-highlighter-'s dimensions and visibility, but does not contain any details regarding
+coloring etc.
+- Attributes, where possible, are kept flexible such that Themes can customise them.
+- Themes are used to add coloring to the urvanov-syntax-highlighter- and the syntax highlighting itself.
+- Themes can be considered as layers on top of this style sheet.
+- Several attributes are marked !important where they are required to remain unchanged by CSS precedence,
+  which may occur from conflicts with certain Wordpress Themes.
+- The attributes in Themes are generally all marked !important to ensure styles are not altered by precedence.  
+*/
+
+/* General ========================= */
+.urvanov-syntax-highlighter-syntax {
+    overflow: hidden !important;
+    position: relative !important;
+    direction: ltr;
+    text-align: left;
+    box-sizing: border-box;
+    direction: ltr !important;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -webkit-text-size-adjust: none;
+}
+
+.urvanov-syntax-highlighter-syntax div {
+    /* Need !important? */
+    background: none;
+    border: none;
+    padding: 0px;
+    margin: 0px;
+    text-align: left;
+}
+
+.urvanov-syntax-highlighter-syntax.urvanov-syntax-highlighter-loading {
+    visibility: hidden;
+}
+
+.urvanov-syntax-highlighter-syntax,
+.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-main,
+.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-toolbar,
+.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-info,
+.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-plain,
+.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-code {
+    /* Dimensions of code */
+    width: 100%;
+}
+
+.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-main,
+.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-plain {
+    /* TODO a bug in IE8 causes max-height and overflow:auto to set max-height = height
+       http://edskes.net/ie8overflowandexpandingboxbugs.htm */
+    overflow: auto;
+}
+
+.urvanov-syntax-highlighter-syntax,
+.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-main,
+.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-plain,
+.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-table {
+    padding: 0px;
+    margin: 0px;
+}
+
+.urvanov-syntax-highlighter-syntax-inline {
+    margin: 0 2px;
+    padding: 0 2px;
+}
+
+.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-table {
+    border: none !important;
+    background: none !important;
+    padding: 0px !important;
+    margin-top: 0px !important;
+    margin-right: 0px !important;
+    margin-bottom: 0px !important;
+    width: auto !important;
+    border-spacing: 0 !important;
+    border-collapse: collapse !important;
+    table-layout: auto !important;
+}
+
+.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-table td,
+.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-table tr {
+    padding: 0 !important;
+    border: none !important;
+    background: none;
+    vertical-align: top !important;
+    margin: 0 !important;
+}
+
+.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-invisible {
+    display: none !important;
+}
+
+.urvanov-syntax-highlighter-plain-tag {
+    margin-bottom: 12px;
+}
+
+/* End General ===================== */
+
+/* Popup ========================= */
+.urvanov-syntax-highlighter-popup {
+
+}
+
+.urvanov-syntax-highlighter-popup .urvanov-syntax-highlighter-plain {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    opacity: 100 !important;
+    position: relative !important;
+}
+
+.urvanov-syntax-highlighter-popup-window {
+    background: #fff;
+}
+
+/* End Popup ========================= */
+
+/* Line Numbers ==================== */
+.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-num {
+    text-align: center;
+    padding: 0 5px;
+    margin: 0px;
+}
+
+/* End Line Numbers ================ */
+
+/* Toolbar & Info ================== */
+.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-toolbar {
+    position: relative;
+    overflow: hidden;
+    z-index: 4;
+}
+
+.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-info {
+    position: absolute;
+    overflow: hidden;
+    display: none;
+    z-index: 3;
+    padding: 0px;
+    /* Must be able to expand! */
+    min-height: 18px;
+    line-height: 18px;
+}
+
+.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-info div {
+    padding: 2px !important;
+    text-align: center;
+}
+
+/*.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-toolbar,*/
+/*.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-toolbar * {*/
+/*height: 18px;*/
+/*line-height: 18px;*/
+/*padding: 0px;*/
+/*}*/
+
+.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-toolbar span {
+    padding: 0 4px !important;
+}
+
+.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button {
+    display: inline;
+    float: left !important;
+    position: relative;
+    width: 24px;
+    background-repeat: no-repeat;
+    /*height: 16px;*/
+    line-height: 15px;
+    /*padding: 0px 2px !important;*/
+    border: none;
+    /*border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;*/
+    text-decoration: none;
+}
+
+.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button,
+.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button:hover,
+.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-pressed:hover {
+    background-position: 0px center;
+}
+
+.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-pressed,
+.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button:active,
+.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-pressed:active {
+    background-position: -24px 0;
+}
+
+.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-popup-button .urvanov-syntax-highlighter-button-icon,
+.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-popup-button:hover .urvanov-syntax-highlighter-button-icon,
+.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-popup-button.urvanov-syntax-highlighter-pressed:hover .urvanov-syntax-highlighter-button-icon {
+    background-position: 0 0;
+}
+
+.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-copy-button .urvanov-syntax-highlighter-button-icon,
+.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-copy-button:hover .urvanov-syntax-highlighter-button-icon,
+.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-copy-button.urvanov-syntax-highlighter-pressed:hover .urvanov-syntax-highlighter-button-icon {
+    background-position: 0 -16px;
+}
+
+.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-nums-button .urvanov-syntax-highlighter-button-icon,
+.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-nums-button:hover .urvanov-syntax-highlighter-button-icon,
+.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-nums-button.urvanov-syntax-highlighter-pressed:hover .urvanov-syntax-highlighter-button-icon {
+    background-position: 0 -32px;
+}
+
+.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-plain-button .urvanov-syntax-highlighter-button-icon,
+.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-plain-button:hover .urvanov-syntax-highlighter-button-icon,
+.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-plain-button.urvanov-syntax-highlighter-pressed:hover .urvanov-syntax-highlighter-button-icon {
+    background-position: 0 -48px;
+}
+
+.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-mixed-button .urvanov-syntax-highlighter-button-icon,
+.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-mixed-button:hover .urvanov-syntax-highlighter-button-icon,
+.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-mixed-button.urvanov-syntax-highlighter-pressed:hover .urvanov-syntax-highlighter-button-icon {
+    background-position: 0 -64px;
+}
+
+.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-minimize .urvanov-syntax-highlighter-button-icon {
+    background-position: 0 -80px;
+    background-color: transparent !important;
+}
+
+.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-expand-button .urvanov-syntax-highlighter-button-icon,
+.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-expand-button:hover .urvanov-syntax-highlighter-button-icon,
+.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-expand-button.urvanov-syntax-highlighter-pressed:hover .urvanov-syntax-highlighter-button-icon {
+    background-position: 0 -96px;
+}
+
+.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-wrap-button .urvanov-syntax-highlighter-button-icon,
+.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-wrap-button:hover .urvanov-syntax-highlighter-button-icon,
+.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-wrap-button.urvanov-syntax-highlighter-pressed:hover .urvanov-syntax-highlighter-button-icon {
+    background-position: 0 -112px;
+}
+
+/* -- */
+
+.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-popup-button.urvanov-syntax-highlighter-pressed .urvanov-syntax-highlighter-button-icon,
+.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-popup-button:active .urvanov-syntax-highlighter-button-icon,
+.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-popup-button.urvanov-syntax-highlighter-pressed:active .urvanov-syntax-highlighter-button-icon {
+    background-position: -24px 0;
+}
+
+.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-copy-button.urvanov-syntax-highlighter-pressed .urvanov-syntax-highlighter-button-icon,
+.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-copy-button:active .urvanov-syntax-highlighter-button-icon,
+.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-copy-button.urvanov-syntax-highlighter-pressed:active .urvanov-syntax-highlighter-button-icon {
+    background-position: -24px -16px;
+}
+
+.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-nums-button.urvanov-syntax-highlighter-pressed .urvanov-syntax-highlighter-button-icon,
+.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-nums-button:active .urvanov-syntax-highlighter-button-icon,
+.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-nums-button.urvanov-syntax-highlighter-pressed:active .urvanov-syntax-highlighter-button-icon {
+    background-position: -24px -32px;
+}
+
+.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-plain-button.urvanov-syntax-highlighter-pressed .urvanov-syntax-highlighter-button-icon,
+.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-plain-button:active .urvanov-syntax-highlighter-button-icon,
+.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-plain-button.urvanov-syntax-highlighter-pressed:active .urvanov-syntax-highlighter-button-icon {
+    background-position: -24px -48px;
+}
+
+.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-mixed-button.urvanov-syntax-highlighter-pressed .urvanov-syntax-highlighter-button-icon,
+.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-mixed-button:active .urvanov-syntax-highlighter-button-icon,
+.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-mixed-button.urvanov-syntax-highlighter-pressed:active .urvanov-syntax-highlighter-button-icon {
+    background-position: -24px -64px;
+}
+
+.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-minimize .urvanov-syntax-highlighter-button-icon {
+    background-position: -24px -80px;
+    background-color: transparent !important;
+}
+
+.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-expand-button.urvanov-syntax-highlighter-pressed .urvanov-syntax-highlighter-button-icon,
+.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-expand-button:active .urvanov-syntax-highlighter-button-icon,
+.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-expand-button.urvanov-syntax-highlighter-pressed:active .urvanov-syntax-highlighter-button-icon {
+    background-position: -24px -96px;
+}
+
+.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-wrap-button.urvanov-syntax-highlighter-pressed .urvanov-syntax-highlighter-button-icon,
+.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-wrap-button:active .urvanov-syntax-highlighter-button-icon,
+.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-wrap-button.urvanov-syntax-highlighter-pressed:active .urvanov-syntax-highlighter-button-icon {
+    background-position: -24px -112px;
+}
+
+/* Language */
+.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-language {
+    padding-right: 8px !important;
+}
+
+.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-title,
+.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-language {
+    float: left;
+}
+
+/* End Toolbar ===================== */
+
+/* Scrollbar ======================= */
+.urvanov-syntax-highlighter-main::-webkit-scrollbar,
+.urvanov-syntax-highlighter-plain::-webkit-scrollbar {
+    height: 6px;
+    overflow: visible;
+    width: 6px;
+    background: #EEE;
+}
+
+.urvanov-syntax-highlighter-main::-webkit-scrollbar-thumb,
+.urvanov-syntax-highlighter-plain::-webkit-scrollbar-thumb {
+    background-color: #CCC;
+    background-clip: padding-box;
+    border: 1px solid #AAA;
+    box-shadow: inset 0 0 2px #999;
+    min-height: 8px;
+    padding: 0;
+    border-width: 1px;
+}
+
+.urvanov-syntax-highlighter-main::-webkit-scrollbar-button,
+.urvanov-syntax-highlighter-plain::-webkit-scrollbar-button {
+    height: 0;
+    width: 0;
+    padding: 0px;
+}
+
+.urvanov-syntax-highlighter-main::-webkit-scrollbar-track,
+.urvanov-syntax-highlighter-plain::-webkit-scrollbar-track {
+    background-clip: padding-box;
+    border: solid transparent;
+    border-width: 0 0 0 4px;
+    border: 1px solid #BBB;
+    border-right: none;
+    border-bottom: none;
+}
+
+.urvanov-syntax-highlighter-main::-webkit-scrollbar-corner,
+.urvanov-syntax-highlighter-plain::-webkit-scrollbar-corner {
+    background: #EEE;
+}
+
+.urvanov-syntax-highlighter-main::-webkit-scrollbar-thumb:hover,
+.urvanov-syntax-highlighter-plain::-webkit-scrollbar-thumb:hover {
+    background: #AAA;
+    border: 1px solid #777;
+    box-shadow: inset 0 0 2px #777;
+}
+
+/* End Scrollbar =================== */
+
+/* Code ============================ */
+.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-pre,
+.urvanov-syntax-highlighter-syntax pre {
+    color: #000;
+    white-space: pre;
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+    background: none !important;
+    border: none !important;
+    tab-size: 4;
+}
+
+.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-line {
+    padding: 0 5px;
+}
+
+.urvanov-syntax-highlighter-syntax.urvanov-syntax-highlighter-wrapped .urvanov-syntax-highlighter-line {
+    /* width: 500px !important; */
+    white-space: pre-wrap !important;
+    /*    word-wrap:break-word !important;*/
+    height: auto;
+    word-break: break-all;
+}
+
+.urvanov-syntax-highlighter-syntax-inline .urvanov-syntax-highlighter-pre,
+.urvanov-syntax-highlighter-syntax-inline pre {
+    white-space: normal;
+}
+
+.urvanov-syntax-highlighter-syntax-inline-nowrap .urvanov-syntax-highlighter-pre,
+.urvanov-syntax-highlighter-syntax-inline-nowrap pre {
+    white-space: pre;
+}
+
+/* Default Font */
+.urvanov-syntax-highlighter-syntax /*,
+.urvanov-syntax-highlighter-syntax **/
+{
+    font-family: Monaco, 'MonacoRegular', 'Courier New', monospace;
+    font-weight: 500;
+}
+
+.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-toolbar *::selection,
+.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-nums *::selection {
+    background: transparent;
+}
+
+/*
+
+This has been disabled to allow more flexibility in changing font sizes.
+
+.urvanov-syntax-highlighter-syntax,
+.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-nums,
+.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-plain,
+.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-pre {
+	font-size: 12px !important;
+	line-height: 15px !important;
+}
+*/
+
+.urvanov-syntax-highlighter-table .urvanov-syntax-highlighter-nums-content {
+    white-space: nowrap; /* Prevent wrapping line numbers in some themes */
+}
+
+.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-num,
+.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-line,
+.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-toolbar *,
+.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-pre * {
+    font-family: inherit;
+    font-size: inherit !important;
+    line-height: inherit !important;
+    font-weight: inherit !important;
+    height: inherit;
+}
+
+.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button .urvanov-syntax-highlighter-button-icon {
+    background-image: url('../images/toolbar/buttons.png');
+    height: 16px !important;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin-top: -8px;
+}
+
+.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-tools {
+    position: absolute;
+    right: 0;
+}
+
+.urvanov-syntax-highlighter-syntax.urvanov-syntax-highlighter-expanded {
+    position: absolute !important;
+    margin: 0 !important;
+}
+
+.urvanov-syntax-highlighter-syntax.urvanov-syntax-highlighter-expanded .urvanov-syntax-highlighter-main {
+    overflow: hidden !important;
+}
+
+.urvanov-syntax-highlighter-placeholder {
+    width: 100% !important;
+}
+
+.urvanov-syntax-highlighter-toolbar-visible .urvanov-syntax-highlighter-toolbar {
+    position: relative !important;
+    margin-top: 0 !important;
+    display: block !important;
+}
+
+.urvanov-syntax-highlighter-syntax.urvanov-syntax-highlighter-expanded .urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-tools {
+    position: relative;
+    right: auto;
+    float: left !important;
+}
+
+.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-plain-wrap {
+    height: auto !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-plain {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    opacity: 0;
+    padding: 0 5px;
+    margin: 0px;
+    border: none;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-shadow: none;
+    border-radius: 0px;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    /*white-space: pre-wrap;*/
+    white-space: pre;
+    word-wrap: normal;
+    overflow: auto;
+    resize: none;
+    color: #000;
+    background: #FFF;
+}
+
+.urvanov-syntax-highlighter-wrapped .urvanov-syntax-highlighter-plain {
+    white-space: pre-wrap;
+}
+
+.bbp-body .urvanov-syntax-highlighter-syntax {
+    clear: none !important;
+}
+
+/* End Code ======================== */
+
+/* Minimize ================= */
+.urvanov-syntax-highlighter-minimized .urvanov-syntax-highlighter-toolbar {
+    cursor: pointer;
+}
+
+.urvanov-syntax-highlighter-minimized .urvanov-syntax-highlighter-plain-wrap,
+.urvanov-syntax-highlighter-minimized .urvanov-syntax-highlighter-main,
+.urvanov-syntax-highlighter-minimized .urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-tools * {
+    display: none !important;
+}
+
+.urvanov-syntax-highlighter-minimized .urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-tools .urvanov-syntax-highlighter-minimize {
+    display: block !important;
+}
+
+.urvanov-syntax-highlighter-minimized .urvanov-syntax-highlighter-toolbar {
+    position: relative !important;
+}
+
+.urvanov-syntax-highlighter-syntax.urvanov-syntax-highlighter-minimized .urvanov-syntax-highlighter-toolbar {
+    border-bottom: none !important;
+}
+
+/* End Minimize ============= */

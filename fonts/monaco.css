@@ -9,6 +9,6 @@
     font-style: normal;
 }
 
-.crayon-font-monaco * {
+.urvanov-syntax-highlighter-font-monaco * {
     font-family: Monaco, 'MonacoRegular', 'Courier New', monospace !important;
 }

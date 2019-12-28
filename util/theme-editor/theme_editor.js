@@ -1,19 +1,19 @@
-// Crayon Syntax Highlighter Theme Editor JavaScript
+// Urvanov Syntax Highlighter Theme Editor JavaScript
 
 (function ($) {
 
-    CrayonSyntaxThemeEditor = new function () {
+    UrvanovSyntaxHighlighterThemeEditor = new function () {
 
         var base = this;
 
-        var crayonSettings = CrayonSyntaxSettings;
-        var adminSettings = CrayonAdminSettings;
-        var settings = CrayonThemeEditorSettings;
-        var strings = CrayonThemeEditorStrings;
-        var adminStrings = CrayonAdminStrings;
-        var admin = CrayonSyntaxAdmin;
+        var urvanovSyntaxHighlighterSettings = UrvanovSyntaxHighlighterSyntaxSettings;
+        var adminSettings = UrvanovSyntaxHighlighterAdminSettings;
+        var settings = UrvanovSyntaxHighlighterThemeEditorSettings;
+        var strings = UrvanovSyntaxHighlighterThemeEditorStrings;
+        var adminStrings = UrvanovSyntaxHighlighterAdminStrings;
+        var admin = UrvanovSyntaxHighlighterAdmin;
 
-        var preview, previewCrayon, previewCSS, status, title, info;
+        var preview, previewUrvanovSyntaxHighlighter, previewCSS, status, title, info;
         var colorPickerPos;
         var changed, loaded;
         var themeID, themeJSON, themeCSS, themeStr, themeInfo;
@@ -25,17 +25,17 @@
 
         base.init = function (callback) {
             // Called only once
-            CrayonUtil.log('editor init');
+            UrvanovSyntaxHighlighterUtil.log('editor init');
             base.initUI();
             if (callback) {
                 callback();
             }
         };
 
-        base.show = function (callback, crayon) {
+        base.show = function (callback, urvanovSyntaxHighlighter) {
             // Called each time editor is shown
-            previewCrayon = crayon.find('.crayon-syntax');
-            preview.append(crayon)
+            previewUrvanovSyntaxHighlighter = urvanovSyntaxHighlighter.find('.urvanov-syntax-highlighter-syntax');
+            preview.append(urvanovSyntaxHighlighter)
             base.load();
             if (callback) {
                 callback();
@@ -52,7 +52,7 @@
                 split: true
             });
             themeJSON = base.filterCSS(themeJSON);
-            CrayonUtil.log(themeJSON);
+            UrvanovSyntaxHighlighterUtil.log(themeJSON);
             themeInfo = base.readCSSInfo(themeStr);
             base.removeExistingCSS();
             base.initInfoUI();
@@ -79,8 +79,8 @@
             // Save
             themeCSS = CSSJSON.toCSS(themeJSON);
             var newThemeStr = base.writeCSSInfo(info) + themeCSS;
-            CrayonUtil.postAJAX({
-                action: 'crayon-theme-editor-save',
+            UrvanovSyntaxHighlighterUtil.postAJAX({
+                action: 'urvanov-syntax-highlighter-theme-editor-save',
                 id: themeID,
                 name: base.getName(),
                 css: newThemeStr
@@ -91,7 +91,7 @@
                     status.html(strings.success);
                     if (result === 2) {
                         window.GET['theme-editor'] = 1;
-                        CrayonUtil.reload();
+                        UrvanovSyntaxHighlighterUtil.reload();
                     }
                 } else {
                     status.html(strings.fail);
@@ -108,12 +108,12 @@
                 title: strings.del,
                 html: strings.deleteThemeConfirm.replace('%s', name),
                 yes: function () {
-                    CrayonUtil.postAJAX({
-                        action: 'crayon-theme-editor-delete',
+                    UrvanovSyntaxHighlighterUtil.postAJAX({
+                        action: 'urvanov-syntax-highlighter-theme-editor-delete',
                         id: id
                     }, function (result) {
                         if (result > 0) {
-                            CrayonUtil.reload();
+                            UrvanovSyntaxHighlighterUtil.reload();
                         } else {
                             admin.createAlert({
                                 html: strings.deleteFail + ' ' + strings.checkLog
@@ -134,13 +134,13 @@
                 text: strings.newName,
                 value: base.getNextAvailableName(id),
                 ok: function (val) {
-                    CrayonUtil.postAJAX({
-                        action: 'crayon-theme-editor-duplicate',
+                    UrvanovSyntaxHighlighterUtil.postAJAX({
+                        action: 'urvanov-syntax-highlighter-theme-editor-duplicate',
                         id: id,
                         name: val
                     }, function (result) {
                         if (result > 0) {
-                            CrayonUtil.reload();
+                            UrvanovSyntaxHighlighterUtil.reload();
                         } else {
                             admin.createAlert({
                                 html: strings.duplicateFail + ' ' + strings.checkLog
@@ -158,8 +158,8 @@
                 text: strings.message,
                 value: strings.submitMessage,
                 ok: function (val) {
-                    CrayonUtil.postAJAX({
-                        action: 'crayon-theme-editor-submit',
+                    UrvanovSyntaxHighlighterUtil.postAJAX({
+                        action: 'urvanov-syntax-highlighter-theme-editor-submit',
                         id: id,
                         message: val
                     }, function (result) {
@@ -205,7 +205,7 @@
             var match = null;
             var infoRegex = /([^\r\n:]*[^\r\n\s:])\s*:\s*([^\r\n]+)/gmi;
             while ((match = infoRegex.exec(infoStr)) != null) {
-                themeInfo[base.nameToID(match[1])] = CrayonUtil.encode_html(match[2]);
+                themeInfo[base.nameToID(match[1])] = UrvanovSyntaxHighlighterUtil.encode_html(match[2]);
             }
             // Force title case on the name
             if (themeInfo.name) {
@@ -238,7 +238,7 @@
         };
 
         base.initInfoUI = function () {
-            CrayonUtil.log(themeInfo);
+            UrvanovSyntaxHighlighterUtil.log(themeInfo);
             // TODO abstract
             var names = base.getFieldNames(themeInfo);
             var fields = {};
@@ -333,14 +333,14 @@
         };
 
         base.persistAttributes = function (remove_default) {
-            remove_default = CrayonUtil.setDefault(remove_default, true);
+            remove_default = UrvanovSyntaxHighlighterUtil.setDefault(remove_default, true);
             base.getAttributes().each(function () {
                 base.persistAttribute($(this), remove_default);
             });
         };
 
         base.persistAttribute = function (attr, remove_default) {
-            remove_default = CrayonUtil.setDefault(remove_default, true);
+            remove_default = UrvanovSyntaxHighlighterUtil.setDefault(remove_default, true);
             base.visitAttribute(attr, function (attr, elem, dataElem, dataAttr, root, elems) {
                 if (remove_default && attr.prop('tagName') == 'SELECT' && attr.val() == attr.attr('data-default')) {
                     if (elem) {
@@ -366,14 +366,14 @@
                     }
                     elem.attributes[dataAttr] = val;
                 }
-                CrayonUtil.log(dataElem + ' ' + dataAttr);
+                UrvanovSyntaxHighlighterUtil.log(dataElem + ' ' + dataAttr);
             });
         };
 
         base.populateAttributes = function ($change) {
             var elems = themeJSON.children;
             var root = settings.cssThemePrefix + base.nameToID(themeInfo.name);
-            CrayonUtil.log(elems, root);
+            UrvanovSyntaxHighlighterUtil.log(elems, root);
             base.getAttributes().each(function () {
                 base.visitAttribute($(this), function (attr, elem, dataElem, dataAttr, root, elems) {
                     if (elem) {
@@ -471,10 +471,10 @@
                                 if (args.ok) {
                                     args.ok(base.getFieldValue('prompt-text'));
                                 }
-                                $(this).crayonDialog('close');
+                                $(this).urvanovSyntaxHighlighterDialog('close');
                             },
                             "Cancel": function () {
-                                $(this).crayonDialog('close');
+                                $(this).urvanovSyntaxHighlighterDialog('close');
                             }
                         },
                         open: function () {
@@ -482,7 +482,7 @@
                         }
                     }
                 }, args);
-                args.html = '<table class="field-table crayon-prompt-' + base.nameToID(args.title) + '">';
+                args.html = '<table class="field-table urvanov-syntax-highlighter-prompt-' + base.nameToID(args.title) + '">';
                 if (args.desc) {
                     args.html += '<tr><td colspan="2">' + args.desc + '</td></tr>';
                 }
@@ -494,13 +494,13 @@
 
         base.initUI = function () {
             // Bind events
-            preview = $('#crayon-editor-preview');
-            previewCSS = $('#crayon-editor-preview-css');
-            status = $('#crayon-editor-status');
-            title = $('#crayon-theme-editor-name');
-            info = $('#crayon-theme-editor-info');
-            $('#crayon-editor-controls').tabs();
-            $('#crayon-editor-back').click(function () {
+            preview = $('#urvanov-syntax-highlighter-editor-preview');
+            previewCSS = $('#urvanov-syntax-highlighter-editor-preview-css');
+            status = $('#urvanov-syntax-highlighter-editor-status');
+            title = $('#urvanov-syntax-highlighter-theme-editor-name');
+            info = $('#urvanov-syntax-highlighter-theme-editor-info');
+            $('#urvanov-syntax-highlighter-editor-controls').tabs();
+            $('#urvanov-syntax-highlighter-editor-back').click(function () {
                 if (changed) {
                     admin.createDialog({
                         html: strings.discardConfirm,
@@ -513,7 +513,7 @@
                     showMain();
                 }
             });
-            $('#crayon-editor-save').click(base.save);
+            $('#urvanov-syntax-highlighter-editor-save').click(base.save);
 
             // Set up jQuery UI
             base.getAttributes().each(function () {
@@ -543,13 +543,13 @@
                     attr.bind('change', function () {
                         var hex = attr.val();
                         attr.css('background-color', hex);
-                        attr.css('color', CrayonUtil.getReadableColor(hex));
+                        attr.css('color', UrvanovSyntaxHighlighterUtil.getReadableColor(hex));
                     });
                 } else if (type == 'size') {
                     attr.bind('change', function () {
                         var val = attr.val();
                         if (!reSize.test(val)) {
-                            val = CrayonUtil.removeChars('^0-9-', val);
+                            val = UrvanovSyntaxHighlighterUtil.removeChars('^0-9-', val);
                             if (val != '') {
                                 attr.val(val + 'px');
                             }
@@ -560,7 +560,7 @@
                     // For regular text boxes, capture changes on keys
                     attr.bind('keydown keyup', function () {
                         if (attr.attr(changedAttr) != attr.val()) {
-                            CrayonUtil.log('triggering', attr.attr(changedAttr), attr.val());
+                            UrvanovSyntaxHighlighterUtil.log('triggering', attr.attr(changedAttr), attr.val());
                             attr.trigger('change');
                         }
                     });
@@ -591,11 +591,11 @@
         };
 
         base.updateLiveCSS = function (clone) {
-            clone = CrayonUtil.setDefault(clone, false);
-            if (previewCrayon) {
+            clone = UrvanovSyntaxHighlighterUtil.setDefault(clone, false);
+            if (previewUrvanovSyntaxHighlighter) {
                 var json;
                 if (clone) {
-                    var id = previewCrayon.attr('id');
+                    var id = previewUrvanovSyntaxHighlighter.attr('id');
                     json = $.extend(true, {}, themeJSON);
                     $.each(json.children, function (child) {
                         json.children['#' + id + child] = json.children[child];
@@ -609,14 +609,14 @@
         };
 
         base.updateUI = function () {
-            $('#crayon-editor-controls input, #crayon-editor-controls select').bind('change', function () {
+            $('#urvanov-syntax-highlighter-editor-controls input, #urvanov-syntax-highlighter-editor-controls select').bind('change', function () {
                 changed = true;
             });
         };
 
         base.createInput = function (id, value, type) {
-            value = CrayonUtil.setDefault(value, '');
-            type = CrayonUtil.setDefault(type, 'text');
+            value = UrvanovSyntaxHighlighterUtil.setDefault(value, '');
+            type = UrvanovSyntaxHighlighterUtil.setDefault(type, 'text');
             return '<input id="' + settings.cssInputPrefix + id + '" class="' + settings.cssInputPrefix + type + '" type="' + type + '" value="' + value + '" />';
         };
 
@@ -652,4 +652,4 @@
 
     };
 
-})(jQueryCrayon);
+})(jQueryUrvanovSyntaxHighlighter);
