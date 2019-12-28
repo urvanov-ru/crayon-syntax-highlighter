@@ -3,7 +3,7 @@
     window.UrvanovSyntaxHighlighterTinyMCE = new function () {
 
         // TinyMCE specific
-        var name = 'crayon_tinymce';
+        var name = 'urvanov_syntax_highlighter_tinymce';
         var s, te = null;
         var isHighlighted = false;
         var currPre = null;
@@ -56,7 +56,7 @@
                         return;
                     }
                     $(s.tinymce_button).parent().addClass(s.tinymce_button_unique);
-                    CrayonTagEditor.bind('.' + s.tinymce_button_unique);
+                    UrvanovSyntaxHighlighterTagEditor.bind('.' + s.tinymce_button_unique);
                     // Remove all selected pre tags
                     $('.' + s.css_selected, ed.getContent()).removeClass(s.css_selected);
                     isInit = true;
@@ -70,7 +70,7 @@
                         if (node.nodeName == 'PRE') {
                             selection.setContent('\n', {format: 'raw'});
                             return tinymce.dom.Event.cancel(e);
-                        } else if (te.isCrayon(node)) {
+                        } else if (te.isUrvanovSyntaxHighlighter(node)) {
                             // Only triggers for inline <span>, ignore enter in inline
                             return tinymce.dom.Event.cancel(e);
                         }
@@ -96,7 +96,7 @@
                             base.selectPreCSS(false);
                             currPre = null;
                         }
-                        if (te.isCrayon(n)) {
+                        if (te.isUrvanovSyntaxHighlighter(n)) {
                             // Add new pre
                             currPre = n;
                             base.selectPreCSS(true);
@@ -140,8 +140,8 @@
 
         // TinyMCE v3 - deprecated.
         base._loadTinyMCEv3 = function () {
-            s = CrayonTagEditorSettings;
-            te = CrayonTagEditor;
+            s = UrvanovSyntaxHighlighterTagEditorSettings;
+            te = UrvanovSyntaxHighlighterTagEditor;
 
             tinymce.PluginManager.requireLangPack(name);
 
@@ -160,7 +160,7 @@
                             if (node.nodeName == 'PRE') {
                                 selection.setContent('\n', {format: 'raw'});
                                 return tinymce.dom.Event.cancel(e);
-                            } else if (te.isCrayon(node)) {
+                            } else if (te.isUrvanovSyntaxHighlighter(node)) {
                                 // Only triggers for inline <span>, ignore enter in inline
                                 return tinymce.dom.Event.cancel(e);
                             }
@@ -168,7 +168,7 @@
                     });
 
                     ed.onInit.add(function (ed) {
-                        CrayonTagEditor.bind(s.tinymce_button);
+                        UrvanovSyntaxHighlighterTagEditor.bind(s.tinymce_button);
                     });
 
                     ed.addCommand('showCrayon', function () {
@@ -212,7 +212,7 @@
                                 base.selectPreCSS(false);
                                 currPre = null;
                             }
-                            if (te.isCrayon(n)) {
+                            if (te.isUrvanovSyntaxHighlighter(n)) {
                                 // Add new pre
                                 currPre = n;
                                 base.selectPreCSS(true);
