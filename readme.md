@@ -1,14 +1,17 @@
-# Crayon Syntax Highlighter
+# Urvanov Syntax Highlighter
+
+Reincarnation of Crayon Syntax Highlighter. Somewhere in documentation and in UI
+it still shows like Crayon. Don't be scrared of this.
 
 Supports multiple languages, themes, fonts, highlighting from a URL, local file or post text.
 
 ![snapshot](https://raw.githubusercontent.com/aramk/crayon-syntax-highlighter/master/screenshots/screenshot-2.png)
 
-Written in PHP and jQuery. Crayon is a Wordpress plugin, but can be used in any PHP environment.
+Written in PHP and jQuery. Urvanov Syntax Highlighter is a Wordpress plugin, but can be used in any PHP environment.
 
 ## Download
-* [Beta Development Releases](https://github.com/aramk/crayon-syntax-highlighter/zipball/master)
-* [Stable Releases](https://wordpress.org/plugins/crayon-syntax-highlighter/)
+* [Beta Development Releases](https://github.com/urvanov-ru/crayon-syntax-highlighter)
+* [Stable Releases](https://wordpress.org/plugins/urvanov-syntax-highlighter/)
 
 ## Tag Editor
 
@@ -42,11 +45,11 @@ You can even mix code together like on a real HTML page, by having `<script>`, `
 
 Language information is found here in the Wordpress Admin: *Settings > Crayon > Languages > Show Languages* You can customise and create new languages and define how to capture each element (keywords, comments, strings, etc.) with regular expressions. Languages are structured `langs/lang-name/lang-name.txt`. Take a look at `langs/default/default.txt` and check out the neat regex of the default/generic language. See the [readme](langs/readme.md) in `langs/readme.md` for more information about the language file syntax.
 
-You can add custom languages in `wp-content/uploads/crayon-syntax-highlighter/languages` with the same format as those in the plugin directory and they will remain after plugin updates.
+You can add custom languages in `wp-content/uploads/urvanov-syntax-highlighter/languages` with the same format as those in the plugin directory and they will remain after plugin updates.
 
 ## Themes
 
-Crayon comes with built-in Themes to style your code. See a sample of the current set of themes. Themes are structured `themes/theme-name/theme-name.css`. If you know CSS, take a look at `themes/default/default.css` to get an idea of how they work and how you can change/create them. The specification for CSS classes is here.
+Urvanov Syntax Highlighter comes with built-in Themes to style your code. See a sample of the current set of themes. Themes are structured `themes/theme-name/theme-name.css`. If you know CSS, take a look at `themes/default/default.css` to get an idea of how they work and how you can change/create them. The specification for CSS classes is here.
 
 You can add custom themes in `wp-content/uploads/crayon-syntax-highlighter/themes` with the same format as those in the plugin directory and they will remain after plugin updates. This is where user themes are stored when you customise stock themes in the Theme Editor.
 

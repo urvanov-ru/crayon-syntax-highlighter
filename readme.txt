@@ -1,6 +1,6 @@
 === Urvanov Syntax Highlighter ===
 Contributors: urvanov
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=AW99EMEPQ4CFE&lc=AU&item_name=Crayon%20Syntax%20Highlighter%20Donation&item_number=crayon%2ddonate&currency_code=AUD&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted
+Donate link: https://money.yandex.ru/to/41001288941320
 License: GPLv3 or later
 Tags: syntax highlighter, syntax, highlighter, highlighting, crayon, code highlighter, bbpress
 Requires at least: 5.3
@@ -53,9 +53,9 @@ It also supports some neat features like:
 
 **Links**
 
-* <a href="https://github.com/aramk/crayon-syntax-highlighter" target="_blank">Beta Releases</a>
+* <a href="https://github.com/urvanov-ru/crayon-syntax-highlighter" target="_blank">Beta Releases</a>
 * <a href="http://aramk.com/blog/2012/12/27/crayon-theme-editor/" target="_blank">Themes Demo</a>
-* <a href="https://github.com/aramk/crayon-syntax-highlighter" target="_blank">GitHub Project</a>
+* <a href="https://github.com/urvanov-ru/crayon-syntax-highlighter" target="_blank">GitHub Project</a>
 
 **Contributions**
 
@@ -64,7 +64,7 @@ There are many ways you can help!
 * Make a Theme and share
 * Add support for your favourite <a href="http://aramk.com/blog/2011/09/23/crayon-language-file-specification/" target="_blank">Language</a>
 * Write a post about your pastel experiences and share
-* <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=AW99EMEPQ4CFE&lc=AU&item_name=Crayon%20Syntax%20Highlighter%20Donation&item_number=crayon%2ddonate&currency_code=AUD&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted" target="_blank">Donate</a> to the project
+* <a href="https://money.yandex.ru/to/41001288941320" target="_blank">Donate</a> to the project
 
 **Supported Languages**
 
@@ -306,7 +306,7 @@ Thanks to all those who donate to the project:
 
 == Frequently Asked Questions ==
 
-Please see the <a href="https://github.com/aramk/crayon-syntax-highlighter" target="_blank">documentation</a> for all the details.
+Please see the <a href="https://github.com/urvanov-ru/crayon-syntax-highlighter" target="_blank">documentation</a> for all the details.
 
 = Support =
 
@@ -321,6 +321,16 @@ Contact me at http://twitter.com/crayonsyntax or crayon.syntax@gmail.com.
 5. Theme Editor.
 
 == Changelog ==
+
+= 2.8.8
+* FIXED:
+    * Fix invisible button in TinyMCE editor.
+    * Fix readme.txt
+    * Fix readme.md
+
+= 2.8.7
+* FIXED:
+    * Only bug fixes with crayon inline.
 
 = 2.8.6
 * ADDED:
