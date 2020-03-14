@@ -322,6 +322,12 @@ Contact me at http://twitter.com/crayonsyntax or crayon.syntax@gmail.com.
 
 == Changelog ==
 
+= 2.8.9
+* FIXED:
+    * Deprecated: implode(): Passing glue string after array is deprecated. Swap the parameters
+    * Notice: A non well formed numeric value in class-urvanov-syntax-highlighter-formatter
+    * Bug report: when add `\(*)` in codes. It will show {{urvanov-syntax-highlighter-internal:0}}
+
 = 2.8.8
 * FIXED:
     * Fix invisible button in TinyMCE editor.
