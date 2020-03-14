@@ -115,8 +115,8 @@ class Urvanov_Syntax_Highlighter_Formatter {
             $_line_height = $hl->setting_val(Urvanov_Syntax_Highlighter_Settings::LINE_HEIGHT);
             // Don't allow line height to be less than font size
             $line_height = ($_line_height > $_font_size ? $_line_height : $_font_size) . 'px !important;';
-            $toolbar_height = $font_size * 1.5 . 'px !important;';
-            $info_height = $font_size * 1.4 . 'px !important;';
+            $toolbar_height = (int) $font_size * 1.5 . 'px !important;';
+            $info_height = (int) $font_size * 1.4 . 'px !important;';
 
             $font_style .= "font-size: $font_size line-height: $line_height";
             $toolbar_style .= "font-size: $font_size";
