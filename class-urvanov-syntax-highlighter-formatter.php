@@ -445,7 +445,7 @@ class Urvanov_Syntax_Highlighter_Formatter {
 
         // Produce output
         $output .= '
-		<div id="' . $uid . '" class="urvanov-syntax-highlighter-syntax urvanov-syntax-highlighter-theme-' . $theme_id_dashed . ' urvanov-syntax-highlighter-font-' . $font_id_dashed . ' urvanov-syntax-highlighter-os-' . $urvanov_syntax_highlighter_os . ' print-yes notranslate" data-settings="' . $code_settings . '" style="' . $code_style . ' ' . $font_style . '">
+		<div id="' . $uid . '" class="urvanov-syntax-highlighter-syntax crayon-theme-' . $theme_id_dashed . ' urvanov-syntax-highlighter-font-' . $font_id_dashed . ' urvanov-syntax-highlighter-os-' . $urvanov_syntax_highlighter_os . ' print-yes notranslate" data-settings="' . $code_settings . '" style="' . $code_style . ' ' . $font_style . '">
 		' . $toolbar . '
 			<div class="urvanov-syntax-highlighter-plain-wrap">' . $print_plain . '</div>' . '
 			<div class="urvanov-syntax-highlighter-main" style="' . $main_style . '">

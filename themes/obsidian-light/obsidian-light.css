@@ -5,7 +5,7 @@ Version: 1.0
 Author: Wolfgang Magerl
 URL: http://stonefred.at
 */
-.urvanov-syntax-highlighter-theme-obsidian-light {
+.crayon-theme-obsidian-light {
 	color: #e0e2e4;
 	margin-bottom: 25px !important;
 	background-color: #f8f8ff !important;
@@ -22,30 +22,30 @@ URL: http://stonefred.at
 .urvanov-syntax-highlighter-syntax pre {
 	color: #e0e2e4;
 }
-.urvanov-syntax-highlighter-theme-obsidian-light .urvanov-syntax-highlighter-toolbar {
+.crayon-theme-obsidian-light .urvanov-syntax-highlighter-toolbar {
 	background-color: #eee !important;
 	border-bottom-color: 1px solid #dedede !important;
 }
-.urvanov-syntax-highlighter-theme-obsidian-light .urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-language {
+.crayon-theme-obsidian-light .urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-language {
 	font-size: 80% !important;
 	color: #666 !important;
 }
-.urvanov-syntax-highlighter-theme-obsidian-light .urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-title {
+.crayon-theme-obsidian-light .urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-title {
 	font-size: 80% !important;
 	color: #666 !important;
 }
-.urvanov-syntax-highlighter-theme-obsidian-light .urvanov-syntax-highlighter-table .urvanov-syntax-highlighter-nums {
+.crayon-theme-obsidian-light .urvanov-syntax-highlighter-table .urvanov-syntax-highlighter-nums {
 	background-color: #eee !important;
 	background: #f5f5f5 !important;
 	color: #7f7f7f !important;
 	border-right-width: 1px !important;
 	border-right-color: #7f7f7f !important;
 }
-.urvanov-syntax-highlighter-theme-obsidian-light .urvanov-syntax-highlighter-table .urvanov-syntax-highlighter-nums-content {
+.crayon-theme-obsidian-light .urvanov-syntax-highlighter-table .urvanov-syntax-highlighter-nums-content {
 	padding-top: 5px !important;
 	padding-bottom: 3px !important;
 }
-.urvanov-syntax-highlighter-theme-obsidian-light .urvanov-syntax-highlighter-table .urvanov-syntax-highlighter-num {
+.crayon-theme-obsidian-light .urvanov-syntax-highlighter-table .urvanov-syntax-highlighter-num {
 	min-width: 1.2em !important;
 	text-align: right !important;
 	color: #81969a !important;
@@ -53,104 +53,104 @@ URL: http://stonefred.at
 	border-right-width: 1px !important;
 	border-right-color: #81969a !important;
 }
-.urvanov-syntax-highlighter-theme-obsidian-light .urvanov-syntax-highlighter-pre {
+.crayon-theme-obsidian-light .urvanov-syntax-highlighter-pre {
 	padding-top: 5px !important;
 	padding-bottom: 3px !important;
 	color: #000000 !important;
 }
-.urvanov-syntax-highlighter-theme-obsidian-light .urvanov-syntax-highlighter-marked-line {
+.crayon-theme-obsidian-light .urvanov-syntax-highlighter-marked-line {
 	background: #dcdcdc !important;
 	border-width: 1px !important;
 	border-color: #7f7f7f !important;
 }
-.urvanov-syntax-highlighter-theme-obsidian-light .urvanov-syntax-highlighter-marked-num {
+.crayon-theme-obsidian-light .urvanov-syntax-highlighter-marked-num {
 	color: #7f7f7f !important;
 	background: #dcdcdc !important;
 	border-width: 1px !important;
 	border-color: #7f7f7f !important;
 }
-.urvanov-syntax-highlighter-theme-obsidian-light .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-c {
+.crayon-theme-obsidian-light .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-c {
 	color: #7f7f7f !important;
 }
-.urvanov-syntax-highlighter-theme-obsidian-light .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-s {
+.crayon-theme-obsidian-light .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-s {
 	color: #ff6400 !important;
 }
-.urvanov-syntax-highlighter-theme-obsidian-light .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-p {
+.crayon-theme-obsidian-light .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-p {
 	color: #af0f91 !important;
 }
-.urvanov-syntax-highlighter-theme-obsidian-light .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-ta {
+.crayon-theme-obsidian-light .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-ta {
 	color: #000000 !important;
 }
-.urvanov-syntax-highlighter-theme-obsidian-light .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-k {
+.crayon-theme-obsidian-light .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-k {
 	color: #000000 !important;
 }
-.urvanov-syntax-highlighter-theme-obsidian-light .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-st {
+.crayon-theme-obsidian-light .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-st {
 	color: #000000 !important;
 }
-.urvanov-syntax-highlighter-theme-obsidian-light .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-r {
+.crayon-theme-obsidian-light .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-r {
 	color: #000000 !important;
 }
-.urvanov-syntax-highlighter-theme-obsidian-light .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-t {
+.crayon-theme-obsidian-light .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-t {
 	color: #1d881d !important;
 }
-.urvanov-syntax-highlighter-theme-obsidian-light .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-m {
+.crayon-theme-obsidian-light .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-m {
 	color: #1d881d !important;
 }
-.urvanov-syntax-highlighter-theme-obsidian-light .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-i {
+.crayon-theme-obsidian-light .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-i {
 	color: #000000 !important;
 }
-.urvanov-syntax-highlighter-theme-obsidian-light .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-e {
+.crayon-theme-obsidian-light .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-e {
 	color: #3f3fff !important;
 }
-.urvanov-syntax-highlighter-theme-obsidian-light .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-v {
+.crayon-theme-obsidian-light .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-v {
 	color: #000000 !important;
 }
-.urvanov-syntax-highlighter-theme-obsidian-light .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-cn {
+.crayon-theme-obsidian-light .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-cn {
 	color: #af0f91 !important;
 }
-.urvanov-syntax-highlighter-theme-obsidian-light .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-o {
+.crayon-theme-obsidian-light .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-o {
 	color: #000000 !important;
 }
-.urvanov-syntax-highlighter-theme-obsidian-light .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-sy {
+.crayon-theme-obsidian-light .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-sy {
 	color: #000000 !important;
 }
-.urvanov-syntax-highlighter-theme-obsidian-light .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-n {
+.crayon-theme-obsidian-light .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-n {
 	color: #666666 !important;
 	font-style: italic !important;
 }
-.urvanov-syntax-highlighter-theme-obsidian-light .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-f {
+.crayon-theme-obsidian-light .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-f {
 	color: #999999 !important;
 }
-.urvanov-syntax-highlighter-theme-obsidian-light .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-h {
+.crayon-theme-obsidian-light .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-h {
 	color: #000000 !important;
 }
-.urvanov-syntax-highlighter-theme-obsidian-light .urvanov-syntax-highlighter-marked-line.urvanov-syntax-highlighter-top {
+.crayon-theme-obsidian-light .urvanov-syntax-highlighter-marked-line.urvanov-syntax-highlighter-top {
 	border-top-style: solid !important;
 }
-.urvanov-syntax-highlighter-theme-obsidian-light .urvanov-syntax-highlighter-marked-line.urvanov-syntax-highlighter-bottom {
+.crayon-theme-obsidian-light .urvanov-syntax-highlighter-marked-line.urvanov-syntax-highlighter-bottom {
 	border-bottom-style: solid !important;
 }
-.urvanov-syntax-highlighter-theme-obsidian-light .urvanov-syntax-highlighter-marked-num.urvanov-syntax-highlighter-top {
+.crayon-theme-obsidian-light .urvanov-syntax-highlighter-marked-num.urvanov-syntax-highlighter-top {
 	border-top-style: solid !important;
 }
-.urvanov-syntax-highlighter-theme-obsidian-light .urvanov-syntax-highlighter-marked-num.urvanov-syntax-highlighter-bottom {
+.crayon-theme-obsidian-light .urvanov-syntax-highlighter-marked-num.urvanov-syntax-highlighter-bottom {
 	border-bottom-style: solid !important;
 }
-.urvanov-syntax-highlighter-theme-obsidian-light .urvanov-syntax-highlighter-striped-num {
+.crayon-theme-obsidian-light .urvanov-syntax-highlighter-striped-num {
 	color: #7f7f7f !important;
 	background: #f5f5f5 !important;
 }
-.urvanov-syntax-highlighter-theme-obsidian-light .urvanov-syntax-highlighter-marked-num.urvanov-syntax-highlighter-striped-num {
+.crayon-theme-obsidian-light .urvanov-syntax-highlighter-marked-num.urvanov-syntax-highlighter-striped-num {
 	background: #dcdcdc !important;
 	color: #7f7f7f !important;
 }
-.urvanov-syntax-highlighter-theme-obsidian-light .urvanov-syntax-highlighter-striped-line {
+.crayon-theme-obsidian-light .urvanov-syntax-highlighter-striped-line {
 	background: #f5f5f5 !important;
 }
-.urvanov-syntax-highlighter-theme-obsidian-light .urvanov-syntax-highlighter-marked-line.urvanov-syntax-highlighter-striped-line {
+.crayon-theme-obsidian-light .urvanov-syntax-highlighter-marked-line.urvanov-syntax-highlighter-striped-line {
 	background: #dcdcdc !important;
 }
-.urvanov-syntax-highlighter-theme-obsidian-light-inline {
+.crayon-theme-obsidian-light-inline {
 	background: #dcdcdc !important;
 	border-width: 1px !important;
 	border-color: #dcdcdc !important;
