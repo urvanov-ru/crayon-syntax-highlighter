@@ -15,8 +15,8 @@ class Urvanov_Syntax_Highlighter_Parser {
 	const HTML_CHAR = 'HTML_CHAR';
 	const HTML_CHAR_REGEX = '<|>|(&([\w-]+);?)|[ \t]+';
 	const URVANOV_SYNTAX_HIGHLIGHTER_ELEMENT = 'URVANOV_SYNTAX_HIGHLIGHTER_ELEMENT';
-	const URVANOV_SYNTAX_HIGHLIGHTER_ELEMENT_REGEX = '\{\{crayon-internal:[^\}]*\}\}';
-	const URVANOV_SYNTAX_HIGHLIGHTER_ELEMENT_REGEX_CAPTURE = '\{\{crayon-internal:([^\}]*)\}\}';
+	const URVANOV_SYNTAX_HIGHLIGHTER_ELEMENT_REGEX = '\{\{urvanov-syntax-highlighter-internal:[^\}]*\}\}';
+	const URVANOV_SYNTAX_HIGHLIGHTER_ELEMENT_REGEX_CAPTURE = '\{\{urvanov-syntax-highlighter-internal:([^\}]*)\}\}';
 
 	private static $modes = array(self::CASE_INSENSITIVE => TRUE, self::MULTI_LINE => TRUE, self::SINGLE_LINE => TRUE, self::ALLOW_MIXED => TRUE);
 
