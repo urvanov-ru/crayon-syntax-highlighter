@@ -300,9 +300,11 @@ Thanks to all those who donate to the project:
 
 * Download the .zip of the plugin and extract the contents.
 * Upload it to the Wordpress plugin directory and activate the plugin.
-* Even easier, just go to <strong>Plugins > Add New</strong> and search for "Crayon".
+* Even easier, just go to <strong>Plugins > Add New</strong> and search for "Urvanov Syntax Highlighter".
 * You can change settings and view help under <strong>Settings > Crayon</strong> in the Wordpress Admin.
 * Make sure your theme either manually specifies jQuery, or uses the version shipped with Wordpress (recommended). You should NOT print out jQuery manually in the header as a script tag. <a href="http://wordpress.stackexchange.com/questions/1535/how-to-dequeue-a-script" target="_blank">Enqueueing it in Wordpresss</a> will prevent duplicate jQuery includes (also bad) and will allow other scripts to be placed AFTER jQuery in the head tag so they can use it. If you're uncertain, just let Wordpress handle it and remove any jQuery script tags you find in your theme's header.php.
+* Oll old Crayon inline and blocks should work by default.
+* Don't use standard Code block in new posts. Use special Urvanov Syntax Highlighter block in Gutenberg editor.
 
 == Frequently Asked Questions ==
 
