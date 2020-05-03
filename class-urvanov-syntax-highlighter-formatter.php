@@ -142,8 +142,8 @@ class Urvanov_Syntax_Highlighter_Formatter {
         if ($hl->is_inline()) {
             $wrap = !$hl->setting_val(Urvanov_Syntax_Highlighter_Settings::INLINE_WRAP) ? 'urvanov-syntax-highlighter-syntax-inline-nowrap' : '';
             $output .= '
-			<span id="' . $uid . '" class="urvanov-syntax-highlighter-syntax urvanov-syntax-highlighter-syntax-inline ' . $wrap . ' urvanov-syntax-highlighter-theme-' . $theme_id_dashed . ' urvanov-syntax-highlighter-theme-' . $theme_id_dashed . '-inline urvanov-syntax-highlighter-font-' . $font_id_dashed . '" style="' . $font_style . '">' .
-                '<span class="urvanov-syntax-highlighter-pre urvanov-syntax-highlighter-code" style="' . $font_style . ' ' . $pre_style . '">' . $code . '</span>' .
+			<span id="' . $uid . '" class="urvanov-syntax-highlighter-syntax urvanov-syntax-highlighter-syntax-inline ' . $wrap . ' crayon-theme-' . $theme_id_dashed . ' crayon-theme-' . $theme_id_dashed . '-inline urvanov-syntax-highlighter-font-' . $font_id_dashed . '" style="' . $font_style . '">' .
+                '<span class="crayon-pre urvanov-syntax-highlighter-code" style="' . $font_style . ' ' . $pre_style . '">' . $code . '</span>' .
                 '</span>';
             return $output;
         }
@@ -180,39 +180,39 @@ class Urvanov_Syntax_Highlighter_Formatter {
             $marked_lines = $hl->marked();
             // Check if lines need to be marked as important
             if ($marking && in_array($i, $marked_lines)) {
-                $marked_num = ' urvanov-syntax-highlighter-marked-num';
-                $marked_line = ' urvanov-syntax-highlighter-marked-line';
+                $marked_num = ' crayon-marked-num';
+                $marked_line = ' crayon-marked-line';
                 // If multiple lines are marked, only show borders for top and bottom lines
                 if (!in_array($i - 1, $marked_lines)) {
-                    $marked_num .= ' urvanov-syntax-highlighter-top';
-                    $marked_line .= ' urvanov-syntax-highlighter-top';
+                    $marked_num .= ' crayon-top';
+                    $marked_line .= ' crayon-top';
                 }
                 // Single lines are both the top and bottom of the multiple marked lines
                 if (!in_array($i + 1, $marked_lines)) {
-                    $marked_num .= ' urvanov-syntax-highlighter-bottom';
-                    $marked_line .= ' urvanov-syntax-highlighter-bottom';
+                    $marked_num .= ' crayon-bottom';
+                    $marked_line .= ' crayon-bottom';
                 }
             } else {
                 $marked_num = $marked_line = '';
             }
             // Stripe odd lines
             if ($striped && $i % 2 == 0) {
-                $striped_num = ' urvanov-syntax-highlighter-striped-num';
-                $striped_line = ' urvanov-syntax-highlighter-striped-line';
+                $striped_num = ' crayon-striped-num';
+                $striped_line = ' crayon-striped-line';
             } else {
                 $striped_num = $striped_line = '';
             }
             // Generate the lines
             $line_num = $start_line + $i - 1;
             $line_id = $uid . '-' . $line_num;
-            $print_code .= '<div class="urvanov-syntax-highlighter-line' . $marked_line . $striped_line . '" id="' . $line_id . '">' . $code_line . '</div>';
+            $print_code .= '<div class="crayon-line' . $marked_line . $striped_line . '" id="' . $line_id . '">' . $code_line . '</div>';
             if (!is_string($line_numbers)) {
-                $print_nums .= '<div class="urvanov-syntax-highlighter-num' . $marked_num . $striped_num . '" data-line="' . $line_id . '">' . $line_num . '</div>';
+                $print_nums .= '<div class="crayon-num' . $marked_num . $striped_num . '" data-line="' . $line_id . '">' . $line_num . '</div>';
             }
         }
         // If $line_numbers is a string, display it
         if (is_string($line_numbers) && !empty($line_numbers)) {
-            $print_nums .= '<div class="urvanov-syntax-highlighter-num">' . $line_numbers . '</div>';
+            $print_nums .= '<div class="crayon-num">' . $line_numbers . '</div>';
         } else if (empty($line_numbers)) {
             $print_nums = FALSE;
         }
@@ -222,7 +222,7 @@ class Urvanov_Syntax_Highlighter_Formatter {
         if ($hl->setting_val(Urvanov_Syntax_Highlighter_Settings::DECODE_ATTRIBUTES)) {
             $title = UrvanovSyntaxHighlighterUtil::html_entity_decode($title);
         }
-        $print_title = '<span class="urvanov-syntax-highlighter-title">' . $title . '</span>';
+        $print_title = '<span class="crayon-title">' . $title . '</span>';
         // Determine whether to print language
         $print_lang = '';
         // XXX Use for printing the regex
@@ -235,7 +235,7 @@ class Urvanov_Syntax_Highlighter_Formatter {
                     }
                 // Falls through
                 case 1 :
-                    $print_lang = '<span class="urvanov-syntax-highlighter-language">' . $lang . '</span>';
+                    $print_lang = '<span class="crayon-language">' . $lang . '</span>';
                     break;
             }
         }
@@ -312,7 +312,7 @@ class Urvanov_Syntax_Highlighter_Formatter {
 
             $buttons_str = '';
             foreach ($buttons as $button => $value) {
-                $buttons_str .= '<div class="urvanov-syntax-highlighter-button urvanov-syntax-highlighter-' . $button . '-button"';
+                $buttons_str .= '<div class="crayon-button urvanov-syntax-highlighter-' . $button . '-button"';
                 if (!is_array($value)) {
                     $value = array('title' => $value);
                 }
@@ -327,9 +327,9 @@ class Urvanov_Syntax_Highlighter_Formatter {
             $print_plus = $hl->is_mixed() && $hl->setting_val(Urvanov_Syntax_Highlighter_Settings::SHOW_ALTERNATE) ? '<span class="urvanov-syntax-highlighter-mixed-highlight" title="' . Urvanov_Syntax_Highlighter_Global::urvanov__('Contains Mixed Languages') . '"></span>' : '';
             $buttons = $print_plus . $buttons_str . $print_lang;
             $toolbar = '
-			<div class="urvanov-syntax-highlighter-toolbar" data-settings="' . $toolbar_settings . '" style="' . $toolbar_style . '">' . $print_title . '
-			<div class="urvanov-syntax-highlighter-tools" style="' . $toolbar_style . '">' . $buttons . '</div></div>
-			<div class="urvanov-syntax-highlighter-info" style="' . $info_style . '"></div>';
+			<div class="crayon-toolbar" data-settings="' . $toolbar_settings . '" style="' . $toolbar_style . '">' . $print_title . '
+			<div class="crayon-tools" style="' . $toolbar_style . '">' . $buttons . '</div></div>
+			<div class="crayon-info" style="' . $info_style . '"></div>';
 
         } else {
             $toolbar = $buttons = $plain_settings = '';
@@ -445,22 +445,22 @@ class Urvanov_Syntax_Highlighter_Formatter {
 
         // Produce output
         $output .= '
-		<div id="' . $uid . '" class="urvanov-syntax-highlighter-syntax urvanov-syntax-highlighter-theme-' . $theme_id_dashed . ' urvanov-syntax-highlighter-font-' . $font_id_dashed . ' urvanov-syntax-highlighter-os-' . $urvanov_syntax_highlighter_os . ' print-yes notranslate" data-settings="' . $code_settings . '" style="' . $code_style . ' ' . $font_style . '">
+		<div id="' . $uid . '" class="urvanov-syntax-highlighter-syntax crayon-theme-' . $theme_id_dashed . ' urvanov-syntax-highlighter-font-' . $font_id_dashed . ' urvanov-syntax-highlighter-os-' . $urvanov_syntax_highlighter_os . ' print-yes notranslate" data-settings="' . $code_settings . '" style="' . $code_style . ' ' . $font_style . '">
 		' . $toolbar . '
 			<div class="urvanov-syntax-highlighter-plain-wrap">' . $print_plain . '</div>' . '
 			<div class="urvanov-syntax-highlighter-main" style="' . $main_style . '">
-				<table class="urvanov-syntax-highlighter-table">
+				<table class="crayon-table">
 					<tr class="urvanov-syntax-highlighter-row">';
 
         if ($print_nums !== FALSE) {
             $output .= '
-				<td class="urvanov-syntax-highlighter-nums ' . $num_vis . '" data-settings="' . $num_settings . '">
+				<td class="crayon-nums ' . $num_vis . '" data-settings="' . $num_settings . '">
 					<div class="urvanov-syntax-highlighter-nums-content" style="' . $font_style . '">' . $print_nums . '</div>
 				</td>';
         }
         // XXX
         $output .= '
-						<td class="urvanov-syntax-highlighter-code"><div class="urvanov-syntax-highlighter-pre" style="' . $font_style . ' ' . $pre_style . '">' . $print_code . '</div></td>
+						<td class="urvanov-syntax-highlighter-code"><div class="crayon-pre" style="' . $font_style . ' ' . $pre_style . '">' . $print_code . '</div></td>
 					</tr>
 				</table>
 			</div>
@@ -584,7 +584,7 @@ class Urvanov_Syntax_Highlighter_Formatter {
 
     public static function split_lines($code, $class) {
         $code = self::clean_code($code, TRUE, TRUE, TRUE, FALSE);
-        $class = preg_replace('#(\w+)#m', 'urvanov-syntax-highlighter-$1', $class);
+        $class = preg_replace('#(\w+)#m', 'crayon-$1', $class);
         $code = preg_replace('#^([^\r\n]+)(?=\r\n|\r|\n|$)#m', '<span class="' . $class . '">$1</span>', $code);
         return $code;
     }

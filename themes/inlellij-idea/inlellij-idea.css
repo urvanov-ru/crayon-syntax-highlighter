@@ -4,7 +4,7 @@ Description: Classic extended.
 Version: 1.1
 Author: kelegorm
 */
-.urvanov-syntax-highlighter-theme-inlellij-idea {
+.crayon-theme-inlellij-idea {
 	border-width: 1px !important;
 	border-color: #999 !important;
 	border-style: solid !important;
@@ -14,176 +14,176 @@ Author: kelegorm
 	-webkit-border-radius: 5px;
 	border-radius: 5px;
 }
-.urvanov-syntax-highlighter-theme-inlellij-idea-inline {
+.crayon-theme-inlellij-idea-inline {
 	border-width: 1px !important;
 	border-color: #ddd !important;
 	background: #fafafa !important;
 	border-style: solid !important;
 }
-.urvanov-syntax-highlighter-theme-inlellij-idea .urvanov-syntax-highlighter-table .urvanov-syntax-highlighter-nums {
+.crayon-theme-inlellij-idea .crayon-table .crayon-nums {
 	background: #ffffff !important;
 	color: #b2b2b2 !important;
 	border-right-width: 1px !important;
 	border-right-style: solid !important;
 	border-right-color: #202020 !important;
 }
-.urvanov-syntax-highlighter-theme-inlellij-idea .urvanov-syntax-highlighter-code::selection {
+.crayon-theme-inlellij-idea .crayon-code::selection {
 	background: #BBEEDA !important;
 	color: #269B6C !important;
 }
-.urvanov-syntax-highlighter-theme-inlellij-idea .urvanov-syntax-highlighter-code *::selection {
+.crayon-theme-inlellij-idea .crayon-code *::selection {
 	background: #BBEEDA !important;
 	color: #269B6C !important;
 }
-.urvanov-syntax-highlighter-theme-inlellij-idea *::selection {
+.crayon-theme-inlellij-idea *::selection {
 	background: transparent !important;
 }
-.urvanov-syntax-highlighter-theme-inlellij-idea .urvanov-syntax-highlighter-striped-line {
+.crayon-theme-inlellij-idea .crayon-striped-line {
 	background: #ffffff !important;
 }
-.urvanov-syntax-highlighter-theme-inlellij-idea .urvanov-syntax-highlighter-striped-num {
+.crayon-theme-inlellij-idea .crayon-striped-num {
 	background: #ffffff !important;
 	color: #b2b2b2 !important;
 }
-.urvanov-syntax-highlighter-theme-inlellij-idea .urvanov-syntax-highlighter-marked-line {
+.crayon-theme-inlellij-idea .crayon-marked-line {
 	background: #4169e1 !important;
 	border-width: 1px !important;
 	border-color: #9AE7DF !important;
 }
-.urvanov-syntax-highlighter-theme-inlellij-idea .urvanov-syntax-highlighter-marked-num {
+.crayon-theme-inlellij-idea .crayon-marked-num {
 	color: #cd5c5c !important;
 	background: #dcdcdc !important;
 	border-width: 0px !important;
 	border-color: #202020 !important;
 }
-.urvanov-syntax-highlighter-theme-inlellij-idea .urvanov-syntax-highlighter-marked-line.urvanov-syntax-highlighter-striped-line {
+.crayon-theme-inlellij-idea .crayon-marked-line.crayon-striped-line {
 	background: #B7EEE9 !important;
 }
-.urvanov-syntax-highlighter-theme-inlellij-idea .urvanov-syntax-highlighter-marked-num.urvanov-syntax-highlighter-striped-num {
+.crayon-theme-inlellij-idea .crayon-marked-num.crayon-striped-num {
 	background: #dcdcdc !important;
 	color: #cd5c5c !important;
 }
-.urvanov-syntax-highlighter-theme-inlellij-idea .urvanov-syntax-highlighter-marked-line.urvanov-syntax-highlighter-top {
+.crayon-theme-inlellij-idea .crayon-marked-line.crayon-top {
 	border-top-style: solid !important;
 }
-.urvanov-syntax-highlighter-theme-inlellij-idea .urvanov-syntax-highlighter-marked-num.urvanov-syntax-highlighter-top {
+.crayon-theme-inlellij-idea .crayon-marked-num.crayon-top {
 	border-top-style: solid !important;
 }
-.urvanov-syntax-highlighter-theme-inlellij-idea .urvanov-syntax-highlighter-marked-line.urvanov-syntax-highlighter-bottom {
+.crayon-theme-inlellij-idea .crayon-marked-line.crayon-bottom {
 	border-bottom-style: solid !important;
 }
-.urvanov-syntax-highlighter-theme-inlellij-idea .urvanov-syntax-highlighter-marked-num.urvanov-syntax-highlighter-bottom {
+.crayon-theme-inlellij-idea .crayon-marked-num.crayon-bottom {
 	border-bottom-style: solid !important;
 }
-.urvanov-syntax-highlighter-theme-inlellij-idea .urvanov-syntax-highlighter-info {
+.crayon-theme-inlellij-idea .crayon-info {
 	background: #E8E8E8 !important;
 	border-bottom-width: 1px !important;
 	border-bottom-style: solid !important;
 	border-bottom-color: #888888 !important;
 	color: #595959 !important;
 }
-.urvanov-syntax-highlighter-theme-inlellij-idea .urvanov-syntax-highlighter-toolbar {
+.crayon-theme-inlellij-idea .crayon-toolbar {
 	background: #DDD !important;
 	border-bottom-width: 1px !important;
 	border-bottom-style: solid !important;
 	border-bottom-color: #BBB !important;
 }
-.urvanov-syntax-highlighter-theme-inlellij-idea .urvanov-syntax-highlighter-toolbar > div {
+.crayon-theme-inlellij-idea .crayon-toolbar > div {
 	float: left !important;
 }
-.urvanov-syntax-highlighter-theme-inlellij-idea .urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-tools {
+.crayon-theme-inlellij-idea .crayon-toolbar .crayon-tools {
 	float: right !important;
 }
-.urvanov-syntax-highlighter-theme-inlellij-idea .urvanov-syntax-highlighter-title {
+.crayon-theme-inlellij-idea .crayon-title {
 	color: #333 !important;
 }
-.urvanov-syntax-highlighter-theme-inlellij-idea .urvanov-syntax-highlighter-language {
+.crayon-theme-inlellij-idea .crayon-language {
 	color: #999 !important;
 }
-.urvanov-syntax-highlighter-theme-inlellij-idea .urvanov-syntax-highlighter-button {
+.crayon-theme-inlellij-idea .crayon-button {
 	background-color: transparent !important;
 }
-.urvanov-syntax-highlighter-theme-inlellij-idea .urvanov-syntax-highlighter-button:hover {
+.crayon-theme-inlellij-idea .crayon-button:hover {
 	background-color: #F2F2F2 !important;
 	color: #666;
 }
-.urvanov-syntax-highlighter-theme-inlellij-idea .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-pressed:hover {
+.crayon-theme-inlellij-idea .crayon-button.crayon-pressed:hover {
 	background-color: #F2F2F2 !important;
 	color: #666;
 }
-.urvanov-syntax-highlighter-theme-inlellij-idea .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-pressed {
+.crayon-theme-inlellij-idea .crayon-button.crayon-pressed {
 	background-color: #BBB !important;
 	color: #FFF;
 }
-.urvanov-syntax-highlighter-theme-inlellij-idea .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-pressed:active {
+.crayon-theme-inlellij-idea .crayon-button.crayon-pressed:active {
 	background-color: #BBB !important;
 	color: #FFF;
 }
-.urvanov-syntax-highlighter-theme-inlellij-idea .urvanov-syntax-highlighter-button:active {
+.crayon-theme-inlellij-idea .crayon-button:active {
 	background-color: #BBB !important;
 	color: #FFF;
 }
-.urvanov-syntax-highlighter-theme-inlellij-idea .urvanov-syntax-highlighter-pre .c {
+.crayon-theme-inlellij-idea .crayon-pre .c {
 	color: #a9a9a9 !important;
 }
-.urvanov-syntax-highlighter-theme-inlellij-idea .urvanov-syntax-highlighter-pre .p {
+.crayon-theme-inlellij-idea .crayon-pre .p {
 	color: #b85c00 !important;
 }
-.urvanov-syntax-highlighter-theme-inlellij-idea .urvanov-syntax-highlighter-pre .s {
+.crayon-theme-inlellij-idea .crayon-pre .s {
 	color: #008000 !important;
 	font-weight: bold !important;
 }
-.urvanov-syntax-highlighter-theme-inlellij-idea .urvanov-syntax-highlighter-pre .k {
+.crayon-theme-inlellij-idea .crayon-pre .k {
 	color: #00008b !important;
 }
-.urvanov-syntax-highlighter-theme-inlellij-idea .urvanov-syntax-highlighter-pre .st {
+.crayon-theme-inlellij-idea .crayon-pre .st {
 	color: #00008b !important;
 	font-weight: bold !important;
 }
-.urvanov-syntax-highlighter-theme-inlellij-idea .urvanov-syntax-highlighter-pre .r {
+.crayon-theme-inlellij-idea .crayon-pre .r {
 	color: #00008b !important;
 }
-.urvanov-syntax-highlighter-theme-inlellij-idea .urvanov-syntax-highlighter-pre .t {
+.crayon-theme-inlellij-idea .crayon-pre .t {
 	color: #000000 !important;
 }
-.urvanov-syntax-highlighter-theme-inlellij-idea .urvanov-syntax-highlighter-pre .m {
+.crayon-theme-inlellij-idea .crayon-pre .m {
 	color: #00008b !important;
 	font-weight: bold !important;
 }
-.urvanov-syntax-highlighter-theme-inlellij-idea .urvanov-syntax-highlighter-pre .ta {
+.crayon-theme-inlellij-idea .crayon-pre .ta {
 	color: #FF0000 !important;
 }
-.urvanov-syntax-highlighter-theme-inlellij-idea .urvanov-syntax-highlighter-pre .i {
+.crayon-theme-inlellij-idea .crayon-pre .i {
 	color: #9932cc !important;
 	font-weight: bold !important;
 }
-.urvanov-syntax-highlighter-theme-inlellij-idea .urvanov-syntax-highlighter-pre .v {
+.crayon-theme-inlellij-idea .crayon-pre .v {
 	color: #9932cc !important;
 	font-weight: bold !important;
 }
-.urvanov-syntax-highlighter-theme-inlellij-idea .urvanov-syntax-highlighter-pre .e {
+.crayon-theme-inlellij-idea .crayon-pre .e {
 	color: #8f8615 !important;
 }
-.urvanov-syntax-highlighter-theme-inlellij-idea .urvanov-syntax-highlighter-pre .cn {
+.crayon-theme-inlellij-idea .crayon-pre .cn {
 	color: #9932cc !important;
 }
-.urvanov-syntax-highlighter-theme-inlellij-idea .urvanov-syntax-highlighter-pre .o {
+.crayon-theme-inlellij-idea .crayon-pre .o {
 	color: #000000 !important;
 }
-.urvanov-syntax-highlighter-theme-inlellij-idea .urvanov-syntax-highlighter-pre .h {
+.crayon-theme-inlellij-idea .crayon-pre .h {
 	color: #006fe0 !important;
 }
-.urvanov-syntax-highlighter-theme-inlellij-idea .urvanov-syntax-highlighter-pre .sy {
+.crayon-theme-inlellij-idea .crayon-pre .sy {
 	color: #333 !important;
 }
-.urvanov-syntax-highlighter-theme-inlellij-idea .urvanov-syntax-highlighter-pre .n {
+.crayon-theme-inlellij-idea .crayon-pre .n {
 	color: #666 !important;
 	font-style: italic !important;
 }
-.urvanov-syntax-highlighter-theme-inlellij-idea .urvanov-syntax-highlighter-pre .f {
+.crayon-theme-inlellij-idea .crayon-pre .f {
 	color: #999 !important;
 }
-.urvanov-syntax-highlighter-theme-inlellij-idea .urvanov-syntax-highlighter-table {
+.crayon-theme-inlellij-idea .crayon-table {
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 	border-radius: 5px;

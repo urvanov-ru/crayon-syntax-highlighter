@@ -4,161 +4,161 @@ Description: Version: 1.0
 Author: Daniel De Jesús
 URL: http://809finest.com
 */
-.urvanov-syntax-highlighter-theme-809finest {
+.crayon-theme-809finest {
 	border-width: 1px !important;
 	text-shadow: none !important;
 	border-color: #162E53 !important;
 	border-style: solid !important;
 	background: #162E53 !important;
 }
-.urvanov-syntax-highlighter-theme-809finest-inline {
+.crayon-theme-809finest-inline {
 	border-width: 1px !important;
 	border-color: #162E53 !important;
 	border-style: solid !important;
 	background: #112442 !important;
 }
-.urvanov-syntax-highlighter-theme-809finest .urvanov-syntax-highlighter-table .urvanov-syntax-highlighter-nums {
+.crayon-theme-809finest .crayon-table .crayon-nums {
 	color: #ffffff !important;
 	background: #BB0A1C !important;
 }
-.urvanov-syntax-highlighter-theme-809finest .urvanov-syntax-highlighter-striped-line {
+.crayon-theme-809finest .crayon-striped-line {
 	background: #162E53 !important;
 }
-.urvanov-syntax-highlighter-theme-809finest .urvanov-syntax-highlighter-striped-num {
+.crayon-theme-809finest .crayon-striped-num {
 	background: #BB0A1C !important;
 	color: #ffffff !important;
 }
-.urvanov-syntax-highlighter-theme-809finest .urvanov-syntax-highlighter-marked-line {
+.crayon-theme-809finest .crayon-marked-line {
 	border-width: 1px !important;
 	border-color: #162E53 !important;
 	background: #162E53 !important;
 }
-.urvanov-syntax-highlighter-theme-809finest .urvanov-syntax-highlighter-marked-num {
+.crayon-theme-809finest .crayon-marked-num {
 	color: #ffffff !important;
 	border-width: 1px !important;
 	border-color: #BB0A1C !important;
 	background: #BB0A1C !important;
 }
-.urvanov-syntax-highlighter-theme-809finest .urvanov-syntax-highlighter-marked-line.urvanov-syntax-highlighter-striped-line {
+.crayon-theme-809finest .crayon-marked-line.crayon-striped-line {
 	background: #162E53 !important;
 }
-.urvanov-syntax-highlighter-theme-809finest .urvanov-syntax-highlighter-marked-num.urvanov-syntax-highlighter-striped-num {
+.crayon-theme-809finest .crayon-marked-num.crayon-striped-num {
 	color: #ffffff !important;
 	background: #BB0A1C !important;
 }
-.urvanov-syntax-highlighter-theme-809finest .urvanov-syntax-highlighter-marked-line.urvanov-syntax-highlighter-top {
+.crayon-theme-809finest .crayon-marked-line.crayon-top {
 	border-top-style: solid !important;
 }
-.urvanov-syntax-highlighter-theme-809finest .urvanov-syntax-highlighter-marked-num.urvanov-syntax-highlighter-top {
+.crayon-theme-809finest .crayon-marked-num.crayon-top {
 	border-top-style: solid !important;
 }
-.urvanov-syntax-highlighter-theme-809finest .urvanov-syntax-highlighter-marked-line.urvanov-syntax-highlighter-bottom {
+.crayon-theme-809finest .crayon-marked-line.crayon-bottom {
 	border-bottom-style: solid !important;
 }
-.urvanov-syntax-highlighter-theme-809finest .urvanov-syntax-highlighter-marked-num.urvanov-syntax-highlighter-bottom {
+.crayon-theme-809finest .crayon-marked-num.crayon-bottom {
 	border-bottom-style: solid !important;
 }
-.urvanov-syntax-highlighter-theme-809finest .urvanov-syntax-highlighter-info {
+.crayon-theme-809finest .crayon-info {
 	border-bottom-width: 1px !important;
 	border-bottom-style: solid !important;
 	color: #ffffff !important;
 	border-bottom-color: #BB0A1C !important;
 	background: #162E53 !important;
 }
-.urvanov-syntax-highlighter-theme-809finest .urvanov-syntax-highlighter-toolbar {
+.crayon-theme-809finest .crayon-toolbar {
 	background: #BB0A1C !important;
 	border-bottom-width: 1px !important;
 	border-bottom-color: #BB0A1C !important;
 	border-bottom-style: solid !important;
 }
-.urvanov-syntax-highlighter-theme-809finest .urvanov-syntax-highlighter-toolbar > div {
+.crayon-theme-809finest .crayon-toolbar > div {
 	float: left !important;
 }
-.urvanov-syntax-highlighter-theme-809finest .urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-tools {
+.crayon-theme-809finest .crayon-toolbar .crayon-tools {
 	float: right !important;
 }
-.urvanov-syntax-highlighter-theme-809finest .urvanov-syntax-highlighter-title {
+.crayon-theme-809finest .crayon-title {
 	color: #ffffff !important;
 }
-.urvanov-syntax-highlighter-theme-809finest .urvanov-syntax-highlighter-language {
+.crayon-theme-809finest .crayon-language {
 	color: #ffffff !important;
 }
-.urvanov-syntax-highlighter-theme-809finest a.urvanov-syntax-highlighter-button {
+.crayon-theme-809finest a.crayon-button {
 	background-color: transparent !important;
 }
-.urvanov-syntax-highlighter-theme-809finest a.urvanov-syntax-highlighter-button:hover {
+.crayon-theme-809finest a.crayon-button:hover {
 	background-color: #dddddd !important;
 	color: #666;
 }
-.urvanov-syntax-highlighter-theme-809finest a.urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-pressed:hover {
+.crayon-theme-809finest a.crayon-button.crayon-pressed:hover {
 	background-color: #eeeeee !important;
 	color: #666;
 }
-.urvanov-syntax-highlighter-theme-809finest a.urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-pressed {
+.crayon-theme-809finest a.crayon-button.crayon-pressed {
 	background-color: #dddddd !important;
 	color: #FFF;
 }
-.urvanov-syntax-highlighter-theme-809finest a.urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-pressed:active {
+.crayon-theme-809finest a.crayon-button.crayon-pressed:active {
 	background-color: #dddddd !important;
 	color: #FFF;
 }
-.urvanov-syntax-highlighter-theme-809finest a.urvanov-syntax-highlighter-button:active {
+.crayon-theme-809finest a.crayon-button:active {
 	background-color: #dddddd !important;
 	color: #FFF;
 }
-.urvanov-syntax-highlighter-theme-809finest .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-c {
+.crayon-theme-809finest .crayon-pre .crayon-c {
 	color: #ffffff !important;
 }
-.urvanov-syntax-highlighter-theme-809finest .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-s {
+.crayon-theme-809finest .crayon-pre .crayon-s {
 	color: #ffffff !important;
 }
-.urvanov-syntax-highlighter-theme-809finest .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-p {
+.crayon-theme-809finest .crayon-pre .crayon-p {
 	color: #ffffff !important;
 }
-.urvanov-syntax-highlighter-theme-809finest .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-ta {
+.crayon-theme-809finest .crayon-pre .crayon-ta {
 	color: #e91e1e !important;
 }
-.urvanov-syntax-highlighter-theme-809finest .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-k {
+.crayon-theme-809finest .crayon-pre .crayon-k {
 	color: #006699 !important;
 }
-.urvanov-syntax-highlighter-theme-809finest .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-st {
+.crayon-theme-809finest .crayon-pre .crayon-st {
 	color: #BB0A1C !important;
 	font-weight: bold !important;
 }
-.urvanov-syntax-highlighter-theme-809finest .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-r {
+.crayon-theme-809finest .crayon-pre .crayon-r {
 	color: #BB0A1C !important;
 }
-.urvanov-syntax-highlighter-theme-809finest .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-t {
+.crayon-theme-809finest .crayon-pre .crayon-t {
 	color: #BB0A1C !important;
 }
-.urvanov-syntax-highlighter-theme-809finest .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-m {
+.crayon-theme-809finest .crayon-pre .crayon-m {
 	color: #BB0A1C !important;
 }
-.urvanov-syntax-highlighter-theme-809finest .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-i {
+.crayon-theme-809finest .crayon-pre .crayon-i {
 	color: #ffffff !important;
 }
-.urvanov-syntax-highlighter-theme-809finest .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-e {
+.crayon-theme-809finest .crayon-pre .crayon-e {
 	color: #BB0A1C !important;
 }
-.urvanov-syntax-highlighter-theme-809finest .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-v {
+.crayon-theme-809finest .crayon-pre .crayon-v {
 	color: #ffffff !important;
 }
-.urvanov-syntax-highlighter-theme-809finest .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-cn {
+.crayon-theme-809finest .crayon-pre .crayon-cn {
 	color: #ffffff !important;
 }
-.urvanov-syntax-highlighter-theme-809finest .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-o {
+.crayon-theme-809finest .crayon-pre .crayon-o {
 	color: #ffffff !important;
 }
-.urvanov-syntax-highlighter-theme-809finest .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-sy {
+.crayon-theme-809finest .crayon-pre .crayon-sy {
 	color: #ffffff !important;
 }
-.urvanov-syntax-highlighter-theme-809finest .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-n {
+.crayon-theme-809finest .crayon-pre .crayon-n {
 	color: #ffffff !important;
 	font-style: italic !important;
 }
-.urvanov-syntax-highlighter-theme-809finest .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-f {
+.crayon-theme-809finest .crayon-pre .crayon-f {
 	color: #112442 !important;
 }
-.urvanov-syntax-highlighter-theme-809finest .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-h {
+.crayon-theme-809finest .crayon-pre .crayon-h {
 	color: #BB0A1C !important;
 }

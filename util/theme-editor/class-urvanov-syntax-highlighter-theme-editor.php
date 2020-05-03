@@ -8,7 +8,7 @@ class Urvanov_Syntax_Highlighter_HTML_Element {
     public $closed = FALSE;
     public $contents = '';
     public $attributes = array();
-    const CSS_INPUT_PREFIX = "urvanov-syntax-highlighter-theme-input-";
+    const CSS_INPUT_PREFIX = "crayon-theme-input-";
 
     public static $borderStyles = array(
         'none',
@@ -123,6 +123,7 @@ class Urvanov_Syntax_Highlighter_HTML_Title extends Urvanov_Syntax_Highlighter_H
 
 class Urvanov_Syntax_Highlighter_Theme_Editor_Save {
 	public $id;
+	public $oldId;
 	public $name;
 	public $css;
 	public $change_settings;
@@ -132,13 +133,22 @@ class Urvanov_Syntax_Highlighter_Theme_Editor_Save {
 	
 	public function initialize_from_post() {
 		Urvanov_Syntax_Highlighter_Settings_WP::load_settings();
-		$id = stripslashes(sanitize_text_field($_POST['id']));
-		$name = stripslashes(sanitize_text_field($_POST['name']));
-		$css = stripslashes(sanitize_text_field($_POST['css']));
-		$change_settings = UrvanovSyntaxHighlighterUtil::set_default(sanitize_text_field($_POST['change_settings']), TRUE);
-		$allow_edit = UrvanovSyntaxHighlighterUtil::set_default(sanitize_text_field($_POST['allow_edit']), TRUE);
-		$allow_edit_stock_theme = UrvanovSyntaxHighlighterUtil::set_default(sanitize_text_field($_POST['allow_edit_stock_theme']), URVANOV_SYNTAX_HIGHLIGHTER_DEBUG);
-		$delete = UrvanovSyntaxHighlighterUtil::set_default(sanitize_text_field($_POST['delete']), TRUE);
+		$this->oldId = stripslashes(sanitize_text_field($_POST['id']));
+		$this->id = $this->oldId;
+		$this->name = stripslashes(sanitize_text_field($_POST['name']));
+		$this->css = stripslashes(sanitize_textarea_field($_POST['css']));
+		if (array_key_exists('change_settings', $_POST) ) {
+			$this->change_settings = UrvanovSyntaxHighlighterUtil::set_default(sanitize_text_field($_POST['change_settings']), TRUE);
+		}
+		if (array_key_exists('allow_edit', $_POST)) {
+			$this->allow_edit = UrvanovSyntaxHighlighterUtil::set_default(sanitize_text_field($_POST['allow_edit']), TRUE);
+		}
+		if (array_key_exists('allow_edit_stock_theme', $_POST)) {
+			$this->allow_edit_stock_theme = UrvanovSyntaxHighlighterUtil::set_default(sanitize_text_field($_POST['allow_edit_stock_theme']), URVANOV_SYNTAX_HIGHLIGHTER_DEBUG);
+		}
+		if (array_key_exists('delete', $_POST)) {
+			$this->delete = UrvanovSyntaxHighlighterUtil::set_default(sanitize_text_field($_POST['delete']), TRUE);
+		}
 	}
 }
 
@@ -340,11 +350,11 @@ class Urvanov_Syntax_Highlighter_Theme_Editor_WP {
         $tStripedMarked = Urvanov_Syntax_Highlighter_Global::urvanov__("Striped & Marked");
         $tLanguage = Urvanov_Syntax_Highlighter_Global::urvanov__("Language");
 
-        $top = '.urvanov-syntax-highlighter-top';
-        $bottom = '.urvanov-syntax-highlighter-bottom';
+        $top = '.crayon-top';
+        $bottom = '.crayon-bottom';
         $hover = ':hover';
         $active = ':active';
-        $pressed = '.urvanov-syntax-highlighter-pressed';
+        $pressed = '.crayon-pressed';
 
         ?>
 
@@ -404,7 +414,7 @@ class Urvanov_Syntax_Highlighter_Theme_Editor_WP {
                     </div>
                     <div id="tabs-2">
                         <?php
-                        $highlight = ' .urvanov-syntax-highlighter-pre';
+                        $highlight = ' .crayon-pre';
                         $elems = array(
                             'c' => Urvanov_Syntax_Highlighter_Global::urvanov__("Comment"),
                             's' => Urvanov_Syntax_Highlighter_Global::urvanov__("String"),
@@ -428,7 +438,7 @@ class Urvanov_Syntax_Highlighter_Theme_Editor_WP {
                         );
                         $atts = array(new Urvanov_Syntax_Highlighter_HTML_Title($tHighlighting));
                         foreach ($elems as $class => $name) {
-                            $fullClass = $class != '' ? $highlight . ' .urvanov-syntax-highlighter-' . $class : $highlight;
+                            $fullClass = $class != '' ? $highlight . ' .crayon-' . $class : $highlight;
                             $atts[] = array(
                                 $name,
                                 self::createAttribute($fullClass, 'color'),
@@ -466,9 +476,9 @@ class Urvanov_Syntax_Highlighter_Theme_Editor_WP {
                     </div>
                     <div id="tabs-4">
                         <?php
-                        $stripedLine = ' .urvanov-syntax-highlighter-striped-line';
-                        $markedLine = ' .urvanov-syntax-highlighter-marked-line';
-                        $stripedMarkedLine = ' .urvanov-syntax-highlighter-marked-line.urvanov-syntax-highlighter-striped-line';
+                        $stripedLine = ' .crayon-striped-line';
+                        $markedLine = ' .crayon-marked-line';
+                        $stripedMarkedLine = ' .crayon-marked-line.crayon-striped-line';
                         self::createAttributesForm(array(
                             new Urvanov_Syntax_Highlighter_HTML_Title($tLines),
                             new Urvanov_Syntax_Highlighter_HTML_Separator($tNormal),
@@ -492,10 +502,10 @@ class Urvanov_Syntax_Highlighter_Theme_Editor_WP {
                     </div>
                     <div id="tabs-5">
                         <?php
-                        $nums = ' .urvanov-syntax-highlighter-table .urvanov-syntax-highlighter-nums';
-                        $stripedNum = ' .urvanov-syntax-highlighter-striped-num';
-                        $markedNum = ' .urvanov-syntax-highlighter-marked-num';
-                        $stripedMarkedNum = ' .urvanov-syntax-highlighter-marked-num.urvanov-syntax-highlighter-striped-num';
+                        $nums = ' .crayon-table .crayon-nums';
+                        $stripedNum = ' .crayon-striped-num';
+                        $markedNum = ' .crayon-marked-num';
+                        $stripedMarkedNum = ' .crayon-marked-num.crayon-striped-num';
                         self::createAttributesForm(array(
                             new Urvanov_Syntax_Highlighter_HTML_Title($tNumbers),
                             array(
@@ -529,11 +539,11 @@ class Urvanov_Syntax_Highlighter_Theme_Editor_WP {
                     </div>
                     <div id="tabs-6">
                         <?php
-                        $toolbar = ' .urvanov-syntax-highlighter-toolbar';
-                        $title = ' .urvanov-syntax-highlighter-title';
-                        $button = ' .urvanov-syntax-highlighter-button';
-                        $info = ' .urvanov-syntax-highlighter-info';
-                        $language = ' .urvanov-syntax-highlighter-language';
+                        $toolbar = ' .crayon-toolbar';
+                        $title = ' .crayon-title';
+                        $button = ' .crayon-button';
+                        $info = ' .crayon-info';
+                        $language = ' .crayon-language';
                         self::createAttributesForm(array(
                             new Urvanov_Syntax_Highlighter_HTML_Title($tToolbar),
                             new Urvanov_Syntax_Highlighter_HTML_Separator($tFrame),
@@ -661,8 +671,9 @@ class Urvanov_Syntax_Highlighter_Theme_Editor_WP {
     }
 
     public static function save() {
-    	$save_args = new Urvanov_Syntax_Highlighter_Theme_Editor_Save;
-    	$save_args.initialize_from_post();
+        $save_args = new Urvanov_Syntax_Highlighter_Theme_Editor_Save;
+        $save_args->initialize_from_post();
+        self::saveFromArgs($save_args);
     }
     
     /**
@@ -671,28 +682,32 @@ class Urvanov_Syntax_Highlighter_Theme_Editor_WP {
      */
     public static function saveFromArgs($save_args) {
     	Urvanov_Syntax_Highlighter_Settings_WP::load_settings();
-    	$save_args->id = stripslashes(sanitize_text_field($_POST['id']));
-    	$save_args->name = stripslashes(sanitize_text_field($_POST['name']));
-    	$save_args->css = stripslashes(sanitize_text_field($_POST['css']));
-    	$save_args->change_settings = UrvanovSyntaxHighlighterUtil::set_default(sanitize_text_field($_POST['change_settings']), TRUE);
-    	$save_args->allow_edit = UrvanovSyntaxHighlighterUtil::set_default(sanitize_text_field($_POST['allow_edit']), TRUE);
-    	$save_args->allow_edit_stock_theme = UrvanovSyntaxHighlighterUtil::set_default(sanitize_text_field($_POST['allow_edit_stock_theme']), URVANOV_SYNTAX_HIGHLIGHTER_DEBUG);
-    	$save_args->delete = UrvanovSyntaxHighlighterUtil::set_default(sanitize_text_field($_POST['delete']), TRUE);
+//     	$save_args->id = stripslashes(sanitize_text_field($_POST['id']));
+//     	$save_args->name = stripslashes(sanitize_text_field($_POST['name']));
+//     	$save_args->css = stripslashes(sanitize_text_field($_POST['css']));
+//     	$save_args->change_settings = UrvanovSyntaxHighlighterUtil::set_default(sanitize_text_field($_POST['change_settings']), TRUE);
+//     	$save_args->allow_edit = UrvanovSyntaxHighlighterUtil::set_default(sanitize_text_field($_POST['allow_edit']), TRUE);
+//     	$save_args->allow_edit_stock_theme = UrvanovSyntaxHighlighterUtil::set_default(sanitize_text_field($_POST['allow_edit_stock_theme']), URVANOV_SYNTAX_HIGHLIGHTER_DEBUG);
+//     	$save_args->delete = UrvanovSyntaxHighlighterUtil::set_default(sanitize_text_field($_POST['delete']), TRUE);
     	$oldTheme = Urvanov_Syntax_Highlighter_Resources::themes()->get($save_args->id);
-    	
-        if (!empty($save_args->id) && !empty($save_args->css) && !empty($save_args->name)) {
+    	UrvanovSyntaxHighlighterLog::log($save_args->oldId, 'save_args->oldId');
+    	UrvanovSyntaxHighlighterLog::log($save_args->name, 'save_args->name');
+        if (!empty($save_args->oldId) && !empty($save_args->css) && !empty($save_args->name)) {
             // By default, expect a user theme to be saved - prevents editing stock themes
             // If in DEBUG mode, then allow editing stock themes.
             $user = $oldTheme !== NULL && $save_args->allow_edit_stock_theme ? $oldTheme->user() : TRUE;
-            $oldPath = Urvanov_Syntax_Highlighter_Resources::themes()->path($save_args->id);
-            $oldDir = Urvanov_Syntax_Highlighter_Resources::themes()->dirpath_for_id($save_args->id);
+            $oldPath = Urvanov_Syntax_Highlighter_Resources::themes()->path($save_args->oldId);
+            $oldDir = Urvanov_Syntax_Highlighter_Resources::themes()->dirpath_for_id($save_args->oldId);
             // Create an instance to use functions, since late static binding is only available in 5.3 (PHP kinda sucks)
             $theme = Urvanov_Syntax_Highlighter_Resources::themes()->resource_instance('');
             $newID = $theme->clean_id($save_args->name);
             $save_args->name = Urvanov_Syntax_Highlighter_Resource::clean_name($newID);
             $newPath = Urvanov_Syntax_Highlighter_Resources::themes()->path($newID, $user);
+            UrvanovSyntaxHighlighterLog::log($oldPath, 'oldPath');
+            UrvanovSyntaxHighlighterLog::log($newPath, 'newPath');
             $newDir = Urvanov_Syntax_Highlighter_Resources::themes()->dirpath_for_id($newID, $user);
-
+            UrvanovSyntaxHighlighterLog::log($newDir, 'newDir');
+            
             $exists = Urvanov_Syntax_Highlighter_Resources::themes()->is_loaded($newID) || (is_file($newPath) && is_file($oldPath));
             if ($exists && $oldPath != $newPath) {
                 // Never allow overwriting a theme with a different id!
@@ -721,18 +736,23 @@ class Urvanov_Syntax_Highlighter_Theme_Editor_WP {
             }
 
             $refresh = FALSE;
-            $replaceID = $save_args->id;
+            $replaceID = $save_args->oldId;
+            UrvanovSyntaxHighlighterLog::log($replaceID, '$replaceID');
             // Replace ids in the CSS
             if (!is_file($oldPath) || strpos($save_args->css, Urvanov_Syntax_Highlighter_Themes::CSS_PREFIX . $save_args->id) === FALSE) {
                 // The old path/id is no longer valid - something has gone wrong - we should refresh afterwards
                 $refresh = TRUE;
             }
             // XXX This is case sensitive to avoid modifying text, but it means that CSS must be in lowercase
+            UrvanovSyntaxHighlighterLog::debug("before caseSensitivePregReplace replaceId=$replaceID newID=$newID css=".str_replace(array("\r\n","\r", "\n"),"q",$save_args->css), "caseSensitivePregReplace");
             $save_args->css = preg_replace('#(?<=' . Urvanov_Syntax_Highlighter_Themes::CSS_PREFIX . ')' . $replaceID . '\b#ms', $newID, $save_args->css);
+            UrvanovSyntaxHighlighterLog::debug("after caseSensitivePregReplace replaceId=$replaceID newID=$newID css=".str_replace(array("\r\n","\r", "\n"),"q",$save_args->css), "caseSensitivePregReplace");
 
             // Replace the name with the new one
             $info = self::getCSSInfo($save_args->css);
             $info['name'] = $save_args->name;
+            UrvanovSyntaxHighlighterLog::syslog($save_args->name, 'change name to ');
+            UrvanovSyntaxHighlighterLog::log($save_args->name, 'change name to ');
             $save_args->css = self::setCSSInfo($save_args->css, $info);
 
             $result = @file_put_contents($newPath, $save_args->css);
@@ -766,7 +786,7 @@ class Urvanov_Syntax_Highlighter_Theme_Editor_WP {
                 Urvanov_Syntax_Highlighter_Settings_WP::save_settings();
             }
         } else {
-            UrvanovSyntaxHighlighterLog::syslog("$save_args->id=$save_args->id\n\n$save_args->name=$save_args->name", "THEME SAVE");
+            UrvanovSyntaxHighlighterLog::syslog("save_args->id=$save_args->id\n\nsave_args->name=$save_args->name", "THEME SAVE");
             echo -1;
         }
         exit();
@@ -774,13 +794,14 @@ class Urvanov_Syntax_Highlighter_Theme_Editor_WP {
 
     public static function duplicate() {
         Urvanov_Syntax_Highlighter_Settings_WP::load_settings();
-        $oldID = sanitize_text_field($_POST['id']);
-        $oldPath = Urvanov_Syntax_Highlighter_Resources::themes()->path($oldID);
         $save_args = new Urvanov_Syntax_Highlighter_Theme_Editor_Save();
+        $save_args->oldId = sanitize_text_field($_POST['id']);
+        $oldPath = Urvanov_Syntax_Highlighter_Resources::themes()->path($save_args->oldId);
         $save_args->css = file_get_contents($oldPath);
         $save_args->delete = FALSE;
         $save_args->allow_edit = FALSE;
         $save_args->allow_edit_stock_theme = FALSE;
+        $save_args->name = stripslashes(sanitize_text_field($_POST['name']));
         self::saveFromArgs($save_args);
     }
 
@@ -840,6 +861,7 @@ class Urvanov_Syntax_Highlighter_Theme_Editor_WP {
     }
 
     public static function getCSSInfo($css) {
+        UrvanovSyntaxHighlighterLog::debug("css=$css", "getCSSInfo");
         $info = array();
         preg_match(self::RE_COMMENT, $css, $matches);
         if (count($matches)) {
@@ -853,15 +875,19 @@ class Urvanov_Syntax_Highlighter_Theme_Editor_WP {
                 }
             }
         }
+        UrvanovSyntaxHighlighterLog::debug($info, "getCSSInfo");
         return $info;
     }
 
     public static function cssInfoToString($info) {
+        UrvanovSyntaxHighlighterLog::log($info, "cssInfoToString");
         $str = "/*\n";
         foreach ($info as $id => $value) {
             $str .= self::getFieldName($id) . ': ' . $value . "\n";
         }
         $str .= "*/";
+        
+        UrvanovSyntaxHighlighterLog::log("result = $str", "cssInfoToString");
         return $str;
     }
 
@@ -873,7 +899,7 @@ class Urvanov_Syntax_Highlighter_Theme_Editor_WP {
         if (isset(self::$infoFieldsInverse[$name])) {
             return self::$infoFieldsInverse[$name];
         } else {
-            return Urvanov_Syntax_Highlighter_User_Resource::clean_id($name);
+            return Urvanov_Syntax_Highlighter_User_Resource::clean_id_static($name);
         }
     }
 

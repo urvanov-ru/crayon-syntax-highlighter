@@ -424,8 +424,12 @@ class Urvanov_Syntax_Highlighter_Resource {
 	}
 
 	function clean_id($id) {
-        $id = UrvanovSyntaxHighlighterUtil::space_to_hyphen( strtolower(trim($id)) );
-        return preg_replace('#[^\w-]#msi', '', $id);
+		return Urvanov_Syntax_Highlighter_Resource::clean_id_static($id);
+	}
+	
+	public static function clean_id_static($id) {
+		$id = UrvanovSyntaxHighlighterUtil::space_to_hyphen( strtolower(trim($id)) );
+		return preg_replace('#[^\w-]#msi', '', $id);
 	}
 
 	public static function clean_name($id) {

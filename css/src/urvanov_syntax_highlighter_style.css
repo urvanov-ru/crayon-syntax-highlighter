@@ -39,8 +39,8 @@ coloring etc.
 
 .urvanov-syntax-highlighter-syntax,
 .urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-main,
-.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-toolbar,
-.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-info,
+.urvanov-syntax-highlighter-syntax .crayon-toolbar,
+.urvanov-syntax-highlighter-syntax .crayon-info,
 .urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-plain,
 .urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-code {
     /* Dimensions of code */
@@ -57,7 +57,7 @@ coloring etc.
 .urvanov-syntax-highlighter-syntax,
 .urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-main,
 .urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-plain,
-.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-table {
+.urvanov-syntax-highlighter-syntax .crayon-table {
     padding: 0px;
     margin: 0px;
 }
@@ -67,7 +67,7 @@ coloring etc.
     padding: 0 2px;
 }
 
-.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-table {
+.urvanov-syntax-highlighter-syntax .crayon-table {
     border: none !important;
     background: none !important;
     padding: 0px !important;
@@ -80,8 +80,8 @@ coloring etc.
     table-layout: auto !important;
 }
 
-.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-table td,
-.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-table tr {
+.urvanov-syntax-highlighter-syntax .crayon-table td,
+.urvanov-syntax-highlighter-syntax .crayon-table tr {
     padding: 0 !important;
     border: none !important;
     background: none;
@@ -119,7 +119,7 @@ coloring etc.
 /* End Popup ========================= */
 
 /* Line Numbers ==================== */
-.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-num {
+.urvanov-syntax-highlighter-syntax .crayon-num {
     text-align: center;
     padding: 0 5px;
     margin: 0px;
@@ -128,13 +128,13 @@ coloring etc.
 /* End Line Numbers ================ */
 
 /* Toolbar & Info ================== */
-.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-toolbar {
+.urvanov-syntax-highlighter-syntax .crayon-toolbar {
     position: relative;
     overflow: hidden;
     z-index: 4;
 }
 
-.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-info {
+.urvanov-syntax-highlighter-syntax .crayon-info {
     position: absolute;
     overflow: hidden;
     display: none;
@@ -145,23 +145,23 @@ coloring etc.
     line-height: 18px;
 }
 
-.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-info div {
+.urvanov-syntax-highlighter-syntax .crayon-info div {
     padding: 2px !important;
     text-align: center;
 }
 
-/*.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-toolbar,*/
-/*.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-toolbar * {*/
+/*.urvanov-syntax-highlighter-syntax .crayon-toolbar,*/
+/*.urvanov-syntax-highlighter-syntax .crayon-toolbar * {*/
 /*height: 18px;*/
 /*line-height: 18px;*/
 /*padding: 0px;*/
 /*}*/
 
-.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-toolbar span {
+.urvanov-syntax-highlighter-syntax .crayon-toolbar span {
     padding: 0 4px !important;
 }
 
-.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button {
+.urvanov-syntax-highlighter-syntax .crayon-toolbar .crayon-button {
     display: inline;
     float: left !important;
     position: relative;
@@ -177,121 +177,121 @@ coloring etc.
     text-decoration: none;
 }
 
-.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button,
-.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button:hover,
-.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-pressed:hover {
+.crayon-toolbar .crayon-button,
+.crayon-toolbar .crayon-button:hover,
+.crayon-toolbar .crayon-button.crayon-pressed:hover {
     background-position: 0px center;
 }
 
-.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-pressed,
-.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button:active,
-.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-pressed:active {
+.crayon-toolbar .crayon-button.crayon-pressed,
+.crayon-toolbar .crayon-button:active,
+.crayon-toolbar .crayon-button.crayon-pressed:active {
     background-position: -24px 0;
 }
 
-.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-popup-button .urvanov-syntax-highlighter-button-icon,
-.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-popup-button:hover .urvanov-syntax-highlighter-button-icon,
-.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-popup-button.urvanov-syntax-highlighter-pressed:hover .urvanov-syntax-highlighter-button-icon {
+.crayon-toolbar .crayon-button.urvanov-syntax-highlighter-popup-button .urvanov-syntax-highlighter-button-icon,
+.crayon-toolbar .crayon-button.urvanov-syntax-highlighter-popup-button:hover .urvanov-syntax-highlighter-button-icon,
+.crayon-toolbar .crayon-button.urvanov-syntax-highlighter-popup-button.crayon-pressed:hover .urvanov-syntax-highlighter-button-icon {
     background-position: 0 0;
 }
 
-.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-copy-button .urvanov-syntax-highlighter-button-icon,
-.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-copy-button:hover .urvanov-syntax-highlighter-button-icon,
-.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-copy-button.urvanov-syntax-highlighter-pressed:hover .urvanov-syntax-highlighter-button-icon {
+.crayon-toolbar .crayon-button.urvanov-syntax-highlighter-copy-button .urvanov-syntax-highlighter-button-icon,
+.crayon-toolbar .crayon-button.urvanov-syntax-highlighter-copy-button:hover .urvanov-syntax-highlighter-button-icon,
+.crayon-toolbar .crayon-button.urvanov-syntax-highlighter-copy-button.crayon-pressed:hover .urvanov-syntax-highlighter-button-icon {
     background-position: 0 -16px;
 }
 
-.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-nums-button .urvanov-syntax-highlighter-button-icon,
-.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-nums-button:hover .urvanov-syntax-highlighter-button-icon,
-.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-nums-button.urvanov-syntax-highlighter-pressed:hover .urvanov-syntax-highlighter-button-icon {
+.crayon-toolbar .crayon-button.urvanov-syntax-highlighter-nums-button .urvanov-syntax-highlighter-button-icon,
+.crayon-toolbar .crayon-button.urvanov-syntax-highlighter-nums-button:hover .urvanov-syntax-highlighter-button-icon,
+.crayon-toolbar .crayon-button.urvanov-syntax-highlighter-nums-button.crayon-pressed:hover .urvanov-syntax-highlighter-button-icon {
     background-position: 0 -32px;
 }
 
-.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-plain-button .urvanov-syntax-highlighter-button-icon,
-.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-plain-button:hover .urvanov-syntax-highlighter-button-icon,
-.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-plain-button.urvanov-syntax-highlighter-pressed:hover .urvanov-syntax-highlighter-button-icon {
+.crayon-toolbar .crayon-button.urvanov-syntax-highlighter-plain-button .urvanov-syntax-highlighter-button-icon,
+.crayon-toolbar .crayon-button.urvanov-syntax-highlighter-plain-button:hover .urvanov-syntax-highlighter-button-icon,
+.crayon-toolbar .crayon-button.urvanov-syntax-highlighter-plain-button.crayon-pressed:hover .urvanov-syntax-highlighter-button-icon {
     background-position: 0 -48px;
 }
 
-.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-mixed-button .urvanov-syntax-highlighter-button-icon,
-.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-mixed-button:hover .urvanov-syntax-highlighter-button-icon,
-.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-mixed-button.urvanov-syntax-highlighter-pressed:hover .urvanov-syntax-highlighter-button-icon {
+.crayon-toolbar .crayon-button.urvanov-syntax-highlighter-mixed-button .urvanov-syntax-highlighter-button-icon,
+.crayon-toolbar .crayon-button.urvanov-syntax-highlighter-mixed-button:hover .urvanov-syntax-highlighter-button-icon,
+.crayon-toolbar .crayon-button.urvanov-syntax-highlighter-mixed-button.crayon-pressed:hover .urvanov-syntax-highlighter-button-icon {
     background-position: 0 -64px;
 }
 
-.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-minimize .urvanov-syntax-highlighter-button-icon {
+.crayon-toolbar .crayon-button.urvanov-syntax-highlighter-minimize .urvanov-syntax-highlighter-button-icon {
     background-position: 0 -80px;
     background-color: transparent !important;
 }
 
-.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-expand-button .urvanov-syntax-highlighter-button-icon,
-.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-expand-button:hover .urvanov-syntax-highlighter-button-icon,
-.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-expand-button.urvanov-syntax-highlighter-pressed:hover .urvanov-syntax-highlighter-button-icon {
+.crayon-toolbar .crayon-button.urvanov-syntax-highlighter-expand-button .urvanov-syntax-highlighter-button-icon,
+.crayon-toolbar .crayon-button.urvanov-syntax-highlighter-expand-button:hover .urvanov-syntax-highlighter-button-icon,
+.crayon-toolbar .crayon-button.urvanov-syntax-highlighter-expand-button.crayon-pressed:hover .urvanov-syntax-highlighter-button-icon {
     background-position: 0 -96px;
 }
 
-.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-wrap-button .urvanov-syntax-highlighter-button-icon,
-.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-wrap-button:hover .urvanov-syntax-highlighter-button-icon,
-.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-wrap-button.urvanov-syntax-highlighter-pressed:hover .urvanov-syntax-highlighter-button-icon {
+.crayon-toolbar .crayon-button.urvanov-syntax-highlighter-wrap-button .urvanov-syntax-highlighter-button-icon,
+.crayon-toolbar .crayon-button.urvanov-syntax-highlighter-wrap-button:hover .urvanov-syntax-highlighter-button-icon,
+.crayon-toolbar .crayon-button.urvanov-syntax-highlighter-wrap-button.crayon-pressed:hover .urvanov-syntax-highlighter-button-icon {
     background-position: 0 -112px;
 }
 
 /* -- */
 
-.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-popup-button.urvanov-syntax-highlighter-pressed .urvanov-syntax-highlighter-button-icon,
-.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-popup-button:active .urvanov-syntax-highlighter-button-icon,
-.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-popup-button.urvanov-syntax-highlighter-pressed:active .urvanov-syntax-highlighter-button-icon {
+.crayon-toolbar .crayon-button.urvanov-syntax-highlighter-popup-button.crayon-pressed .urvanov-syntax-highlighter-button-icon,
+.crayon-toolbar .crayon-button.urvanov-syntax-highlighter-popup-button:active .urvanov-syntax-highlighter-button-icon,
+.crayon-toolbar .crayon-button.urvanov-syntax-highlighter-popup-button.crayon-pressed:active .urvanov-syntax-highlighter-button-icon {
     background-position: -24px 0;
 }
 
-.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-copy-button.urvanov-syntax-highlighter-pressed .urvanov-syntax-highlighter-button-icon,
-.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-copy-button:active .urvanov-syntax-highlighter-button-icon,
-.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-copy-button.urvanov-syntax-highlighter-pressed:active .urvanov-syntax-highlighter-button-icon {
+.crayon-toolbar .crayon-button.urvanov-syntax-highlighter-copy-button.crayon-pressed .urvanov-syntax-highlighter-button-icon,
+.crayon-toolbar .crayon-button.urvanov-syntax-highlighter-copy-button:active .urvanov-syntax-highlighter-button-icon,
+.crayon-toolbar .crayon-button.urvanov-syntax-highlighter-copy-button.crayon-pressed:active .urvanov-syntax-highlighter-button-icon {
     background-position: -24px -16px;
 }
 
-.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-nums-button.urvanov-syntax-highlighter-pressed .urvanov-syntax-highlighter-button-icon,
-.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-nums-button:active .urvanov-syntax-highlighter-button-icon,
-.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-nums-button.urvanov-syntax-highlighter-pressed:active .urvanov-syntax-highlighter-button-icon {
+.crayon-toolbar .crayon-button.urvanov-syntax-highlighter-nums-button.crayon-pressed .urvanov-syntax-highlighter-button-icon,
+.crayon-toolbar .crayon-button.urvanov-syntax-highlighter-nums-button:active .urvanov-syntax-highlighter-button-icon,
+.crayon-toolbar .crayon-button.urvanov-syntax-highlighter-nums-button.crayon-pressed:active .urvanov-syntax-highlighter-button-icon {
     background-position: -24px -32px;
 }
 
-.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-plain-button.urvanov-syntax-highlighter-pressed .urvanov-syntax-highlighter-button-icon,
-.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-plain-button:active .urvanov-syntax-highlighter-button-icon,
-.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-plain-button.urvanov-syntax-highlighter-pressed:active .urvanov-syntax-highlighter-button-icon {
+.crayon-toolbar .crayon-button.urvanov-syntax-highlighter-plain-button.crayon-pressed .urvanov-syntax-highlighter-button-icon,
+.crayon-toolbar .crayon-button.urvanov-syntax-highlighter-plain-button:active .urvanov-syntax-highlighter-button-icon,
+.crayon-toolbar .crayon-button.urvanov-syntax-highlighter-plain-button.crayon-pressed:active .urvanov-syntax-highlighter-button-icon {
     background-position: -24px -48px;
 }
 
-.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-mixed-button.urvanov-syntax-highlighter-pressed .urvanov-syntax-highlighter-button-icon,
-.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-mixed-button:active .urvanov-syntax-highlighter-button-icon,
-.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-mixed-button.urvanov-syntax-highlighter-pressed:active .urvanov-syntax-highlighter-button-icon {
+.crayon-toolbar .crayon-button.urvanov-syntax-highlighter-mixed-button.crayon-pressed .urvanov-syntax-highlighter-button-icon,
+.crayon-toolbar .crayon-button.urvanov-syntax-highlighter-mixed-button:active .urvanov-syntax-highlighter-button-icon,
+.crayon-toolbar .crayon-button.urvanov-syntax-highlighter-mixed-button.crayon-pressed:active .urvanov-syntax-highlighter-button-icon {
     background-position: -24px -64px;
 }
 
-.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-minimize .urvanov-syntax-highlighter-button-icon {
+.crayon-toolbar .crayon-button.urvanov-syntax-highlighter-minimize .urvanov-syntax-highlighter-button-icon {
     background-position: -24px -80px;
     background-color: transparent !important;
 }
 
-.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-expand-button.urvanov-syntax-highlighter-pressed .urvanov-syntax-highlighter-button-icon,
-.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-expand-button:active .urvanov-syntax-highlighter-button-icon,
-.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-expand-button.urvanov-syntax-highlighter-pressed:active .urvanov-syntax-highlighter-button-icon {
+.crayon-toolbar .crayon-button.urvanov-syntax-highlighter-expand-button.crayon-pressed .urvanov-syntax-highlighter-button-icon,
+.crayon-toolbar .crayon-button.urvanov-syntax-highlighter-expand-button:active .urvanov-syntax-highlighter-button-icon,
+.crayon-toolbar .crayon-button.urvanov-syntax-highlighter-expand-button.crayon-pressed:active .urvanov-syntax-highlighter-button-icon {
     background-position: -24px -96px;
 }
 
-.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-wrap-button.urvanov-syntax-highlighter-pressed .urvanov-syntax-highlighter-button-icon,
-.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-wrap-button:active .urvanov-syntax-highlighter-button-icon,
-.urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button.urvanov-syntax-highlighter-wrap-button.urvanov-syntax-highlighter-pressed:active .urvanov-syntax-highlighter-button-icon {
+.crayon-toolbar .crayon-button.urvanov-syntax-highlighter-wrap-button.crayon-pressed .urvanov-syntax-highlighter-button-icon,
+.crayon-toolbar .crayon-button.urvanov-syntax-highlighter-wrap-button:active .urvanov-syntax-highlighter-button-icon,
+.crayon-toolbar .crayon-button.urvanov-syntax-highlighter-wrap-button.crayon-pressed:active .urvanov-syntax-highlighter-button-icon {
     background-position: -24px -112px;
 }
 
 /* Language */
-.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-language {
+.urvanov-syntax-highlighter-syntax .crayon-toolbar .crayon-language {
     padding-right: 8px !important;
 }
 
-.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-title,
-.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-language {
+.urvanov-syntax-highlighter-syntax .crayon-title,
+.urvanov-syntax-highlighter-syntax .crayon-language {
     float: left;
 }
 
@@ -349,7 +349,7 @@ coloring etc.
 /* End Scrollbar =================== */
 
 /* Code ============================ */
-.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-pre,
+.urvanov-syntax-highlighter-syntax .crayon-pre,
 .urvanov-syntax-highlighter-syntax pre {
     color: #000;
     white-space: pre;
@@ -361,11 +361,11 @@ coloring etc.
     tab-size: 4;
 }
 
-.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-line {
+.urvanov-syntax-highlighter-syntax .crayon-line {
     padding: 0 5px;
 }
 
-.urvanov-syntax-highlighter-syntax.urvanov-syntax-highlighter-wrapped .urvanov-syntax-highlighter-line {
+.urvanov-syntax-highlighter-syntax.urvanov-syntax-highlighter-wrapped .crayon-line {
     /* width: 500px !important; */
     white-space: pre-wrap !important;
     /*    word-wrap:break-word !important;*/
@@ -373,12 +373,12 @@ coloring etc.
     word-break: break-all;
 }
 
-.urvanov-syntax-highlighter-syntax-inline .urvanov-syntax-highlighter-pre,
+.urvanov-syntax-highlighter-syntax-inline .crayon-pre,
 .urvanov-syntax-highlighter-syntax-inline pre {
     white-space: normal;
 }
 
-.urvanov-syntax-highlighter-syntax-inline-nowrap .urvanov-syntax-highlighter-pre,
+.urvanov-syntax-highlighter-syntax-inline-nowrap .crayon-pre,
 .urvanov-syntax-highlighter-syntax-inline-nowrap pre {
     white-space: pre;
 }
@@ -391,8 +391,8 @@ coloring etc.
     font-weight: 500;
 }
 
-.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-toolbar *::selection,
-.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-nums *::selection {
+.urvanov-syntax-highlighter-syntax .crayon-toolbar *::selection,
+.urvanov-syntax-highlighter-syntax .crayon-nums *::selection {
     background: transparent;
 }
 
@@ -401,22 +401,22 @@ coloring etc.
 This has been disabled to allow more flexibility in changing font sizes.
 
 .urvanov-syntax-highlighter-syntax,
-.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-nums,
+.urvanov-syntax-highlighter-syntax .crayon-nums,
 .urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-plain,
-.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-pre {
+.urvanov-syntax-highlighter-syntax .crayon-pre {
 	font-size: 12px !important;
 	line-height: 15px !important;
 }
 */
 
-.urvanov-syntax-highlighter-table .urvanov-syntax-highlighter-nums-content {
+.crayon-table .urvanov-syntax-highlighter-nums-content {
     white-space: nowrap; /* Prevent wrapping line numbers in some themes */
 }
 
-.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-num,
-.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-pre .urvanov-syntax-highlighter-line,
-.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-toolbar *,
-.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-pre * {
+.urvanov-syntax-highlighter-syntax .crayon-num,
+.urvanov-syntax-highlighter-syntax .crayon-pre .crayon-line,
+.urvanov-syntax-highlighter-syntax .crayon-toolbar *,
+.urvanov-syntax-highlighter-syntax .crayon-pre * {
     font-family: inherit;
     font-size: inherit !important;
     line-height: inherit !important;
@@ -424,7 +424,7 @@ This has been disabled to allow more flexibility in changing font sizes.
     height: inherit;
 }
 
-.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-button .urvanov-syntax-highlighter-button-icon {
+.urvanov-syntax-highlighter-syntax .crayon-toolbar .crayon-button .urvanov-syntax-highlighter-button-icon {
     background-image: url('../images/toolbar/buttons.png');
     height: 16px !important;
     width: 100%;
@@ -434,7 +434,7 @@ This has been disabled to allow more flexibility in changing font sizes.
     margin-top: -8px;
 }
 
-.urvanov-syntax-highlighter-syntax .urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-tools {
+.urvanov-syntax-highlighter-syntax .crayon-toolbar .crayon-tools {
     position: absolute;
     right: 0;
 }
@@ -452,13 +452,13 @@ This has been disabled to allow more flexibility in changing font sizes.
     width: 100% !important;
 }
 
-.urvanov-syntax-highlighter-toolbar-visible .urvanov-syntax-highlighter-toolbar {
+.urvanov-syntax-highlighter-toolbar-visible .crayon-toolbar {
     position: relative !important;
     margin-top: 0 !important;
     display: block !important;
 }
 
-.urvanov-syntax-highlighter-syntax.urvanov-syntax-highlighter-expanded .urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-tools {
+.urvanov-syntax-highlighter-syntax.urvanov-syntax-highlighter-expanded .crayon-toolbar .crayon-tools {
     position: relative;
     right: auto;
     float: left !important;
@@ -505,25 +505,25 @@ This has been disabled to allow more flexibility in changing font sizes.
 /* End Code ======================== */
 
 /* Minimize ================= */
-.urvanov-syntax-highlighter-minimized .urvanov-syntax-highlighter-toolbar {
+.urvanov-syntax-highlighter-minimized .crayon-toolbar {
     cursor: pointer;
 }
 
 .urvanov-syntax-highlighter-minimized .urvanov-syntax-highlighter-plain-wrap,
 .urvanov-syntax-highlighter-minimized .urvanov-syntax-highlighter-main,
-.urvanov-syntax-highlighter-minimized .urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-tools * {
+.urvanov-syntax-highlighter-minimized .crayon-toolbar .crayon-tools * {
     display: none !important;
 }
 
-.urvanov-syntax-highlighter-minimized .urvanov-syntax-highlighter-toolbar .urvanov-syntax-highlighter-tools .urvanov-syntax-highlighter-minimize {
+.urvanov-syntax-highlighter-minimized .crayon-toolbar .crayon-tools .urvanov-syntax-highlighter-minimize {
     display: block !important;
 }
 
-.urvanov-syntax-highlighter-minimized .urvanov-syntax-highlighter-toolbar {
+.urvanov-syntax-highlighter-minimized .crayon-toolbar {
     position: relative !important;
 }
 
-.urvanov-syntax-highlighter-syntax.urvanov-syntax-highlighter-minimized .urvanov-syntax-highlighter-toolbar {
+.urvanov-syntax-highlighter-syntax.urvanov-syntax-highlighter-minimized .crayon-toolbar {
     border-bottom: none !important;
 }
 
