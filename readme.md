@@ -3,6 +3,9 @@
 Reincarnation of Crayon Syntax Highlighter. Somewhere in documentation and in UI
 it still shows like Crayon. Don't be scrared of this.
 
+Use special Urvanov Syntax Highlighter block in new posts. Don't use standard
+Code block.
+
 Supports multiple languages, themes, fonts, highlighting from a URL, local file or post text.
 
 ![snapshot](https://raw.githubusercontent.com/aramk/crayon-syntax-highlighter/master/screenshots/screenshot-2.png)

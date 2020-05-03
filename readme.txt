@@ -322,6 +322,11 @@ Contact me at http://twitter.com/crayonsyntax or crayon.syntax@gmail.com.
 
 == Changelog ==
 
+= 2.8.10
+* FIXED
+    * Theme editor fixed.
+    * Crayon themes support.
+ 
 = 2.8.9
 * FIXED:
     * Deprecated: implode(): Passing glue string after array is deprecated. Swap the parameters
