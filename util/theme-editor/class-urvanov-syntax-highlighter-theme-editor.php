@@ -8,7 +8,7 @@ class Urvanov_Syntax_Highlighter_HTML_Element {
     public $closed = FALSE;
     public $contents = '';
     public $attributes = array();
-    const CSS_INPUT_PREFIX = "urvanov-syntax-highlighter-theme-input-";
+    const CSS_INPUT_PREFIX = "crayon-theme-input-";
 
     public static $borderStyles = array(
         'none',
@@ -350,11 +350,11 @@ class Urvanov_Syntax_Highlighter_Theme_Editor_WP {
         $tStripedMarked = Urvanov_Syntax_Highlighter_Global::urvanov__("Striped & Marked");
         $tLanguage = Urvanov_Syntax_Highlighter_Global::urvanov__("Language");
 
-        $top = '.urvanov-syntax-highlighter-top';
-        $bottom = '.urvanov-syntax-highlighter-bottom';
+        $top = '.crayon-top';
+        $bottom = '.crayon-bottom';
         $hover = ':hover';
         $active = ':active';
-        $pressed = '.urvanov-syntax-highlighter-pressed';
+        $pressed = '.crayon-pressed';
 
         ?>
 
@@ -414,7 +414,7 @@ class Urvanov_Syntax_Highlighter_Theme_Editor_WP {
                     </div>
                     <div id="tabs-2">
                         <?php
-                        $highlight = ' .urvanov-syntax-highlighter-pre';
+                        $highlight = ' .crayon-pre';
                         $elems = array(
                             'c' => Urvanov_Syntax_Highlighter_Global::urvanov__("Comment"),
                             's' => Urvanov_Syntax_Highlighter_Global::urvanov__("String"),
@@ -438,7 +438,7 @@ class Urvanov_Syntax_Highlighter_Theme_Editor_WP {
                         );
                         $atts = array(new Urvanov_Syntax_Highlighter_HTML_Title($tHighlighting));
                         foreach ($elems as $class => $name) {
-                            $fullClass = $class != '' ? $highlight . ' .urvanov-syntax-highlighter-' . $class : $highlight;
+                            $fullClass = $class != '' ? $highlight . ' .crayon-' . $class : $highlight;
                             $atts[] = array(
                                 $name,
                                 self::createAttribute($fullClass, 'color'),
@@ -476,9 +476,9 @@ class Urvanov_Syntax_Highlighter_Theme_Editor_WP {
                     </div>
                     <div id="tabs-4">
                         <?php
-                        $stripedLine = ' .urvanov-syntax-highlighter-striped-line';
-                        $markedLine = ' .urvanov-syntax-highlighter-marked-line';
-                        $stripedMarkedLine = ' .urvanov-syntax-highlighter-marked-line.urvanov-syntax-highlighter-striped-line';
+                        $stripedLine = ' .crayon-striped-line';
+                        $markedLine = ' .crayon-marked-line';
+                        $stripedMarkedLine = ' .crayon-marked-line.crayon-striped-line';
                         self::createAttributesForm(array(
                             new Urvanov_Syntax_Highlighter_HTML_Title($tLines),
                             new Urvanov_Syntax_Highlighter_HTML_Separator($tNormal),
@@ -502,10 +502,10 @@ class Urvanov_Syntax_Highlighter_Theme_Editor_WP {
                     </div>
                     <div id="tabs-5">
                         <?php
-                        $nums = ' .urvanov-syntax-highlighter-table .urvanov-syntax-highlighter-nums';
-                        $stripedNum = ' .urvanov-syntax-highlighter-striped-num';
-                        $markedNum = ' .urvanov-syntax-highlighter-marked-num';
-                        $stripedMarkedNum = ' .urvanov-syntax-highlighter-marked-num.urvanov-syntax-highlighter-striped-num';
+                        $nums = ' .crayon-table .crayon-nums';
+                        $stripedNum = ' .crayon-striped-num';
+                        $markedNum = ' .crayon-marked-num';
+                        $stripedMarkedNum = ' .crayon-marked-num.crayon-striped-num';
                         self::createAttributesForm(array(
                             new Urvanov_Syntax_Highlighter_HTML_Title($tNumbers),
                             array(
@@ -539,11 +539,11 @@ class Urvanov_Syntax_Highlighter_Theme_Editor_WP {
                     </div>
                     <div id="tabs-6">
                         <?php
-                        $toolbar = ' .urvanov-syntax-highlighter-toolbar';
-                        $title = ' .urvanov-syntax-highlighter-title';
-                        $button = ' .urvanov-syntax-highlighter-button';
-                        $info = ' .urvanov-syntax-highlighter-info';
-                        $language = ' .urvanov-syntax-highlighter-language';
+                        $toolbar = ' .crayon-toolbar';
+                        $title = ' .crayon-title';
+                        $button = ' .crayon-button';
+                        $info = ' .crayon-info';
+                        $language = ' .crayon-language';
                         self::createAttributesForm(array(
                             new Urvanov_Syntax_Highlighter_HTML_Title($tToolbar),
                             new Urvanov_Syntax_Highlighter_HTML_Separator($tFrame),

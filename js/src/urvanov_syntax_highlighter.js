@@ -45,22 +45,22 @@
 
     // END AUXILIARY FUNCTIONS
 
-    var PRESSED = 'urvanov-syntax-highlighter-pressed';
+    var PRESSED = 'crayon-pressed';
     var UNPRESSED = '';
 
     var URVANOV_SYNTAX_HIGHLIGHTER_SYNTAX = 'div.urvanov-syntax-highlighter-syntax';
-    var URVANOV_SYNTAX_HIGHLIGHTER_TOOLBAR = '.urvanov-syntax-highlighter-toolbar';
-    var URVANOV_SYNTAX_HIGHLIGHTER_INFO = '.urvanov-syntax-highlighter-info';
+    var URVANOV_SYNTAX_HIGHLIGHTER_TOOLBAR = '.crayon-toolbar';
+    var URVANOV_SYNTAX_HIGHLIGHTER_INFO = '.crayon-info';
     var URVANOV_SYNTAX_HIGHLIGHTER_PLAIN = '.urvanov-syntax-highlighter-plain';
     var URVANOV_SYNTAX_HIGHLIGHTER_MAIN = '.urvanov-syntax-highlighter-main';
-    var URVANOV_SYNTAX_HIGHLIGHTER_TABLE = '.urvanov-syntax-highlighter-table';
+    var URVANOV_SYNTAX_HIGHLIGHTER_TABLE = '.crayon-table';
     var URVANOV_SYNTAX_HIGHLIGHTER_LOADING = '.urvanov-syntax-highlighter-loading';
     var URVANOV_SYNTAX_HIGHLIGHTER_CODE = '.urvanov-syntax-highlighter-code';
-    var URVANOV_SYNTAX_HIGHLIGHTER_TITLE = '.urvanov-syntax-highlighter-title';
-    var URVANOV_SYNTAX_HIGHLIGHTER_TOOLS = '.urvanov-syntax-highlighter-tools';
-    var URVANOV_SYNTAX_HIGHLIGHTER_NUMS = '.urvanov-syntax-highlighter-nums';
-    var URVANOV_SYNTAX_HIGHLIGHTER_NUM = '.urvanov-syntax-highlighter-num';
-    var URVANOV_SYNTAX_HIGHLIGHTER_LINE = '.urvanov-syntax-highlighter-line';
+    var URVANOV_SYNTAX_HIGHLIGHTER_TITLE = '.crayon-title';
+    var URVANOV_SYNTAX_HIGHLIGHTER_TOOLS = '.crayon-tools';
+    var URVANOV_SYNTAX_HIGHLIGHTER_NUMS = '.crayon-nums';
+    var URVANOV_SYNTAX_HIGHLIGHTER_NUM = '.crayon-num';
+    var URVANOV_SYNTAX_HIGHLIGHTER_LINE = '.crayon-line';
     var URVANOV_SYNTAX_HIGHLIGHTER_WRAPPED = 'urvanov-syntax-highlighter-wrapped';
     var URVANOV_SYNTAX_HIGHLIGHTER_NUMS_CONTENT = '.urvanov-syntax-highlighter-nums-content';
     var URVANOV_SYNTAX_HIGHLIGHTER_NUMS_BUTTON = '.urvanov-syntax-highlighter-nums-button';
