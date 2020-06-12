@@ -11,7 +11,7 @@
     VALUES:IDENTIFIER   \[[^\]]*\]
 
     DEFAULT             (:([^\{\}<>:,\n]*))
-    LIST_KEY:STRING     ((\-\s*)?[\w-\\]+(?=\s*:))|(\-\s*(?=\{))
+    LIST_KEY:STRING     ((\-\s*)?[\w\-\\]+(?=\s*:))|(\-\s*(?=\{))
     TAG                 %(\w+)
     ANCHOR:CONSTANT     &\w+
     REF:ENTITY          \*\w+
