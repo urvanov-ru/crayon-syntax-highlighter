@@ -326,6 +326,7 @@ Contact me at http://twitter.com/crayonsyntax or crayon.syntax@gmail.com.
 
 * FIXED
     * Site and donate url in class-urvanov-syntax-highlighter-global.php
+    * Fix mark in readme.txt
 
 
 = 2.8.11 =
