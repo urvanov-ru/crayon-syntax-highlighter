@@ -324,9 +324,11 @@ Contact me at http://twitter.com/crayonsyntax or crayon.syntax@gmail.com.
 
 == Changelog ==
 
+= 2.8.12 =
 * FIXED
     * Site and donate url in class-urvanov-syntax-highlighter-global.php
     * Fix mark in readme.txt
+    * "Open Code in New Window" syntax highlighting.
 
 
 = 2.8.11 =

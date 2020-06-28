@@ -493,7 +493,7 @@
                 filtered = css;
             } else {
                 // Filter all others for UrvanovSyntaxHighlighter CSS
-                filtered = css.filter('[href*="urvanov-syntax-highlighter-syntax-highlighter"], [href*="min/"]');
+                filtered = css.filter('[href*="urvanov-syntax-highlighter"], [href*="min/"]');
             }
             filtered.each(function () {
                 var string = base.getHtmlString($(this));
