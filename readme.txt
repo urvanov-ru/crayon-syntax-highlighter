@@ -132,7 +132,7 @@ See the <a href="http://aramk.com/blog/2011/09/23/crayon-language-file-specifica
 
 **International Languages**
 
-* Arabic (thanks to <a href="http://djennadhamza.eb2a.com/" target="_blank">Djennad Hamza</a>)
+* Arabic (thanks to Djennad Hamza)
 * Chinese Simplified (thanks to <a href="http://smerpup.com/" target="_blank">Dezhi Liu</a> & <a href="http://neverno.me/" target="_blank">Jash Yin</a>)
 * Chinese Traditional (thanks to <a href="http://www.arefly.com/" target="_blank">Arefly</a>)
 * Dutch (thanks to <a href="https://twitter.com/RobinRoelofsen" target="_blank">Robin Roelofsen</a> & <a href="https://twitter.com/#!/chilionsnoek" target="_blank">Chilion Snoek</a>)

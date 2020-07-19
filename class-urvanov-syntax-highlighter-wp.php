@@ -1205,7 +1205,7 @@ class Human {
         $developer = '<strong>' . Urvanov_Syntax_Highlighter_Global::urvanov__('Developer') . ':</strong> ' . '<a href="' . $URVANOV_SYNTAX_HIGHLIGHTER_AUTHOR_SITE . '" target="_blank">' . $URVANOV_SYNTAX_HIGHLIGHTER_AUTHOR . '</a>';
         $translators = '<strong>' . Urvanov_Syntax_Highlighter_Global::urvanov__('Translators') . ':</strong> ' .
             '
-            Arabic (<a href="http://djennadhamza.eb2a.com/" target="_blank">Djennad Hamza</a>),
+            Arabic (Djennad Hamza),
             Chinese Simplified (<a href="http://smerpup.com/" target="_blank">Dezhi Liu</a>, <a href="http://neverno.me/" target="_blank">Jash Yin</a>),
             Chinese Traditional (<a href="http://www.arefly.com/" target="_blank">Arefly</a>),
             Dutch (<a href="https://twitter.com/RobinRoelofsen" target="_blank">Robin Roelofsen</a>, <a href="https://twitter.com/#!/chilionsnoek" target="_blank">Chilion Snoek</a>),
