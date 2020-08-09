@@ -1206,7 +1206,7 @@ class Human {
         $translators = '<strong>' . Urvanov_Syntax_Highlighter_Global::urvanov__('Translators') . ':</strong> ' .
             '
             Arabic (Djennad Hamza),
-            Chinese Simplified (<a href="http://smerpup.com/" target="_blank">Dezhi Liu</a>, <a href="http://neverno.me/" target="_blank">Jash Yin</a>),
+            Chinese Simplified (<a href="http://smerpup.com/" target="_blank">Dezhi Liu</a>, Jash Yin),
             Chinese Traditional (<a href="http://www.arefly.com/" target="_blank">Arefly</a>),
             Dutch (<a href="https://twitter.com/RobinRoelofsen" target="_blank">Robin Roelofsen</a>, <a href="https://twitter.com/#!/chilionsnoek" target="_blank">Chilion Snoek</a>),
             French (<a href="https://vhf.github.io" target="_blank">Victor Felder</a>),
@@ -1224,7 +1224,7 @@ class Human {
             Slovak (<a href="https://twitter.com/#!/webhostgeeks" target="_blank">webhostgeeks</a>),
             Slovenian (<a href="http://jodlajodla.si/" target="_blank">Jan Su&#353;nik</a>),
             Spanish (<a href="http://www.hbravo.com/" target="_blank">Hermann Bravo</a>),
-            Tamil (<a href="http://kks21199.mrgoogleglass.com/" target="_blank">KKS21199</a>),
+            Tamil (KKS21199),
             Turkish (<a href="http://hakanertr.wordpress.com" target="_blank">Hakan</a>),
             Ukrainian (<a href="http://getvoip.com/blog" target="_blank">Michael Yunat</a>)';
 

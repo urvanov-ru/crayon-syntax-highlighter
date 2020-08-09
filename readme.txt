@@ -132,8 +132,8 @@ See the <a href="http://aramk.com/blog/2011/09/23/crayon-language-file-specifica
 
 **International Languages**
 
-* Arabic (thanks to Djennad Hamza)
-* Chinese Simplified (thanks to <a href="http://smerpup.com/" target="_blank">Dezhi Liu</a> & <a href="http://neverno.me/" target="_blank">Jash Yin</a>)
+* Arabic (thanks to Djennad Hamza),
+* Chinese Simplified (thanks to <a href="http://smerpup.com/" target="_blank">Dezhi Liu</a> & Jash Yin)
 * Chinese Traditional (thanks to <a href="http://www.arefly.com/" target="_blank">Arefly</a>)
 * Dutch (thanks to <a href="https://twitter.com/RobinRoelofsen" target="_blank">Robin Roelofsen</a> & <a href="https://twitter.com/#!/chilionsnoek" target="_blank">Chilion Snoek</a>)
 * Finnish (thanks to <a href="https://github.com/vahalan" target="_blank">vahalan</a>)
@@ -151,14 +151,14 @@ See the <a href="http://aramk.com/blog/2011/09/23/crayon-language-file-specifica
 * Slovak (thanks to Branco, <a href="https://twitter.com/#!/webhostgeeks" target="_blank">webhostgeeks/</a>)
 * Slovenian (thanks to Jan Su&#353;nik, <a href="http://jodlajodla.si/" target="_blank">http://jodlajodla.si/</a>)
 * Spanish (thanks to <a href="http://www.hbravo.com/" target="_blank">Hermann Bravo</a>)
-* Tamil (thanks to <a href="http://kks21199.mrgoogleglass.com/" target="_blank">KKS21199</a>)
+* Tamil (thanks to KKS21199)
 * Turkish (thanks to <a href="http://hakanertr.wordpress.com" target="_blank">Hakan</a>)
 * Ukrainian (thanks to <a href="http://getvoip.com/blog" target="_blank">Michael Yunat</a>)
 * Help from translators at improving/adding to this list greatly appreciated!
 
 **Articles**
 
-These are helpful for discovering new features.
+These are helpful for discovering new features (Links don't work. TODO: think about moving it to my site).
 
 * <a href="http://aramk.com/blog/2012/09/26/internal-post-management-crayon/" target="_blank">Internal Post Management in Crayon</a>
 * <a href="http://aramk.com/blog/2012/09/26/converting-legacy-tags-to-pre/" target="_blank">Converting Legacy Tags to &lt;pre&gt;</a>
