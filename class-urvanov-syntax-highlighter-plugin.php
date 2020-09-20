@@ -902,6 +902,10 @@ class Urvanov_Syntax_Highlighter_Plugin {
         self::refresh_post($post);
     }
 
+    public static function rest_after_insert( $post, $request, $creating ){
+    	Urvanov_Syntax_Highlighter_Plugin::save_post(null, $post);
+    }
+
     public static function filter_post_data($data, $postarr) {
         // Remove the selected CSS that may be present from the tag editor.
         UrvanovSyntaxHighlighterTagEditorWP::init_settings();
@@ -1332,8 +1336,7 @@ if (defined('ABSPATH')) {
         add_action('edit_comment', 'Urvanov_Syntax_Highlighter_Plugin::save_comment', 10, 2);
     }
     add_filter('init', 'Urvanov_Syntax_Highlighter_Plugin::init_ajax');
-
-    
+    add_action( 'rest_after_insert_post', 'Urvanov_Syntax_Highlighter_Plugin::rest_after_insert', 10, 3 );
 }
 
 function register_urvanov_syntax_highlighter_gutenberg_block() {
