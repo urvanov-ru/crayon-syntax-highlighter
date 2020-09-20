@@ -2,7 +2,7 @@
 BASEDIR=$(dirname $0)
 cd $BASEDIR
 
-MINIFIER='/home/fedya/programs/yuicompressor-2.4.8.jar'
+MINIFIER='/home/fedor/programs/yuicompressor-2.4.8.jar'
 INPUT_PATH='src'
 OUTPUT_PATH='min'
 TE_PATH='../util/tag-editor'
@@ -13,5 +13,5 @@ function minify {
     inputs=${@:0:$#}
     output=${@:$#}
     cat $inputs > $output
-    /home/fedya/programs/jdk1.6.0_45/bin/java -jar $MINIFIER $output -o $output
+    /home/fedor/programs/jdk1.6.0_45/bin/java -jar $MINIFIER $output -o $output
 }
