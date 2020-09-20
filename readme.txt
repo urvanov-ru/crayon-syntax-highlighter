@@ -324,6 +324,10 @@ Contact me at http://twitter.com/crayonsyntax or crayon.syntax@gmail.com.
 
 == Changelog ==
 
+= 2.8.14
+* FIXED
+    * Fix save post for REST API (For Gutenberg).
+
 = 2.8.13 =
 * FIXED
     * Some broken urls.
