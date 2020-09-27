@@ -13,11 +13,7 @@ Reincarnation of Crayon Syntax Highlighter. Syntax Highlighter supporting multip
 
 How to use the plugin:
 
-[embed width="640" height="480"]https://www.youtube.com/watch?v=2aBtVJOOqqA[/embed]
-
 https://www.youtube.com/watch?v=2aBtVJOOqqA
-
-[youtube https://www.youtube.com/watch?v=2aBtVJOOqqA]
 
 A Syntax Highlighter built in PHP and jQuery that supports customizable languages and themes.
 It can highlight from a URL, or Wordpress post text. Crayon makes it easy to manage Language files and define
