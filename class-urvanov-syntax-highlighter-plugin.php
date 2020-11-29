@@ -35,7 +35,7 @@ require_once('class-urvanov-syntax-highlighter-wp.php');
 
 Urvanov_Syntax_Highlighter_Global::set_info(array(
 	'Version' => '%urvanov-syntax-highlighter-version%',
-	'Date' => '06th April, 2019',
+	'Date' => '%urvanov-syntax-highlighter-date%',
 	'AuthorName' => 'Fedor Urvanov & Aram Kocharyan',
 	'PluginURI' => 'https://github.com/urvanov-ru/crayon-syntax-highlighter',
 ));

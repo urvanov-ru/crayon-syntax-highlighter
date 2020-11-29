@@ -328,6 +328,10 @@ Contact me at http://twitter.com/crayonsyntax or crayon.syntax@gmail.com.
 
 == Changelog ==
 
+= 2.8.15
+* FIXED
+    * A non well formed numeric value with Custom Font Size unchecked
+
 = 2.8.14
 * FIXED
     * Fix save post for REST API (For Gutenberg).
