@@ -129,9 +129,9 @@ class Urvanov_Syntax_Highlighter_Formatter {
                 $info_style .= "min-height: $info_height line-height: $info_height";
             }
         } else if (!$hl->is_inline()) {
-            if (($font_size = Urvanov_Syntax_Highlighter_Global_Settings::get(Urvanov_Syntax_Highlighter_Settings::FONT_SIZE)) !== FALSE) {
-                $font_size = $font_size->def() . 'px !important;';
-                $line_height = ($font_size * 1.4) . 'px !important;';
+            if (($_font_size = Urvanov_Syntax_Highlighter_Global_Settings::get(Urvanov_Syntax_Highlighter_Settings::FONT_SIZE)) !== FALSE) {
+                $font_size = $_font_size->def() . 'px !important;';
+                $line_height = ($_font_size->def() * 1.4) . 'px !important;';
             }
         }
 
