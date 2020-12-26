@@ -262,9 +262,6 @@
 
     };
 
-    $(document).ready(function () {
-        // Load TinyMCE
-        UrvanovSyntaxHighlighterTinyMCE.loadTinyMCE();
-    });
+    UrvanovSyntaxHighlighterTinyMCE.loadTinyMCE();
 
 })(jQueryUrvanovSyntaxHighlighter);
