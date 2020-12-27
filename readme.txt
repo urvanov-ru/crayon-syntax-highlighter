@@ -330,6 +330,10 @@ Contact me at http://twitter.com/crayonsyntax or crayon.syntax@gmail.com.
 
 = 2.8.16 =
 * FIXED
+    * Version compare additional check is_countable.
+
+= 2.8.16 =
+* FIXED
     * Classic editor button should exists now.
     
 
