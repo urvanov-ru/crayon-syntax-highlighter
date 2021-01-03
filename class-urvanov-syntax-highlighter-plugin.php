@@ -1130,7 +1130,8 @@ class Urvanov_Syntax_Highlighter_Plugin {
             $touched = FALSE;
 
             // Upgrade database and settings
-
+            
+            UrvanovSyntaxHighlighterLog::log($version, 'Upgrading database and settings');
             if (UrvanovSyntaxHighlighterUtil::version_compare($version, '1.7.21') < 0) {
                 $settings[Urvanov_Syntax_Highlighter_Settings::SCROLL] = $defaults[Urvanov_Syntax_Highlighter_Settings::SCROLL];
                 $touched = TRUE;
@@ -1323,6 +1324,7 @@ if (defined('ABSPATH')) {
         }
     } else {
         // Update between versions
+        UrvanovSyntaxHighlighterLog::log("Calling update plugin...");
         Urvanov_Syntax_Highlighter_Plugin::update();
         // For marking a post as containing a Crayon
         add_action('update_post', 'Urvanov_Syntax_Highlighter_Plugin::save_post', 10, 2);

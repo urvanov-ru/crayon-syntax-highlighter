@@ -328,6 +328,10 @@ Contact me at http://twitter.com/crayonsyntax or crayon.syntax@gmail.com.
 
 == Changelog ==
 
+= 2.8.18 =
+* ADDED
+    * More detailed log to version compare.
+
 = 2.8.17 =
 * FIXED
     * Version compare additional check is_countable.

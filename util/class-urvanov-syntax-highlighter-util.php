@@ -659,8 +659,9 @@ EOT;
 
     // Breaks up a version string into parts
     public static function version_parts($version) {
+        UrvanovSyntaxHighlighterLog::log($version, 'version_parts started');
         preg_match('#[\d+\.]+#msi', $version, $match);
-        UrvanovSyntaxHighlighterLog::debug($match, "version_parts match");
+        UrvanovSyntaxHighlighterLog::log($match, "version_parts match");
         if ((is_countable($match)) && (count($match[0]))) {
             return explode('.', $match[0]);
         } else {
