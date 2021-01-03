@@ -1132,22 +1132,22 @@ class Urvanov_Syntax_Highlighter_Plugin {
             // Upgrade database and settings
             
             UrvanovSyntaxHighlighterLog::log($version, 'Upgrading database and settings');
-            if (UrvanovSyntaxHighlighterUtil::version_compare($version, '1.7.21') < 0) {
+            if (version_compare($version, '1.7.21') < 0) {
                 $settings[Urvanov_Syntax_Highlighter_Settings::SCROLL] = $defaults[Urvanov_Syntax_Highlighter_Settings::SCROLL];
                 $touched = TRUE;
             }
 
-            if (UrvanovSyntaxHighlighterUtil::version_compare($version, '1.7.23') < 0 && $settings[Urvanov_Syntax_Highlighter_Settings::FONT] == 'theme-font') {
+            if (version_compare($version, '1.7.23') < 0 && $settings[Urvanov_Syntax_Highlighter_Settings::FONT] == 'theme-font') {
                 $settings[Urvanov_Syntax_Highlighter_Settings::FONT] = $defaults[Urvanov_Syntax_Highlighter_Settings::FONT];
                 $touched = TRUE;
             }
 
-            if (UrvanovSyntaxHighlighterUtil::version_compare($version, '1.14') < 0) {
+            if (version_compare($version, '1.14') < 0) {
                 UrvanovSyntaxHighlighterLog::syslog("Updated to v1.14: Font size enabled");
                 $settings[Urvanov_Syntax_Highlighter_Settings::FONT_SIZE_ENABLE] = TRUE;
             }
 
-            if (UrvanovSyntaxHighlighterUtil::version_compare($version, '1.17') < 0) {
+            if (version_compare($version, '1.17') < 0) {
                 $settings[Urvanov_Syntax_Highlighter_Settings::HIDE_HELP] = FALSE;
             }
 

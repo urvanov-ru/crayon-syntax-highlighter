@@ -657,38 +657,6 @@ EOT;
         return strval(dechex(strlen($str))) . strval(dechex($uid));
     }
 
-    // Breaks up a version string into parts
-    public static function version_parts($version) {
-        UrvanovSyntaxHighlighterLog::log($version, 'version_parts started');
-        preg_match('#[\d+\.]+#msi', $version, $match);
-        UrvanovSyntaxHighlighterLog::log($match, "version_parts match");
-        if ((is_countable($match)) && (count($match[0]))) {
-            return explode('.', $match[0]);
-        } else {
-            return array();
-        }
-    }
-
-    // Compares two version strings lexicographically
-    public static function version_compare($a, $b) {
-        $a_parts = self::version_parts($a);
-        $b_parts = self::version_parts($b);
-        return self::array_compare_lexi($a_parts, $b_parts);
-    }
-
-    // Compares two arrays lexicographically
-    // This could be extended with a compare function argument
-    public static function array_compare_lexi($a, $b) {
-        $short = count($a) < count($b) ? $a : $b;
-        for ($i = 0; $i < count($short); $i++) {
-            if ($a[$i] > $b[$i]) {
-                return 1;
-            } else if ($a[$i] < $b[$i]) {
-                return -1;
-            }
-        }
-        return 0;
-    }
 
     // strpos with an array of $needles
     public static function strposa($haystack, $needles, $insensitive = FALSE) {
