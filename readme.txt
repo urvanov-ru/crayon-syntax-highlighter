@@ -328,6 +328,10 @@ Contact me at http://twitter.com/crayonsyntax or crayon.syntax@gmail.com.
 
 == Changelog ==
 
+= 2.8.20 =
+* FIXED
+    * Simple release without any changes.
+
 = 2.8.19 =
 * FIXED
     * Replaced version_compare to standart PHP function.
