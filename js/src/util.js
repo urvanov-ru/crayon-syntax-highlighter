@@ -184,8 +184,9 @@ var jQueryUrvanovSyntaxHighlighter = jQuery;
 
     };
 
-    $(document).ready(function () {
-        UrvanovSyntaxHighlighterUtil.init();
+    document.addEventListener("DOMContentLoaded", function(event) {
+        UrvanovSyntaxHighlighterUtil.init(); 
+        //Do work
     });
 
     // http://stackoverflow.com/questions/2360655/jquery-event-handlers-always-execute-in-order-they-were-bound-any-way-around-t
