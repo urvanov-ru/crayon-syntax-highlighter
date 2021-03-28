@@ -111,7 +111,7 @@ var jQueryUrvanovSyntaxHighlighter = jQuery;
         };
 
         base.log = function (string) {
-            if (typeof console != 'undefined' && settings.debug) {
+            if (typeof console != 'undefined' && settings && settings.debug) {
                 console.log(string);
             }
         };

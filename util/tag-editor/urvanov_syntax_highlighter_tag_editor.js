@@ -61,7 +61,7 @@
                         )
                     )
                 ),
-                el( 'div', { style: blockStyle, dangerouslySetInnerHTML: {__html: props.attributes.content} })//, props.attributes.content )
+                el( 'div', { style: blockStyle, dangerouslySetInnerHTML: {__html: props.attributes.content == null ? '10 REM Here will be your code<br>20 PRINT "HELLO, WORLD!"' : props.attributes.content} })//, props.attributes.content )
             );
         },
 

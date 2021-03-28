@@ -328,6 +328,12 @@ Contact me at http://twitter.com/crayonsyntax or crayon.syntax@gmail.com.
 
 == Changelog ==
 
+= 2.8.22 =
+* ADDED
+    * Basic example for a new block
+* FIXED:
+    * error in JS log function
+
 = 2.8.21 =
 * ADDED
     * Removing jQuery. Replaced jQuery.ready to DOMContentLoaded
