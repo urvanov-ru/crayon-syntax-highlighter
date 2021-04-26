@@ -1,14 +1,10 @@
 actual
-abstract
 annotation
 companion
-const
 crossinline
 data
-enum
 expect
 external
-final
 infix
 inline
 inner

@@ -19,5 +19,5 @@
     GENERIC:ENTITY      <\w+>
     IDENTIFIER          (?default)
     CONSTANT            (?default)
-    OPERATOR            (?default)|\b(?alt:operator.txt)\b
+    OPERATOR            (?default)
     SYMBOL              (?default)
