@@ -328,6 +328,11 @@ Contact me at http://twitter.com/crayonsyntax or crayon.syntax@gmail.com.
 
 == Changelog ==
 
+= 2.8.23 =
+* ADDED
+    * Kotlin support
+    * TypeScript support
+
 = 2.8.22 =
 * ADDED
     * Basic example for a new block
