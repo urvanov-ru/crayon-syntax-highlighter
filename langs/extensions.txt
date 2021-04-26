@@ -21,3 +21,4 @@ applescript scpt applescript
 miva mv mvc mvt
 verilog v
 kotlin kt
+typescript ts tsx
