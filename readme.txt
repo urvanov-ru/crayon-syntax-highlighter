@@ -11,6 +11,12 @@ Reincarnation of Crayon Syntax Highlighter. Syntax Highlighter supporting multip
 
 == Description ==
 
+Reincarnation of Crayon Syntax Highlighter. Somewhere in documentation and in UI
+it still shows like Crayon. Don't be scrared of this.
+
+Use special Urvanov Syntax Highlighter block in new posts. Don't use standard
+Code block.
+
 How to use the plugin:
 
 https://www.youtube.com/watch?v=2aBtVJOOqqA
@@ -327,6 +333,13 @@ Contact me at http://twitter.com/crayonsyntax or crayon.syntax@gmail.com.
 5. Theme Editor.
 
 == Changelog ==
+
+= 2.8.24 =
+* ADDED
+    * Updated copy button behaviour
+    * Turned back to jQuery ready function
+    * updated readme
+
 
 = 2.8.23 =
 * ADDED

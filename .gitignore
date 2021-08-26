@@ -9,3 +9,6 @@ Thumbs.db
 /log.txt
 *.sublime-workspace
 .c9
+.buildpath
+
+
