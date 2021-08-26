@@ -1024,7 +1024,7 @@ class Human {
         // Preview checkbox
         self::checkbox(array(Urvanov_Syntax_Highlighter_Settings::PREVIEW, Urvanov_Syntax_Highlighter_Global::urvanov__('Enable Live Preview')), FALSE, FALSE);
         echo '</select><span class="urvanov-syntax-highlighter-span-10"></span>';
-        self::checkbox(array(Urvanov_Syntax_Highlighter_Settings::ENQUEUE_THEMES, Urvanov_Syntax_Highlighter_Global::urvanov__('Enqueue themes in the header (more efficient).') . self::help_button('http://aramk.com/blog/2012/01/07/enqueuing-themes-and-fonts-in-crayon/')));
+        self::checkbox(array(Urvanov_Syntax_Highlighter_Settings::ENQUEUE_THEMES, Urvanov_Syntax_Highlighter_Global::urvanov__('Enqueue themes in the header (more efficient).') . self::help_button('https://github.com/urvanov-ru/crayon-syntax-highlighter/wiki/Enqueuing-Themes-and-Fonts-in-Crayon')));
         // Check if theme from db is loaded
         if ($missing_theme) {
             echo '<span class="urvanov-syntax-highlighter-error">', sprintf(Urvanov_Syntax_Highlighter_Global::urvanov__('The selected theme with id %s could not be loaded'), '<strong>' . $db_theme . '</strong>'), '. </span>';
@@ -1055,7 +1055,7 @@ class Human {
             return;
         }
         echo '<div style="height:10px;"></div>';
-        self::checkbox(array(Urvanov_Syntax_Highlighter_Settings::ENQUEUE_FONTS, Urvanov_Syntax_Highlighter_Global::urvanov__('Enqueue fonts in the header (more efficient).') . self::help_button('http://aramk.com/blog/2012/01/07/enqueuing-themes-and-fonts-in-crayon/')));
+        self::checkbox(array(Urvanov_Syntax_Highlighter_Settings::ENQUEUE_FONTS, Urvanov_Syntax_Highlighter_Global::urvanov__('Enqueue fonts in the header (more efficient).') . self::help_button('https://github.com/urvanov-ru/crayon-syntax-highlighter/wiki/Enqueuing-Themes-and-Fonts-in-Crayon')));
     }
 
     public static function code($editor = FALSE) {

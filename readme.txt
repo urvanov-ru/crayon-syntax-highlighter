@@ -178,7 +178,7 @@ These are helpful for discovering new features (Links don't work. TODO: think ab
 * <a href="http://aramk.com/blog/2011/12/25/mixed-language-highlighting-in-crayon/" target="_blank">Mixed Language Highlighting in Crayon</a>
 * <a href="http://aramk.com/blog/2011/12/27/mini-tags-in-crayon/" target="_blank">Mini Tags And Plain Tags In Crayon</a>
 * <a href="http://aramk.com/blog/2012/03/07/inline-crayons/" target="_blank">Inline Tags</a>
-* <a href="http://aramk.com/blog/2012/01/07/enqueuing-themes-and-fonts-in-crayon/" target="_blank">Enqueuing Themes and Fonts in Crayon</a>
+* <a href="https://github.com/urvanov-ru/crayon-syntax-highlighter/wiki/Enqueuing-Themes-and-Fonts-in-Crayon" target="_blank">Enqueuing Themes and Fonts in Crayon</a>
 
 **The Press**
 
