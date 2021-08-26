@@ -11,11 +11,9 @@ Reincarnation of Crayon Syntax Highlighter. Syntax Highlighter supporting multip
 
 == Description ==
 
-Reincarnation of Crayon Syntax Highlighter. Somewhere in documentation and in UI
-it still shows like Crayon. Don't be scrared of this.
+Reincarnation of Crayon Syntax Highlighter. Somewhere in documentation and in UI it still shows like Crayon. Don't be scrared of this.
 
-Use special Urvanov Syntax Highlighter block in new posts. Don't use standard
-Code block.
+Use special Urvanov Syntax Highlighter block in new posts. Don't use standard Code block.
 
 How to use the plugin:
 
