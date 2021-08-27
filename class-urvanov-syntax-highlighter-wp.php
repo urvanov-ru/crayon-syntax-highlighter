@@ -137,7 +137,7 @@ class Urvanov_Syntax_Highlighter_Settings_WP {
         }
         if (!self::$js_strings) {
             self::$js_strings = array(
-                'copy' => Urvanov_Syntax_Highlighter_Global::urvanov__('Copied to the buffer'),
+                'copy' => Urvanov_Syntax_Highlighter_Global::urvanov__('Copied to the clipboard'),
                 'minimize' => Urvanov_Syntax_Highlighter_Global::urvanov__('Click To Expand Code')
             );
         }
