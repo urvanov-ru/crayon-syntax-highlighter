@@ -37,7 +37,7 @@ It also supports some neat features like:
 * <a href="http://aramk.com/blog/2012/09/26/converting-legacy-tags-to-pre/" target="_blank">Converting legacy code in blog posts/comments to &lt;pre&gt;</a>
 * Remote request caching
 * <a href="http://aramk.com/blog/2011/12/25/mixed-language-highlighting-in-crayon" target="_blank">Mixed Language Highlighting</a> in a single Crayon
-* <a href="http://aramk.com/blog/2011/12/27/mini-tags-in-crayon/" target="_blank">Mini Tags</a> like [php][/php]
+* <a href="https://github.com/urvanov-ru/crayon-syntax-highlighter/wiki/Mini-Tags-and-Plain-Tags-in-Crayon" target="_blank">Mini Tags</a> like [php][/php]
 * <a href="https://github.com/urvanov-ru/crayon-syntax-highlighter/wiki/Inline-Tags,-%60Backquotes%60-and-Crayons-in-Comments" target="_blank">Inline Tags</a> floating in sentences
 * Crayons in comments
 * &#96;Backquotes&#96; become &lt;code&gt;
@@ -174,7 +174,7 @@ These are helpful for discovering new features (Links don't work. TODO: think ab
 * <a href="http://aramk.com/blog/2012/09/02/line-ranges-in-crayon/" target="_blank">Line Ranges in Crayon</a>
 * <a href="http://aramk.com/blog/2012/03/25/crayon-tag-editor/" target="_blank">Crayon Tag Editor</a>
 * <a href="http://aramk.com/blog/2011/12/25/mixed-language-highlighting-in-crayon/" target="_blank">Mixed Language Highlighting in Crayon</a>
-* <a href="http://aramk.com/blog/2011/12/27/mini-tags-in-crayon/" target="_blank">Mini Tags And Plain Tags In Crayon</a>
+* <a href="https://github.com/urvanov-ru/crayon-syntax-highlighter/wiki/Mini-Tags-and-Plain-Tags-in-Crayon" target="_blank">Mini Tags And Plain Tags In Crayon</a>
 * <a href="https://github.com/urvanov-ru/crayon-syntax-highlighter/wiki/Inline-Tags,-%60Backquotes%60-and-Crayons-in-Comments" target="_blank">Inline Tags</a>
 * <a href="https://github.com/urvanov-ru/crayon-syntax-highlighter/wiki/Enqueuing-Themes-and-Fonts-in-Crayon" target="_blank">Enqueuing Themes and Fonts in Crayon</a>
 
@@ -1184,7 +1184,7 @@ Contact me at http://twitter.com/crayonsyntax or crayon.syntax@gmail.com.
 * Added namespacing to crayon.js to prevent conflicts
 
 = 1.7.3 =
-* Added Mini Tags and Plain Tags into Crayon. http://aramk.com/blog/2011/12/27/mini-tags-in-crayon/
+* Added Mini Tags and Plain Tags into Crayon. https://github.com/urvanov-ru/crayon-syntax-highlighter/wiki/Mini-Tags-and-Plain-Tags-in-Crayon
 * Fixed a bug causing RSS feeds to contain malformed HTML of Crayons, now it shows plain code with correct indentations. Thanks to Артём.
 * Updated help in Settings and https://github.com/aramk/crayon-syntax-highlighter
 
