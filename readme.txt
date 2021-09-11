@@ -38,7 +38,7 @@ It also supports some neat features like:
 * Remote request caching
 * <a href="http://aramk.com/blog/2011/12/25/mixed-language-highlighting-in-crayon" target="_blank">Mixed Language Highlighting</a> in a single Crayon
 * <a href="http://aramk.com/blog/2011/12/27/mini-tags-in-crayon/" target="_blank">Mini Tags</a> like [php][/php]
-* <a href="http://aramk.com/blog/2012/03/07/inline-crayons/" target="_blank">Inline Tags</a> floating in sentences
+* <a href="https://github.com/urvanov-ru/crayon-syntax-highlighter/wiki/Inline-Tags,-%60Backquotes%60-and-Crayons-in-Comments" target="_blank">Inline Tags</a> floating in sentences
 * Crayons in comments
 * &#96;Backquotes&#96; become &lt;code&gt;
 * &lt;pre&gt; tag support, option to use <code>setting-value</code> in the class attribute
@@ -175,7 +175,7 @@ These are helpful for discovering new features (Links don't work. TODO: think ab
 * <a href="http://aramk.com/blog/2012/03/25/crayon-tag-editor/" target="_blank">Crayon Tag Editor</a>
 * <a href="http://aramk.com/blog/2011/12/25/mixed-language-highlighting-in-crayon/" target="_blank">Mixed Language Highlighting in Crayon</a>
 * <a href="http://aramk.com/blog/2011/12/27/mini-tags-in-crayon/" target="_blank">Mini Tags And Plain Tags In Crayon</a>
-* <a href="http://aramk.com/blog/2012/03/07/inline-crayons/" target="_blank">Inline Tags</a>
+* <a href="https://github.com/urvanov-ru/crayon-syntax-highlighter/wiki/Inline-Tags,-%60Backquotes%60-and-Crayons-in-Comments" target="_blank">Inline Tags</a>
 * <a href="https://github.com/urvanov-ru/crayon-syntax-highlighter/wiki/Enqueuing-Themes-and-Fonts-in-Crayon" target="_blank">Enqueuing Themes and Fonts in Crayon</a>
 
 **The Press**
