@@ -332,6 +332,13 @@ Contact me at http://twitter.com/crayonsyntax or crayon.syntax@gmail.com.
 
 == Changelog ==
 
+= 2.8.25 =
+* ADDED
+    * Fixed some links to help page
+* FIXED
+    * Copy button text.
+    * Line numbers copied when you copied page content
+
 = 2.8.24 =
 * ADDED
     * Updated copy button behaviour

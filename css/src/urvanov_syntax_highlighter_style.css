@@ -396,6 +396,10 @@ coloring etc.
     background: transparent;
 }
 
+/* don't copy row nums and plain textarea value when copy page content */
+.urvanov-syntax-highlighter-syntax .crayon-nums {
+    user-select: none;
+}
 /*
 
 This has been disabled to allow more flexibility in changing font sizes.
@@ -492,6 +496,7 @@ This has been disabled to allow more flexibility in changing font sizes.
     resize: none;
     color: #000;
     background: #FFF;
+    display:none;
 }
 
 .urvanov-syntax-highlighter-wrapped .urvanov-syntax-highlighter-plain {
