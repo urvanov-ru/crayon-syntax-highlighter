@@ -332,6 +332,12 @@ Contact me at http://twitter.com/crayonsyntax or crayon.syntax@gmail.com.
 
 == Changelog ==
 
+
+= 2.8.26 =
+* FIXED
+    * Copy button copies correct code for html entities.
+
+
 = 2.8.25 =
 * ADDED
     * Fixed some links to help page
