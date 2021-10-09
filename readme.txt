@@ -335,7 +335,7 @@ Contact me at http://twitter.com/crayonsyntax or crayon.syntax@gmail.com.
 
 = 2.8.26 =
 * FIXED
-    * Copy button copies correct code for html entities.
+    * Copy button copied incorrect code for HTML entities.
 
 
 = 2.8.25 =
