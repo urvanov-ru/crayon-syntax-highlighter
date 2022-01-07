@@ -4,7 +4,7 @@ Donate link: https://money.yandex.ru/to/41001288941320
 License: GPLv3 or later
 Tags: syntax highlighter, syntax, highlighter, highlighting, crayon, code highlighter, bbpress
 Requires at least: 5.7
-Tested up to: 5.8
+Tested up to: 5.8.3
 Stable tag: trunk
 
 Reincarnation of Crayon Syntax Highlighter. Syntax Highlighter supporting multiple languages, themes, fonts, highlighting from a URL, or post text.
@@ -148,7 +148,7 @@ See the <a href="http://aramk.com/blog/2011/09/23/crayon-language-file-specifica
 * French (thanks to <a href="https://vhf.github.io" target="_blank">Victor Felder</a>)
 * German (thanks to <a href="http://www.technologyblog.de/" target="_blank">Stephan Knau&szlig;</a>)
 * Italian (thanks to <a href="http://www.federicobellucci.net/" target="_blank">Federico Bellucci</a>)
-* Japanese (thanks to <a href="https://twitter.com/#!/west_323" target="_blank">@west_323</a>)
+* Japanese (thanks to <a href="https://twitter.com/#!/west_323" target="_blank">@west_323</a> and Jin Koyama from https://tabibitojin.com/) 
 * Korean (thanks to <a href="https://github.com/dokenzy" target="_blank">dokenzy</a>)
 * Lithuanian (thanks to Vincent G)
 * Norwegian (thanks to <a href="http://www.jackalworks.com/blogg" target="_blank">Jackalworks</a>)
@@ -332,6 +332,9 @@ Contact me at http://twitter.com/crayonsyntax or crayon.syntax@gmail.com.
 
 == Changelog ==
 
+= 2.8.27 =
+* ADDED
+   * New japanese translation from Jin Koyama (https://tabibitojin.com/).
 
 = 2.8.26 =
 * FIXED
