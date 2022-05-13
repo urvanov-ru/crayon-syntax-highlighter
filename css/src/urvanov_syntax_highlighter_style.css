@@ -84,7 +84,7 @@ coloring etc.
 .urvanov-syntax-highlighter-syntax .crayon-table tr {
     padding: 0 !important;
     border: none !important;
-    background: none;
+    background: none !important;
     vertical-align: top !important;
     margin: 0 !important;
 }
