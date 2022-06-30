@@ -510,6 +510,7 @@
             var plain = urvanov_syntax_highlighters[uid].plain;
             
             var plainTextCode = plain[0].value;
+	    var plainTextCode = plainTextCode.normalize('NFD').replace(/[\u00a0]/g, '');
 
             navigator.clipboard.writeText(plainTextCode)
                 .then(value => urvanovSyntaxHighlighterInfo(uid, strings.copy));
