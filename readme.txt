@@ -332,6 +332,10 @@ Contact me at http://twitter.com/crayonsyntax or crayon.syntax@gmail.com.
 
 == Changelog ==
 
+= NEW_VERSION
+* FIXED
+    * rob-stoecklein fix for KnowAll theme (https://github.com/urvanov-ru/crayon-syntax-highlighter/pull/37)
+
 = 2.8.27 =
 * ADDED
    * New japanese translation from Jin Koyama (https://tabibitojin.com/).
