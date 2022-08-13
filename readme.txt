@@ -333,7 +333,7 @@ Contact me at http://twitter.com/crayonsyntax or crayon.syntax@gmail.com.
 
 == Changelog ==
 
-= NEW_VERSION
+= 2.8.28 =
 * ADDED
     * Green White theme from Di_Skyer (http://atlocal.net/)
     * Brasil Portuguese translation from Eric Sornoso (https://mealfan.com) 
