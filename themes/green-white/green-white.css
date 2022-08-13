@@ -1,0 +1,192 @@
+/*
+Name: Green White
+Description: Dark, elegant and electric.
+Version: 1.1
+Author: Di_Skyer
+URL: http://atlocal.net/
+*/
+.crayon-theme-green-white {
+	text-shadow: none !important;
+	color: #fff;
+	background: #1e1d1d !important;
+	border-style: solid !important;
+	border-width: 1px !important;
+	border-color: #333 !important;
+}
+.crayon-theme-green-white .crayon-code {
+	background: #2d2d2d !important;
+}
+.crayon-theme-green-white-inline {
+	background: #1f1e1e !important;
+	border-style: solid !important;
+	border-width: 1px !important;
+	border-color: #333 !important;
+}
+.crayon-theme-green-white span {
+	color: #999 !important;
+}
+.crayon-theme-green-white .crayon-table .crayon-nums {
+	color: #cccccc !important;
+	background: #333232 !important;
+	border-right-style: solid !important;
+	border-right-width: 1px !important;
+	border-right-color: #333 !important;
+}
+.crayon-theme-green-white .crayon-line {
+	background: #050505 !important;
+}
+.crayon-theme-green-white .crayon-striped-line {
+	background: #000 !important;
+	border-width: 1px !important;
+	border-color: #171717 !important;
+}
+.crayon-theme-green-white .crayon-striped-num {
+	background: #aaa !important;
+	color: #555 !important;
+	border-width: 1px !important;
+	border-color: #CCC !important;
+}
+.crayon-theme-green-white .crayon-marked-line {
+	background: #484844 !important;
+	border-width: 1px !important;
+	border-color: #222 !important;
+}
+.crayon-theme-green-white .crayon-marked-num {
+	color: #555 !important;
+	background: #bbb !important;
+	border-width: 1px !important;
+	border-color: #777 !important;
+}
+.crayon-theme-green-white .crayon-marked-line.crayon-striped-line {
+	background: #51514d !important;
+}
+.crayon-theme-green-white .crayon-marked-num.crayon-striped-num {
+	background: #ccc !important;
+	color: #888 !important;
+}
+.crayon-theme-green-white .crayon-marked-line.crayon-top {
+	border-top-style: solid !important;
+}
+.crayon-theme-green-white .crayon-marked-num.crayon-top {
+	border-top-style: solid !important;
+}
+.crayon-theme-green-white .crayon-marked-line.crayon-bottom {
+	border-bottom-style: solid !important;
+}
+.crayon-theme-green-white .crayon-marked-num.crayon-bottom {
+	border-bottom-style: solid !important;
+}
+.crayon-theme-green-white .crayon-info {
+	background: #faf9d7 !important;
+	color: #7e7d34 !important;
+	border-bottom-style: solid !important;
+	border-bottom-width: 1px !important;
+	border-bottom-color: #b1af5e !important;
+}
+.crayon-theme-green-white .crayon-toolbar {
+	background: #d6d6d6 !important;
+	border-bottom-style: solid !important;
+	border-bottom-width: 1px !important;
+	border-bottom-color: #666 !important;
+}
+.crayon-theme-green-white .crayon-toolbar > div {
+	float: left !important;
+}
+.crayon-theme-green-white .crayon-toolbar .crayon-tools {
+	float: right !important;
+}
+.crayon-theme-green-white .crayon-title {
+	color: #000000 !important;
+}
+.crayon-theme-green-white .crayon-language {
+	color: #666 !important;
+}
+.crayon-theme-green-white .crayon-toolbar .crayon-mixed-highlight {
+	background-position: -24px center;
+}
+.crayon-theme-green-white .crayon-button {
+	background-color: transparent !important;
+}
+.crayon-theme-green-white .crayon-button:hover {
+	background-color: #474747 !important;
+	color: #666;
+}
+.crayon-theme-green-white .crayon-button.crayon-pressed:hover {
+	background-color: #ccc !important;
+	color: #666;
+}
+.crayon-theme-green-white .crayon-button.crayon-pressed {
+	background-color: #999 !important;
+	color: #ccc;
+}
+.crayon-theme-green-white .crayon-button.crayon-pressed:active {
+	background-color: #999 !important;
+	color: #ccc;
+}
+.crayon-theme-green-white .crayon-button:active {
+	background-color: #060606 !important;
+	color: #ccc;
+}
+.crayon-theme-green-white .crayon-pre .crayon-c {
+	color: #888 !important;
+}
+.crayon-theme-green-white .crayon-pre .crayon-s {
+	color: #deff21 !important;
+}
+.crayon-theme-green-white .crayon-pre .crayon-k {
+	color: #22e61c !important;
+	font-weight: bold !important;
+}
+.crayon-theme-green-white .crayon-pre .crayon-st {
+	color: #2af124 !important;
+	font-weight: bold !important;
+}
+.crayon-theme-green-white .crayon-pre .crayon-r {
+	color: #4bfa45 !important;
+	font-weight: bold !important;
+}
+.crayon-theme-green-white .crayon-pre .crayon-t {
+	color: #d3d3d3 !important;
+	font-weight: bold !important;
+}
+.crayon-theme-green-white .crayon-pre .crayon-m {
+	color: #2af124 !important;
+	font-weight: bold !important;
+}
+.crayon-theme-green-white .crayon-pre .crayon-ta {
+	color: #AAA !important;
+}
+.crayon-theme-green-white .crayon-pre .crayon-i {
+	color: #fbefb1 !important;
+}
+.crayon-theme-green-white .crayon-pre .crayon-v {
+	color: #00baf3 !important;
+}
+.crayon-theme-green-white .crayon-pre .crayon-e {
+	color: #fefefe !important;
+}
+.crayon-theme-green-white .crayon-pre .crayon-cn {
+	color: #aafefe !important;
+}
+.crayon-theme-green-white .crayon-pre .crayon-o {
+	color: #dfdfdf !important;
+}
+.crayon-theme-green-white .crayon-pre .crayon-h {
+	color: #ac99ab !important;
+}
+.crayon-theme-green-white .crayon-pre .crayon-sy {
+	color: #ebe9f0 !important;
+}
+.crayon-theme-green-white .crayon-pre .crayon-n {
+	color: #726e73 !important;
+	font-style: italic !important;
+}
+.crayon-theme-green-white .crayon-pre .crayon-f {
+	color: #595959 !important;
+}
+.crayon-theme-green-white .crayon-pre .crayon-p {
+	color: #a4a4a4 !important;
+}
+.crayon-theme-green-white .crayon-pre {
+	color: #ffffff !important;
+}

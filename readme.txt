@@ -333,6 +333,9 @@ Contact me at http://twitter.com/crayonsyntax or crayon.syntax@gmail.com.
 == Changelog ==
 
 = NEW_VERSION
+* ADDED
+    * Green White theme from Di_Skyer (http://atlocal.net/)
+    * Brasil Portuguese translation from Eric Sornoso (https://mealfan.com) 
 * FIXED
     * rob-stoecklein fix for KnowAll theme (https://github.com/urvanov-ru/crayon-syntax-highlighter/pull/37)
 
