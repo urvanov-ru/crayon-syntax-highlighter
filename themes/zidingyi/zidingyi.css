@@ -1,0 +1,287 @@
+/*
+Name: Zidingyi
+Description: Clean, crisp and colorful.
+Version: 1.1
+Author: seouc
+URL: http://www.seouc.com/
+*/
+.crayon-theme-zidingyi {
+	border-width: 1px !important;
+	border-color: #999 !important;
+	text-shadow: none !important;
+	background: #272822 !important;
+	border-style: solid !important;
+}
+.crayon-theme-zidingyi-inline {
+	border-width: 1px !important;
+	border-color: #999 !important;
+	background: #272822 !important;
+}
+.crayon-theme-zidingyi .crayon-table .crayon-nums {
+	background: #272822 !important;
+	color: #868686 !important;
+}
+.crayon-theme-zidingyi .crayon-striped-line {
+	background: #272822 !important;
+}
+.crayon-theme-zidingyi .crayon-striped-num {
+	background: #32322a !important;
+	color: #868686 !important;
+}
+.crayon-theme-zidingyi .crayon-marked-line {
+	background: #272822 !important;
+	border-width: 1px !important;
+	border-color: #272822 !important;
+}
+.crayon-theme-zidingyi .crayon-marked-num {
+	color: #868686 !important;
+	background: #272822 !important;
+	border-width: 1px !important;
+	border-color: #272822 !important;
+}
+.crayon-theme-zidingyi .crayon-marked-line.crayon-striped-line {
+	background: #272822 !important;
+}
+.crayon-theme-zidingyi .crayon-marked-num.crayon-striped-num {
+	background: #272822 !important;
+	color: #868686 !important;
+}
+.crayon-theme-zidingyi .crayon-marked-line.crayon-top {
+	border-top-style: solid !important;
+}
+.crayon-theme-zidingyi .crayon-marked-num.crayon-top {
+	border-top-style: solid !important;
+}
+.crayon-theme-zidingyi .crayon-marked-line.crayon-bottom {
+	border-bottom-style: solid !important;
+}
+.crayon-theme-zidingyi .crayon-marked-num.crayon-bottom {
+	border-bottom-style: solid !important;
+}
+.crayon-theme-zidingyi .crayon-info {
+	border-bottom-width: 1px !important;
+	border-bottom-color: #e6db5d !important;
+	color: #e6db5d !important;
+	font-weight: inherit !important;
+}
+.crayon-theme-zidingyi .crayon-toolbar {
+	border-bottom-width: 1px !important;
+	border-bottom-color: #BBB !important;
+}
+.crayon-theme-zidingyi .crayon-toolbar > div {
+	float: left !important;
+}
+.crayon-theme-zidingyi .crayon-toolbar .crayon-tools {
+	float: right !important;
+}
+.crayon-theme-zidingyi .crayon-title {
+	color: #9a9a9a !important;
+}
+.crayon-theme-zidingyi .crayon-language {
+	color: #ffffff !important;
+}
+.crayon-theme-zidingyi .crayon-button {
+	background-color: #ffffff !important;
+}
+.crayon-theme-zidingyi .crayon-button:hover {
+	color: #666;
+}
+.crayon-theme-zidingyi .crayon-button.crayon-pressed:hover {
+	color: #666;
+}
+.crayon-theme-zidingyi .crayon-button.crayon-pressed {
+	color: #FFF;
+}
+.crayon-theme-zidingyi .crayon-button.crayon-pressed:active {
+	color: #FFF;
+}
+.crayon-theme-zidingyi .crayon-button:active {
+	color: #FFF;
+}
+.crayon-theme-zidingyi .crayon-pre .crayon-c {
+	color: #75715e !important;
+}
+.crayon-theme-zidingyi .crayon-pre .crayon-s {
+	color: #e6db5d !important;
+}
+.crayon-theme-zidingyi .crayon-pre .crayon-p {
+	color: #b85c00 !important;
+}
+.crayon-theme-zidingyi .crayon-pre .crayon-ta {
+	color: #f8f8f2 !important;
+}
+.crayon-theme-zidingyi .crayon-pre .crayon-k {
+	color: #66d9ef !important;
+}
+.crayon-theme-zidingyi .crayon-pre .crayon-st {
+	color: #66d9ef !important;
+}
+.crayon-theme-zidingyi .crayon-pre .crayon-r {
+	color: #66d9ef !important;
+}
+.crayon-theme-zidingyi .crayon-pre .crayon-t {
+	color: #a6e22d !important;
+}
+.crayon-theme-zidingyi .crayon-pre .crayon-m {
+	color: #66d9ef !important;
+}
+.crayon-theme-zidingyi .crayon-pre .crayon-i {
+	color: #f8f8f2 !important;
+}
+.crayon-theme-zidingyi .crayon-pre .crayon-e {
+	color: #f92650 !important;
+}
+.crayon-theme-zidingyi .crayon-pre .crayon-v {
+	color: #f8f8f2 !important;
+}
+.crayon-theme-zidingyi .crayon-pre .crayon-cn {
+	color: #ae81ff !important;
+}
+.crayon-theme-zidingyi .crayon-pre .crayon-o {
+	color: #f8f8f2 !important;
+}
+.crayon-theme-zidingyi .crayon-pre .crayon-sy {
+	color: #f8f8f2 !important;
+}
+.crayon-theme-zidingyi .crayon-pre .crayon-n {
+	color: #666 !important;
+	font-style: italic !important;
+}
+.crayon-theme-zidingyi .crayon-pre .crayon-f {
+	color: #999 !important;
+}
+.crayon-theme-zidingyi .crayon-pre .crayon-h {
+	color: #006fe0 !important;
+}
+.crayon-theme-zidingyi .crayon-pre {
+	color: #f8f8f2 !important;
+}
+.crayon-theme-zidingyi-inline {
+	background: #272822 !important;
+	border-width: 1px !important;
+	border-color: #999 !important;
+}
+.crayon-theme-zidingyi .crayon-pre .crayon-c {
+	color: #75715e !important;
+}
+.crayon-theme-zidingyi .crayon-pre .crayon-s {
+	color: #e6db5d !important;
+}
+.crayon-theme-zidingyi .crayon-pre .crayon-p {
+	color: #b85c00 !important;
+}
+.crayon-theme-zidingyi .crayon-pre .crayon-ta {
+	color: #f8f8f2 !important;
+}
+.crayon-theme-zidingyi .crayon-pre .crayon-k {
+	color: #66d9ef !important;
+}
+.crayon-theme-zidingyi .crayon-pre .crayon-st {
+	color: #66d9ef !important;
+}
+.crayon-theme-zidingyi .crayon-pre .crayon-r {
+	color: #66d9ef !important;
+}
+.crayon-theme-zidingyi .crayon-pre .crayon-t {
+	color: #a6e22d !important;
+}
+.crayon-theme-zidingyi .crayon-pre .crayon-m {
+	color: #66d9ef !important;
+}
+.crayon-theme-zidingyi .crayon-pre .crayon-i {
+	color: #f8f8f2 !important;
+}
+.crayon-theme-zidingyi .crayon-pre .crayon-e {
+	color: #f92650 !important;
+}
+.crayon-theme-zidingyi .crayon-pre .crayon-v {
+	color: #f8f8f2 !important;
+}
+.crayon-theme-zidingyi .crayon-pre .crayon-cn {
+	color: #ae81ff !important;
+}
+.crayon-theme-zidingyi .crayon-pre .crayon-o {
+	color: #f8f8f2 !important;
+}
+.crayon-theme-zidingyi .crayon-pre .crayon-sy {
+	color: #f8f8f2 !important;
+}
+.crayon-theme-zidingyi .crayon-pre .crayon-n {
+	color: #666 !important;
+	font-style: italic !important;
+}
+.crayon-theme-zidingyi .crayon-pre .crayon-f {
+	color: #999 !important;
+}
+.crayon-theme-zidingyi .crayon-pre .crayon-h {
+	color: #006fe0 !important;
+}
+.crayon-theme-zidingyi .crayon-pre {
+	color: #f8f8f2 !important;
+}
+.crayon-theme-zidingyi {
+	border-width: 1px !important;
+	border-color: #999 !important;
+	border-style: solid !important;
+	background: #272822 !important;
+}
+.crayon-theme-zidingyi .crayon-striped-line {
+	background: #272822 !important;
+}
+.crayon-theme-zidingyi .crayon-marked-line {
+	background: #272822 !important;
+	border-width: 1px !important;
+	border-color: #272822 !important;
+}
+.crayon-theme-zidingyi .crayon-marked-line.crayon-top {
+	border-top-style: solid !important;
+}
+.crayon-theme-zidingyi .crayon-marked-line.crayon-bottom {
+	border-bottom-style: solid !important;
+}
+.crayon-theme-zidingyi .crayon-marked-line.crayon-striped-line {
+	background: #272822 !important;
+}
+.crayon-theme-zidingyi .crayon-table .crayon-nums {
+	background: #272822 !important;
+	color: #868686 !important;
+}
+.crayon-theme-zidingyi .crayon-striped-num {
+	background: #32322a !important;
+	color: #868686 !important;
+}
+.crayon-theme-zidingyi .crayon-marked-num {
+	background: #272822 !important;
+	color: #868686 !important;
+	border-width: 1px !important;
+	border-color: #272822 !important;
+}
+.crayon-theme-zidingyi .crayon-marked-num.crayon-top {
+	border-top-style: solid !important;
+}
+.crayon-theme-zidingyi .crayon-marked-num.crayon-bottom {
+	border-bottom-style: solid !important;
+}
+.crayon-theme-zidingyi .crayon-marked-num.crayon-striped-num {
+	background: #272822 !important;
+	color: #868686 !important;
+}
+.crayon-theme-zidingyi .crayon-toolbar {
+	border-bottom-width: 1px !important;
+	border-bottom-color: #BBB !important;
+}
+.crayon-theme-zidingyi .crayon-title {
+	color: #9a9a9a !important;
+}
+.crayon-theme-zidingyi .crayon-button {
+	background-color: #ffffff !important;
+}
+.crayon-theme-zidingyi .crayon-info {
+	color: #e6db5d !important;
+	font-weight: inherit !important;
+	border-bottom-width: 1px !important;
+	border-bottom-color: #e6db5d !important;
+}
+.crayon-theme-zidingyi .crayon-language {
+	color: #ffffff !important;
+}
