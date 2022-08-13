@@ -141,6 +141,7 @@ See the <a href="http://aramk.com/blog/2011/09/23/crayon-language-file-specifica
 **International Languages**
 
 * Arabic (thanks to Djennad Hamza),
+* Brasil Portuguese translation from Eric Sornoso (https://mealfan.com) 
 * Chinese Simplified (thanks to <a href="http://smerpup.com/" target="_blank">Dezhi Liu</a> & Jash Yin)
 * Chinese Traditional (thanks to <a href="http://www.arefly.com/" target="_blank">Arefly</a>)
 * Dutch (thanks to <a href="https://twitter.com/RobinRoelofsen" target="_blank">Robin Roelofsen</a> & <a href="https://twitter.com/#!/chilionsnoek" target="_blank">Chilion Snoek</a>)
@@ -336,6 +337,7 @@ Contact me at http://twitter.com/crayonsyntax or crayon.syntax@gmail.com.
 * ADDED
     * Green White theme from Di_Skyer (http://atlocal.net/)
     * Brasil Portuguese translation from Eric Sornoso (https://mealfan.com) 
+    * Zidingyi theme from seouc (http://www.seouc.com/)
 * FIXED
     * rob-stoecklein fix for KnowAll theme (https://github.com/urvanov-ru/crayon-syntax-highlighter/pull/37)
 
