@@ -265,6 +265,31 @@ class Urvanov_Syntax_Highlighter_Plugin {
 
         UrvanovSyntaxHighlighterLog::debug('capture for id ' . $wp_id . ' len ' . strlen($wp_content));
 
+//         $blocks = parse_blocks($wp_content);
+        
+        //UrvanovSyntaxHighlighterLog::debug($blocks, 'Gutenberg blocks');
+        
+//         foreach ( $blocks as $block ) {
+            // Urvanov Syntax Highlighter block
+            // UrvanovSyntaxHighlighterLog::debug($block, 'Parsed post block');
+//             $capture_pre = false;
+//             if ( 'urvanov-syntax-highlighter/code-block' === $block['blockName'] ) {
+//             	$capture_pre = true;
+//             } else if (('paragraph' === $block['blockName'])
+//                     && ((Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::CAPTURE_PRE)
+//                             || $skip_setting_check) && $in_flag[Urvanov_Syntax_Highlighter_Settings::CAPTURE_PRE])) {
+//                 $capture_pre = true;
+//             }
+//             UrvanovSyntaxHighlighterLog::debug($capture_pre, 'capture_pre');
+//             UrvanovSyntaxHighlighterLog::debug($block['blockName'], 'Block name');
+//             UrvanovSyntaxHighlighterLog::debug($block['innerHTML'], 'Inner HTML');
+//             if ($capture_pre) {
+//             	$block['innerHTML'] = 'TEST REPLACE';
+//             	$block['innerContent'] = 'TEST REPLACE';
+//                 //$block['innerHTML'] = preg_replace_callback('#(?<!\$)<\s*pre(?=(?:([^>]*)\bclass\s*=\s*(["\'])(.*?)\2([^>]*))?)([^>]*)>(.*?)<\s*/\s*pre\s*>#msi', 'Urvanov_Syntax_Highlighter_Plugin::pre_tag', $block['innerHTML']);
+//             }
+//         }
+//         $wp_content = serialize_blocks($blocks);
         // Convert <pre> tags to crayon tags, if needed
         if ((Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::CAPTURE_PRE) || $skip_setting_check) && $in_flag[Urvanov_Syntax_Highlighter_Settings::CAPTURE_PRE]) {
             // XXX This will fail if <pre></pre> is used inside another <pre></pre>
@@ -436,6 +461,21 @@ class Urvanov_Syntax_Highlighter_Plugin {
         $capture['content'] = $wp_content;
         return $capture;
     }
+    // *****************************************************************************
+    function my_custom_render( $block_content, $block ) {
+    	
+    	// For the block in question, render whatever you want, and pull any attrinute you need from $block['attrs'].
+    	if ( $block['blockName'] === 'urvanov-syntax-highlighter/code-block' ) {
+    		return 'Anything I want with any attribute value here: ' . $block['attrs']['name_of_attribute_here'] . '.';
+    	}
+    	
+    	// For any other block, just return normal block output.
+    	return $block_content;
+    	
+    }
+    
+    
+    // *****************************************************************************
 
     public static function replace_backquotes($wp_content) {
         // Convert `` backquote tags into <code></code>, if needed
@@ -780,7 +820,13 @@ class Urvanov_Syntax_Highlighter_Plugin {
         $post_class = $matches[4];
         $atts = $matches[5];
         $content = $matches[6];
-
+        UrvanovSyntaxHighlighterLog::debug($pre_class, 'class_tag_pre_class');
+        UrvanovSyntaxHighlighterLog::debug($quotes, 'class_tag_quotes');
+        UrvanovSyntaxHighlighterLog::debug($class, 'class_tag_class');
+        UrvanovSyntaxHighlighterLog::debug($post_class, 'class_tag_post_class');
+        UrvanovSyntaxHighlighterLog::debug($atts, 'class_tag_atts');
+        UrvanovSyntaxHighlighterLog::debug($content, 'class_tag_content=');
+        
         // If we find a crayon=false in the attributes, or a crayon[:_]false in the class, then we should not capture
         $ignore_regex_atts = '#crayon\s*=\s*(["\'])\s*(false|no|0)\s*\1#msi';
         $ignore_regex_class = '#crayon\s*[:_]\s*(false|no|0)#msi';
@@ -1285,6 +1331,7 @@ if (defined('ABSPATH')) {
         // Filters and Actions
 
         add_filter('init', 'Urvanov_Syntax_Highlighter_Plugin::init');
+        add_filter( 'render_block', 'Urvanov_Syntax_Highlighter_Plugin::my_custom_render', 10, 2 );
 
         Urvanov_Syntax_Highlighter_Settings_WP::load_settings(TRUE);
         if (Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::MAIN_QUERY)) {

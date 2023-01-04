@@ -4,7 +4,7 @@ Donate link: https://money.yandex.ru/to/41001288941320
 License: GPLv3 or later
 Tags: syntax highlighter, syntax, highlighter, highlighting, crayon, code highlighter, bbpress
 Requires at least: 5.7
-Tested up to: 6.0
+Tested up to: 6.1
 Stable tag: trunk
 
 Reincarnation of Crayon Syntax Highlighter. Syntax Highlighter supporting multiple languages, themes, fonts, highlighting from a URL, or post text.
