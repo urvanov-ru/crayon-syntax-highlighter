@@ -461,18 +461,6 @@ class Urvanov_Syntax_Highlighter_Plugin {
         $capture['content'] = $wp_content;
         return $capture;
     }
-    // *****************************************************************************
-    public static function my_custom_render( $block_content, $block ) {
-    	
-    	// For the block in question, render whatever you want, and pull any attrinute you need from $block['attrs'].
-    	if ( $block['blockName'] === 'urvanov-syntax-highlighter/code-block' ) {
-    		return 'Anything I want with any attribute value here: ' . $block['attrs']['name_of_attribute_here'] . '.';
-    	}
-    	
-    	// For any other block, just return normal block output.
-    	return $block_content;
-    	
-    }
     
     
     // *****************************************************************************
@@ -1331,7 +1319,6 @@ if (defined('ABSPATH')) {
         // Filters and Actions
 
         add_filter('init', 'Urvanov_Syntax_Highlighter_Plugin::init');
-        add_filter( 'render_block', 'Urvanov_Syntax_Highlighter_Plugin::my_custom_render', 10, 2 );
 
         Urvanov_Syntax_Highlighter_Settings_WP::load_settings(TRUE);
         if (Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::MAIN_QUERY)) {
