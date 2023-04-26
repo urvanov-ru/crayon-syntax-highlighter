@@ -462,7 +462,7 @@ class Urvanov_Syntax_Highlighter_Plugin {
         return $capture;
     }
     // *****************************************************************************
-    function my_custom_render( $block_content, $block ) {
+    public static function my_custom_render( $block_content, $block ) {
     	
     	// For the block in question, render whatever you want, and pull any attrinute you need from $block['attrs'].
     	if ( $block['blockName'] === 'urvanov-syntax-highlighter/code-block' ) {

@@ -333,6 +333,10 @@ Contact me at http://twitter.com/crayonsyntax or crayon.syntax@gmail.com.
 
 == Changelog ==
 
+= 2.8.30 =
+* FIXED
+    * Made Urvanov_Syntax_Highlighter_Plugin::my_custom_render public and static.
+
 = 2.8.29 =
 * FIXED
     * Check HTTP_USER_AGENT existance in `$_SERVER` array
