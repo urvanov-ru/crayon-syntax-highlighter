@@ -333,6 +333,10 @@ Contact me at http://twitter.com/crayonsyntax or crayon.syntax@gmail.com.
 
 == Changelog ==
 
+= 2.8.32 =
+* FIXED
+    * Enabled "Copy" button for touch screens.
+
 = 2.8.31 =
 * FIXED
     * Removed my_custom_render
