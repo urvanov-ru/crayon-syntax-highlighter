@@ -333,6 +333,10 @@ Contact me at http://twitter.com/crayonsyntax or crayon.syntax@gmail.com.
 
 == Changelog ==
 
+= 2.8.33 =
+* FIXED
+    * Copy button should work even without "Toggle plain text" button.
+
 = 2.8.32 =
 * FIXED
     * Enabled "Copy" button for touch screens.

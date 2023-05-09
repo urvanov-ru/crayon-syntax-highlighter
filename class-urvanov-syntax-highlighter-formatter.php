@@ -302,7 +302,7 @@ class Urvanov_Syntax_Highlighter_Formatter {
                 $buttons['expand'] = Urvanov_Syntax_Highlighter_Global::urvanov__('Expand Code');
             }
 
-            if ($hl->setting_val(Urvanov_Syntax_Highlighter_Settings::PLAIN) && $hl->setting_val(Urvanov_Syntax_Highlighter_Settings::COPY)) {
+            if ($hl->setting_val(Urvanov_Syntax_Highlighter_Settings::COPY)) {
                 $buttons['copy'] = Urvanov_Syntax_Highlighter_Global::urvanov__('Copy');
             }
 
