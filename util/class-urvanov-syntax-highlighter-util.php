@@ -78,6 +78,7 @@ class UrvanovSyntaxHighlighterUtil {
 
     // Returns the contents of a file
     public static function file($path) {
+        if (!file_exists($path)) return FALSE;
         if (($str = @file_get_contents($path)) === FALSE) {
             return FALSE;
         } else {
