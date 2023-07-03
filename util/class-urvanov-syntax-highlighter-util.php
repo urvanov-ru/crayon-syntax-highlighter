@@ -171,9 +171,9 @@ class UrvanovSyntaxHighlighterUtil {
         }
         $headers .= "Content-Type: multipart/mixed; boundary=$boundaryMixed";
         if ($file !== NULL) {
-            $info = pathinfo($file);
-            $filename = $info['filename'];
-            $extension = $info['extension'];
+            $info = !empty($file) ? pathinfo($file) : array();
+            $filename = isset($info['filename']) ? $info['filename'] : '';
+            $extension = isset($info['extension']) ? $info['extension'] : '';
             $contents = @file_get_contents($file);
             if ($contents === FALSE) {
                 throw new Exception("File contents of '$file' could not be read");

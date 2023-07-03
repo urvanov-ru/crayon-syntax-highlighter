@@ -73,8 +73,10 @@ if ( !class_exists( 'Urvanov_Syntax_Highlighter_Global' ) ) {
 		// Checks if the input is a valid PHP file and matches the $valid filename
 		// Old name: crayon_is_php_file
 		public static function is_php_file($filepath, $valid) {
-		    $path = pathinfo(Urvanov_Syntax_Highlighter_Global::path_forward_slashes($filepath));
-		    return is_file($filepath) && $path['extension'] === 'php' && $path['filename'] === $valid;
+		    $path = !empty($filepath) ? pathinfo(Urvanov_Syntax_Highlighter_Global::path_forward_slashes($filepath)) : array();
+		    $extension = isset($path['extension']) ? $path['extension'] : '';
+		    $filename  = isset($path['filename'])  ? $path['filename']  : '';
+		    return is_file($filepath) && $extension === 'php' && $filename === $valid;
 		}
 		
 		// Stops the script if Urvanov_Syntax_Highlighter_Global::is_php_file() returns false or a remote path is given
