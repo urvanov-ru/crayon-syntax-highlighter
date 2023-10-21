@@ -229,7 +229,7 @@
             // Load the editor content
             UrvanovSyntaxHighlighterUtil.getAJAX({
                     action: 'urvanov-syntax-highlighter-tag-editor',
-                    _ajax_nonce: $("#urvanov-syntax-highlighter-tag-editor-nonce").val(),
+                    _ajax_nonce: urvanovSyntaxHighlighterTagEditorNonces.tagEditor,
                     is_admin: gs.is_admin
                     }, function (data) {
                 dialog = $('<div id="' + s.css + '"></div>');
