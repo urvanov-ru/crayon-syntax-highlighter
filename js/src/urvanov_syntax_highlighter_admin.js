@@ -488,7 +488,8 @@
             // Load theme editor
             UrvanovSyntaxHighlighterUtil.getAJAX({
                 action: 'urvanov-syntax-highlighter-theme-editor',
-                currTheme: adminSettings.currTheme,
+                curr_theme: adminSettings.currTheme,
+                _ajax_nonce: $("#urvanov-syntax-highlighter-theme-editor-wrap").data( "get-nonce" ),
                 editing: editing
             }, function (data) {
                 theme_editor_wrap.html(data);

@@ -305,6 +305,7 @@ class Urvanov_Syntax_Highlighter_Theme_Editor_WP {
     }
 
     public static function content() {
+        check_ajax_referer( 'urvanov-syntax-highlighter-theme-editor-get');
         self::initSettings();
         $theme = Urvanov_Syntax_Highlighter_Resources::themes()->get_default();
         $editing = false;
@@ -671,6 +672,7 @@ class Urvanov_Syntax_Highlighter_Theme_Editor_WP {
     }
 
     public static function save() {
+        check_ajax_referer( 'urvanov-syntax-highlighter-theme-editor-save');
         $save_args = new Urvanov_Syntax_Highlighter_Theme_Editor_Save;
         $save_args->initialize_from_post();
         self::saveFromArgs($save_args);
@@ -793,6 +795,7 @@ class Urvanov_Syntax_Highlighter_Theme_Editor_WP {
     }
 
     public static function duplicate() {
+        check_ajax_referer('urvanov-syntax-highlighter-theme-editor-duplicate');
         Urvanov_Syntax_Highlighter_Settings_WP::load_settings();
         $save_args = new Urvanov_Syntax_Highlighter_Theme_Editor_Save();
         $save_args->oldId = sanitize_text_field($_POST['id']);
@@ -806,6 +809,7 @@ class Urvanov_Syntax_Highlighter_Theme_Editor_WP {
     }
 
     public static function delete() {
+        check_ajax_referer('urvanov-syntax-highlighter-theme-editor-delete');
         Urvanov_Syntax_Highlighter_Settings_WP::load_settings();
         $id = sanitize_text_field($_POST['id']);
         $dir = Urvanov_Syntax_Highlighter_Resources::themes()->dirpath_for_id($id);
@@ -826,6 +830,7 @@ class Urvanov_Syntax_Highlighter_Theme_Editor_WP {
     }
 
     public static function submit() {
+        check_ajax_referer('urvanov-syntax-highlighter-theme-editor-submit');
         global $URVANOV_SYNTAX_HIGHLIGHTER_EMAIL;
         Urvanov_Syntax_Highlighter_Settings_WP::load_settings();
         $id = sanitize_text_field($_POST['id']);

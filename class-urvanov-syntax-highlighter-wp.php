@@ -243,10 +243,22 @@ class Urvanov_Syntax_Highlighter_Settings_WP {
                 </p>
             </form>
         </div>
-
-        <div id="urvanov-syntax-highlighter-theme-editor-wrap" class="wrap"></div>
-
-    <?php
+        <?php 
+        $themeEditorSaveNonce = wp_create_nonce( "urvanov-syntax-highlighter-theme-editor-save" );
+        $themeEditorDeleteNonce = wp_create_nonce( "urvanov-syntax-highlighter-theme-editor-delete" );
+        $themeEditorDuplicateNonce = wp_create_nonce( "urvanov-syntax-highlighter-theme-editor-duplicate" );
+        $themeEditorSubmitNonce = wp_create_nonce( "urvanov-syntax-highlighter-theme-editor-submit" );
+        $themeEditorGetNonce = wp_create_nonce( "urvanov-syntax-highlighter-theme-editor-get" );
+        
+        ?>
+        <div id="urvanov-syntax-highlighter-theme-editor-wrap" class="wrap"
+           data-save-nonce="<?php echo esc_attr($themeEditorSaveNonce) ?>"
+           data-delete-nonce="<?php echo esc_attr($themeEditorDeleteNonce) ?>"
+           data-duplicate-nonce="<?php echo esc_attr($themeEditorDuplicateNonce) ?>"
+           data-submit-nonce="<?php echo esc_attr($themeEditorSubmitNonce) ?>"
+           data-get-nonce="<?php echo esc_attr($themeEditorGetNonce) ?>"
+        ></div>
+   <?php
     }
 
     // Load the global settings and update them from the db
