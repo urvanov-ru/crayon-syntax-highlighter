@@ -7,6 +7,10 @@ class UrvanovSyntaxHighlighterTagEditorWP {
     public static $settings = null;
 
     public static function init() {
+        $tagEditorNonce = wp_create_nonce( "urvanov-syntax-highlighter-tag-editor" );
+        ?>
+        <input type="hidden" id="urvanov-syntax-highlighter-tag-editor-nonce" value = "<?php echo esc_attr($tagEditorNonce) ?>">
+        <?php
         // Hooks
         if (URVANOV_SYNTAX_HIGHLIGHTER_TAG_EDITOR) {
             Urvanov_Syntax_Highlighter_Settings_WP::load_settings(TRUE);
@@ -165,6 +169,7 @@ class UrvanovSyntaxHighlighterTagEditorWP {
     }
 
     public static function content() {
+        check_ajax_referer( 'urvanov-syntax-highlighter-tag-editor');
         Urvanov_Syntax_Highlighter_Settings_WP::load_settings();
         $langs = Urvanov_Syntax_Highlighter_Langs::sort_by_name(Urvanov_Syntax_Highlighter_Parser::parse_all());
         $curr_lang = Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::FALLBACK_LANG);

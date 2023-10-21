@@ -227,7 +227,11 @@
                 return;
             }
             // Load the editor content
-            UrvanovSyntaxHighlighterUtil.getAJAX({action: 'urvanov-syntax-highlighter-tag-editor', is_admin: gs.is_admin}, function (data) {
+            UrvanovSyntaxHighlighterUtil.getAJAX({
+                    action: 'urvanov-syntax-highlighter-tag-editor',
+                    _ajax_nonce: $("#urvanov-syntax-highlighter-tag-editor-nonce").val(),
+                    is_admin: gs.is_admin
+                    }, function (data) {
                 dialog = $('<div id="' + s.css + '"></div>');
                 dialog.appendTo('body').hide();
                 dialog.html(data);
