@@ -131,8 +131,9 @@
             });
 
             // Convert
-            $('#urvanov-syntax-highlighter-settings-form input').live(
+            $('#urvanov-syntax-highlighter-settings-form').on(
                 'focusin focusout mouseup',
+                 'input',
                 function () {
                     $('#urvanov-syntax-highlighter-settings-form').data('lastSelected', $(this));
                 });
