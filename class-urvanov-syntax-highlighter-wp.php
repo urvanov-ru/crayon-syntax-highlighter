@@ -209,7 +209,18 @@ class Urvanov_Syntax_Highlighter_Settings_WP {
             });
         </script>
 
-        <div id="urvanov-syntax-highlighter-main-wrap" class="wrap">
+        <?php 
+        $hideHelpNonce = wp_create_nonce( "urvanov-syntax-highlighter-hide-help" );
+        $showPostsNonce = wp_create_nonce( "urvanov-syntax-highlighter-show-posts" );
+        $showLangsNonce = wp_create_nonce( "urvanov-syntax-highlighter-show-langs" );
+        $showPreviewNonce = wp_create_nonce( "urvanov-syntax-highlighter-show-preview" );
+        ?>
+        <div id="urvanov-syntax-highlighter-main-wrap" class="wrap"
+               data-hide-help-nonce="<?php echo esc_attr($hideHelpNonce ) ?>"
+               data-show-posts-nonce="<?php echo esc_attr($showPostsNonce) ?>"
+               data-show-langs-nonce="<?php echo esc_attr($showLangsNonce) ?>"
+               data-show-preview-nonce="<?php echo esc_attr($showPreviewNonce) ?>"
+                >
 
             <div id="icon-options-general" class="icon32">
                 <br>
@@ -840,6 +851,7 @@ class Urvanov_Syntax_Highlighter_Settings_WP {
     }
 
     public static function show_langs() {
+        check_ajax_referer( 'urvanov-syntax-highlighter-show-langs' );
         Urvanov_Syntax_Highlighter_Settings_WP::load_settings();
         require_once(URVANOV_SYNTAX_HIGHLIGHTER_PARSER_PHP);
         if (($langs = Urvanov_Syntax_Highlighter_Parser::parse_all()) != FALSE) {
@@ -886,6 +898,7 @@ class Urvanov_Syntax_Highlighter_Settings_WP {
     }
 
     public static function show_posts() {
+        check_ajax_referer( 'urvanov-syntax-highlighter-show-posts' );
         Urvanov_Syntax_Highlighter_Settings_WP::load_settings();
         $postIDs = self::load_posts();
         $legacy_posts = self::load_legacy_posts();
@@ -925,6 +938,7 @@ class Urvanov_Syntax_Highlighter_Settings_WP {
     }
 
     public static function show_preview() {
+    	check_ajax_referer( 'urvanov-syntax-highlighter-show-preview' );
         echo '<div id="content">';
 
         self::load_settings(); // Run first to ensure global settings loaded

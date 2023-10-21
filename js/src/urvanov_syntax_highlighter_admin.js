@@ -89,6 +89,7 @@
                 $('.urvanov-syntax-highlighter-help').hide();
                 UrvanovSyntaxHighlighterUtil.getAJAX({
                     action: 'urvanov-syntax-highlighter-ajax',
+                    _ajax_nonce: $("#urvanov-syntax-highlighter-main-wrap").data( "hide-help-nonce" ),
                     'hide-help': 1
                 });
             });
@@ -112,7 +113,8 @@
 
             $('#show-posts').click(function () {
                 UrvanovSyntaxHighlighterUtil.getAJAX({
-                    action: 'urvanov-syntax-highlighter-show-posts'
+                    action: 'urvanov-syntax-highlighter-show-posts',
+                    _ajax_nonce: $("#urvanov-syntax-highlighter-main-wrap").data( "show-posts-nonce" )
                 }, function (data) {
                     $('#urvanov-syntax-highlighter-subsection-posts-info').html(data);
                 });
@@ -120,7 +122,8 @@
 
             $('#show-langs').click(function () {
                 UrvanovSyntaxHighlighterUtil.getAJAX({
-                    action: 'urvanov-syntax-highlighter-show-langs'
+                    action: 'urvanov-syntax-highlighter-show-langs',
+                    _ajax_nonce: $("#urvanov-syntax-highlighter-main-wrap").data( "show-langs-nonce" )
                 }, function (data) {
                     $('#lang-info').hide();
                     $('#urvanov-syntax-highlighter-subsection-langs-info').html(data);
@@ -238,6 +241,7 @@
             var obj;
             var getVars = $.extend({
                 action: 'urvanov-syntax-highlighter-show-preview',
+                _ajax_nonce: $("#urvanov-syntax-highlighter-main-wrap").data( "show-preview-nonce" ),
                 theme: adminSettings.currTheme
             }, vars);
             if (change_code) {

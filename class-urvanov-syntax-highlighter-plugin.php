@@ -1036,6 +1036,7 @@ class Urvanov_Syntax_Highlighter_Plugin {
     }
 
     public static function ajax() {
+        check_ajax_referer( 'urvanov-syntax-highlighter-hide-help');
         $allowed = array(Urvanov_Syntax_Highlighter_Settings::HIDE_HELP);
         foreach ($allowed as $allow) {
             if (array_key_exists($allow, $_GET)) {
