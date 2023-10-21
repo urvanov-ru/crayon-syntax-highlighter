@@ -1091,6 +1091,7 @@ class Human {
         echo '<span id="urvanov-syntax-highlighter-subsection-copy-check">';
         self::checkbox(array(Urvanov_Syntax_Highlighter_Settings::PLAIN_TOGGLE, Urvanov_Syntax_Highlighter_Global::urvanov__('Enable plain code toggling')));
         self::checkbox(array(Urvanov_Syntax_Highlighter_Settings::SHOW_PLAIN_DEFAULT, Urvanov_Syntax_Highlighter_Global::urvanov__('Show the plain code by default')));
+        self::checkbox(array(Urvanov_Syntax_Highlighter_Settings::HIGHLIGHT, Urvanov_Syntax_Highlighter_Global::urvanov__('Highlight code')));
         self::checkbox(array(Urvanov_Syntax_Highlighter_Settings::COPY, Urvanov_Syntax_Highlighter_Global::urvanov__('Enable code copy/paste')));
         echo '</span>';
         self::checkbox(array(Urvanov_Syntax_Highlighter_Settings::POPUP, Urvanov_Syntax_Highlighter_Global::urvanov__('Enable opening code in a window')));

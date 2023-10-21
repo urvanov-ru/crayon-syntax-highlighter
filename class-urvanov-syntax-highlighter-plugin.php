@@ -165,7 +165,9 @@ class Urvanov_Syntax_Highlighter_Plugin {
         $highlighter_instance->is_inline($inline);
 
         // Determine if we should highlight
-        $highlight = array_key_exists('highlight', $atts) ? UrvanovSyntaxHighlighterUtil::str_to_bool($atts['highlight'], FALSE) : TRUE;
+        $highlight = array_key_exists('highlight', $atts)
+                ? UrvanovSyntaxHighlighterUtil::str_to_bool($atts['highlight'], FALSE)
+                : Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::HIGHLIGHT);
         $highlighter_instance->is_highlighted($highlight);
         return $highlighter_instance;
     }

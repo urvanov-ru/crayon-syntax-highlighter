@@ -89,6 +89,7 @@ class Urvanov_Syntax_Highlighter_Settings {
     const SHOW_ALTERNATE = 'show_alternate';
     const PLAIN_TAG = 'plain_tag';
     const SHOW_PLAIN_DEFAULT = 'show-plain-default';
+    const HIGHLIGHT = 'highlight';
     const ENQUEUE_THEMES = 'enqueque-themes';
     const ENQUEUE_FONTS = 'enqueque-fonts';
     const MAIN_QUERY = 'main-query';
@@ -213,6 +214,7 @@ class Urvanov_Syntax_Highlighter_Settings {
             new Urvanov_Syntax_Highlighter_Setting(self::SHOW_PLAIN_DEFAULT, FALSE),
             new Urvanov_Syntax_Highlighter_Setting(self::SHOW_PLAIN,
                 array(Urvanov_Syntax_Highlighter_Global::urvanov__('On Double Click'), Urvanov_Syntax_Highlighter_Global::urvanov__('On Single Click'), Urvanov_Syntax_Highlighter_Global::urvanov__('On MouseOver'), Urvanov_Syntax_Highlighter_Global::urvanov__('Disable Mouse Events'))),
+            new Urvanov_Syntax_Highlighter_Setting(self::HIGHLIGHT, TRUE),
             new Urvanov_Syntax_Highlighter_Setting(self::DISABLE_ANIM, FALSE),
             new Urvanov_Syntax_Highlighter_Setting(self::TOUCHSCREEN, TRUE),
             new Urvanov_Syntax_Highlighter_Setting(self::DISABLE_RUNTIME, FALSE),
