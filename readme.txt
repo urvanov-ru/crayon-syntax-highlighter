@@ -1,6 +1,6 @@
 === Urvanov Syntax Highlighter ===
 Contributors: urvanov
-Donate link: https://money.yandex.ru/to/41001288941320
+Donate link: https://yoomoney.ru/to/41001288941320
 License: GPLv3 or later
 Tags: syntax highlighter, syntax, highlighter, highlighting, crayon, code highlighter, bbpress
 Requires at least: 6.3
@@ -72,7 +72,7 @@ There are many ways you can help!
 * Make a Theme and share
 * Add support for your favourite <a href="http://aramk.com/blog/2011/09/23/crayon-language-file-specification/" target="_blank">Language</a>
 * Write a post about your pastel experiences and share
-* <a href="https://money.yandex.ru/to/41001288941320" target="_blank">Donate</a> to the project
+* <a href="https://yoomoney.ru/to/41001288941320" target="_blank">Donate</a> to the project
 
 **Supported Languages**
 
