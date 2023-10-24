@@ -334,10 +334,11 @@ Contact me at http://twitter.com/crayonsyntax or crayon.syntax@gmail.com.
 == Changelog ==
 
 = 2.8.34 =
+* ADDED
+    * Added "Highlight code" setting in "Code" section of plugin settings.
 * FIXED
     * CSRF vulnerability in the theme editor and the tag editor. Added nonces.
     * Replaced deprecated jQuery "live" to jQuery "on"
-    * Added "Highlight code" setting in "Code" section of plugin settings.
 
 = 2.8.33 =
 * FIXED
