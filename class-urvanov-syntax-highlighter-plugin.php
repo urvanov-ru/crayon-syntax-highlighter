@@ -739,7 +739,7 @@ class Urvanov_Syntax_Highlighter_Plugin {
         return $the_content;
     }
 
-    public static function pre_comment_text($comment_text, $comment, $args ) {
+    public static function pre_comment_text($text, $comment, $args ) {
         $comment_id = strval($comment->comment_ID);
         if (array_key_exists($comment_id, self::$comment_captures)) {
             // Replace with IDs now that we need to

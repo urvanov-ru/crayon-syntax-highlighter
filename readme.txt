@@ -5,7 +5,7 @@ License: GPLv3 or later
 Tags: syntax highlighter, syntax, highlighter, highlighting, crayon, code highlighter, bbpress
 Requires at least: 6.3
 Tested up to: 6.4.3
-Stable tag: 2.8.35
+Stable tag: 2.8.34
 
 Reincarnation of Crayon Syntax Highlighter. Syntax Highlighter supporting multiple languages, themes, fonts, highlighting from a URL, or post text.
 
@@ -333,6 +333,10 @@ Contact me at http://twitter.com/crayonsyntax or crayon.syntax@gmail.com.
 
 == Changelog ==
 
+= 2.8.36 =
+* FIXED
+    * Bug in processing comments.
+    
 = 2.8.35 =
 * FIXED
     * Added interpolated expressions highlighting to JavaScript language.
