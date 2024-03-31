@@ -342,6 +342,7 @@ Contact me at http://twitter.com/crayonsyntax or crayon.syntax@gmail.com.
     * Added interpolated expressions highlighting to JavaScript language.
     * Warnings about global comment variable in comment highlighting.
     * Minified min.js files.
+
 = 2.8.34 =
 * ADDED
     * Added "Highlight code" setting in "Code" section of plugin settings.
