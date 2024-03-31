@@ -10,7 +10,11 @@ COLORBOX_PATH='../util/tag-editor/colorbox'
 JS_PATH='../js'
 
 function minify {
-    inputs=${@:0:$#}
+    echo "parameters"
+    echo ${@:1:$#-1}
+    echo "last parameter"
+    echo ${@:$#}
+    inputs=${@:1:$#-1}
     output=${@:$#}
     cat $inputs > $output
     /home/fedor/programs/jdk1.6.0_45/bin/java -jar $MINIFIER $output -o $output

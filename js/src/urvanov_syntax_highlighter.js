@@ -512,7 +512,9 @@
             var plainTextCode = plain[0].value;
 
             navigator.clipboard.writeText(plainTextCode)
-                .then(value => urvanovSyntaxHighlighterInfo(uid, strings.copy));
+                .then(function(value) { 
+                    return urvanovSyntaxHighlighterInfo(uid, strings.copy);
+                    });
             return false;
         };
 

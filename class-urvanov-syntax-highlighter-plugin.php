@@ -739,8 +739,7 @@ class Urvanov_Syntax_Highlighter_Plugin {
         return $the_content;
     }
 
-    public static function pre_comment_text($text) {
-        global $comment;
+    public static function pre_comment_text($comment_text, $comment, $args ) {
         $comment_id = strval($comment->comment_ID);
         if (array_key_exists($comment_id, self::$comment_captures)) {
             // Replace with IDs now that we need to
@@ -1345,7 +1344,7 @@ if (defined('ABSPATH')) {
         if (Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::COMMENTS)) {
             /* XXX This is called first to match Crayons, then higher priority replaces after other filters.
              Prevents Crayon from being formatted by the filters, and also keeps original comment formatting. */
-            add_filter('comment_text', 'Urvanov_Syntax_Highlighter_Plugin::pre_comment_text', 1);
+            add_filter('comment_text', 'Urvanov_Syntax_Highlighter_Plugin::pre_comment_text', 1, 3);
             add_filter('comment_text', 'Urvanov_Syntax_Highlighter_Plugin::comment_text', 100);
         }
 

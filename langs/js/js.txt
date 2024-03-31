@@ -6,7 +6,7 @@
     VERSION             1.8
 
     COMMENT             (?default)
-    STRING              (?default)
+    STRING              ((?<![^\\]\\)`.*?(?<![^\\]\\)`)|(?default)
 	REGEX:COMMENT		/([^/]|(?<=\\)/)+/[gmiys]
     
     STATEMENT           (?default)
