@@ -740,6 +740,19 @@ class Urvanov_Syntax_Highlighter_Plugin {
     }
 
     public static function pre_comment_text($text, $comment, $args ) {
+        // according to
+        // https://developer.wordpress.org/reference/hooks/comment_text/
+        // this filter calls in different places.
+        //
+        // https://github.com/WordPress/WordPress/blob/01876b090612c0d2825a896a7ba0e7fd6dd6decc/wp-includes/comment.php#L48
+        // calls it with $comment === null
+        //
+        // https://github.com/WordPress/WordPress/blob/bb26471543b104e047f9f4b264810adc372cd6ce/wp-includes/comment-template.php#L1094
+        // calls it with the object $comment = get_comment( $comment_id ); as $comment
+        if ($comment === null) {
+            return $text;
+        }
+        // We process only call with filled $comment
         $comment_id = strval($comment->comment_ID);
         if (array_key_exists($comment_id, self::$comment_captures)) {
             // Replace with IDs now that we need to
@@ -748,8 +761,20 @@ class Urvanov_Syntax_Highlighter_Plugin {
         return $text;
     }
 
-    public static function comment_text($text) {
-        global $comment;
+    public static function comment_text($text, $comment, $args ) {
+        // according to
+        // https://developer.wordpress.org/reference/hooks/comment_text/
+        // this filter calls in different places.
+        //
+        // https://github.com/WordPress/WordPress/blob/01876b090612c0d2825a896a7ba0e7fd6dd6decc/wp-includes/comment.php#L48
+        // calls it with $comment === null
+        //
+        // https://github.com/WordPress/WordPress/blob/bb26471543b104e047f9f4b264810adc372cd6ce/wp-includes/comment-template.php#L1094
+        // calls it with the object $comment = get_comment( $comment_id ); as $comment
+        if ($comment === null) {
+            return $text;
+        }
+        // We process only call with filled $comment
         $comment_id = strval($comment->comment_ID);
         // Find if this post has Crayons
         if (array_key_exists($comment_id, self::$comment_queue)) {
@@ -1345,7 +1370,7 @@ if (defined('ABSPATH')) {
             /* XXX This is called first to match Crayons, then higher priority replaces after other filters.
              Prevents Crayon from being formatted by the filters, and also keeps original comment formatting. */
             add_filter('comment_text', 'Urvanov_Syntax_Highlighter_Plugin::pre_comment_text', 1, 3);
-            add_filter('comment_text', 'Urvanov_Syntax_Highlighter_Plugin::comment_text', 100);
+            add_filter('comment_text', 'Urvanov_Syntax_Highlighter_Plugin::comment_text', 100, 3);
         }
 
         // This ensures Crayons are not formatted by WP filters. Other plugins should specify priorities between 1 and 100.
