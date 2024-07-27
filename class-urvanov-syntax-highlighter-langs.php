@@ -83,7 +83,9 @@ class Urvanov_Syntax_Highlighter_Langs extends Urvanov_Syntax_Highlighter_User_R
 	 * Returns a Urvanov_Syntax_Highlighter_Lang object. */
 	public function detect($path, $fallback_id = NULL) {
 		$this->load();
-		extract(pathinfo($path));
+		if ( '' != $path) {
+			extract(pathinfo($path));
+		}
 
 		// If fallback id if given
 		if ($fallback_id == NULL) {
