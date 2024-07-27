@@ -3,8 +3,8 @@ Contributors: urvanov
 Donate link: https://yoomoney.ru/to/41001288941320
 License: GPLv3 or later
 Tags: syntax highlighter, syntax, highlighter, highlighting, crayon, code highlighter, bbpress
-Requires at least: 6.3
-Tested up to: 6.4.3
+Requires at least: 6.6
+Tested up to: 6.6.1
 Stable tag: 2.8.36
 
 Reincarnation of Crayon Syntax Highlighter. Syntax Highlighter supporting multiple languages, themes, fonts, highlighting from a URL, or post text.
@@ -332,6 +332,11 @@ Contact me at http://twitter.com/crayonsyntax or crayon.syntax@gmail.com.
 5. Theme Editor.
 
 == Changelog ==
+
+= 2.8.???????????????????????????????? =
+* FIXED
+    * Warning message. PHP Deprecated: pathinfo(): Passing null to parameter #1 (https://wordpress.org/support/topic/passing-null-to-string-warning/)
+    * Warning message. Trying to get property 'comment_ID' of non-object (https://wordpress.org/support/topic/comment_id-error/).
 
 = 2.8.36 =
 * FIXED
