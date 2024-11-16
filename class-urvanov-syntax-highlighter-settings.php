@@ -155,7 +155,9 @@ class Urvanov_Syntax_Highlighter_Settings {
     private function init() {
         global $URVANOV_SYNTAX_HIGHLIGHTER_VERSION;
 
-        Urvanov_Syntax_Highlighter_Global::load_plugin_textdomain();
+	// XXX Urvanov_Syntax_Highlighter_Global::load_plugin_textdomain();
+	// XXX moved load_textdomain to after_setup_theme, so that it loads after init as it is required in WP 6.7
+	add_filter('after_setup_theme', 'Urvanov_Syntax_Highlighter_Global::load_plugin_textdomain');
 
         self::$cache_array = array(Urvanov_Syntax_Highlighter_Global::urvanov__('Hourly') => 3600, Urvanov_Syntax_Highlighter_Global::urvanov__('Daily') => 86400,
             Urvanov_Syntax_Highlighter_Global::urvanov__('Weekly') => 604800, Urvanov_Syntax_Highlighter_Global::urvanov__('Monthly') => 18144000,
