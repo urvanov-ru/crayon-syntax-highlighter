@@ -336,7 +336,7 @@ Contact me at http://twitter.com/crayonsyntax or crayon.syntax@gmail.com.
 = 2.8.38 =
 * FIXED
     * moved load_textdomain to after_setup_theme, so that it loads after in…
-    * Additional check main loop single post inside the_content.
+    * Fix warning in the_content function
 
 = 2.8.37 =
 * FIXED

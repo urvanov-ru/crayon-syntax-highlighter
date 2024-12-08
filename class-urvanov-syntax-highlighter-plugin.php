@@ -684,21 +684,11 @@ class Urvanov_Syntax_Highlighter_Plugin {
     public static function the_content($the_content) {
         UrvanovSyntaxHighlighterLog::debug('the_content');
 
-        // Check if we're inside the main loop in a single Post.
-        $is_main_loop_single_post = is_singular() && in_the_loop() && is_main_query();
-        if (!$is_main_loop_single_post) {
-            return $the_content;
-        }
         // Some themes make redundant queries and don't need extra work...
         if (strlen($the_content) == 0) {
             UrvanovSyntaxHighlighterLog::debug('the_content blank');
             return $the_content;
         }
-
-        global $post;
-
-        // Go through queued posts and find crayons
-        $post_id = strval($post->ID);
 
         if (self::$is_excerpt) {
             UrvanovSyntaxHighlighterLog::debug('excerpt');
@@ -710,6 +700,11 @@ class Urvanov_Syntax_Highlighter_Plugin {
             // Otherwise Crayon remains with ID and replaced later
             return $the_content;
         }
+
+        global $post;
+        
+        // Go through queued posts and find crayons
+        $post_id = strval($post->ID);
 
         // Find if this post has Crayons
         if (array_key_exists($post_id, self::$post_queue)) {
