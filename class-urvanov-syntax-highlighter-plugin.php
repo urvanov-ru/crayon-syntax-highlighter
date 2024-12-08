@@ -1345,7 +1345,9 @@ if (defined('ABSPATH')) {
     if (!is_admin()) {
         // Filters and Actions
 
-        add_filter('init', 'Urvanov_Syntax_Highlighter_Plugin::init');
+	// XXX add_filter('init', 'Urvanov_Syntax_Highlighter_Plugin::init');
+	// XXX moved load_textdomain to after_setup_theme, so that it loads after init as it is required in WP 6.7
+	add_filter('after_setup_theme', 'Urvanov_Syntax_Highlighter_Plugin::init');
 
         Urvanov_Syntax_Highlighter_Settings_WP::load_settings(TRUE);
         if (Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::MAIN_QUERY)) {
