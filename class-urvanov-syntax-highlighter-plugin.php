@@ -684,6 +684,11 @@ class Urvanov_Syntax_Highlighter_Plugin {
     public static function the_content($the_content) {
         UrvanovSyntaxHighlighterLog::debug('the_content');
 
+        // Check if we're inside the main loop in a single Post.
+        $is_main_loop_single_post = is_singular() && in_the_loop() && is_main_query();
+        if (!$is_main_loop_single_post) {
+            return $the_content;
+        }
         // Some themes make redundant queries and don't need extra work...
         if (strlen($the_content) == 0) {
             UrvanovSyntaxHighlighterLog::debug('the_content blank');
