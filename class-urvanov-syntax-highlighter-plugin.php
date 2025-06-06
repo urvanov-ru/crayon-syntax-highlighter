@@ -1038,11 +1038,6 @@ class Urvanov_Syntax_Highlighter_Plugin {
         }
     }
 
-    public static function init($request) {
-        UrvanovSyntaxHighlighterLog::debug('init');
-        Urvanov_Syntax_Highlighter_Global::load_plugin_textdomain();
-    }
-
     public static function init_ajax() {
         add_action('wp_ajax_urvanov-syntax-highlighter-tag-editor', 'UrvanovSyntaxHighlighterTagEditorWP::content');
         add_action('wp_ajax_nopriv_urvanov-syntax-highlighter-tag-editor', 'UrvanovSyntaxHighlighterTagEditorWP::content');
@@ -1347,7 +1342,7 @@ if (defined('ABSPATH')) {
 
 	// XXX add_filter('init', 'Urvanov_Syntax_Highlighter_Plugin::init');
 	// XXX moved load_textdomain to after_setup_theme, so that it loads after init as it is required in WP 6.7
-	add_filter('after_setup_theme', 'Urvanov_Syntax_Highlighter_Plugin::init');
+	add_filter('init', 'Urvanov_Syntax_Highlighter_Global::load_plugin_textdomain');
 
         Urvanov_Syntax_Highlighter_Settings_WP::load_settings(TRUE);
         if (Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::MAIN_QUERY)) {
