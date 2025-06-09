@@ -15,7 +15,7 @@ Reincarnation of Crayon Syntax Highlighter. Somewhere in documentation and in UI
 
 Use special Urvanov Syntax Highlighter block in new posts. Don't use standard Code block.
 
-How to use the plugin:
+<a href = "https://www.youtube.com/watch?v=2aBtVJOOqqA">Watch how to use the plugin</a>:
 
 https://www.youtube.com/watch?v=2aBtVJOOqqA
 
