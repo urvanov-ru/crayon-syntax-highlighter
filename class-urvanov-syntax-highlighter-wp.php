@@ -703,9 +703,9 @@ class Urvanov_Syntax_Highlighter_Settings_WP {
         foreach ($resources as $k => $v) {
             if (is_array($v) && count($v)) {
                 $data = $v[0];
-                $text = $v[1];
+                $text = Urvanov_Syntax_Highlighter_Global::urvanov__($v[1]);
             } else {
-                $text = $v;
+                $text = Urvanov_Syntax_Highlighter_Global::urvanov__($v);
             }
             $is_selected = $selected !== NULL && $selected == $k ? 'selected' : selected(self::$options[$id], $k, FALSE);
             $return .= '<option ' . (isset($data) ? 'data-value="' . $data . '"' : '') . ' value="' . $k . '" ' . $is_selected . '>' . $text . '</option>';

@@ -333,6 +333,10 @@ Contact me at http://twitter.com/crayonsyntax or crayon.syntax@gmail.com.
 
 == Changelog ==
 
+= 2.8.40 =
+* FIXED
+    * Fixed broken settings after 2.8.39
+
 = 2.8.39 =
 * FIXED
     * Fixed 'Translations loaded too early error' notice. (https://wordpress.org/support/topic/translations-loaded-too-early-error/)

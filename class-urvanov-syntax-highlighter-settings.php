@@ -268,32 +268,6 @@ class Urvanov_Syntax_Highlighter_Settings {
             
             new Urvanov_Syntax_Highlighter_Setting(self::CACHE, array_keys(self::$cache_array), 1)
         );
-        
-        add_action('init', function() {
-        	self::$cache_array = array(Urvanov_Syntax_Highlighter_Global::urvanov__('Hourly') => 3600, Urvanov_Syntax_Highlighter_Global::urvanov__('Daily') => 86400,
-        			Urvanov_Syntax_Highlighter_Global::urvanov__('Weekly') => 604800, Urvanov_Syntax_Highlighter_Global::urvanov__('Monthly') => 18144000,
-        			Urvanov_Syntax_Highlighter_Global::urvanov__('Immediately') => 1);
-        	
-            $translatedSettings = array(
-            		new Urvanov_Syntax_Highlighter_Setting(self::HEIGHT_MODE, array(Urvanov_Syntax_Highlighter_Global::urvanov__('Max'), Urvanov_Syntax_Highlighter_Global::urvanov__('Min'), Urvanov_Syntax_Highlighter_Global::urvanov__('Static'))),
-            		new Urvanov_Syntax_Highlighter_Setting(self::HEIGHT_UNIT, array(Urvanov_Syntax_Highlighter_Global::urvanov__('Pixels'), Urvanov_Syntax_Highlighter_Global::urvanov__('Percent'))),
-            		new Urvanov_Syntax_Highlighter_Setting(self::WIDTH_MODE, array(Urvanov_Syntax_Highlighter_Global::urvanov__('Max'), Urvanov_Syntax_Highlighter_Global::urvanov__('Min'), Urvanov_Syntax_Highlighter_Global::urvanov__('Static'))),
-            		new Urvanov_Syntax_Highlighter_Setting(self::WIDTH_UNIT, array(Urvanov_Syntax_Highlighter_Global::urvanov__('Pixels'), Urvanov_Syntax_Highlighter_Global::urvanov__('Percent'))),
-            		new Urvanov_Syntax_Highlighter_Setting(self::H_ALIGN, array(Urvanov_Syntax_Highlighter_Global::urvanov__('None'), Urvanov_Syntax_Highlighter_Global::urvanov__('Left'), Urvanov_Syntax_Highlighter_Global::urvanov__('Center'), Urvanov_Syntax_Highlighter_Global::urvanov__('Right'))),
-            		new Urvanov_Syntax_Highlighter_Setting(self::TOOLBAR, array(Urvanov_Syntax_Highlighter_Global::urvanov__('On MouseOver'), Urvanov_Syntax_Highlighter_Global::urvanov__('Always'), Urvanov_Syntax_Highlighter_Global::urvanov__('Never'))),
-            		new Urvanov_Syntax_Highlighter_Setting(self::SHOW_LANG, array(Urvanov_Syntax_Highlighter_Global::urvanov__('When Found'), Urvanov_Syntax_Highlighter_Global::urvanov__('Always'), Urvanov_Syntax_Highlighter_Global::urvanov__('Never'))),
-            		new Urvanov_Syntax_Highlighter_Setting(self::FALLBACK_LANG, Urvanov_Syntax_Highlighter_Langs::DEFAULT_LANG),
-            		new Urvanov_Syntax_Highlighter_Setting(self::SHOW_PLAIN,
-            				array(Urvanov_Syntax_Highlighter_Global::urvanov__('On Double Click'), Urvanov_Syntax_Highlighter_Global::urvanov__('On Single Click'), Urvanov_Syntax_Highlighter_Global::urvanov__('On MouseOver'), Urvanov_Syntax_Highlighter_Global::urvanov__('Disable Mouse Events'))),
-            		new Urvanov_Syntax_Highlighter_Setting(self::ERROR_MSG, Urvanov_Syntax_Highlighter_Global::urvanov__('An error has occurred. Please try again later.')),
-            		new Urvanov_Syntax_Highlighter_Setting(self::CODE_TAG_CAPTURE_TYPE, array(Urvanov_Syntax_Highlighter_Global::urvanov__('Inline Tag'), Urvanov_Syntax_Highlighter_Global::urvanov__('Block Tag'))),
-            		new Urvanov_Syntax_Highlighter_Setting(self::TAG_EDITOR_ADD_BUTTON_TEXT, Urvanov_Syntax_Highlighter_Global::urvanov__('Add Code')),
-            		new Urvanov_Syntax_Highlighter_Setting(self::TAG_EDITOR_EDIT_BUTTON_TEXT, Urvanov_Syntax_Highlighter_Global::urvanov__('Edit Code')),
-            		
-            		new Urvanov_Syntax_Highlighter_Setting(self::CACHE, array_keys(self::$cache_array), 1)
-                );
-            $this->set($translatedSettings, NULL, true);
-        });
 
         $this->set($settings);
 
