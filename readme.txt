@@ -555,7 +555,7 @@ Contact me at http://twitter.com/crayonsyntax or crayon.syntax@gmail.com.
 * FIXED:
     * Polish translation and other fixes (thanks to https://github.com/rob006).
 
-Truncated. Old changelog entries <a href = "https://github.com/urvanov-ru/crayon-syntax-highlighter/wiki/Urvanov-Syntax-Highlighter-changelog">archived on GitHub wiki</a>.
+Truncated. Old changelog entries <a href = "https://github.com/urvanov-ru/crayon-syntax-highlighter/wiki/changelog">archived on GitHub wiki</a>.
 
 == Upgrade Notice ==
 
