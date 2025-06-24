@@ -267,62 +267,66 @@ class Urvanov_Syntax_Highlighter_Plugin {
 
         UrvanovSyntaxHighlighterLog::debug('capture for id ' . $wp_id . ' len ' . strlen($wp_content));
 
-//         $blocks = parse_blocks($wp_content);
+        $blocks = parse_blocks($wp_content);
         
-        //UrvanovSyntaxHighlighterLog::debug($blocks, 'Gutenberg blocks');
+        $is_gutenberg_page = ( ! empty( $blocks ) && NULL !== $blocks[0]['blockName'] && '' !== $blocks[0]['blockName'] );
         
-//         foreach ( $blocks as $block ) {
-            // Urvanov Syntax Highlighter block
-            // UrvanovSyntaxHighlighterLog::debug($block, 'Parsed post block');
-//             $capture_pre = false;
-//             if ( 'urvanov-syntax-highlighter/code-block' === $block['blockName'] ) {
-//             	$capture_pre = true;
-//             } else if (('paragraph' === $block['blockName'])
-//                     && ((Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::CAPTURE_PRE)
-//                             || $skip_setting_check) && $in_flag[Urvanov_Syntax_Highlighter_Settings::CAPTURE_PRE])) {
-//                 $capture_pre = true;
-//             }
-//             UrvanovSyntaxHighlighterLog::debug($capture_pre, 'capture_pre');
-//             UrvanovSyntaxHighlighterLog::debug($block['blockName'], 'Block name');
-//             UrvanovSyntaxHighlighterLog::debug($block['innerHTML'], 'Inner HTML');
-//             if ($capture_pre) {
-//             	$block['innerHTML'] = 'TEST REPLACE';
-//             	$block['innerContent'] = 'TEST REPLACE';
-//                 //$block['innerHTML'] = preg_replace_callback('#(?<!\$)<\s*pre(?=(?:([^>]*)\bclass\s*=\s*(["\'])(.*?)\2([^>]*))?)([^>]*)>(.*?)<\s*/\s*pre\s*>#msi', 'Urvanov_Syntax_Highlighter_Plugin::pre_tag', $block['innerHTML']);
-//             }
-//         }
-//         $wp_content = serialize_blocks($blocks);
-        // Convert <pre> tags to crayon tags, if needed
-        if ((Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::CAPTURE_PRE) || $skip_setting_check) && $in_flag[Urvanov_Syntax_Highlighter_Settings::CAPTURE_PRE]) {
-            // XXX This will fail if <pre></pre> is used inside another <pre></pre>
-            $wp_content = preg_replace_callback('#(?<!\$)<\s*pre(?=(?:([^>]*)\bclass\s*=\s*(["\'])(.*?)\2([^>]*))?)([^>]*)>(.*?)<\s*/\s*pre\s*>#msi', 'Urvanov_Syntax_Highlighter_Plugin::pre_tag', $wp_content);
-        }
-
-        // Convert mini [php][/php] tags to crayon tags, if needed
-        if ((Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::CAPTURE_MINI_TAG) || $skip_setting_check) && $in_flag[Urvanov_Syntax_Highlighter_Settings::CAPTURE_MINI_TAG]) {
-            $wp_content = preg_replace('#(?<!\$)\[\s*(' . self::$alias_regex . ')\b([^\]]*)\](.*?)\[\s*/\s*(?:\1)\s*\](?!\$)#msi', '[crayon lang="\1" \2]\3[/crayon]', $wp_content);
-            $wp_content = preg_replace('#(?<!\$)\[\s*(' . self::$alias_regex . ')\b([^\]]*)/\s*\](?!\$)#msi', '[crayon lang="\1" \2 /]', $wp_content);
-        }
-
-        // Convert <code> to inline tags
-        if (Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::CODE_TAG_CAPTURE)) {
-            $inline = Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::CODE_TAG_CAPTURE_TYPE) === 0;
-            $inline_setting = $inline ? 'inline="true"' : '';
-            $wp_content = preg_replace('#<(\s*code\b)([^>]*)>(.*?)</\1[^>]*>#msi', '[crayon ' . $inline_setting . ' \2]\3[/crayon]', $wp_content);
-        }
-
-        if ((Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::INLINE_TAG) || $skip_setting_check) && $in_flag[Urvanov_Syntax_Highlighter_Settings::INLINE_TAG]) {
-            if (Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::INLINE_TAG_CAPTURE)) {
-                // Convert inline {php}{/php} tags to crayon tags, if needed
-                $wp_content = preg_replace('#(?<!\$)\{\s*(' . self::$alias_regex . ')\b([^\}]*)\}(.*?)\{/(?:\1)\}(?!\$)#msi', '[crayon lang="\1" inline="true" \2]\3[/crayon]', $wp_content);
-            }
-            // Convert <span class="crayon-inline"> tags to inline crayon tags
-            $wp_content = preg_replace_callback('#(?<!\$)<\s*span([^>]*)\bclass\s*=\s*(["\'])(.*?)\2([^>]*)>(.*?)<\s*/\s*span\s*>#msi', 'Urvanov_Syntax_Highlighter_Plugin::span_tag', $wp_content);
-        }
-
-        // Convert [plain] tags into <pre><code></code></pre>, if needed
-        if ((Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::PLAIN_TAG) || $skip_setting_check) && $in_flag[Urvanov_Syntax_Highlighter_Settings::PLAIN_TAG]) {
-            $wp_content = preg_replace_callback('#(?<!\$)\[\s*plain\s*\](.*?)\[\s*/\s*plain\s*\]#msi', 'Urvanov_Syntax_Highlighter_Formatter::plain_code', $wp_content);
+        UrvanovSyntaxHighlighterLog::debug($is_gutenberg_page, 'is_gutenberg_page');
+        
+        if ($is_gutenberg_page) {
+        	$blockStack = [];
+        	$blockStackLength = 0;
+        	foreach ( $blocks as &$block ) {
+        		$blockStack[$blockStackLength++] = &$block;
+        	}
+        	while ($blockStack) {
+        		$block = &$blockStack[--$blockStackLength];
+        		unset($blockStack[$blockStackLength]);
+        		// UrvanovSyntaxHighlighterLog::debug($block, 'Parsed post block');
+        		if (!$block || !$block['blockName']) {
+        			continue;
+        		}
+        		$capture_pre = false;
+        		$capture_inline = false;
+        		if ( 'urvanov-syntax-highlighter/code-block' === $block['blockName'] ) {
+        			$capture_pre = true;
+        		} else if (in_array($block['blockName'], ['core/paragraph', 'core/list-item'])) {
+        			$capture_inline = true;
+        		}
+	        	UrvanovSyntaxHighlighterLog::debug($capture_pre, 'capture_pre');
+	        	UrvanovSyntaxHighlighterLog::debug($block['blockName'], 'Block name');
+	        	if ($capture_pre) {
+	        		$block['innerContent'][0] = self::preg_replace_pre($block['innerContent'][0]);
+	        	}
+	        	if ($capture_inline) {
+	        		foreach($block['innerContent'] as $contentIndex => &$contentString) {
+	        			$block['innerContent'][$contentIndex] = self::preg_replace_inline($contentString, $in_flag, $skip_setting_check);
+	        		}
+	        	}
+	        	foreach ($block['innerBlocks'] as &$innerBlock) {
+	        		$blockStack[$blockStackLength++] = &$innerBlock;
+	        	}
+        	}
+        	$wp_content = serialize_blocks($blocks);
+     	} else {
+	        // Convert <pre> tags to crayon tags, if needed
+	        if ((Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::CAPTURE_PRE) || $skip_setting_check) && $in_flag[Urvanov_Syntax_Highlighter_Settings::CAPTURE_PRE]) {
+	            // XXX This will fail if <pre></pre> is used inside another <pre></pre>
+	            $wp_content = self::preg_replace_pre($wp_content);
+	        }
+	
+	        // Convert mini [php][/php] tags to crayon tags, if needed
+	        if ((Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::CAPTURE_MINI_TAG) || $skip_setting_check) && $in_flag[Urvanov_Syntax_Highlighter_Settings::CAPTURE_MINI_TAG]) {
+	            $wp_content = preg_replace('#(?<!\$)\[\s*(' . self::$alias_regex . ')\b([^\]]*)\](.*?)\[\s*/\s*(?:\1)\s*\](?!\$)#msi', '[crayon lang="\1" \2]\3[/crayon]', $wp_content);
+	            $wp_content = preg_replace('#(?<!\$)\[\s*(' . self::$alias_regex . ')\b([^\]]*)/\s*\](?!\$)#msi', '[crayon lang="\1" \2 /]', $wp_content);
+	        }
+	
+	        $wp_content = self::preg_replace_inline($wp_content, $in_flag, $skip_setting_check);
+	
+	        // Convert [plain] tags into <pre><code></code></pre>, if needed
+	        if ((Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::PLAIN_TAG) || $skip_setting_check) && $in_flag[Urvanov_Syntax_Highlighter_Settings::PLAIN_TAG]) {
+	            $wp_content = preg_replace_callback('#(?<!\$)\[\s*plain\s*\](.*?)\[\s*/\s*plain\s*\]#msi', 'Urvanov_Syntax_Highlighter_Formatter::plain_code', $wp_content);
+	        }
         }
 
         // Add IDs to the Crayons
@@ -464,6 +468,29 @@ class Urvanov_Syntax_Highlighter_Plugin {
         return $capture;
     }
     
+    
+    public static function preg_replace_pre($wp_content) {
+    	return preg_replace_callback('#(?<!\$)<\s*pre(?=(?:([^>]*)\bclass\s*=\s*(["\'])(.*?)\2([^>]*))?)([^>]*)>(.*?)<\s*/\s*pre\s*>#msi', 'Urvanov_Syntax_Highlighter_Plugin::pre_tag', $wp_content);
+    }
+    
+    public static function preg_replace_inline($wp_content, $in_flag, $skip_setting_check) {
+    	// Convert <code> to inline tags
+    	if (Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::CODE_TAG_CAPTURE)) {
+    		$inline = Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::CODE_TAG_CAPTURE_TYPE) === 0;
+    		$inline_setting = $inline ? 'inline="true"' : '';
+    		$wp_content = preg_replace('#<(\s*code\b)([^>]*)>(.*?)</\1[^>]*>#msi', '[crayon ' . $inline_setting . ' \2]\3[/crayon]', $wp_content);
+    	}
+    	
+    	if ((Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::INLINE_TAG) || $skip_setting_check) && $in_flag[Urvanov_Syntax_Highlighter_Settings::INLINE_TAG]) {
+    		if (Urvanov_Syntax_Highlighter_Global_Settings::val(Urvanov_Syntax_Highlighter_Settings::INLINE_TAG_CAPTURE)) {
+    			// Convert inline {php}{/php} tags to crayon tags, if needed
+    			$wp_content = preg_replace('#(?<!\$)\{\s*(' . self::$alias_regex . ')\b([^\}]*)\}(.*?)\{/(?:\1)\}(?!\$)#msi', '[crayon lang="\1" inline="true" \2]\3[/crayon]', $wp_content);
+    		}
+    		// Convert <span class="crayon-inline"> tags to inline crayon tags
+    		$wp_content = preg_replace_callback('#(?<!\$)<\s*span([^>]*)\bclass\s*=\s*(["\'])(.*?)\2([^>]*)>(.*?)<\s*/\s*span\s*>#msi', 'Urvanov_Syntax_Highlighter_Plugin::span_tag', $wp_content);
+    	}
+    	return $wp_content;
+    }
     
     // *****************************************************************************
 
