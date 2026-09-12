@@ -3,8 +3,8 @@ Contributors: urvanov
 Donate link: https://yoomoney.ru/to/41001288941320
 License: GPLv3 or later
 Tags: syntax highlighter, highlighter, highlighting, code, code highlighter
-Requires at least: 6.9
-Tested up to: 6.9.4
+Requires at least: 7.1
+Tested up to: 7.1
 Stable tag: 2.9.1
 
 Reincarnation of Crayon Syntax Highlighter. Syntax Highlighter supporting multiple languages, themes, fonts, highlighting from a URL, or post text.
