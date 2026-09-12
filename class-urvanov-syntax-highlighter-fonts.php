@@ -6,8 +6,8 @@ require_once (URVANOV_SYNTAX_HIGHLIGHTER_RESOURCE_PHP);
 class Urvanov_Syntax_Highlighter_Fonts extends Urvanov_Syntax_Highlighter_User_Resource_Collection {
 	// Properties and Constants ===============================================
 
-	const DEFAULT_FONT = 'monaco';
-	const DEFAULT_FONT_NAME = 'Monaco';
+	const DEFAULT_FONT = 'ubuntu-mono';
+	const DEFAULT_FONT_NAME = 'Ubuntu mono';
 
 	// Methods ================================================================
 
