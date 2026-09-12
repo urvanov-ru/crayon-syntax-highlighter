@@ -335,7 +335,8 @@ Contact me at http://twitter.com/crayonsyntax or crayon.syntax@gmail.com.
 
 = 2.9.2 =
 * FIXED
-    * Removed consolas and monaco fonts during to license problems. (https://github.com/urvanov-ru/crayon-syntax-highlighter/issues/60)
+    * Removed Consolas, Monaco, and Adobe Source Sans fonts during to license problems. (https://github.com/urvanov-ru/crayon-syntax-highlighter/issues/60)
+    * Default font changed from Monaco to Ubuntu Mono.
     * Fixed warning preg_replace_callback() Passing null to parameter #3.
 
 = 2.9.1 =
