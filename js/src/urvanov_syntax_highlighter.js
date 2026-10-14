@@ -953,7 +953,13 @@
                     urvanov_syntax_highlighters[uid].before(urvanov_syntax_highlighters[uid].placeholder);
                     urvanov_syntax_highlighters[uid].placeholder.css('margin', urvanov_syntax_highlighters[uid].css('margin'));
                     $(window).bind('resize', placeholderResize);
+                } else if (
+                  urvanov_syntax_highlighters[uid].expanded === true
+                  || urvanov_syntax_highlighters[uid].expandInProgress === true){
+                  return;
                 }
+
+                urvanov_syntax_highlighters[uid].expandInProgress = true;
 
                 var expandHeight = {
                     'height': 'auto',
@@ -985,6 +991,7 @@
 
                 urvanov_syntax_highlighters[uid].animate(newSize, animt(urvanov_syntax_highlighters[uid].expandTime, uid), function () {
                     urvanov_syntax_highlighters[uid].expanded = true;
+                    urvanov_syntax_highlighters[uid].expandInProgress = false;
                     updateExpandButton(uid);
                 });
 
@@ -993,6 +1000,12 @@
                 urvanov_syntax_highlighters[uid].addClass(URVANOV_SYNTAX_HIGHLIGHTER_EXPANDED);
                 placeholderResize();
             } else {
+                if(urvanov_syntax_highlighters[uid].expanded === false){
+                  return;
+                }
+                
+                urvanov_syntax_highlighters[uid].expandInProgress = false;
+                
                 var initialSize = urvanov_syntax_highlighters[uid].initialOuterSize;
                 var delay = urvanov_syntax_highlighters[uid].toolbar_delay;
                 if (initialSize) {
