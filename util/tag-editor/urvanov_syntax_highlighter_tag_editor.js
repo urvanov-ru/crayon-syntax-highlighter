@@ -172,8 +172,9 @@
 
         var colorboxSettings = {
             inline: true,
-            width: 690,
+            width: 800,
             height: '90%',
+            scrolling : true,
             closeButton: false,
             fixed: true,
             transition: 'none',
@@ -183,6 +184,9 @@
             },
             onComplete: function () {
                 $(s.code_css).focus();
+                colorboxSettings.width = Math.min(Math.max(window.innerWidth - 100, 100), 900);
+                colorboxSettings.height = Math.min(Math.max(window.innerHeight - 100, 100), 1300);
+                $.colorbox.resize({width: colorboxSettings.width, height: colorboxSettings.height});
             },
             onCleanup: function () {
                 $(s.bar).prepend($(s.bar_content));
@@ -333,11 +337,11 @@
         base.showDialog = function (args) {
             var wasLoaded = loaded;
             base.loadDialog(function () {
-                //if (!wasLoaded) {
+                if (!wasLoaded) {
                     // Forcefully load the colorbox. Otherwise it populates the content after opening the window and
                     // never renders.
                     $.colorbox(colorboxSettings);
-                //}
+                }
                 base._showDialog(args);
             });
         };
