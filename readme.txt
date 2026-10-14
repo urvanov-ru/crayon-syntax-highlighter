@@ -4,7 +4,7 @@ Donate link: https://yoomoney.ru/to/41001288941320
 License: GPLv3 or later
 Tags: syntax highlighter, highlighter, highlighting, code, code highlighter
 Requires at least: 7.1
-Tested up to: 7.1
+Tested up to: 7.1.3
 Stable tag: 2.9.1
 
 Reincarnation of Crayon Syntax Highlighter. Syntax Highlighter supporting multiple languages, themes, fonts, highlighting from a URL, or post text.
@@ -332,6 +332,11 @@ Contact me at http://twitter.com/crayonsyntax or crayon.syntax@gmail.com.
 5. Theme Editor.
 
 == Changelog ==
+
+= 2.9.3 =
+* FIXED
+    * Dialog box z-index on top of classic editor dialog box fix.
+    * Dialog box width, height, and scroll bars calculation.
 
 = 2.9.2 =
 * FIXED
