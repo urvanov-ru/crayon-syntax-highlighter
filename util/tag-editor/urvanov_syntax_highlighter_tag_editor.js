@@ -337,11 +337,11 @@
         base.showDialog = function (args) {
             var wasLoaded = loaded;
             base.loadDialog(function () {
-                if (!wasLoaded) {
+                //if (!wasLoaded) {
                     // Forcefully load the colorbox. Otherwise it populates the content after opening the window and
                     // never renders.
                     $.colorbox(colorboxSettings);
-                }
+                //}
                 base._showDialog(args);
             });
         };
